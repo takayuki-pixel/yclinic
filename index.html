@@ -3,103 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>y Clinic — 社内資料一覧</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>yClinic &#8212; 社内資料一覧</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&family=Noto+Sans+JP:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f7f3ed;
-    --ink: #1a1814;
-    --gold: #b8954a;
-    --mid: #6b6560;
-    --dim: #a09890;
-    --rule: rgba(26,24,20,0.1);
-    --surface: #faf8f4;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 300;
-    line-height: 1.8;
-    -webkit-font-smoothing: antialiased;
-  }
-  .page { max-width: 52rem; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
-  header { border-bottom: 2px solid var(--ink); padding-bottom: 1.5rem; margin-bottom: 3rem; position: relative; }
-  header::after { content: ''; position: absolute; bottom: -5px; left: 0; right: 0; height: 1px; background: var(--gold); }
-  .brand { font-family: 'Shippori Mincho', serif; font-size: 1.6rem; font-weight: 600; letter-spacing: -.02em; }
-  .brand span { color: var(--gold); }
-  .sub { font-family: 'IBM Plex Mono', monospace; font-size: .55rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-top: .4rem; }
-  h1 { font-family: 'Shippori Mincho', serif; font-size: 1.2rem; font-weight: 600; margin-top: 1.2rem; }
-  .updated { font-family: 'IBM Plex Mono', monospace; font-size: .6rem; color: var(--dim); letter-spacing: .1em; margin-top: .4rem; }
-  .file-list { list-style: none; margin-top: 2rem; }
-  .file-item { border-bottom: 1px solid var(--rule); }
-  .file-link {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    padding: 1rem 0;
-    text-decoration: none;
-    color: var(--ink);
-    transition: padding-left .15s;
-  }
-  .file-link:hover { padding-left: .5rem; }
-  .file-link:hover .file-name { color: var(--gold); }
-  .file-icon {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: .55rem;
-    letter-spacing: .1em;
-    color: var(--gold);
-    background: rgba(184,149,74,0.1);
-    border: 1px solid rgba(184,149,74,0.25);
-    padding: .2em .6em;
-    flex-shrink: 0;
-  }
-  .file-name { font-size: .92rem; font-weight: 400; }
-  .file-arrow { margin-left: auto; color: var(--dim); font-size: .75rem; }
-  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: .52rem; color: var(--dim); letter-spacing: .1em; text-transform: uppercase; text-align: right; }
+:root{--navy:#0F1F3D;--navy-mid:#1B3160;--accent:#2B5BA8;--gold:#B08D4A;--gold-light:#D4AF70;--bg:#F8F6F1;--bg2:#EEEBE4;--white:#FFFFFF;--text:#1A1A2E;--text-mid:#3D3D5C;--text-muted:#6B6B8A;--border:rgba(15,31,61,0.12);--border-strong:rgba(15,31,61,0.25);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.8;}
+.lang-bar{position:sticky;top:0;z-index:100;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:8px 32px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.lang-project{font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.08em;}
+.lang-project strong{color:var(--gold-light);font-weight:500;}
+.logout-btn{padding:5px 14px;font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.55);border-radius:3px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;letter-spacing:0.04em;transition:all .15s;}
+.logout-btn:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.85);}
+.page{max-width:920px;margin:0 auto;padding:0 32px 80px;}
+.cover{background:var(--navy);color:var(--white);padding:48px 64px 40px;margin:0 -32px 56px;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border:1px solid rgba(255,255,255,0.05);border-radius:50%;}
+.cover::after{content:'';position:absolute;bottom:-40px;right:60px;width:180px;height:180px;border:1px solid rgba(176,141,74,0.18);border-radius:50%;}
+.cover-eyebrow{font-size:11px;letter-spacing:0.18em;color:var(--gold-light);text-transform:uppercase;margin-bottom:12px;font-weight:400;position:relative;z-index:1;}
+.cover-title{font-family:'DM Serif Display',serif;font-size:52px;line-height:1;letter-spacing:-0.01em;margin-bottom:8px;position:relative;z-index:1;}
+.cover-title span{color:var(--gold-light);}
+.cover-sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:28px;position:relative;z-index:1;}
+.cover-meta{display:flex;gap:36px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);position:relative;z-index:1;}
+.cover-meta-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:2px;}
+.cover-meta-value{font-size:13px;color:rgba(255,255,255,0.8);font-weight:300;}
+.section{margin-bottom:48px;}
+.section-num{font-size:11px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;font-weight:500;}
+.section-title{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--navy);}
+.file-list{list-style:none;}
+.file-item{background:var(--white);border:1px solid var(--border);margin-bottom:-1px;position:relative;overflow:hidden;}
+.file-item:first-child{border-radius:8px 8px 0 0;}
+.file-item:last-child{border-radius:0 0 8px 8px;margin-bottom:0;}
+.file-item:only-child{border-radius:8px;}
+.file-item::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px 0 0 2px;}
+.file-item.cat-minutes::before{background:var(--accent);}
+.file-item.cat-strategy::before{background:var(--gold);}
+.file-item.cat-presentation::before{background:#2A8A5A;}
+.file-item.cat-other::before{background:var(--text-muted);}
+.file-link{display:flex;align-items:center;gap:16px;padding:14px 18px 14px 20px;text-decoration:none;color:var(--text);transition:background .12s;}
+.file-link:hover{background:#EFF3FA;}
+.file-link:hover .file-name{color:var(--navy);}
+.file-badge{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:3px;flex-shrink:0;}
+.badge-minutes{background:rgba(43,91,168,0.1);color:var(--accent);}
+.badge-strategy{background:rgba(176,141,74,0.12);color:var(--gold);}
+.badge-presentation{background:rgba(42,138,90,0.1);color:#1F7A4A;}
+.badge-other{background:var(--bg2);color:var(--text-muted);}
+.file-info{flex:1;min-width:0;}
+.file-name{font-size:14px;font-weight:500;color:var(--text-mid);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .12s;}
+.file-arrow{font-size:14px;color:var(--border-strong);flex-shrink:0;transition:color .12s,transform .12s;}
+.file-link:hover .file-arrow{color:var(--accent);transform:translateX(3px);}
 </style>
 </head>
 <body>
-<div class="page">
-  <header>
-    <div class="brand">y<span> Clinic</span></div>
-    <div class="sub">Future Health by SPIC — 社内資料ポータル</div>
-    <h1>プロジェクト資料一覧</h1>
-    <div class="updated">Last updated: $(TZ='Asia/Tokyo' date '+%Y年%m月%d日 %H:%M JST')</div>
-  </header>
-  <ul class="file-list">
-      <li class="file-item">
-        <a class="file-link" href="kickoff.html">
-          <span class="file-icon">HTML</span>
-          <span class="file-name">kickoff</span>
-          <span class="file-arrow">→</span>
-        </a>
-      </li>
-      <li class="file-item">
-        <a class="file-link" href="login.html">
-          <span class="file-icon">HTML</span>
-          <span class="file-name">login</span>
-          <span class="file-arrow">→</span>
-        </a>
-      </li>
-      <li class="file-item">
-        <a class="file-link" href="y_clinic_deep_research_bilingual.html">
-          <span class="file-icon">HTML</span>
-          <span class="file-name">y_clinic_deep_research_bilingual</span>
-          <span class="file-arrow">→</span>
-        </a>
-      </li>
-      <li class="file-item">
-        <a class="file-link" href="y_clinic_minutes_20260413.html">
-          <span class="file-icon">HTML</span>
-          <span class="file-name">y_clinic_minutes_20260413</span>
-          <span class="file-arrow">→</span>
-        </a>
-      </li>
-  </ul>
-  <footer>y Clinic — Future Health by SPIC · Confidential · Auto-generated by GitHub Actions</footer>
+<div class="lang-bar">
+  <span class="lang-project"><strong>y Clinic</strong> &nbsp;&mdash;&nbsp; 社内資料ポータル</span>
+  <button class="logout-btn" onclick="logout()">ログアウト</button>
 </div>
+<div class="page">
+  <div class="cover">
+    <div class="cover-eyebrow">Future Health by SPIC</div>
+    <div class="cover-title">y<span> Clinic</span></div>
+    <div class="cover-sub">プロジェクト 社内資料ポータル</div>
+    <div class="cover-meta">
+      <div><div class="cover-meta-label">資料数</div><div class="cover-meta-value">3件</div></div>
+      <div><div class="cover-meta-label">自動更新日時</div><div class="cover-meta-value">2026年04月14日 08:24 JST</div></div>
+      <div><div class="cover-meta-label">プロジェクト</div><div class="cover-meta-value">y Clinic 横浜旗艦 2026</div></div>
+    </div>
+  </div>
+  <div class="section">
+    <p class="section-num">Documents</p>
+    <h2 class="section-title">資料一覧</h2>
+    <ul class="file-list">
+      <li class="file-item cat-presentation">
+        <a class="file-link" href="kickoff.html">
+          <span class="file-badge badge-presentation">資料</span>
+          <div class="file-info">
+            <div class="file-name">kickoff</div>
+          </div>
+          <span class="file-arrow">&#8594;</span>
+        </a>
+      </li>
+      <li class="file-item cat-strategy">
+        <a class="file-link" href="y_clinic_deep_research_bilingual.html">
+          <span class="file-badge badge-strategy">分析</span>
+          <div class="file-info">
+            <div class="file-name">y_clinic_deep_research_bilingual</div>
+          </div>
+          <span class="file-arrow">&#8594;</span>
+        </a>
+      </li>
+      <li class="file-item cat-minutes">
+        <a class="file-link" href="y_clinic_minutes_20260413.html">
+          <span class="file-badge badge-minutes">議事録</span>
+          <div class="file-info">
+            <div class="file-name">y_clinic_minutes_20260413</div>
+          </div>
+          <span class="file-arrow">&#8594;</span>
+        </a>
+      </li></ul>
+  </div>
+</div>
+<script>
+if(sessionStorage.getItem('yclinic_auth')!=='1'){window.location.href='login.html';}
+function logout(){sessionStorage.removeItem('yclinic_auth');window.location.href='login.html';}
+</script>
 </body>
 </html>
