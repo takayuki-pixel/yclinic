@@ -3,118 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<title>Project yClinic</title>
+<title>y Clinic — 社内資料一覧</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&family=Noto+Sans+JP:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0F1F3D;--navy-mid:#1B3160;--accent:#2B5BA8;--gold:#B08D4A;--gold-light:#D4AF70;--bg:#F8F6F1;--white:#FFFFFF;--text:#1A1A2E;--text-mid:#3D3D5C;--text-muted:#6B6B8A;--border:rgba(15,31,61,0.12);}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Noto Sans JP','Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-.t-en,.t-zh{display:none;}
-body.lang-en .t-ja{display:none;}body.lang-en .t-en{display:inherit;}
-body.lang-zh .t-ja{display:none;}body.lang-zh .t-zh{display:inherit;}
-body.lang-en .t-zh{display:none;}body.lang-zh .t-en{display:none;}
-#lock-screen{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:9999;background:var(--navy);display:flex;align-items:center;justify-content:center;}
-#lock-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:48px 52px;width:340px;text-align:center;}
-#lock-logo{font-family:'DM Serif Display',serif;font-size:42px;color:#fff;margin-bottom:4px;}
-#lock-logo span{color:#D4AF70;}
-#lock-sub{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:36px;}
-#lock-label{font-size:12px;color:rgba(255,255,255,0.5);text-align:left;margin-bottom:8px;}
-#lock-input{width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:12px 14px;font-size:15px;color:#fff;letter-spacing:0.12em;outline:none;margin-bottom:14px;box-sizing:border-box;transition:border-color .2s;}
-#lock-input:focus{border-color:#D4AF70;}
-#lock-input.error{border-color:#E24B4A;animation:shake .3s;}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-#lock-btn{width:100%;background:#D4AF70;color:#0F1F3D;border:none;border-radius:6px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.06em;transition:opacity .15s;}
-#lock-btn:hover{opacity:0.88;}
-#lock-error{font-size:12px;color:#F09595;margin-top:10px;min-height:16px;}
-#lock-hint{font-size:11px;color:rgba(255,255,255,0.2);margin-top:28px;}
-.topbar{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:10px 32px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08);}
-.topbar-left{font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);}
-.topbar-left span{color:var(--gold-light);}
-.lang-btns{display:flex;gap:4px;}
-.lang-btn{padding:5px 13px;font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.5);border-radius:3px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;}
-.lang-btn:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.85);}
-.lang-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700;}
-.logout-btn{background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.45);border-radius:4px;padding:4px 12px;font-size:11px;cursor:pointer;margin-left:12px;transition:all .15s;}
-.logout-btn:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);}
-.hero{background:var(--navy);padding:56px 40px 48px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-60px;right:-40px;width:280px;height:280px;border:1px solid rgba(255,255,255,0.05);border-radius:50%;}
-.hero::after{content:'';position:absolute;bottom:-30px;right:80px;width:140px;height:140px;border:1px solid rgba(176,141,74,0.15);border-radius:50%;}
-.hero-inner{max-width:860px;margin:0 auto;}
-.hero-eyebrow{font-size:11px;letter-spacing:0.16em;color:var(--gold-light);text-transform:uppercase;margin-bottom:14px;}
-.hero-title{font-family:'DM Serif Display',serif;font-size:52px;color:#fff;line-height:1;margin-bottom:12px;}
-.hero-title span{color:var(--gold-light);}
-.hero-sub{font-size:13px;color:rgba(255,255,255,0.45);}
-.hero-count{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:5px 16px;font-size:12px;color:rgba(255,255,255,0.6);}
-.hero-count strong{color:var(--gold-light);font-size:15px;}
-.main{max-width:860px;margin:0 auto;padding:40px 40px 80px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
-.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;transition:transform .15s,box-shadow .15s;cursor:pointer;position:relative;}
-.card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(15,31,61,0.1);}
-.card-badge{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
-.card-cat{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:3px;width:fit-content;}
-.card-title{font-size:16px;font-weight:700;color:var(--navy);font-family:'Noto Serif JP',serif;line-height:1.5;}
-.card-desc{font-size:12px;color:var(--text-muted);line-height:1.6;flex:1;}
-.card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:4px;padding-top:10px;border-top:1px solid var(--border);}
-.card-date{font-size:11px;color:var(--text-muted);}
-.card-arrow{font-size:14px;color:var(--accent);}
-.empty{text-align:center;padding:60px;font-size:14px;color:var(--text-muted);}
+  :root {
+    --bg: #f7f3ed;
+    --ink: #1a1814;
+    --gold: #b8954a;
+    --mid: #6b6560;
+    --dim: #a09890;
+    --rule: rgba(26,24,20,0.1);
+    --surface: #faf8f4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 52rem; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 1.5rem; margin-bottom: 3rem; position: relative; }
+  header::after { content: ''; position: absolute; bottom: -5px; left: 0; right: 0; height: 1px; background: var(--gold); }
+  .brand { font-family: 'Shippori Mincho', serif; font-size: 1.6rem; font-weight: 600; letter-spacing: -.02em; }
+  .brand span { color: var(--gold); }
+  .sub { font-family: 'IBM Plex Mono', monospace; font-size: .55rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-top: .4rem; }
+  h1 { font-family: 'Shippori Mincho', serif; font-size: 1.2rem; font-weight: 600; margin-top: 1.2rem; }
+  .updated { font-family: 'IBM Plex Mono', monospace; font-size: .6rem; color: var(--dim); letter-spacing: .1em; margin-top: .4rem; }
+  .file-list { list-style: none; margin-top: 2rem; }
+  .file-item { border-bottom: 1px solid var(--rule); }
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem 0;
+    text-decoration: none;
+    color: var(--ink);
+    transition: padding-left .15s;
+  }
+  .file-link:hover { padding-left: .5rem; }
+  .file-link:hover .file-name { color: var(--gold); }
+  .file-icon {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: .55rem;
+    letter-spacing: .1em;
+    color: var(--gold);
+    background: rgba(184,149,74,0.1);
+    border: 1px solid rgba(184,149,74,0.25);
+    padding: .2em .6em;
+    flex-shrink: 0;
+  }
+  .file-name { font-size: .92rem; font-weight: 400; }
+  .file-arrow { margin-left: auto; color: var(--dim); font-size: .75rem; }
+  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: .52rem; color: var(--dim); letter-spacing: .1em; text-transform: uppercase; text-align: right; }
 </style>
 </head>
-<body class="lang-ja">
-<div id="lock-screen">
-  <div id="lock-box">
-    <div id="lock-logo">Project <span>y</span>Clinic</div>
-    <div id="lock-sub">SPIC | Confidential</div>
-    <div id="lock-label"><span class="t-ja">パスワード</span><span class="t-en">Password</span><span class="t-zh">密碼</span></div>
-    <input id="lock-input" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPassword()" autocomplete="off">
-    <button id="lock-btn" onclick="checkPassword()"><span class="t-ja">入室する</span><span class="t-en">Enter</span><span class="t-zh">進入</span></button>
-    <div id="lock-error"></div>
-    <div id="lock-hint"><span class="t-ja">アクセス権のある方のみ</span><span class="t-en">Authorized access only</span><span class="t-zh">僅限授權人員</span></div>
-  </div>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">y<span> Clinic</span></div>
+    <div class="sub">Future Health by SPIC — 社内資料ポータル</div>
+    <h1>プロジェクト資料一覧</h1>
+    <div class="updated">Last updated: $(TZ='Asia/Tokyo' date '+%Y年%m月%d日 %H:%M JST')</div>
+  </header>
+  <ul class="file-list">
+      <li class="file-item">
+        <a class="file-link" href="kickoff.html">
+          <span class="file-icon">HTML</span>
+          <span class="file-name">kickoff</span>
+          <span class="file-arrow">→</span>
+        </a>
+      </li>
+      <li class="file-item">
+        <a class="file-link" href="y_clinic_deep_research_bilingual.html">
+          <span class="file-icon">HTML</span>
+          <span class="file-name">y_clinic_deep_research_bilingual</span>
+          <span class="file-arrow">→</span>
+        </a>
+      </li>
+      <li class="file-item">
+        <a class="file-link" href="y_clinic_minutes_20260413.html">
+          <span class="file-icon">HTML</span>
+          <span class="file-name">y_clinic_minutes_20260413</span>
+          <span class="file-arrow">→</span>
+        </a>
+      </li>
+  </ul>
+  <footer>y Clinic — Future Health by SPIC · Confidential · Auto-generated by GitHub Actions</footer>
 </div>
-<div class="topbar">
-  <div class="topbar-left"><span>Project yClinic</span> &nbsp;|&nbsp; SPIC Confidential
-    <button class="logout-btn" onclick="logout()"><span class="t-ja">ログアウト</span><span class="t-en">Logout</span><span class="t-zh">登出</span></button>
-  </div>
-  <div class="lang-btns">
-    <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
-    <button class="lang-btn" onclick="setLang('en')">English</button>
-    <button class="lang-btn" onclick="setLang('zh')">繁體中文</button>
-  </div>
-</div>
-<div class="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">Project yClinic | Document Portal</p>
-    <h1 class="hero-title">Project <span>y</span>Clinic</h1>
-    <p class="hero-sub"><span class="t-ja">関係者限定ドキュメントポータル</span><span class="t-en">Authorized personnel only</span><span class="t-zh">限授權人員閱覽</span></p>
-    <div class="hero-count"><strong>1</strong>&nbsp;<span class="t-ja">件のドキュメント</span><span class="t-en">documents</span><span class="t-zh">份文件</span></div>
-  </div>
-</div>
-<div class="main"><div class="grid">
-<a class="card" href="kickoff.html" onclick="return goPage(this,event)"><span class="card-badge">最新</span>
-      <div class="card-cat t-ja" style="background:#2B5BA820;color:#2B5BA8;">キックオフ</div>
-      <div class="card-cat t-en" style="background:#2B5BA820;color:#2B5BA8;">Kickoff</div>
-      <div class="card-cat t-zh" style="background:#2B5BA820;color:#2B5BA8;">啟動</div>
-      <div class="card-title t-ja">キックオフ計画書</div>
-      <div class="card-title t-en">Kickoff Document</div>
-      <div class="card-title t-zh">啟動計畫書</div>
-      <div class="card-desc t-ja">横浜スカイビル25F 開業 × 鎌倉・台北リブランディング</div>
-      <div class="card-desc t-en">Yokohama Sky Building 25F Launch × Kamakura & Taipei Rebranding</div>
-      <div class="card-desc t-zh">橫濱Sky Building 25F 開幕 × 鎌倉・台北品牌重塑</div>
-      <div class="card-foot">
-        <span class="card-date">2026.04.13</span>
-        <span class="card-arrow">→</span>
-      </div></a>
-</div></div>
-<script>
-const PASS='spic2026',SK='yclinic_auth';
-function checkPassword(){const inp=document.getElementById('lock-input'),err=document.getElementById('lock-error');if(inp.value===PASS){sessionStorage.setItem(SK,'1');document.getElementById('lock-screen').style.display='none';document.body.style.overflow='';}else{inp.classList.add('error');err.textContent='パスワードが正しくありません / Incorrect password';inp.value='';setTimeout(()=>inp.classList.remove('error'),400);}}
-function logout(){sessionStorage.removeItem(SK);document.getElementById('lock-screen').style.display='flex';document.body.style.overflow='hidden';document.getElementById('lock-input').value='';document.getElementById('lock-error').textContent='';}
-function goPage(el,e){e.preventDefault();sessionStorage.setItem(SK+'_pass',PASS);window.location.href=el.getAttribute('href');return false;}
-function setLang(lang){document.body.className='lang-'+lang;document.querySelectorAll('.lang-btn').forEach(function(b,i){b.classList.toggle('active',['ja','en','zh'][i]===lang);});}
-document.addEventListener('DOMContentLoaded',function(){if(sessionStorage.getItem(SK)==='1'){document.getElementById('lock-screen').style.display='none';document.body.style.overflow='';}else{document.body.style.overflow='hidden';document.getElementById('lock-input').focus();}});
-</script>
 </body>
 </html>
