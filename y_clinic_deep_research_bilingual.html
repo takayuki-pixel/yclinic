@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>y Clinic — 世界12施設 深層分析 / 全球12診所深度分析</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Noto+Serif+TC:wght@300;400;500&family=Noto+Serif+JP:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&family=Noto+Sans+JP:wght@300;400&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0b09;
+  --surface: #141210;
+  --surface2: #1c1a16;
+  --surface3: #242018;
+  --border: rgba(200,175,120,0.12);
+  --gold: #c8af78;
+  --gold2: #e8d09a;
+  --text: #e8e2d6;
+  --muted: rgba(232,226,214,0.45);
+  --dim: rgba(232,226,214,0.22);
+  --font-display: 'Playfair Display', 'Noto Serif TC', 'Noto Serif JP', Georgia, serif;
+  --font-body-ja: 'Noto Sans JP', sans-serif;
+  --font-body-zh: 'Noto Sans TC', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body-ja);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 300;
+}
+
+body.zh { font-family: var(--font-body-zh); }
+
+/* ─── LANGUAGE TOGGLE ─── */
+.lang-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(12,11,9,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: .7rem clamp(2rem,7vw,7rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lang-logo {
+  font-family: var(--font-display);
+  font-size: .95rem;
+  color: var(--gold);
+  letter-spacing: .05em;
+}
+
+.lang-btns {
+  display: flex;
+  gap: .3rem;
+}
+
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .4em 1em;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.lang-btn.active { background: var(--gold); color: var(--bg); border-color: var(--gold); font-weight: 400; }
+
+/* Language visibility */
+.ja { display: block; }
+.zh { display: none; }
+.ja-inline { display: inline; }
+.zh-inline { display: none; }
+
+body.zh .ja { display: none; }
+body.zh .zh { display: block; }
+body.zh .ja-inline { display: none; }
+body.zh .zh-inline { display: inline; }
+
+/* For elements that should always show (bi-lingual labels like clinic names) */
+.bilingual {}
+
+/* ─── COVER ─── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem clamp(2rem,7vw,7rem);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 30%, rgba(200,175,120,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 70% at 10% 80%, rgba(74,124,111,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cover-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: .05em;
+}
+
+.cover-tag {
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-top: .4rem;
+}
+
+.cover-center { padding: 8vh 0 6vh; }
+
+.cover-num {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2.5rem;
+}
+
+.cover-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 6.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  max-width: 14em;
+}
+
+.cover-h1 em { font-style: italic; color: var(--gold); display: block; }
+
+.cover-sub {
+  font-size: .95rem;
+  color: var(--muted);
+  max-width: 40rem;
+  margin-top: 2rem;
+  line-height: 1.8;
+}
+
+.cover-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.cover-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
+
+.stat { display: flex; flex-direction: column; gap: .2rem; }
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.cover-date {
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .12em;
+  color: var(--dim);
+}
+
+/* ─── NAV ─── */
+.nav-index {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem clamp(2rem,7vw,7rem);
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: .4rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.nav-item {
+  display: flex;
+  gap: .7rem;
+  align-items: flex-start;
+  padding: .6rem;
+  cursor: pointer;
+  transition: background .2s;
+  border-radius: 2px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-item:hover { background: var(--surface2); }
+
+.nav-item-num {
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  color: var(--gold);
+  letter-spacing: .1em;
+  margin-top: .05rem;
+  flex-shrink: 0;
+}
+
+.nav-item-name { font-size: .8rem; color: var(--muted); line-height: 1.4; }
+
+/* ─── SECTION HEADER ─── */
+.section-header {
+  padding: 5rem clamp(2rem,7vw,7rem) 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header .inner { max-width: 80rem; margin: 0 auto; }
+
+.group-tag {
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.group-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: .8rem;
+}
+
+.group-title em { font-style: italic; color: var(--gold); }
+
+.group-desc {
+  font-size: .9rem;
+  color: var(--muted);
+  max-width: 48rem;
+  line-height: 1.85;
+}
+
+/* ─── CLINIC CARD ─── */
+.clinic-wrap {
+  padding: 0 clamp(2rem,7vw,7rem);
+  max-width: 82rem;
+  margin: 0 auto;
+}
+
+.clinic-card {
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .clinic-card { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.clinic-index {
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.clinic-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: .5rem;
+}
+
+.clinic-origin {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.clinic-role-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: .52rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .3em .8em;
+  border: 1px solid;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.role-core { border-color: var(--gold); color: var(--gold); }
+.role-entry { border-color: #7ab89a; color: #7ab89a; }
+.role-longevity { border-color: #7ab8a8; color: #7ab8a8; }
+.role-academic { border-color: #8ab0c8; color: #8ab0c8; }
+.role-recovery { border-color: #c8a878; color: #c8a878; }
+.role-protocol { border-color: #b89a78; color: #b89a78; }
+.role-method { border-color: #a890b8; color: #a890b8; }
+.role-member { border-color: #9098b8; color: #9098b8; }
+
+.clinic-facts { display: flex; flex-direction: column; gap: .6rem; }
+
+.clinic-fact { display: flex; gap: .8rem; align-items: flex-start; }
+
+.fact-label {
+  font-family: var(--font-mono);
+  font-size: .52rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  flex-shrink: 0;
+  min-width: 5rem;
+  margin-top: .15rem;
+}
+
+.fact-value { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+.fact-value strong { color: var(--text); font-weight: 400; }
+
+.block { margin-bottom: 2.2rem; }
+
+.block-label {
+  font-family: var(--font-mono);
+  font-size: .52rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .7rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.block-text { font-size: .88rem; color: rgba(232,226,214,0.75); line-height: 1.9; }
+.block-text strong { color: var(--text); font-weight: 400; }
+
+.feature-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+
+.feature-list li {
+  font-size: .85rem;
+  color: rgba(232,226,214,0.7);
+  display: flex;
+  gap: .8rem;
+  line-height: 1.7;
+}
+
+.feature-list li::before {
+  content: '→';
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: .05rem;
+  font-family: var(--font-mono);
+  font-size: .7rem;
+}
+
+.media-list { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+
+.media-list li {
+  font-size: .78rem;
+  color: var(--dim);
+  display: flex;
+  gap: .8rem;
+  line-height: 1.6;
+  font-family: var(--font-mono);
+}
+
+.media-list li::before {
+  content: '◆';
+  font-size: .5rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: .25rem;
+}
+
+.y-learn {
+  background: var(--surface2);
+  border-left: 2px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.y-learn-label {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .6rem;
+}
+
+.y-learn-text { font-size: .85rem; color: rgba(232,226,214,0.8); line-height: 1.85; }
+.y-learn-text strong { color: var(--gold2); font-weight: 400; }
+
+.key-number {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  padding: .8rem 1.2rem;
+  margin-bottom: .6rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: baseline;
+}
+
+.kn-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.kn-desc { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+
+.numbers-row { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: 2rem; }
+
+/* ─── SYNTHESIS ─── */
+.synthesis {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 6rem clamp(2rem,7vw,7rem);
+}
+
+.synthesis .inner { max-width: 80rem; margin: 0 auto; }
+
+.synth-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-weight: 400;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+}
+
+.synth-title em { font-style: italic; color: var(--gold); }
+
+.synth-table { width: 100%; border-collapse: collapse; font-size: .83rem; }
+
+.synth-table th {
+  text-align: left;
+  padding: .8rem 1rem;
+  background: var(--surface2);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: .52rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.synth-table td {
+  padding: .9rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  vertical-align: top;
+  line-height: 1.65;
+}
+
+.synth-table tr:hover td { background: var(--surface2); }
+.synth-table td:first-child { font-family: var(--font-mono); font-size: .7rem; color: var(--gold); white-space: nowrap; }
+.synth-table td:nth-child(2) { color: var(--text); font-size: .88rem; }
+.synth-table td.adopt { color: #7ab8a8; }
+.synth-table td.skip { color: rgba(232,226,214,0.3); }
+
+/* ─── CLOSING ─── */
+.closing {
+  padding: 7rem clamp(2rem,7vw,7rem);
+  border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::after {
+  content: 'y';
+  position: absolute;
+  right: -3rem;
+  bottom: -5rem;
+  font-family: var(--font-display);
+  font-size: 30rem;
+  color: rgba(200,175,120,0.025);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.closing .inner { max-width: 80rem; margin: 0 auto; position: relative; z-index: 1; }
+
+.closing-label {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.closing-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 46rem;
+  color: var(--text);
+}
+
+.closing-text em { font-style: italic; color: var(--gold); }
+
+.group-divider { height: 1px; background: var(--border); }
+
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem clamp(2rem,7vw,7rem);
+  font-family: var(--font-mono);
+  font-size: .55rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ LANG BAR ═══ -->
+<div class="lang-bar">
+  <div class="lang-logo">y Clinic</div>
+  <div class="lang-btns">
+    <button class="lang-btn active" onclick="setLang('ja')" id="btn-ja">日本語</button>
+    <button class="lang-btn" onclick="setLang('zh')" id="btn-zh">繁體中文</button>
+  </div>
+</div>
+
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div class="cover-top">
+    <div>
+      <div class="cover-logo">y Clinic</div>
+      <div class="cover-tag">Future Health by SPIC</div>
+    </div>
+    <div style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:right;">
+      <span class="ja-inline">World Clinic<br>Deep Research</span>
+      <span class="zh-inline">全球診所<br>深度研究</span>
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-num">
+      <span class="ja-inline">Research Document — Vol.02</span>
+      <span class="zh-inline">研究文件 — Vol.02</span>
+    </div>
+    <h1 class="cover-h1">
+      <span class="ja">世界12施設<em>深層分析</em></span>
+      <span class="zh">全球12診所<em>深度分析</em></span>
+    </h1>
+    <p class="cover-sub">
+      <span class="ja">サービスの実態・ユニークネス・メディアの取り上げ方まで。各クリニックが「実際に何をやっているのか」を先生方にお伝えするための詳細リサーチドキュメント。</span>
+      <span class="zh">涵蓋服務內容、獨特性、媒體報導方式。本文件旨在向各位醫師詳細說明各診所「實際提供的內容」。</span>
+    </p>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-stats">
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label"><span class="ja-inline">Clinics</span><span class="zh-inline">診所數</span></div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label"><span class="ja-inline">Categories</span><span class="zh-inline">分類</span></div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2026</div>
+        <div class="stat-label"><span class="ja-inline">Latest Data</span><span class="zh-inline">最新資料</span></div>
+      </div>
+    </div>
+    <div class="cover-date">
+      <span class="ja-inline">April 2026 — Confidential</span>
+      <span class="zh-inline">2026年4月 — 機密文件</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav-index">
+  <div class="nav-grid">
+    <a href="#neko" class="nav-item"><span class="nav-item-num">01</span><span class="nav-item-name">Neko Health</span></a>
+    <a href="#mayo" class="nav-item"><span class="nav-item-num">02</span><span class="nav-item-name">Mayo Clinic</span></a>
+    <a href="#cooper" class="nav-item"><span class="nav-item-num">03</span><span class="nav-item-name">Cooper Clinic</span></a>
+    <a href="#chi" class="nav-item"><span class="nav-item-num">04</span><span class="nav-item-name">Chi Longevity</span></a>
+    <a href="#sheba" class="nav-item"><span class="nav-item-num">05</span><span class="nav-item-name">Sheba Longevity</span></a>
+    <a href="#alexandra" class="nav-item"><span class="nav-item-num">06</span><span class="nav-item-name">Alexandra HLRC</span></a>
+    <a href="#lanserhof" class="nav-item"><span class="nav-item-num">07</span><span class="nav-item-name">Lanserhof</span></a>
+    <a href="#buchinger" class="nav-item"><span class="nav-item-num">08</span><span class="nav-item-name">Buchinger Wilhelmi</span></a>
+    <a href="#clp" class="nav-item"><span class="nav-item-num">09</span><span class="nav-item-name">Clinique La Prairie</span></a>
+    <a href="#sha" class="nav-item"><span class="nav-item-num">10</span><span class="nav-item-name">SHA Wellness</span></a>
+    <a href="#fountain" class="nav-item"><span class="nav-item-num">11</span><span class="nav-item-name">Fountain Life</span></a>
+    <a href="#hum2n" class="nav-item"><span class="nav-item-num">12</span><span class="nav-item-name">HUM2N / Next Health</span></a>
+  </div>
+</nav>
+
+<!-- ═══ GROUP A ═══ -->
+<div class="section-header" style="background:var(--surface);">
+  <div class="inner">
+    <div class="group-tag">Group A — <span class="ja-inline">入口設計の天才</span><span class="zh-inline">入口設計的天才</span></div>
+    <h2 class="group-title">
+      <span class="ja">「毎年来たくなる」を<em>設計する</em></span>
+      <span class="zh">設計「讓人每年都想回來」的<em>體驗</em></span>
+    </h2>
+    <p class="group-desc">
+      <span class="ja">予防医療の最大の課題は「一度来て終わり」にしないことだ。このグループは、検査の入口体験を根本から再設計し、圧倒的な再来率を実現している。</span>
+      <span class="zh">預防醫療最大的挑戰，在於讓患者不只來一次就結束。這個群組從根本重新設計了健檢入口體驗，實現了壓倒性的回訪率。</span>
+    </p>
+  </div>
+</div>
+
+<div class="clinic-wrap" style="background:var(--surface);">
+
+<!-- ── Neko Health ── -->
+<div id="neko" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 01</div>
+    <div class="clinic-name">Neko Health</div>
+    <div class="clinic-origin">Stockholm 2023 / London 2024 / NYC 2026 Spring</div>
+    <span class="clinic-role-badge role-entry">
+      <span class="ja-inline">入口設計 — ★★★ 最重要</span>
+      <span class="zh-inline">入口設計 — ★★★ 最重要</span>
+    </span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">創設者</span><span class="zh-inline">創辦人</span></div>
+        <div class="fact-value">Hjalmar Nilsonne &amp; <strong>Daniel Ek（Spotify<span class="ja-inline">創設者</span><span class="zh-inline">創辦人</span>）</strong></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">価格</span><span class="zh-inline">費用</span></div>
+        <div class="fact-value"><strong>£299（<span class="ja-inline">約6万円</span><span class="zh-inline">約台幣12,000元</span>）</strong>・<span class="ja-inline">都度払い</span><span class="zh-inline">單次付款</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">拠点</span><span class="zh-inline">據點</span></div>
+        <div class="fact-value">Stockholm 2<span class="ja-inline">拠点</span><span class="zh-inline">據點</span>、London 4<span class="ja-inline">拠点（計画中含む）、Manchester、NYC（2026春）</span><span class="zh-inline">據點（含計劃中）、Manchester、NYC（2026春）</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">資金調達</span><span class="zh-inline">融資</span></div>
+        <div class="fact-value">Series B $260M（2025<span class="ja-inline">年1月</span><span class="zh-inline">年1月</span>）<span class="ja-inline">評価額約</span><span class="zh-inline">估值約</span><strong>$1.7B</strong></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">実績</span><span class="zh-inline">業績</span></div>
+        <div class="fact-value">2025<span class="ja-inline">年は2024年比</span><span class="zh-inline">年掃描量為2024年的</span><strong>6<span class="ja-inline">倍</span><span class="zh-inline">倍</span></strong>。<span class="ja-inline">グローバル登録待ち</span><span class="zh-inline">全球候補人數超過</span><strong>30<span class="ja-inline">万人以上</span><span class="zh-inline">萬人</span></strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="numbers-row">
+      <div class="key-number">
+        <div class="kn-num">80%</div>
+        <div class="kn-desc">
+          <span class="ja">当日終了時に翌年分を予約・前払いする再来率。London・Stockholm両拠点のデータ</span>
+          <span class="zh">當日結束時預訂並預付明年費用的回訪率。倫敦・斯德哥爾摩兩處的數據</span>
+        </div>
+      </div>
+      <div class="key-number">
+        <div class="kn-num">60min</div>
+        <div class="kn-desc">
+          <span class="ja">スキャン＋血液検査＋医師説明まで完結する所要時間</span>
+          <span class="zh">從掃描、血液檢查到醫師說明的完整所需時間</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">サービスの実態</span><span class="zh-inline">服務實際內容</span></div>
+      <p class="block-text">
+        <span class="ja">70以上のセンサーと3Dスキャン技術（LiDAR含む）で5000万データポイントを取得。<strong>放射線を一切使わない</strong>非侵襲型の全身スキャンが最大の特徴。スキャン後すぐに医師が画面を見ながら結果を説明する。検査内容は心血管、代謝（糖尿病リスク）、皮膚（がんスクリーニング）、血液（血液異常）まで網羅。眼圧測定・握力測定・ECGも含む。血液検査は即時結果返却。アプリで経年変化を管理。</span>
+        <span class="zh">使用70個以上的感測器與3D掃描技術（含LiDAR），擷取5000萬個資料點。<strong>完全無輻射</strong>的非侵入式全身掃描是最大特色。掃描後醫師立即對著螢幕說明結果。檢查內容涵蓋心血管、代謝（糖尿病風險）、皮膚（癌症篩查）、血液（血液異常）等。包含眼壓測量、握力測定及心電圖。血液檢查即時出結果。可透過App追蹤逐年變化。</span>
+      </p>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">ここだけのユニークネス</span><span class="zh-inline">獨一無二之處</span></div>
+      <ul class="feature-list">
+        <li>
+          <span class="ja">空間デザインが圧倒的。<strong>「エレガントなデイスパと未来型医療クリニックの中間」</strong>（TechCrunch）。Wes Andersonフィルム風の黄色いバスローブとグレーのスリッパが話題を呼ぶ</span>
+          <span class="zh">空間設計令人嘆為觀止。<strong>「介於優雅的日間水療與未來型醫療診所之間」</strong>（TechCrunch）。威斯·安德森電影風格的黃色浴袍和灰色拖鞋引發廣泛討論</span>
+        </li>
+        <li>
+          <span class="ja">FT紙が<strong>「ヘルスケアのApple」</strong>と評した。Kim Kardashian・Gwyneth Paltrowが使う米国競合より遥かに安価で、かつ体験の質は高い</span>
+          <span class="zh">英國《金融時報》稱其為<strong>「醫療界的Apple」</strong>。費用遠低於Kim Kardashian、Gwyneth Paltrow等人使用的美國競爭對手，體驗品質卻更高</span>
+        </li>
+        <li>
+          <span class="ja">スキャン体験が「ガラス扉を通って地下に降りると別世界」という没入感。TechCrunchの記者が入口を見つけられなかった逸話が有名</span>
+          <span class="zh">掃描體驗有「穿過玻璃門走進地下室，彷彿進入另一個世界」的沉浸感。TechCrunch記者找不到入口的軼事廣為流傳</span>
+        </li>
+        <li>
+          <span class="ja">Spotifyのデータ思想が医療に接続：音楽でもパーソナライゼーションが価値を変えたように、健康データを毎年蓄積することで「自分の基準値」を作る</span>
+          <span class="zh">Spotify的數據思維融入醫療：就像音樂個人化改變了價值一樣，每年累積健康數據以建立「個人基準值」</span>
+        </li>
+        <li>
+          <span class="ja">Stockholm 2年目（2024年）データ：81.3%は健康で基準値確立、18.7%が治療が必要で、1.2%は<strong>心血管疾患・深刻な代謝障害・皮膚がんの「命を救う医療」</strong>に接続された</span>
+          <span class="zh">斯德哥爾摩第2年（2024年）數據：81.3%健康並建立基準值，18.7%需要治療，1.2%接受了<strong>心血管疾病、嚴重代謝障礙、皮膚癌等「救命醫療」</strong></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">メディアの取り上げ方</span><span class="zh-inline">媒體報導方式</span></div>
+      <ul class="media-list">
+        <li><span class="ja">Financial Times — 「ヘルスケアのApple」という表現が独り歩き中</span><span class="zh">Financial Times — 「醫療界的Apple」一詞廣泛流傳</span></li>
+        <li><span class="ja">TechCrunch — Daniel Ekの次の賭けとして複数回掲載。技術的詳細を詳報</span><span class="zh">TechCrunch — 作為Daniel Ek的下一個賭注多次報導，詳述技術細節</span></li>
+        <li><span class="ja">Hypebeast — ファッション・ライフスタイル誌が取り上げるほど「体験のブランド性」が高い</span><span class="zh">Hypebeast — 時尚生活雜誌的報導說明「體驗品牌性」之高</span></li>
+        <li><span class="ja">The Modems — 「夢のようなティールカラーの聖域」と形容した詳細体験記が広く拡散</span><span class="zh">The Modems — 形容為「夢幻藍綠色聖地」的詳細體驗報告廣泛傳播</span></li>
+      </ul>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja"><strong>「UXが医療への参加障壁を消す」</strong>という証明。80%再来率の核心は「当日その場で翌年予約させる動線設計」にある。y Screenが同様の「その場で来年を予約したくなる」終わり方を設計できるか否かが、LTV設計の分岐点になる。</span>
+        <span class="zh"><strong>「優秀的UX能消除參與醫療的障礙」</strong>的最佳佐證。80%回訪率的核心在於「當天當場就讓客戶預約明年」的動線設計。y Screen能否設計出同樣「在現場就想預約明年」的結束方式，將是LTV設計的關鍵分歧點。</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /clinic-wrap -->
+<div class="group-divider"></div>
+
+<!-- ═══ GROUP B ═══ -->
+<div class="section-header">
+  <div class="inner">
+    <div class="group-tag">Group B — <span class="ja-inline">都市型エグゼクティブ予防医療</span><span class="zh-inline">都市型高階主管預防醫療</span></div>
+    <h2 class="group-title">
+      <span class="ja">「信頼の骨格」を<em>持つ施設</em></span>
+      <span class="zh">擁有<em>「信任骨幹」</em>的機構</span>
+    </h2>
+    <p class="group-desc">
+      <span class="ja">50年以上の実績と学術的裏付けが「信頼」の核をつくる。豪華さではなく「誰でも頼れる総合判断力」が強みの本質。</span>
+      <span class="zh">超過50年的實績與學術背書構成「信任」的核心。其優勢本質不在於豪華，而在於「任何人都能信賴的綜合判斷能力」。</span>
+    </p>
+  </div>
+</div>
+
+<div class="clinic-wrap">
+
+<!-- ── Mayo ── -->
+<div id="mayo" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 02</div>
+    <div class="clinic-name">Mayo Clinic Executive Health Program</div>
+    <div class="clinic-origin">Minnesota / Arizona / Florida, USA</div>
+    <span class="clinic-role-badge role-core"><span class="ja-inline">信頼の骨格 — ★★</span><span class="zh-inline">信任骨幹 — ★★</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">世界評価</span><span class="zh-inline">全球評價</span></div>
+        <div class="fact-value">Newsweek <strong><span class="ja-inline">世界最高病院 No.1（6年連続、2024-25）</span><span class="zh-inline">全球最佳醫院No.1（連續6年，2024-25）</span></strong></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">価格帯</span><span class="zh-inline">費用區間</span></div>
+        <div class="fact-value"><strong>$5,000〜</strong></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">資格要件</span><span class="zh-inline">資格要件</span></div>
+        <div class="fact-value"><span class="ja">CEO、C-suite、VP以上の現役役員限定。法人契約も可</span><span class="zh">僅限CEO、C-suite、VP以上的現任高階主管。可簽訂企業合約</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">サービスの実態</span><span class="zh-inline">服務實際內容</span></div>
+      <p class="block-text">
+        <span class="ja">1〜2日間のプログラム。内科専門医による個別化された包括的評価が基本。<strong>心臓血管スクリーニング・代謝評価・遺伝子検査・睡眠評価</strong>まで含む。最大の強みはMayo全体の専門科へのシームレスなリファーラル。「この病院で判断できないことはない」という安心感が最高のセールスポイント。同日結果返却、専任コンシェルジュ付き。</span>
+        <span class="zh">1〜2天的計畫。以內科專科醫師進行個人化的綜合評估為基礎。包含<strong>心血管篩查、代謝評估、基因檢測、睡眠評估</strong>等。最大優勢是可無縫轉介至Mayo整體各專科。「這家醫院沒有無法判斷的事」的安心感是最強的賣點。當日出結果，配有專屬禮賓服務。</span>
+      </p>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">ここだけのユニークネス</span><span class="zh-inline">獨一無二之處</span></div>
+      <ul class="feature-list">
+        <li><span class="ja"><strong>「どんな異常が出ても、そのままMayoで対応できる」</strong>という唯一のワンストップ能力</span><span class="zh"><strong>「無論出現什麼異常，都可以在Mayo直接處理」</strong>的唯一一站式能力</span></li>
+        <li><span class="ja">専任医師が「この患者専用に動く」体制。一般患者とは完全に動線が分かれており、待ち時間は実質ゼロ</span><span class="zh">專任醫師「專為此患者服務」的體制。與一般患者動線完全分開，等待時間實質上為零</span></li>
+        <li><span class="ja">退職後は利用資格がなくなる（現役役員限定）という設計がむしろ「現役のための特権」として機能</span><span class="zh">退休後失去使用資格（僅限現任高階主管）的設計，反而成為「在職者的特權」</span></li>
+      </ul>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja">「豪華さ」ではなく<strong>「ここで判断できないことはない」という後方支援力が信頼を作る</strong>という教訓。柳澤先生のネットワークが「後方の専門医連携」として機能する構造を持てば、Mayoと同種の信頼感を都市型で実現できる。</span>
+        <span class="zh">教訓不在「豪華」，而在於<strong>「這裡沒有無法判斷的事」的後方支援能力創造信任</strong>。若能讓柳澤先生的網絡作為「後方專科醫師連結」發揮功能，便可在都市型診所實現與Mayo相同的信任感。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Cooper ── -->
+<div id="cooper" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 03</div>
+    <div class="clinic-name">Cooper Clinic</div>
+    <div class="clinic-origin">Dallas, Texas, USA — 1970</div>
+    <span class="clinic-role-badge role-core"><span class="ja-inline">研究×臨床 — ★★★ 最重要</span><span class="zh-inline">研究×臨床 — ★★★ 最重要</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">設立者</span><span class="zh-inline">創辦人</span></div>
+        <div class="fact-value"><strong>Dr. Kenneth H. Cooper</strong>（<span class="ja-inline">享年95歳。「Aerobics」という言葉を世界に広めた予防医学の祖</span><span class="zh-inline">享壽95歲。將「Aerobics」一詞推向全球的預防醫學之父</span>）</div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">規模</span><span class="zh-inline">規模</span></div>
+        <div class="fact-value"><span class="ja">累計265,000件以上の検査、10万人以上の患者。30エーカーのキャンパス</span><span class="zh">累計超過265,000次檢查、10萬名以上患者。30英畝的校區</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">価格帯</span><span class="zh-inline">費用區間</span></div>
+        <div class="fact-value"><strong>$2,500〜</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="numbers-row">
+      <div class="key-number">
+        <div class="kn-num">10<span style="font-size:1rem"><span class="ja-inline">年</span><span class="zh-inline">年</span></span></div>
+        <div class="kn-desc"><span class="ja">定期的に利用した患者の平均余命が一般より長い年数</span><span class="zh">定期就診患者的平均壽命比一般人長的年數</span></div>
+      </div>
+      <div class="key-number">
+        <div class="kn-num">55<span style="font-size:1rem"><span class="ja-inline">年</span><span class="zh-inline">年</span></span></div>
+        <div class="kn-desc"><span class="ja">世界最大の「測定された体力」縦断的データ蓄積年数</span><span class="zh">全球最大「測量體能」縱向數據累積年數</span></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">サービスの実態</span><span class="zh-inline">服務實際內容</span></div>
+      <p class="block-text">
+        <span class="ja"><strong>「一日で終わる、でも深い」</strong>が設計の核。6コンポーネント：①医師診察・カウンセリング、②検査室分析、③心臓血管スクリーニング、④デュアルソースCTスキャン、⑤皮膚がんスクリーニング、⑥管理栄養士による栄養カウンセリング。体力測定（VO2 max）が標準で含まれ、心肺機能の数値化が特徴。</span>
+        <span class="zh"><strong>「一天完成，但深度夠」</strong>是設計核心。6大項目：①醫師診察與諮詢、②實驗室分析、③心血管篩查、④雙源CT掃描、⑤皮膚癌篩查、⑥由管理營養師進行營養諮詢。標準包含體能測定（VO2 max），數值化心肺功能是一大特色。</span>
+      </p>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">ここだけのユニークネス</span><span class="zh-inline">獨一無二之處</span></div>
+      <ul class="feature-list">
+        <li><span class="ja"><strong>「患者から同意を得たデータが靴箱の中から始まり、世界最大の予防医学研究データベースになった」</strong>という創業の物語。研究と臨床が本当に一体化している</span><span class="zh"><strong>「從患者同意書放在鞋盒裡開始，發展為世界最大預防醫學研究資料庫」</strong>的創業故事。研究與臨床真正融為一體</span></li>
+        <li><span class="ja">30エーカーキャンパス内にフィットネスセンター、ホテル、サプリショップまで内包する「健康エコシステム」</span><span class="zh">30英畝校區內涵蓋健身中心、酒店、補充品商店等「健康生態系統」</span></li>
+        <li><span class="ja">スポーツ医学・VO2 max・体組成分析など「体力を医療指標にする」Cooperの思想が独自性の核</span><span class="zh">運動醫學、VO2 max、體組成分析等「將體能作為醫療指標」的Cooper思想是獨特性的核心</span></li>
+      </ul>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja">y Clinicが「正統派」として立つための最重要参照先。<strong>「50年かけて積み上げた研究蓄積がブランドそのもの」</strong>という構造は、SPICが20年以上かけて積み上げてきた点滴療法・栄養医療の知見と重なる。</span>
+        <span class="zh">y Clinic確立「正統派」地位的最重要參照對象。<strong>「花費50年累積的研究積累本身就是品牌」</strong>這個結構，與SPIC花費20年以上積累的點滴療法・營養醫療知識相互呼應。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /clinic-wrap -->
+<div class="group-divider"></div>
+
+<!-- ═══ GROUP C ═══ -->
+<div class="section-header" style="background:var(--surface);">
+  <div class="inner">
+    <div class="group-tag">Group C — <span class="ja-inline">健康長寿医学の最前線</span><span class="zh-inline">健康長壽醫學的最前線</span></div>
+    <h2 class="group-title">
+      <span class="ja">医師が主語の<em>Longevity Medicine</em></span>
+      <span class="zh">以醫師為主導的<em>Longevity Medicine</em></span>
+    </h2>
+    <p class="group-desc">
+      <span class="ja">「アンチエイジング」の曖昧さを捨て、geroscience・EBM・多職種連携によってlongevityを医療として定義しようとしている施設群。y Clinicの思想的同志。</span>
+      <span class="zh">捨棄「抗老化」的模糊性，以老年科學、EBM、多職種協作將長壽定義為醫療的機構群。是y Clinic在思想上的同道中人。</span>
+    </p>
+  </div>
+</div>
+
+<div class="clinic-wrap" style="background:var(--surface);">
+
+<!-- ── Chi Longevity ── -->
+<div id="chi" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 04</div>
+    <div class="clinic-name">Chi Longevity</div>
+    <div class="clinic-origin">Singapore — Camden Medical + Four Seasons, 2023</div>
+    <span class="clinic-role-badge role-longevity"><span class="ja-inline">最近接モデル（民間）— ★★★</span><span class="zh-inline">最近似模型（民間）— ★★★</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">創設者</span><span class="zh-inline">創辦人</span></div>
+        <div class="fact-value"><strong>Prof. Andrea Maier</strong>（<span class="ja-inline">共同創設：Craig McGee、Lindsay Cooper</span><span class="zh-inline">共同創辦：Craig McGee、Lindsay Cooper</span>）。400<span class="ja-inline">本以上の査読論文。WHO顧問</span><span class="zh-inline">篇以上同儕審查論文。WHO顧問</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">定義</span><span class="zh-inline">自我定位</span></div>
+        <div class="fact-value"><span class="ja">「シンガポール初の生物学的老化を遅らせることに特化した民間クリニック」</span><span class="zh">「新加坡首家專注於減緩生物性老化的民間診所」</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">拠点</span><span class="zh-inline">據點</span></div>
+        <div class="fact-value">Camden Medical Centre + Four Seasons Singapore（2025<span class="ja-inline">年初頭）。SPARKD gym（2026年4月よりFour Seasonsに統合）</span><span class="zh-inline">年初開設）。SPARKD gym（2026年4月整合至Four Seasons）</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">サービスの実態 — The Maier Method</span><span class="zh-inline">服務實際內容 — The Maier Method</span></div>
+      <p class="block-text">
+        <span class="ja"><strong>「The Maier Method」</strong>という独自の5段階プロセス：①探索コール→②高度な検査・生物学的マッピング→③多職種チームによる解釈→④個別化された介入戦略→⑤実施・継続モニタリング。検査には<strong>遺伝子検査・血液パネル・CGM・心理社会的アセスメント</strong>を含む。チームは医師、栄養士、認知神経科学者、コーチで構成。</span>
+        <span class="zh"><strong>「The Maier Method」</strong>獨特的5階段流程：①探索電話→②高階檢查・生物學地圖繪製→③多職種團隊解讀→④個人化介入策略→⑤實施・持續監控。檢查包含<strong>基因檢測、血液面板、持續血糖監測、心理社會評估</strong>。團隊由醫師、營養師、認知神經科學家及教練組成。</span>
+      </p>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">SPARKD — 世界初のエビデンスベース長寿ジム</span><span class="zh-inline">SPARKD — 全球首家實證基礎長壽健身房</span></div>
+      <p class="block-text">
+        <span class="ja">2025年2月Sparkdを買収し統合。2026年4月にFour Seasons Singapore内に完全統合。<strong>認知機能・身体運動・脳科学を一体設計した世界初のプログラム</strong>。医師の処方として運動が処方される構造。WEFダボス会議でも「脳健康と経済成長」として議題化。</span>
+        <span class="zh">2025年2月收購Sparkd並整合。2026年4月完全整合至Four Seasons Singapore內。<strong>全球首個整合認知功能、身體運動與腦科學的計畫</strong>。以醫師處方的形式開立運動處方。在WEF達沃斯論壇上亦以「腦健康與經濟成長」列入議程。</span>
+      </p>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">ここだけのユニークネス</span><span class="zh-inline">獨一無二之處</span></div>
+      <ul class="feature-list">
+        <li><span class="ja">Four Seasons Singaporeとの戦略的提携は「複数プロパティへの展開を見越したグローバルスケール戦略」</span><span class="zh">與Four Seasons Singapore的戰略合作，是「著眼於多個地產展開的全球規模戰略」</span></li>
+        <li><span class="ja">Prof. MaierがWEFダボス会議に参加するほどの国際的認知度。臨床医でありながら政策立案者にも影響力</span><span class="zh">Prof. Maier參與WEF達沃斯論壇的國際知名度。身為臨床醫師同時對政策制定者具有影響力</span></li>
+        <li><span class="ja">クライアントは遺伝子・代謝・認知・心理社会的の4軸でプロファイリングされ、「biological ageの地図」を描く</span><span class="zh">客戶從基因、代謝、認知、心理社會4個軸向建立檔案，繪製「生物年齡地圖」</span></li>
+      </ul>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja">シンガポール展開を視野に入れるなら<strong>Chi Longevityは最重要ベンチマーク、かつ最大の競合相手</strong>になりうる。差別化の核は「柳澤先生の点滴療法・栄養医療という日本独自の介入プロトコル」。Chiは診断と認知・身体トレーニングが強く、<strong>栄養・点滴・腸内・吸収設計の深度はSPICが上回りうる</strong>。</span>
+        <span class="zh">若著眼於新加坡展開，<strong>Chi Longevity是最重要的標竿，也可能成為最大競爭對手</strong>。差異化核心在於「柳澤先生的點滴療法・營養醫療這項日本獨有介入方案」。Chi在診斷與認知・身體訓練方面較強，<strong>而在營養・點滴・腸道・吸收設計的深度上，SPIC可能更勝一籌</strong>。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Sheba ── -->
+<div id="sheba" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 05</div>
+    <div class="clinic-name">Sheba Longevity Center</div>
+    <div class="clinic-origin">Ramat Gan, Israel — 2023</div>
+    <span class="clinic-role-badge role-academic"><span class="ja-inline">学術Institute機能の理想形 — ★★★</span><span class="zh-inline">學術Institute功能的理想型 — ★★★</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">ポジション</span><span class="zh-inline">定位</span></div>
+        <div class="fact-value"><strong><span class="ja-inline">「世界初の学術医療機関内Longevityセンター」</span><span class="zh-inline">「全球首家學術醫療機構內的長壽中心」</span></strong>（<span class="ja-inline">自己定義</span><span class="zh-inline">自我定義</span>）</div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">母体病院</span><span class="zh-inline">母體醫院</span></div>
+        <div class="fact-value">Sheba Medical Center — Newsweek <strong><span class="ja-inline">7年連続ランクイン</span><span class="zh-inline">連續7年上榜</span></strong></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label">Director</div>
+        <div class="fact-value">Prof. Evelyne Bischof（<span class="ja-inline">上海大学医学教授兼任</span><span class="zh-inline">兼任上海大學醫學教授</span>）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="numbers-row">
+      <div class="key-number">
+        <div class="kn-num">450+</div>
+        <div class="kn-desc"><span class="ja">評価時に計測する老化関連バイオマーカーの数</span><span class="zh">評估時測量的老化相關生物標誌物數量</span></div>
+      </div>
+      <div class="key-number">
+        <div class="kn-num">6h</div>
+        <div class="kn-desc"><span class="ja">12の専門ステーションにわたる評価プロセスの所要時間</span><span class="zh">跨越12個專業站的評估流程所需時間</span></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">Institute機能 — 診療だけで終わらない</span><span class="zh-inline">Institute功能 — 不止於診療</span></div>
+      <ul class="feature-list">
+        <li><span class="ja"><strong>Sheba Longevity Conference</strong>を毎年開催。研究者・臨床医・テクノロジー・投資家・起業家を一堂に集める</span><span class="zh">每年舉辦<strong>Sheba Longevity Conference</strong>，匯聚研究人員、臨床醫師、技術業者、投資人及創業者</span></li>
+        <li><span class="ja">Innovation Arm「ARC」との連携でロンジェビティ関連スタートアップをインキュベート</span><span class="zh">與創新部門「ARC」合作，孵化長壽相關新創企業</span></li>
+        <li><span class="ja">Jerusalem Post・Longevity Technology・BBC系で<strong>世界的に報道された「世界初の公的病院内ロンジェビティクリニック」</strong></span><span class="zh">Jerusalem Post、Longevity Technology、BBC等媒體<strong>全球報導「全球首家公立醫院內的長壽診所」</strong></span></li>
+        <li><span class="ja">YuviTalとの連携でShebaのLongevityアプリも開発。パーソナル化されたロンジェビティプランを実装・追跡可能</span><span class="zh">與YuviTal合作開發Sheba長壽App，可實施並追蹤個人化的長壽計畫</span></li>
+      </ul>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja"><strong>「診療＋会議＋研究＋発信」という4機能を持つことで、単院で終わらない</strong>。y Clinicが「総本山」たるためには、年次シンポジウム・データレジストリ・アカデミー機能を横浜旗艦と同時に立ち上げる必要がある。</span>
+        <span class="zh"><strong>擁有「診療＋會議＋研究＋發信」4項功能，才能不只是單一診所</strong>。y Clinic若要成為「總本山」，必須在橫濱旗艦同時啟動年度研討會、資料庫及學院功能。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Alexandra ── -->
+<div id="alexandra" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 06</div>
+    <div class="clinic-name">Alexandra Hospital HLRC / NUHS-CHL</div>
+    <div class="clinic-origin">Singapore — National University Health System</div>
+    <span class="clinic-role-badge role-academic"><span class="ja-inline">学術連携の教科書</span><span class="zh-inline">學術合作的教科書</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">性格</span><span class="zh-inline">性質</span></div>
+        <div class="fact-value"><span class="ja">シンガポール保健省が<strong>Research Projectとして位置づける公的施設</strong></span><span class="zh">新加坡衛生部定位為<strong>Research Project的公立設施</strong></span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">使命</span><span class="zh-inline">使命</span></div>
+        <div class="fact-value"><span class="ja">バイオマーカー開発・老化を遅らせる介入の検証・実装戦略の構築</span><span class="zh">生物標誌物開發、驗證延緩老化的介入措施、建立實施策略</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja">直接のビジネスモデルではないが、<strong>シンガポール展開時の学術連携・研究パートナーシップ候補として最重要</strong>。y Clinicのデータを彼らの研究に提供し、研究知見をy Clinicのプロトコルに反映させるウィンウィンの関係設計が可能。</span>
+        <span class="zh">並非直接的商業模式，但<strong>是新加坡展開時學術合作・研究夥伴關係的最重要候選</strong>。可設計將y Clinic的數據提供給他們的研究，並將研究發現反映在y Clinic方案中的雙贏關係。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /clinic-wrap -->
+<div class="group-divider"></div>
+
+<!-- ═══ GROUP D ═══ -->
+<div class="section-header">
+  <div class="inner">
+    <div class="group-tag">Group D — <span class="ja-inline">回復・儀式性・ブランドの深度</span><span class="zh-inline">回復・儀式性・品牌深度</span></div>
+    <h2 class="group-title">
+      <span class="ja">「核を深く持つ」<em>施設群</em></span>
+      <span class="zh"><em>「深度擁有核心」</em>的機構群</span>
+    </h2>
+    <p class="group-desc">
+      <span class="ja">一つのプロトコルを100年以上研究・臨床化・教育化し続けることで、追随不可能な知的財産を作った施設群。体験設計と「哲学の言語化」においてもお手本。</span>
+      <span class="zh">持續超過100年研究、臨床化、教育化同一套方案，打造出無可追趕的知識財產的機構群。在體驗設計與「哲學語言化」方面也是典範。</span>
+    </p>
+  </div>
+</div>
+
+<div class="clinic-wrap">
+
+<!-- ── Lanserhof ── -->
+<div id="lanserhof" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 07</div>
+    <div class="clinic-name">Lanserhof</div>
+    <div class="clinic-origin">Austria / Germany — 1984</div>
+    <span class="clinic-role-badge role-recovery"><span class="ja-inline">儀式性・回復の設計 — ★★</span><span class="zh-inline">儀式性・回復設計 — ★★</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">評価</span><span class="zh-inline">評價</span></div>
+        <div class="fact-value"><strong>World's Best Longevity Programme 2025</strong>（World Spa Awards）</div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">資金調達</span><span class="zh-inline">融資</span></div>
+        <div class="fact-value">2025<span class="ja-inline">年11月 </span><span class="zh-inline">年11月 </span><strong>€95M（<span class="ja-inline">約150億円</span><span class="zh-inline">約200億台幣</span>）</strong></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">拠点</span><span class="zh-inline">據點</span></div>
+        <div class="fact-value">Lans（Austria）、Tegernsee、Sylt（Germany）。Hamburg・London day clinic。<span class="ja-inline">スペイン（2026年末予定）</span><span class="zh-inline">西班牙（預計2026年底）</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">Lanserhof Concept — LANS Medの哲学</span><span class="zh-inline">Lanserhof Concept — LANS Med哲學</span></div>
+      <p class="block-text">
+        <span class="ja">F.X. Mayr医学（腸の健康が全身健康の基盤という思想）を核に、<strong>自然療法・エネルギー医学・心理学・精神神経免疫学・時間医学・先端医療を統合した独自メソッド</strong>。断食は核だが「必須ではない」設計。Longevityプログラムでは<strong>Hallmarks of Aging</strong>に基づくAI支援診断を実施。4泊Longevity Checkのプログラム価格は€2,844〜。</span>
+        <span class="zh">以F.X. Mayr醫學（腸道健康是全身健康基礎的思想）為核心，整合<strong>自然療法、能量醫學、心理學、心理神經免疫學、時間醫學及先進醫療的獨特方法論</strong>。斷食為核心但「非必須」的設計。長壽計畫以<strong>Hallmarks of Aging</strong>為基礎進行AI輔助診斷。4晚Longevity Check計畫費用從€2,844起。</span>
+      </p>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">ここだけのユニークネス</span><span class="zh-inline">獨一無二之處</span></div>
+      <ul class="feature-list">
+        <li><span class="ja"><strong>INUSpheresis（血液浄化治療）</strong>という慢性炎症への特有プロトコルを保有。一般的な施設では提供不可能な処置</span><span class="zh">擁有針對慢性炎症的獨特方案<strong>INUSpheresis（血液淨化治療）</strong>，是一般機構無法提供的處置</span></li>
+        <li><span class="ja">Business of Fashion（BOF）、Forbes、CEODestinationsなど富裕層ライフスタイルメディアが標準的に取り上げる</span><span class="zh">Business of Fashion（BOF）、Forbes、CEODestinations等富裕層生活風格媒體定期報導</span></li>
+        <li><span class="ja">€95M調達後の戦略として「自社栄養サプリ・コスメラインの立ち上げ」を明言。診療知見をプロダクトに変換する戦略はSPICと構造的に同じ</span><span class="zh">€95M融資後明確表示將「推出自家營養補充品與美妝線」。將診療知識轉化為產品的戰略與SPIC在結構上相同</span></li>
+      </ul>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja"><strong>「腸の健康を全身の基盤とする思想」と「回復という層を体験に組み込む設計」</strong>は都市型でも実装可能。€95M調達後に「自社サプリ・コスメ」を立ち上げる構造は、Lypo-Cとの相乗効果という観点で最も参考になる企業戦略モデル。</span>
+        <span class="zh"><strong>「以腸道健康為全身基礎的思想」與「將回復層融入體驗的設計」</strong>在都市型診所也可實現。€95M融資後推出「自家補充品・美妝」的結構，是從與Lypo-C相乘效果角度來看最具參考價值的企業策略模型。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Buchinger ── -->
+<div id="buchinger" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 08</div>
+    <div class="clinic-name">Buchinger Wilhelmi</div>
+    <div class="clinic-origin">Überlingen, Germany / Marbella, Spain — 1953/1973</div>
+    <span class="clinic-role-badge role-protocol"><span class="ja-inline">核プロトコルの研究・教育化 — ★★★</span><span class="zh-inline">核心方案的研究・教育化 — ★★★</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">歴史</span><span class="zh-inline">歷史</span></div>
+        <div class="fact-value"><span class="ja">4世代にわたる家族経営。Lake Constance（70周年）・Marbella（50周年、2023年）</span><span class="zh">跨越4代的家族經營。Lake Constance（70週年）・Marbella（50週年，2023年）</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">科学規模</span><span class="zh-inline">科學規模</span></div>
+        <div class="fact-value">Scientific Director：Dr. Robin Mesnage（King's College London）。<span class="ja-inline">100以上の論文・8,000以上の引用数で環境・健康分野上位1%の研究者</span><span class="zh-inline">100篇以上論文・超過8,000次引用，環境・健康領域前1%的研究者</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">認証</span><span class="zh-inline">認證</span></div>
+        <div class="fact-value"><span class="ja">世界初・全食材を<strong>Demeter認証（バイオダイナミック農業）</strong>のクリニック（2019年〜）</span><span class="zh">全球首家所有食材均獲得<strong>Demeter認證（生物動力農業）</strong>的診所（2019年起）</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">AMPLIUS® — 6本柱の医療プログラム</span><span class="zh-inline">AMPLIUS® — 6大支柱醫療計畫</span></div>
+      <p class="block-text">
+        <span class="ja">最低7泊〜。6本柱：<strong>①睡眠 ②運動 ③感情的バランス ④断食 ⑤栄養 ⑥環境医学</strong>。断食は最短9泊から。全て医師の監督下での「治療的断食」。有機栽培食材の使用は厳格。<strong>2025年から腸内マイクロバイオームパネル・遺伝子診断も追加</strong>。GLP-1薬（オゼンピック等）との連携研究も進行中。断食をGLP-1薬の「出口戦略」として提案する最先端の視点。</span>
+        <span class="zh">最短7晚起。6大支柱：<strong>①睡眠 ②運動 ③情感平衡 ④斷食 ⑤營養 ⑥環境醫學</strong>。斷食最短9晚起。全程在醫師監督下進行「治療性斷食」。食材有機化使用極為嚴格。<strong>2025年起新增腸道微生物組面板與基因診斷</strong>。GLP-1藥物（如Ozempic）的聯合研究也在進行中，提出將斷食作為GLP-1藥物「出口策略」的最先進觀點。</span>
+      </p>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">ここだけのユニークネス</span><span class="zh-inline">獨一無二之處</span></div>
+      <ul class="feature-list">
+        <li><span class="ja"><strong>「世界で唯一、治療的断食のプロトコルを臨床試験で検証し査読論文として発表し続けているクリニック」</strong>。これがゆえに「エセ医療」と差別化できる</span><span class="zh"><strong>「全球唯一持續以臨床試驗驗證治療性斷食方案，並以同儕審查論文形式發表的診所」</strong>。正因如此，能與「偽醫療」明確區分</span></li>
+        <li><span class="ja">2024年開始の新研究：断食後の食事再導入・退院後患者フォローアップの開発（治療の継続性を研究で担保）</span><span class="zh">2024年開始的新研究：斷食後飲食重新導入及出院患者追蹤研究（以研究確保治療的持續性）</span></li>
+        <li><span class="ja">「4世代にわたり家族が自分たちのプロトコルを守り続けた」という継続性そのものが信頼の証</span><span class="zh">「4代家族持續守護自家方案」的連續性本身就是信任的象徵</span></li>
+      </ul>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja"><strong>「一つの核（点滴療法・栄養医療）を100年かけて深くする覚悟を持つこと」</strong>。BuchingerがFastingを「研究→臨床→教育→カンファレンス→論文」というサイクルで深め続けたように、SPICは栄養・点滴・吸収設計を同様のサイクルで深めるべき。「査読論文が出ることがブランドの最強のお墨付き」という原則を学ぶ。</span>
+        <span class="zh"><strong>「下定決心花百年時間深化一個核心（點滴療法・營養醫療）」</strong>。就如Buchinger以「研究→臨床→教育→會議→論文」的循環不斷深化斷食醫療，SPIC也應以同樣的循環深化營養・點滴・吸收設計。學習「發表同儕審查論文是品牌最有力背書」的原則。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CLP ── -->
+<div id="clp" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 09</div>
+    <div class="clinic-name">Clinique La Prairie</div>
+    <div class="clinic-origin">Montreux, Switzerland — 1931</div>
+    <span class="clinic-role-badge role-method"><span class="ja-inline">メソッドの物語化</span><span class="zh-inline">方法論的故事化</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">拠点展開</span><span class="zh-inline">據點展開</span></div>
+        <div class="fact-value"><span class="ja">湖畔旗艦（Montreux）＋パリ、上海、マドリード、ドバイ等都市拠点</span><span class="zh">湖畔旗艦（Montreux）＋巴黎、上海、馬德里、杜拜等都市據點</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">起源</span><span class="zh-inline">起源</span></div>
+        <div class="fact-value"><span class="ja">Dr. Paul Niehansによる「細胞療法」で世界的に知られる。現在はより科学的なアプローチに進化</span><span class="zh">以Dr. Paul Niehans的「細胞療法」聞名於世。現已進化為更具科學性的方法</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">Longevity Method — 5ステップサイクル</span><span class="zh-inline">Longevity Method — 5步驟循環</span></div>
+      <p class="block-text">
+        <span class="ja"><strong>①Longevity Master Assessment（起点となる包括評估）→②Predictive Approach（予測的アプローチ）→③Ultra-Customized Solutions（超個別化介入）→④Monitoring（継続モニタリング）→⑤Evolution（年次更新）</strong>。このサイクルそのものが「一回来て終わり」ではなく「人生のメソッドとして継続する」という設計。</span>
+        <span class="zh"><strong>①Longevity Master Assessment（起點的綜合評估）→②Predictive Approach（預測性方法）→③Ultra-Customized Solutions（超個人化介入）→④Monitoring（持續監控）→⑤Evolution（年度更新）</strong>。此循環本身設計為「不是來一次就結束」，而是「作為人生方法論持續下去」。</span>
+      </p>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja">「診断→予測→介入→継続」というサイクルをブランドの言語として定義することの重要性。<strong>価格帯やラグジュアリー性は借りず、「医療行為をメソッドとして物語化する」言語設計のみを参考にする。</strong></span>
+        <span class="zh">將「診斷→預測→介入→持續」的循環定義為品牌語言的重要性。<strong>不借鑑價格區間或奢華性，僅參考「將醫療行為以方法論形式故事化」的語言設計。</strong></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SHA ── -->
+<div id="sha" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 10</div>
+    <div class="clinic-name">SHA Wellness Clinic</div>
+    <div class="clinic-origin">Alicante, Spain / Mexico — 2008</div>
+    <span class="clinic-role-badge role-method"><span class="ja-inline">多拠点統一メソッドの設計</span><span class="zh-inline">多據點統一方法論的設計</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label">SHA Method</div>
+        <div class="fact-value">Precision medicine · Regenerative therapies · Anti-inflammatory nutrition · Lifestyle optimization</div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">特徴</span><span class="zh-inline">特色</span></div>
+        <div class="fact-value"><span class="ja">スペイン・メキシコで同一メソッドを保持。「場所が変わってもSHAはSHA」というブランド一貫性</span><span class="zh">在西班牙・墨西哥維持相同方法論。「地點改變，但SHA還是SHA」的品牌一致性</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja">横浜・鎌倉・台北・シンガポールで<strong>「y Methodは同じ」という一貫性</strong>を保つための設計参考。SHA Methodの見せ方から、y Methodの標準化・言語化を学ぶ。ただし専門領域の広げすぎに要注意。</span>
+        <span class="zh">橫濱・鎌倉・台北・新加坡維持<strong>「y Method一致性」</strong>的設計參考。從SHA Method的呈現方式中，學習y Method的標準化・語言化。但須注意切勿過度擴展專業領域。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /clinic-wrap -->
+<div class="group-divider"></div>
+
+<!-- ═══ GROUP E ═══ -->
+<div class="section-header" style="background:var(--surface);">
+  <div class="inner">
+    <div class="group-tag">Group E — <span class="ja-inline">継続課金と商業スケールの実装</span><span class="zh-inline">持續收費與商業規模的實現</span></div>
+    <h2 class="group-title">
+      <span class="ja">市場が<em>どこまで来ているか</em>を測る</span>
+      <span class="zh">衡量市場<em>已發展到哪個程度</em></span>
+    </h2>
+    <p class="group-desc">
+      <span class="ja">このグループは「理想のモデル」ではなく「市場がどこまで consumerized しているか」を示す参照先。会員設計・継続構造・アプリUXは学ぶ価値がある。</span>
+      <span class="zh">這個群組不是「理想模型」，而是「市場消費化程度」的參照來源。會員設計、持續結構、App UX值得學習。</span>
+    </p>
+  </div>
+</div>
+
+<div class="clinic-wrap" style="background:var(--surface);">
+
+<!-- ── Fountain Life ── -->
+<div id="fountain" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 11</div>
+    <div class="clinic-name">Fountain Life</div>
+    <div class="clinic-origin">USA — Dallas / NYC / Naples / Orlando / Houston（2025）/ LA·Miami（2026）</div>
+    <span class="clinic-role-badge role-member"><span class="ja-inline">継続会員ネットワーク（参考）</span><span class="zh-inline">持續會員網絡（參考）</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">共同創設者</span><span class="zh-inline">共同創辦人</span></div>
+        <div class="fact-value">Dr. William Kapp（CEO）、<strong>Tony Robbins、Peter Diamandis（XPRIZE<span class="ja-inline">創設者</span><span class="zh-inline">創辦人</span>）</strong></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">資金調達</span><span class="zh-inline">融資</span></div>
+        <div class="fact-value"><span class="ja">累計</span><span class="zh-inline">累計</span><strong>$108M</strong>。Series B $18M（2025<span class="ja-inline">年8月）</span><span class="zh-inline">年8月）</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label"><span class="ja-inline">価格</span><span class="zh-inline">費用</span></div>
+        <div class="fact-value">APEX：<strong>$21,500/<span class="ja-inline">年</span><span class="zh-inline">年</span></strong>。CORE：$10,500。<span class="ja-inline">法人向け</span><span class="zh-inline">企業方案</span>：$6,500/<span class="ja-inline">名</span><span class="zh-inline">人</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="numbers-row">
+      <div class="key-number">
+        <div class="kn-num">15B+</div>
+        <div class="kn-desc"><span class="ja">AIが参照するデータポイント数（自称）</span><span class="zh">AI參照的資料點數量（自稱）</span></div>
+      </div>
+      <div class="key-number">
+        <div class="kn-num">14%</div>
+        <div class="kn-desc"><span class="ja">健康なはずのメンバーから「命に関わる疾患」を事前発見した割合</span><span class="zh">從「本應健康」的會員中提前發現「攸關生命的疾病」的比例</span></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">サービスの実態</span><span class="zh-inline">服務實際內容</span></div>
+      <p class="block-text">
+        <span class="ja">AI-guided diagnostics が核。全身MRI・脳MRI・AI支援冠動脈CT・液体生検（複数がん早期発見）・遺伝子検査・代謝評価が標準。<strong>Restorative Therapeutics</strong>として幹細胞・エクソソーム治療・ホルモン最適化・NAD+点滴も提供。専任健康コーチ＋モバイルアプリ。暗号通貨決済も導入。</span>
+        <span class="zh">以AI-guided diagnostics為核心。全身MRI、腦MRI、AI輔助冠狀動脈CT、液體生檢（多種癌症早期發現）、基因檢測、代謝評估為標準。另提供幹細胞・外泌體治療・荷爾蒙最佳化・NAD+點滴等<strong>Restorative Therapeutics</strong>。配有專屬健康教練與手機App。已導入加密貨幣付款。</span>
+      </p>
+    </div>
+
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">ユニークネス と批判</span><span class="zh-inline">獨特性與批評</span></div>
+      <ul class="feature-list">
+        <li><span class="ja">Tony Robbins・Peter Diamandisという<strong>インフルエンサー創設者が「ロンジェビティ市場の大衆化」の象徴</strong>として毎回メディアに登場</span><span class="zh">Tony Robbins・Peter Diamandis等<strong>KOL創辦人作為「長壽市場大眾化的象徵」</strong>頻繁出現在媒體中</span></li>
+        <li><span class="ja">TechCrunchが指摘した問題：「AIや画像スキャンが前面に出る一方で、<strong>アドバイスの科学的根拠が薄い</strong>」という学術的批判が2025年に複数から出ている</span><span class="zh">TechCrunch指出的問題：2025年有多項學術批評指出「AI和影像掃描雖然突出，但<strong>建議的科學根據薄弱</strong>」</span></li>
+        <li><span class="ja">Forward Health（類似モデル）の2024年閉業は業界への警鐘。テック主導・医師関係の軽視が崩壊要因</span><span class="zh">Forward Health（類似模型）2024年關閉是業界警鐘。技術主導、輕視醫師關係是崩潰的原因</span></li>
+      </ul>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja"><strong>AIや全身スキャンを前面に出すのではなく、継続会員構造・健康コーチ伴走設計だけを冷静に抜き出す</strong>。Fountainの商業的成功とForwardの閉業が示すのは「医師主導か否か」という一点での分岐。</span>
+        <span class="zh"><strong>不是要將AI和全身掃描放在最前面，而是冷靜地提取持續會員結構・健康教練伴走設計</strong>。Fountain的商業成功與Forward的關閉，說明的是「是否以醫師為主導」這一個分岐點。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── HUM2N ── -->
+<div id="hum2n" class="clinic-card">
+  <div class="clinic-left">
+    <div class="clinic-index">Clinic 12</div>
+    <div class="clinic-name">HUM2N / Next Health</div>
+    <div class="clinic-origin">HUM2N：London / Next Health：USA</div>
+    <span class="clinic-role-badge role-member"><span class="ja-inline">継続設計の実装例（参考）</span><span class="zh-inline">持續設計實作範例（參考）</span></span>
+
+    <div class="clinic-facts">
+      <div class="clinic-fact">
+        <div class="fact-label">HUM2N</div>
+        <div class="fact-value"><span class="ja">Physician-led 12か月 longevity partnership。IV lab（点滴ラボ）を前面に出す</span><span class="zh">Physician-led 12個月 longevity partnership。以IV lab（點滴實驗室）為主打</span></div>
+      </div>
+      <div class="clinic-fact">
+        <div class="fact-label">Next Health</div>
+        <div class="fact-value"><strong>$99/<span class="ja-inline">月</span><span class="zh-inline">月</span></strong>のMedicine 4.0 membership。<span class="ja-inline">四半期ごとのバイオマーカーテスト。</span><span class="zh-inline">每季生物標誌物測試。</span><strong>50<span class="ja-inline">以上のバイオマーカー</span><span class="zh-inline">項以上生物標誌物</span></strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clinic-right">
+    <div class="block">
+      <div class="block-label"><span class="ja-inline">市場が示す「consumerization」</span><span class="zh-inline">市場揭示的「消費化」</span></div>
+      <p class="block-text">
+        <span class="ja">HUM2N・Next Healthが示すのは「<strong>医療とヘルスクラブの境界がなくなりつつある</strong>」という事実。点滴をスパメニューのように提供し、バイオマーカーをジム入会の延長として売る。このトレンドの中でy Clinicが単なる「おしゃれな点滴クリニック」に見えてしまうリスクがある。</span>
+        <span class="zh">HUM2N・Next Health揭示了「<strong>醫療與健身俱樂部的界限正在消失</strong>」的事實。像SPA菜單一樣提供點滴，將生物標誌物作為加入健身房的延伸來販售。在這個趨勢中，y Clinic有被視為普通「時尚點滴診所」的風險。</span>
+      </p>
+    </div>
+
+    <div class="y-learn">
+      <div class="y-learn-label"><span class="ja-inline">y Clinicへの示唆</span><span class="zh-inline">對y Clinic的啟示</span></div>
+      <div class="y-learn-text">
+        <span class="ja"><strong>会員コミュニケーション・定期検査通知・アプリ伴走・IV（点滴）の継続利用設計の「実装の型」だけを学ぶ</strong>。「医師主導の臨床知識に裏付けられた点滴」という差別化を明確にすることで、このカテゴリーで最も信頼される存在になれる。</span>
+        <span class="zh"><strong>僅學習會員溝通、定期檢查通知、App伴走、IV（點滴）持續使用設計的「實作模式」</strong>。透過明確「以醫師主導臨床知識為背書的點滴」的差異化，可成為此類別中最受信任的存在。</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /clinic-wrap -->
+
+<!-- ═══ SYNTHESIS TABLE ═══ -->
+<div class="synthesis">
+  <div class="inner">
+    <h2 class="synth-title">
+      <span class="ja">世界12施設から<em>何を採り、何を捨てるか</em></span>
+      <span class="zh">從全球12家診所<em>取什麼、捨什麼</em></span>
+    </h2>
+
+    <table class="synth-table">
+      <thead>
+        <tr>
+          <th><span class="ja-inline">機能領域</span><span class="zh-inline">功能領域</span></th>
+          <th><span class="ja-inline">最重要参照先</span><span class="zh-inline">最重要參照對象</span></th>
+          <th><span class="ja-inline">採用判断</span><span class="zh-inline">採用判斷</span></th>
+          <th><span class="ja-inline">y Clinicへの翻訳方針</span><span class="zh-inline">對y Clinic的轉化方針</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="ja-inline">入口体験のUX</span><span class="zh-inline">入口體驗UX</span></td>
+          <td>Neko Health</td>
+          <td class="adopt">✔ <span class="ja-inline">採用（改変）</span><span class="zh-inline">採用（改版）</span></td>
+          <td><span class="ja-inline">「終わった時に来年の予約を入れたくなる」動線設計。y Screenの終わり方に組み込む</span><span class="zh-inline">「結束時就想預約明年」的動線設計。融入y Screen的結束方式</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">後方支援・専門医連携力</span><span class="zh-inline">後方支援・專科醫師連結力</span></td>
+          <td>Mayo Clinic</td>
+          <td class="adopt">✔ <span class="ja-inline">採用</span><span class="zh-inline">採用</span></td>
+          <td><span class="ja-inline">柳澤先生ネットワーク＋点滴療法研究会を「後方の専門医連携」として明示化</span><span class="zh-inline">將柳澤先生網絡＋點滴療法研究會明確化為「後方專科醫師連結」</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">研究×臨床の一体化</span><span class="zh-inline">研究×臨床一體化</span></td>
+          <td>Cooper Clinic</td>
+          <td class="adopt">✔ <span class="ja-inline">採用</span><span class="zh-inline">採用</span></td>
+          <td><span class="ja-inline">栄養・点滴・吸収設計を「世界水準で語れるSPIC固有の研究領域」として体系化</span><span class="zh-inline">將營養・點滴・吸收設計系統化為「可以世界水準論述的SPIC獨有研究領域」</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">EBM longevity思想</span><span class="zh-inline">EBM長壽醫療思想</span></td>
+          <td>Chi Longevity</td>
+          <td class="adopt">✔ <span class="ja-inline">採用</span><span class="zh-inline">採用</span></td>
+          <td><span class="ja-inline">「longevity」を曖昧スローガンにせず、柳澤先生監修のEBMとして語る言語を整備</span><span class="zh-inline">不將「長壽」作為模糊口號，整備以柳澤先生監修EBM論述的語言</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">Institute機能</span><span class="zh-inline">Institute功能</span></td>
+          <td>Sheba / Buchinger</td>
+          <td class="adopt">✔ <span class="ja-inline">採用（段階的）</span><span class="zh-inline">採用（分階段）</span></td>
+          <td><span class="ja-inline">y Academy＋y Forum を横浜旗艦と同時設計。単院で終わらない構造</span><span class="zh-inline">y Academy＋y Forum與橫濱旗艦同步設計。不只是單一診所的結構</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">核プロトコルの研究化</span><span class="zh-inline">核心方案的研究化</span></td>
+          <td>Buchinger Wilhelmi</td>
+          <td class="adopt">✔ <span class="ja-inline">採用</span><span class="zh-inline">採用</span></td>
+          <td><span class="ja-inline">点滴療法・栄養介入・吸収設計を臨床研究化し査読論文を目指す長期戦略</span><span class="zh-inline">將點滴療法・營養介入・吸收設計臨床研究化，以發表同儕審查論文為長期戰略目標</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">回復・儀式性・体感</span><span class="zh-inline">回復・儀式性・體感</span></td>
+          <td>Lanserhof</td>
+          <td class="adopt">✔ <span class="ja-inline">改変採用</span><span class="zh-inline">改版採用</span></td>
+          <td><span class="ja-inline">都市型80坪内にy Recoveryの「身体が切り替わる体験」を設計</span><span class="zh-inline">在都市型80坪內設計y Recovery「身體切換感」的體驗</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">メソッドの物語化</span><span class="zh-inline">方法論的故事化</span></td>
+          <td>CLP / SHA</td>
+          <td class="adopt">✔ <span class="ja-inline">採用（言語のみ）</span><span class="zh-inline">採用（僅語言）</span></td>
+          <td><span class="ja-inline">y Method（柳澤先生監修5原則）を「人生のメソッド」として言語・デザイン化</span><span class="zh-inline">將y Method（柳澤先生監修5原則）語言化・設計化為「人生方法論」</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">継続会員・年次再訪</span><span class="zh-inline">持續會員・年度回訪</span></td>
+          <td>Neko / Fountain / HUM2N</td>
+          <td class="adopt">✔ <span class="ja-inline">採用（構造のみ）</span><span class="zh-inline">採用（僅結構）</span></td>
+          <td><span class="ja-inline">y Membership（年次比較・アプリ・家族管理）とy Screenの「その場翌年予約」動線</span><span class="zh-inline">y Membership（年度比較・App・家庭管理）與y Screen「當場預約明年」的動線</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">全身MRI・AI画像主役</span><span class="zh-inline">全身MRI・AI影像主角</span></td>
+          <td>Fountain Life</td>
+          <td class="skip">✘ <span class="ja-inline">捨てる</span><span class="zh-inline">捨棄</span></td>
+          <td><span class="ja-inline">不安販売・一過性リスク。Forward Healthの教訓</span><span class="zh-inline">恐嚇銷售・一過性風險。Forward Health的教訓</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">超高級リゾート滞在型</span><span class="zh-inline">超奢華度假村住宿型</span></td>
+          <td>CLP / Lanserhof</td>
+          <td class="skip">✘ <span class="ja-inline">捨てる（哲学のみ）</span><span class="zh-inline">捨棄（僅哲學）</span></td>
+          <td><span class="ja-inline">移植しない。哲学と体験設計言語だけを都市型に翻訳する</span><span class="zh-inline">不直接移植。僅將哲學與體驗設計語言翻譯為都市型</span></td>
+        </tr>
+        <tr>
+          <td><span class="ja-inline">サプリ・商品を前面に</span><span class="zh-inline">補充品・商品主打</span></td>
+          <td>（<span class="ja-inline">市場一般</span><span class="zh-inline">市場一般</span>）</td>
+          <td class="skip">✘ <span class="ja-inline">捨てる</span><span class="zh-inline">捨棄</span></td>
+          <td><span class="ja-inline">Lypo-Cは医師処方として機能させる。「売るために診る」構図は絶対に作らない</span><span class="zh-inline">讓Lypo-C作為醫師處方發揮功能。絕對不建立「為了賣而診」的架構</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ CLOSING ═══ -->
+<div class="closing">
+  <div class="inner">
+    <div class="closing-label">
+      <span class="ja-inline">結論 — y Clinicは単独モデルではない</span>
+      <span class="zh-inline">結論 — y Clinic並非單一模型</span>
+    </div>
+    <p class="closing-text">
+      <span class="ja">
+        世界12施設が示す「部品の最良」を選び取り、<br>
+        <em>SPICだけが持つ思想の正統性</em>で束ねる。<br><br>
+        入口はNeko。骨格はMayo×Cooper。<br>
+        医学の中身はChi×Sheba。核の深度はBuchinger。<br>
+        回復の設計はLanserhof。物語化はCLP×SHA。<br>
+        継続構造はFountain×HUM2N。<br><br>
+        <em>これらを一つの思想で束ねられるのは、<br>
+        世界でSPICだけ。</em>
+      </span>
+      <span class="zh">
+        從全球12家診所所示「最佳零件」中精選，<br>
+        以<em>唯有SPIC才擁有的思想正統性</em>加以整合。<br><br>
+        入口是Neko。骨幹是Mayo×Cooper。<br>
+        醫學內涵是Chi×Sheba。核心深度是Buchinger。<br>
+        回復設計是Lanserhof。故事化是CLP×SHA。<br>
+        持續結構是Fountain×HUM2N。<br><br>
+        <em>能用一個思想整合這一切的，<br>
+        全世界只有SPIC。</em>
+      </span>
+    </p>
+  </div>
+</div>
+
+<footer>
+  <span>y Clinic — Future Health by SPIC</span>
+  <span>
+    <span class="ja-inline">世界12施設深層分析</span>
+    <span class="zh-inline">全球12診所深度分析</span>
+    Vol.02 — April 2026 — Confidential
+  </span>
+</footer>
+
+<script>
+function setLang(lang) {
+  const body = document.body;
+  if (lang === 'zh') {
+    body.classList.add('zh');
+    document.documentElement.lang = 'zh-TW';
+  } else {
+    body.classList.remove('zh');
+    document.documentElement.lang = 'ja';
+  }
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+}
+</script>
+</body>
+</html>
