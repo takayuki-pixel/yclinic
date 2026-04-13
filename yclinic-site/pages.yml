@@ -1,0 +1,30 @@
+site:
+  title: "Project yClinic"
+  subtitle: "SPIC | Confidential"
+  password: "spic2026"
+
+pages:
+  - id: kickoff
+    title: "キックオフ計画書"
+    title_en: "Kickoff Document"
+    title_zh: "啟動計畫書"
+    file: "kickoff.html"
+    description: "横浜スカイビル25F 開業 × 鎌倉・台北リブランディング"
+    description_en: "Yokohama Sky Building 25F Launch × Kamakura & Taipei Rebranding"
+    description_zh: "橫濱Sky Building 25F 開幕 × 鎌倉・台北品牌重塑"
+    date: "2026-04-13"
+    category: "kickoff"
+    badge: "最新"
+
+  # ── 今後追加するときはここにコピペして増やす ──
+  # - id: meeting2
+  #   title: "第2回定例MTG資料"
+  #   title_en: "2nd Regular Meeting"
+  #   title_zh: "第2次定期會議資料"
+  #   file: "meeting2.html"
+  #   description: "メニュー確定・体制図更新"
+  #   description_en: "Menu finalized, org chart updated"
+  #   description_zh: "菜單確定・體制圖更新"
+  #   date: "2026-05-10"
+  #   category: "meeting"
+  #   badge: ""
