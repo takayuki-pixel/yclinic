@@ -6,6 +6,7 @@ on:
     paths:
       - '**.html'
       - '!index.html'
+  workflow_dispatch:  # 手動実行ボタンを有効化
 
 permissions:
   contents: write
