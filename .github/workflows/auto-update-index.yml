@@ -1,0 +1,144 @@
+name: Auto-update index.html
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.html'
+      - '!index.html'  # index.html自体の更新では再トリガーしない
+
+# ✅ 書き込み権限を明示的に付与（これがないと push できない）
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # ✅ GITHUB_TOKEN を使って fetch（デフォルトは read-only）
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate index.html
+        run: |
+          cat > index.html << 'HTMLEOF'
+          <!DOCTYPE html>
+          <html lang="ja">
+          <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>y Clinic — 社内資料一覧</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&family=Noto+Sans+JP:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+          <style>
+            :root {
+              --bg: #f7f3ed;
+              --ink: #1a1814;
+              --gold: #b8954a;
+              --mid: #6b6560;
+              --dim: #a09890;
+              --rule: rgba(26,24,20,0.1);
+              --surface: #faf8f4;
+            }
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            body {
+              background: var(--bg);
+              color: var(--ink);
+              font-family: 'Noto Sans JP', sans-serif;
+              font-weight: 300;
+              line-height: 1.8;
+              -webkit-font-smoothing: antialiased;
+            }
+            .page { max-width: 52rem; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
+            header { border-bottom: 2px solid var(--ink); padding-bottom: 1.5rem; margin-bottom: 3rem; position: relative; }
+            header::after { content: ''; position: absolute; bottom: -5px; left: 0; right: 0; height: 1px; background: var(--gold); }
+            .brand { font-family: 'Shippori Mincho', serif; font-size: 1.6rem; font-weight: 600; letter-spacing: -.02em; }
+            .brand span { color: var(--gold); }
+            .sub { font-family: 'IBM Plex Mono', monospace; font-size: .55rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-top: .4rem; }
+            h1 { font-family: 'Shippori Mincho', serif; font-size: 1.2rem; font-weight: 600; margin-top: 1.2rem; }
+            .updated { font-family: 'IBM Plex Mono', monospace; font-size: .6rem; color: var(--dim); letter-spacing: .1em; margin-top: .4rem; }
+            .file-list { list-style: none; margin-top: 2rem; }
+            .file-item { border-bottom: 1px solid var(--rule); }
+            .file-link {
+              display: flex;
+              align-items: center;
+              gap: 1.2rem;
+              padding: 1rem 0;
+              text-decoration: none;
+              color: var(--ink);
+              transition: padding-left .15s;
+            }
+            .file-link:hover { padding-left: .5rem; }
+            .file-link:hover .file-name { color: var(--gold); }
+            .file-icon {
+              font-family: 'IBM Plex Mono', monospace;
+              font-size: .55rem;
+              letter-spacing: .1em;
+              color: var(--gold);
+              background: rgba(184,149,74,0.1);
+              border: 1px solid rgba(184,149,74,0.25);
+              padding: .2em .6em;
+              flex-shrink: 0;
+            }
+            .file-name { font-size: .92rem; font-weight: 400; }
+            .file-arrow { margin-left: auto; color: var(--dim); font-size: .75rem; }
+            footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: .52rem; color: var(--dim); letter-spacing: .1em; text-transform: uppercase; text-align: right; }
+          </style>
+          </head>
+          <body>
+          <div class="page">
+            <header>
+              <div class="brand">y<span> Clinic</span></div>
+              <div class="sub">Future Health by SPIC — 社内資料ポータル</div>
+              <h1>プロジェクト資料一覧</h1>
+              <div class="updated">Last updated: $(TZ='Asia/Tokyo' date '+%Y年%m月%d日 %H:%M JST')</div>
+            </header>
+            <ul class="file-list">
+          HTMLEOF
+
+          # HTMLファイルを一覧化（index.htmlを除く、サブディレクトリも含む）
+          find . -name "*.html" \
+            ! -name "index.html" \
+            ! -path "./.git/*" \
+            ! -path "./.github/*" \
+            | sort \
+            | while read filepath; do
+                # ファイルパスの整形
+                clean_path="${filepath#./}"
+                # ファイル名（拡張子なし）を取得してタイトルに
+                filename=$(basename "$clean_path" .html)
+                echo "      <li class=\"file-item\">"
+                echo "        <a class=\"file-link\" href=\"${clean_path}\">"
+                echo "          <span class=\"file-icon\">HTML</span>"
+                echo "          <span class=\"file-name\">${filename}</span>"
+                echo "          <span class=\"file-arrow\">→</span>"
+                echo "        </a>"
+                echo "      </li>"
+              done >> index.html
+
+          cat >> index.html << 'HTMLEOF'
+            </ul>
+            <footer>y Clinic — Future Health by SPIC · Confidential · Auto-generated by GitHub Actions</footer>
+          </div>
+          </body>
+          </html>
+          HTMLEOF
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet index.html && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push index.html
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          # ✅ git の設定（これがないと commit できない）
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "chore: auto-update index.html [skip ci]"
+          # ✅ GITHUB_TOKEN を使って push
+          git push origin main
