@@ -3,1224 +3,307 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>y Clinic — 第1回キックオフMTG 議事録 2026.04.13</title>
+<title>y Clinic — キックオフMTG 議事録 2026.04.13</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&family=Noto+Sans+JP:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream: #f7f3ed;
+  --bg: #f7f3ed;
   --paper: #faf8f4;
   --ink: #1a1814;
   --ink2: #2e2b26;
   --mid: #6b6560;
   --dim: #a09890;
   --gold: #b8954a;
-  --gold-light: #d4b06a;
   --rule: rgba(26,24,20,0.1);
-  --rule-gold: rgba(184,149,74,0.3);
-  --green: #3a6b50;
-  --red: #8b3530;
-  --blue: #2e5070;
-  --font-serif: 'Shippori Mincho', 'Georgia', serif;
-  --font-sans: 'Noto Sans JP', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
 body {
-  background: var(--cream);
+  background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-sans);
+  font-family: 'Noto Sans JP', sans-serif;
   font-weight: 300;
   line-height: 1.85;
   -webkit-font-smoothing: antialiased;
 }
+.page { max-width: 52rem; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
 
-/* ─── PRINT BAR ─── */
-.print-bar {
-  background: var(--ink);
-  color: rgba(247,243,237,0.5);
-  padding: .5rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: .58rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
+.doc-header { border-bottom: 2px solid var(--ink); padding-bottom: 1.8rem; margin-bottom: 2.5rem; position: relative; }
+.doc-header::after { content: ''; position: absolute; bottom: -5px; left: 0; right: 0; height: 1px; background: var(--gold); }
+.brand { font-family: 'Shippori Mincho', serif; font-size: 1.5rem; font-weight: 600; }
+.brand span { color: var(--gold); }
+.doc-label { font-family: 'IBM Plex Mono', monospace; font-size: .55rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-top: .3rem; }
+.doc-title { font-family: 'Shippori Mincho', serif; font-size: 1.25rem; font-weight: 600; margin-top: 1.2rem; line-height: 1.4; }
+.meta { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+.meta-item { display: flex; flex-direction: column; gap: .1rem; }
+.meta-label { font-family: 'IBM Plex Mono', monospace; font-size: .5rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.meta-value { font-size: .84rem; }
 
-.print-bar button {
-  background: transparent;
-  border: 1px solid rgba(247,243,237,0.2);
-  color: rgba(247,243,237,0.6);
-  font-family: var(--font-mono);
-  font-size: .55rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  padding: .3em 1em;
-  cursor: pointer;
-  transition: all .2s;
-}
-
-.print-bar button:hover {
-  border-color: var(--gold-light);
-  color: var(--gold-light);
-}
-
-/* ─── PAGE WRAPPER ─── */
-.page {
-  max-width: 56rem;
-  margin: 0 auto;
-  padding: 4rem 3rem 6rem;
-}
-
-/* ─── HEADER ─── */
-.doc-header {
-  border-bottom: 2px solid var(--ink);
-  padding-bottom: 2rem;
+.ai-note {
+  background: #fff8eb;
+  border: 1px solid rgba(184,149,74,0.3);
+  padding: .7rem 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .65rem;
+  letter-spacing: .04em;
+  color: #7a6030;
   margin-bottom: 2.5rem;
-  position: relative;
 }
 
-.doc-header::before {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--gold);
-}
-
-.header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.brand-mark {
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -.02em;
-  line-height: 1;
-}
-
-.brand-mark span {
-  color: var(--gold);
-}
-
-.doc-type {
-  font-family: var(--font-mono);
-  font-size: .6rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--dim);
-  text-align: right;
-  line-height: 1.8;
-}
-
-.doc-title {
-  font-family: var(--font-serif);
-  font-size: 1.55rem;
-  font-weight: 600;
-  line-height: 1.35;
-  margin-bottom: .6rem;
-}
-
-.doc-subtitle {
-  font-size: .88rem;
-  color: var(--mid);
-}
-
-.meta-row {
-  display: flex;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
-}
-
-.meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: .15rem;
-}
-
-.meta-label {
-  font-family: var(--font-mono);
-  font-size: .52rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
-
-.meta-value {
-  font-size: .85rem;
-  color: var(--ink);
-  font-weight: 400;
-}
-
-/* ─── ATTENDEES ─── */
-.attendees {
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  border-left: 3px solid var(--gold);
-  padding: 1.2rem 1.5rem;
-  margin-bottom: 3rem;
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.attendees-label {
-  font-family: var(--font-mono);
-  font-size: .52rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--gold);
-  flex-shrink: 0;
-  padding-top: .15rem;
-}
-
-.attendee-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem .3rem;
-  flex: 1;
-}
-
-.attendee-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  background: white;
-  border: 1px solid var(--rule);
-  padding: .25em .7em;
-  font-size: .78rem;
-  color: var(--ink2);
-  line-height: 1.4;
-}
-
-.attendee-chip .role {
-  font-size: .62rem;
-  color: var(--dim);
-  font-family: var(--font-mono);
-}
-
-/* ─── SECTION ─── */
-.section {
-  margin-bottom: 3.5rem;
-}
-
-.section-header {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 1.2rem;
-  padding-bottom: .6rem;
-  border-bottom: 1px solid var(--rule);
-}
-
-.section-num {
-  font-family: var(--font-mono);
-  font-size: .58rem;
-  letter-spacing: .14em;
-  color: var(--gold);
-  flex-shrink: 0;
-}
-
+.section { margin-bottom: 3rem; }
 .section-title {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--ink);
-  line-height: 1.3;
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 1.2rem;
 }
+.section-lead { font-size: .88rem; color: var(--ink2); line-height: 1.9; margin-bottom: 1rem; }
 
-/* ─── TOPIC BLOCK ─── */
-.topic {
-  margin-bottom: 2rem;
-}
-
-.topic-head {
-  display: flex;
-  align-items: flex-start;
-  gap: .8rem;
-  margin-bottom: .7rem;
-}
-
-.topic-bullet {
-  width: 6px;
-  height: 6px;
-  background: var(--gold);
-  flex-shrink: 0;
-  margin-top: .55rem;
-}
-
-.topic-title {
-  font-size: .92rem;
+.sub-topic { margin-bottom: 1rem; padding-left: 1.2rem; }
+.sub-topic-title {
+  font-size: .88rem;
   font-weight: 500;
   color: var(--ink);
-  line-height: 1.5;
-}
-
-.topic-body {
-  padding-left: 1.4rem;
-}
-
-.topic-body p {
-  font-size: .87rem;
-  color: var(--ink2);
-  line-height: 1.9;
-  margin-bottom: .6rem;
-}
-
-.topic-body ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: .35rem;
-  margin-bottom: .6rem;
-}
-
-.topic-body ul li {
-  font-size: .85rem;
-  color: var(--ink2);
-  display: flex;
-  gap: .7rem;
-  line-height: 1.75;
-}
-
-.topic-body ul li::before {
-  content: '—';
-  color: var(--dim);
-  flex-shrink: 0;
-  margin-top: .04rem;
-  font-family: var(--font-mono);
-  font-size: .75rem;
-}
-
-/* ─── DECISION BOX ─── */
-.decision-box {
-  background: white;
-  border: 1px solid var(--rule-gold);
-  border-left: 3px solid var(--green);
-  padding: 1rem 1.3rem;
-  margin: 1rem 0 1.5rem 1.4rem;
-}
-
-.decision-label {
-  font-family: var(--font-mono);
-  font-size: .5rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: .4rem;
-}
-
-.decision-text {
-  font-size: .87rem;
-  color: var(--ink);
-  line-height: 1.8;
-  font-weight: 400;
-}
-
-/* ─── CAUTION BOX ─── */
-.caution-box {
-  background: #fdf8f0;
-  border: 1px solid rgba(184,149,74,0.25);
-  border-left: 3px solid var(--gold);
-  padding: 1rem 1.3rem;
-  margin: 1rem 0 1.5rem 1.4rem;
-}
-
-.caution-label {
-  font-family: var(--font-mono);
-  font-size: .5rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: .4rem;
-}
-
-.caution-text {
-  font-size: .87rem;
-  color: var(--ink2);
-  line-height: 1.8;
-}
-
-.caution-text strong { color: var(--ink); font-weight: 500; }
-
-/* ─── NG LIST ─── */
-.ng-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .4rem;
-  margin: .8rem 0 1rem 1.4rem;
-}
-
-@media (max-width: 600px) {
-  .ng-list { grid-template-columns: 1fr; }
-}
-
-.ng-item {
+  margin-bottom: .25rem;
   display: flex;
   gap: .6rem;
   align-items: flex-start;
-  background: white;
-  border: 1px solid rgba(139,53,48,0.15);
-  padding: .6rem .9rem;
 }
+.sub-topic-title::before { content: '▸'; color: var(--gold); font-size: .7rem; flex-shrink: 0; margin-top: .18rem; }
+.sub-topic-body { font-size: .85rem; color: var(--ink2); line-height: 1.85; padding-left: 1.1rem; }
 
-.ng-icon {
-  font-family: var(--font-mono);
-  font-size: .7rem;
-  color: var(--red);
-  font-weight: 500;
-  flex-shrink: 0;
-  margin-top: .12rem;
-}
-
-.ng-text {
-  font-size: .82rem;
-  color: var(--ink2);
-  line-height: 1.55;
-}
-
-/* ─── ACTION ITEMS TABLE ─── */
-.action-section {
-  margin-bottom: 3.5rem;
-}
-
-.assignee-block {
-  margin-bottom: 2rem;
-}
-
-.assignee-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: .8rem 1rem;
-  background: var(--ink);
-  color: white;
-  margin-bottom: 0;
-}
-
-.assignee-name {
-  font-family: var(--font-serif);
+.action-section { margin-bottom: 3rem; }
+.action-section-title {
+  font-family: 'Shippori Mincho', serif;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 1.2rem;
 }
-
-.assignee-role {
-  font-family: var(--font-mono);
-  font-size: .55rem;
-  letter-spacing: .12em;
-  color: var(--gold-light);
-  text-transform: uppercase;
-}
-
-.assignee-deadline {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: .58rem;
-  letter-spacing: .1em;
-  background: var(--gold);
-  color: var(--ink);
-  padding: .25em .7em;
-}
-
-.action-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: .84rem;
-}
-
-.action-table thead th {
-  background: #f0ece3;
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+thead th {
+  background: #ede9e0;
   color: var(--mid);
-  font-family: var(--font-mono);
+  font-family: 'IBM Plex Mono', monospace;
   font-size: .52rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   font-weight: 400;
-  padding: .65rem 1rem;
+  padding: .6rem 1rem;
   text-align: left;
   border-bottom: 1px solid var(--rule);
 }
+tbody td { padding: .8rem 1rem; border-bottom: 1px solid var(--rule); color: var(--ink2); vertical-align: top; line-height: 1.75; background: var(--paper); }
+tbody tr:hover td { background: #f3efe7; }
+td.task-title { font-weight: 500; color: var(--ink); white-space: nowrap; }
+td.assignee { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--gold); white-space: nowrap; }
 
-.action-table tbody td {
-  padding: .85rem 1rem;
-  border-bottom: 1px solid var(--rule);
-  vertical-align: top;
-  color: var(--ink2);
-  line-height: 1.7;
-  background: white;
-}
+.doc-footer { margin-top: 4rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); font-family: 'IBM Plex Mono', monospace; font-size: .52rem; color: var(--dim); letter-spacing: .1em; text-transform: uppercase; text-align: right; }
 
-.action-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.action-table tbody tr:hover td {
-  background: #fdfaf5;
-}
-
-.action-table td:first-child {
-  white-space: nowrap;
-}
-
-.task-name {
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: .2rem;
-  font-size: .85rem;
-}
-
-.task-detail {
-  font-size: .78rem;
-  color: var(--mid);
-  line-height: 1.65;
-}
-
-.tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: .5rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  padding: .2em .6em;
-  border: 1px solid;
-}
-
-.tag-d { border-color: rgba(46,80,112,0.4); color: var(--blue); }
-.tag-r { border-color: rgba(58,107,80,0.4); color: var(--green); }
-.tag-s { border-color: rgba(184,149,74,0.4); color: var(--gold); }
-
-/* ─── SCHEDULE ─── */
-.schedule-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  position: relative;
-}
-
-.schedule-grid::before {
-  content: '';
-  position: absolute;
-  left: 5.2rem;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--rule-gold);
-}
-
-.schedule-row {
-  display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 0;
-  padding: 1.2rem 0;
-  border-bottom: 1px solid var(--rule);
-  align-items: start;
-}
-
-.schedule-row:last-child { border-bottom: none; }
-
-.schedule-period {
-  font-family: var(--font-mono);
-  font-size: .65rem;
-  color: var(--gold);
-  letter-spacing: .06em;
-  padding-right: 1rem;
-  padding-top: .2rem;
-  font-weight: 500;
-}
-
-.schedule-content {
-  padding-left: 1rem;
-}
-
-.schedule-phase {
-  font-family: var(--font-mono);
-  font-size: .52rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-bottom: .3rem;
-}
-
-.schedule-title {
-  font-weight: 500;
-  font-size: .9rem;
-  color: var(--ink);
-  margin-bottom: .4rem;
-}
-
-.schedule-items {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: .2rem;
-}
-
-.schedule-items li {
-  font-size: .82rem;
-  color: var(--mid);
-  display: flex;
-  gap: .6rem;
-  line-height: 1.6;
-}
-
-.schedule-items li::before {
-  content: '·';
-  color: var(--gold);
-  flex-shrink: 0;
-  font-size: 1rem;
-  line-height: 1.4;
-}
-
-/* ─── NEXT MEETING ─── */
-.next-meeting {
-  background: var(--ink);
-  color: white;
-  padding: 1.5rem 2rem;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.nm-label {
-  font-family: var(--font-mono);
-  font-size: .52rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: .3rem;
-}
-
-.nm-value {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-  color: white;
-}
-
-.nm-note {
-  font-size: .8rem;
-  color: rgba(255,255,255,0.5);
-  margin-top: .2rem;
-}
-
-/* ─── FOOTER ─── */
-.doc-footer {
-  margin-top: 4rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-brand {
-  font-family: var(--font-serif);
-  font-size: .9rem;
-  color: var(--dim);
-  font-weight: 500;
-}
-
-.footer-meta {
-  font-family: var(--font-mono);
-  font-size: .52rem;
-  letter-spacing: .12em;
-  color: var(--dim);
-  text-transform: uppercase;
-  text-align: right;
-}
-
-/* ─── HIGHLIGHT ─── */
-.highlight {
-  background: linear-gradient(to bottom, transparent 60%, rgba(184,149,74,0.18) 60%);
-  font-weight: 500;
-}
-
-/* ─── PRINT ─── */
-@media print {
-  .print-bar { display: none; }
-  .page { padding: 2rem; }
-  body { background: white; }
-  .attendees { break-inside: avoid; }
-  .assignee-block { break-inside: avoid; }
-}
+@media print { body { background: white; } .page { padding: 2rem; } }
 </style>
 </head>
 <body>
-
-<!-- ─── PRINT BAR ─── -->
-<div class="print-bar">
-  <span>y Clinic — 議事録 / Meeting Minutes 2026.04.13</span>
-  <button onclick="window.print()">🖨 印刷 / Print</button>
-</div>
-
-<!-- ─── PAGE ─── -->
 <div class="page">
 
-  <!-- ─── HEADER ─── -->
   <div class="doc-header">
-    <div class="header-top">
-      <div>
-        <div class="brand-mark">y<span> Clinic</span></div>
-        <div style="font-family:var(--font-mono);font-size:.55rem;letter-spacing:.14em;color:var(--dim);margin-top:.3rem;text-transform:uppercase;">Future Health by SPIC</div>
-      </div>
-      <div class="doc-type">
-        議事録<br>
-        Meeting Minutes<br>
-        <strong style="color:var(--gold);">Doc. #001</strong>
-      </div>
-    </div>
-
-    <div class="doc-title">第1回 y Clinic プロジェクト キックオフミーティング</div>
-    <div class="doc-subtitle">y Clinic Project — 1st Kickoff Meeting</div>
-
-    <div class="meta-row">
+    <div class="brand">y<span> Clinic</span></div>
+    <div class="doc-label">Future Health by SPIC</div>
+    <div class="doc-title">ワイクリニック プロジェクト キックオフミーティング 議事録</div>
+    <div class="meta">
       <div class="meta-item">
         <div class="meta-label">日時</div>
-        <div class="meta-value">2026年4月13日（月）</div>
+        <div class="meta-value">2026年4月13日</div>
       </div>
       <div class="meta-item">
-        <div class="meta-label">場所</div>
-        <div class="meta-value">横浜スカイビル25F — SPIC会議室</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">主催</div>
-        <div class="meta-value">芝田崇行（SPIC）</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">記録</div>
-        <div class="meta-value">中西（SPIC）</div>
-      </div>
-      <div class="meta-item">
-        <div class="meta-label">ステータス</div>
-        <div class="meta-value" style="color:var(--green);font-weight:500;">✓ 確定版</div>
+        <div class="meta-label">出席</div>
+        <div class="meta-value">Takayuki、坂端宏治、Charles、中西　ほか</div>
       </div>
     </div>
   </div>
 
-  <!-- ─── ATTENDEES ─── -->
-  <div class="attendees">
-    <div class="attendees-label">出席者</div>
-    <div class="attendee-list">
-      <div class="attendee-chip">
-        芝田崇行
-        <span class="role">SPIC / 主催・統括</span>
-      </div>
-      <div class="attendee-chip">
-        柳澤先生
-        <span class="role">医療思想・監修</span>
-      </div>
-      <div class="attendee-chip">
-        松村先生
-        <span class="role">医療総括</span>
-      </div>
-      <div class="attendee-chip">
-        Charles
-        <span class="role">台北拠点責任者</span>
-      </div>
-      <div class="attendee-chip">
-        坂端宏治
-        <span class="role">SPIC / 運営</span>
-      </div>
-      <div class="attendee-chip">
-        中西
-        <span class="role">SPIC / 記録</span>
-      </div>
-    </div>
-  </div>
+  <div class="ai-note">⚠ Generated by AI. Be sure to check for accuracy.</div>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- SECTION 1: プロジェクト全体構想 -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- 1 -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">Agenda 01</span>
-      <h2 class="section-title">y Clinicプロジェクトの全体構想と目的</h2>
-    </div>
+    <div class="section-title">ワイクリニックプロジェクトの全体構想と目的</div>
+    <p class="section-lead">Takayukiが中心となり、坂端宏治、Charles、中西らと共に、横浜スカイビル25階を拠点とした新クリニック（仮称ワイクリニック）の設立構想と、その目的・理念について詳細に説明し、参加者全員で議論した。</p>
 
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">プロジェクトの背景と本質的な目的</div>
-      </div>
-      <div class="topic-body">
-        <p>芝田より、本プロジェクトは「単なる新規医療施設の設立」ではないことを冒頭に強調。柳澤先生が長年にわたって積み上げてきた医療の本質を次世代・国境を越えて継承する拠点を構築することが最大の目的であると説明した。</p>
-        <ul>
-          <li>病名や検査値だけでなく、栄養・生活・睡眠・ストレス・回復力まで含めた<strong>トータルな医療の実践</strong></li>
-          <li>検査や治療を「数値確認」「商品販売」のために行うのではなく、患者の「なぜ」に寄り添い、未来の健康設計まで責任を持つ姿勢</li>
-          <li>SPIC固有の競争優位（柳澤先生との20年超の連携・点滴療法研究会・Lypo-C・台湾・シンガポール展開）を最大限に活かした設計</li>
-        </ul>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">プロジェクトの背景と目的</div>
+      <div class="sub-topic-body">Takayukiは、単なる新規医療施設の設立ではなく、柳澤先生が長年伝えてきた医療の本質を次世代・国境を越えて継承する拠点を作ることを目的とし、病名や検査値だけでなく、栄養・生活・睡眠・ストレス・回復力まで含めたトータルな医療を目指すと説明した。</div>
     </div>
-
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">施設計画と拠点展開</div>
-      </div>
-      <div class="topic-body">
-        <ul>
-          <li>横浜駅直結・スカイビル25階の約<strong>80坪</strong>をクリニックとして活用。SPIC本社と隣接する構造的優位性を持つ</li>
-          <li>鎌倉（SPIC Salon Medical Clinic）および台湾（台北・日本元気クリニック）の<strong>リブランディング</strong>を横浜開業と同時に進める</li>
-          <li>将来的には東京・全国主要都市・アジア主要都市（シンガポール含む）への展開を視野に入れた設計</li>
-        </ul>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">施設計画と拠点</div>
+      <div class="sub-topic-body">横浜駅直結のスカイビル25階の広いフロアのうち、約80坪をクリニックとして活用し、鎌倉元気クリニックや台湾の日本元気クリニックのリブランディングも同時に進める計画が示された。</div>
     </div>
-
-    <div class="decision-box">
-      <div class="decision-label">確認事項</div>
-      <div class="decision-text">
-        本プロジェクトの定義：「クリニックを作る」ではなく「<span class="highlight">予防医療・点滴療法・栄養医療の標準（OS）を定義する</span>」プロジェクトであることを全員で共有・合意した。
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">理念と医療哲学</div>
+      <div class="sub-topic-body">Takayukiは、検査や治療を単なる数値や商品販売のために行うのではなく、患者の"なぜ"に寄り添い、生活習慣や未来の健康設計を重視する医療を目指すと強調した。</div>
+    </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">今後の展開ビジョン</div>
+      <div class="sub-topic-body">横浜をモデルケースとし、将来的には日本全国やアジア主要都市、シンガポールなどへの展開も視野に入れていることが共有された。</div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- SECTION 2: サービス・運営方針 -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- 2 -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">Agenda 02</span>
-      <h2 class="section-title">クリニックの機能・サービス・運営方針</h2>
-    </div>
+    <div class="section-title">クリニックの機能・サービス・運営方針</div>
+    <p class="section-lead">Takayukiが中心となり、参加者全員でクリニックの具体的なサービス内容、検査・治療メニュー、会員制の導入可能性、運営体制やスタッフ配置について議論し、今後の検討課題とアクションプランを整理した。</p>
 
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">検査・治療メニューの構成（たたき台）</div>
-      </div>
-      <div class="topic-body">
-        <p>芝田より、以下の5層構造を提示。内容は今後の各先生方との議論を経て正式決定とする。</p>
-        <ul>
-          <li><strong>y Screen</strong>：60〜75分。基礎血液・尿・体組成・血管代謝の可視化・医師説明。入口商品</li>
-          <li><strong>y Screen Plus</strong>：90分。上記＋睡眠/ストレス評価・CGM・ホルモン等のオプション追加</li>
-          <li><strong>y Executive</strong>：半日〜1日。専門医面談・詳細ラボ・栄養・運動。高単価・紹介導線</li>
-          <li><strong>y Longevity Program</strong>：90日/180日/12か月。栄養・運動・睡眠・代謝の伴走介入。粗利の中核</li>
-          <li><strong>y Membership / App</strong>：年会費。結果閲覧・経年比較・チャット・再検査・家族管理・海外連携</li>
-        </ul>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">検査・治療メニューの検討</div>
+      <div class="sub-topic-body">Takayukiは、基本的な血液・尿検査から精密検査、エグゼクティブ向け健診、ロンジェビティ（長寿）プログラム、リセットプログラム、ライフスタイル改善プログラムなど多様なメニュー案を提示し、今後の議論のたたき台とした。</div>
     </div>
-
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">院内ラボと検査設計の考え方</div>
-      </div>
-      <div class="topic-body">
-        <ul>
-          <li>院内ラボ（目標：10〜13坪）を設置し、CBC・CRP・HbA1c等の<strong>即時判断系を院内で完結</strong></li>
-          <li>ビタミンD・フェリチン・ホルモン・栄養詳細など精度優先の項目は外注する「ハイブリッド検査体制」</li>
-          <li>原則：<strong>全部その場で出さない</strong>。時間差を設計することで体験と継続性を高める</li>
-        </ul>
-        <p style="margin-top:.3rem;">→ <strong>松村先生に院内ラボの必要スペース・人員・設備の具体的検討を依頼。</strong></p>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">会員制・サブスクリプションモデル</div>
+      <div class="sub-topic-body">近年のトレンドを踏まえ、年会費や月会費による会員制（サブスク）やアプリによる健康管理・定期検査の導入可能性について説明し、日本やシンガポールの事例を参考に検討する方針が示された。</div>
     </div>
-
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">会員制・サブスクリプションモデル</div>
-      </div>
-      <div class="topic-body">
-        <p>近年のトレンドを踏まえ、年会費または月会費による会員制（サブスク）と、アプリによる健康管理・定期検査の導入可能性について議論。日本・シンガポールの事例（Neko Health・Fountain Life等）を参考に検討を進める方針。</p>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">施設・スタッフ体制</div>
+      <div class="sub-topic-body">院内ラボ設置の可否や必要なスペース・人員、検査技師の配置、外注検査の選択肢など、松村先生らに具体的な検討・フィードバックを依頼した。</div>
     </div>
-
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">絶対にやってはいけないこと（運営上の禁止事項）</div>
-      </div>
-      <div class="topic-body">
-        <ul class="ng-list">
-          <li class="ng-item"><span class="ng-icon">✕</span><span class="ng-text">全身MRIを主役にする（不安販売・一過性）</span></li>
-          <li class="ng-item"><span class="ng-icon">✕</span><span class="ng-text">サプリ・商品販売を目的に診察する</span></li>
-          <li class="ng-item"><span class="ng-icon">✕</span><span class="ng-text">単発健診モデルで終わらせる</span></li>
-          <li class="ng-item"><span class="ng-icon">✕</span><span class="ng-text">テック・電子機器主導の運営（Forward Health型）</span></li>
-          <li class="ng-item"><span class="ng-icon">✕</span><span class="ng-text">医師個人ブランドへの依存</span></li>
-          <li class="ng-item"><span class="ng-icon">✕</span><span class="ng-text">インフルエンサー依存のマーケティング</span></li>
-        </ul>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">運営方針と禁止事項</div>
+      <div class="sub-topic-body">電子機器主導やサプリ販売目的のクリニック運営、単発検診モデル、医師個人ブランド依存は避け、組織としての理念・思想を重視する運営方針を明確にした。</div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- SECTION 3: 標準化・ネットワーク・教育 -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- 3 -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">Agenda 03</span>
-      <h2 class="section-title">標準化・ネットワーク・教育機能の強化</h2>
-    </div>
+    <div class="section-title">標準化・ネットワーク・教育機能の強化</div>
+    <p class="section-lead">Takayukiが、クリニックの標準プロトコル策定、国内外ネットワーク連携、医師・スタッフ教育機能の強化について提案し、柳澤先生や各参加者に具体的な役割分担とアクションを依頼した。</p>
 
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">プロトコル標準化の必要性</div>
-      </div>
-      <div class="topic-body">
-        <p>複数拠点展開を見据え、「誰が担当しても同品質で再現できるプロトコル」の策定が不可欠であるとの認識を全員で共有。国ごとの法規制・文化に配慮しつつ国際標準化を目指す方針を確認。</p>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">プロトコル標準化</div>
+      <div class="sub-topic-body">複数拠点展開を見据え、誰が担当しても同品質で再現できるプロトコルの策定が必要であり、国ごとの法規制や文化に配慮しつつ、国際的な標準化を目指す方針が示された。</div>
     </div>
-
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">ネットワーク連携の設計</div>
-      </div>
-      <div class="topic-body">
-        <ul>
-          <li>横浜旗艦・鎌倉・台北・シンガポールで同一プロトコルを保持し、患者がどこでも同等の医療を受けられるネットワーク構築を目指す</li>
-          <li>点滴療法研究会・学会との連携強化によるプロトコルの学術的裏付けを強化</li>
-          <li>y Academy機能として、toBクリニック・関連学会の医師への教育の場を横浜旗艦内に設置</li>
-        </ul>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">ネットワーク連携</div>
+      <div class="sub-topic-body">国内主要都市やアジア各国のクリニックと連携し、患者がどこでも同等の医療を受けられるネットワーク構築、学会や研究会との連携強化を進めることが提案された。</div>
     </div>
-
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">教育機能の強化</div>
-      </div>
-      <div class="topic-body">
-        <p>杏林大学での知的健康術・コーチング授業（柳澤先生主導）の経験を活かし、医師・スタッフ教育をクリニックの重要な柱として位置付けることを確認。「医師が学びに来る場所」という機能をFlagshipと並行して設計する。</p>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">教育機能の強化</div>
+      <div class="sub-topic-body">医師・スタッフの教育を重視し、杏林大学での知的健康術やコーチング授業の経験を活かし、今後も教育をクリニックの重要な柱とする方針が確認された。</div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- SECTION 4: 差別化・海外事例研究 -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- 4 -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">Agenda 04</span>
-      <h2 class="section-title">差別化要素の検討と海外クリニック事例リサーチ</h2>
-    </div>
+    <div class="section-title">今後のアクションプランと役割分担</div>
+    <p class="section-lead">Takayukiが、柳澤先生、松村先生、Charles、坂端宏治らに対し、検査項目リストやプロトコル案へのフィードバック、台湾クリニックの現状整理、規制・料金体系調査など、具体的なアクションアイテムを割り振り、次回会議までの課題を明確化した。</p>
 
-    <div class="topic">
-      <div class="topic-head">
-        <div class="topic-bullet"></div>
-        <div class="topic-title">差別化の核となる要素</div>
-      </div>
-      <div class="topic-body">
-        <ul>
-          <li>世界標準クリニックとの差別化は「見栄えや流行」ではなく、<strong>柳澤先生の医療哲学・栄養医学へのこだわり・SPIC固有の知識資産</strong>にある</li>
-          <li>単なる「おしゃれな予防クリニック」「AI搭載健診」とは一線を画す、医師主導のEBM（evidence-based medicine）を前面に打ち出す</li>
-        </ul>
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">柳澤先生への依頼</div>
+      <div class="sub-topic-body">クリニックの思想・五つの約束の確認、検査項目リスト案へのフィードバック、ロンジェビティプログラムの骨格設計、既存プロトコルの棚卸しなどを依頼した。</div>
     </div>
-
-    <div class="caution-box">
-      <div class="caution-label">次回会議での共有事項</div>
-      <div class="caution-text">
-        芝田より、理想的な海外クリニック事例（Neko Health・Chi Longevity・Sheba Longevity Center・Lanserhof・Buchinger Wilhelmi・Cooper Clinicなど<strong>世界12施設の詳細分析</strong>）を資料としてまとめ、次回会議で先生方に共有することを約束した。
-      </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">松村先生への依頼</div>
+      <div class="sub-topic-body">院内ラボ設置の可否や必要スペース・人員、検査機器の選定、外注検査の現実性などについて調査・意見を求めた。</div>
+    </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">Charles・坂端宏治への依頼</div>
+      <div class="sub-topic-body">台湾クリニックの現状整理、規制・手続き・料金体系の調査、台湾独自メニューや改善点の提案などを依頼した。</div>
+    </div>
+    <div class="sub-topic">
+      <div class="sub-topic-title">今後のスケジュール</div>
+      <div class="sub-topic-body">6月～9月に基盤整備・プロトコル検討・アプリ開発・仮運用を進め、10月以降のオープンを目指すスケジュール感が共有された。</div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- SECTION 5: アクションアイテム -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- 5 -->
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">Action Items</span>
-      <h2 class="section-title">アクションアイテムと役割分担</h2>
+    <div class="section-title">クリニックの差別化要素と今後の課題</div>
+    <p class="section-lead">Takayuki、坂端宏治、Charlesらが、世界標準のクリニックとの差別化要素や、今後の課題・リサーチ事項について議論し、モデルとなる海外クリニックの調査や、独自性の明確化を次回会議の宿題とした。</p>
+
+    <div class="sub-topic">
+      <div class="sub-topic-title">差別化要素の検討</div>
+      <div class="sub-topic-body">世界標準のクリニックや国内外の事例を調査し、単なる見栄えや流行ではなく、医療哲学や患者への寄り添い、栄養医学へのこだわりなど独自性を明確にする必要性が確認された。</div>
     </div>
-
-    <p style="font-size:.83rem;color:var(--mid);margin-bottom:1.5rem;padding-left:.2rem;">
-      各先生方への連絡調整・サポートは<strong style="color:var(--ink);">SPIC（坂端宏治）</strong>が担当。実作業はSPICが行い、先生方には方向性のご判断をいただきます。<br>
-      <strong style="color:var(--gold);">第一回提出締切：2026年4月30日</strong>
-    </p>
-
-    <!-- 柳澤先生 -->
-    <div class="assignee-block">
-      <div class="assignee-header">
-        <div>
-          <div class="assignee-name">柳澤先生</div>
-          <div class="assignee-role">医療思想・監修 / 全体プロトコル統括</div>
-        </div>
-        <div class="assignee-deadline">4月30日</div>
-      </div>
-      <table class="action-table">
-        <thead>
-          <tr>
-            <th style="width:72px;">種別</th>
-            <th style="width:180px;">アクションアイテム</th>
-            <th>内容・詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="tag tag-d">Decision</span></td>
-            <td><div class="task-name">クリニック思想・指針の決定</div></td>
-            <td><div class="task-detail">提示した「五つの約束」案を読み、どれを採用するか決定。意見・修正点をフィードバック</div></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-d">Decision</span></td>
-            <td><div class="task-name">検査項目リスト案へのフィードバック</div></td>
-            <td><div class="task-detail">たたき台として提示した検査項目リストについて、内容の是非・追加・修正点をフィードバック（特にベースライン検査と精密検査の仕分け）</div></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-s">Strategy</span></td>
-            <td><div class="task-name">ロンジェビティプログラムの骨格設計</div></td>
-            <td><div class="task-detail">y Longevity Programにおける栄養介入の考え方・骨格設計について、現状の知見をもとに相談・提案をまとめる</div></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-r">Research</span></td>
-            <td><div class="task-name">既存プロトコルの棚卸し</div></td>
-            <td><div class="task-detail">鎌倉クリニック・点滴療法研究会で使用している既存プロトコルのうち、y Clinicに取り入れるべきものをピックアップして共有</div></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="sub-topic">
+      <div class="sub-topic-title">モデルクリニックのリサーチ</div>
+      <div class="sub-topic-body">Takayukiが、理想的な海外クリニックの事例を資料としてまとめ、次回会議で共有することを約束した。</div>
     </div>
-
-    <!-- 松村先生 -->
-    <div class="assignee-block">
-      <div class="assignee-header">
-        <div>
-          <div class="assignee-name">松村先生</div>
-          <div class="assignee-role">医療総括 / 院内設計・検査体制</div>
-        </div>
-        <div class="assignee-deadline">4月30日</div>
-      </div>
-      <table class="action-table">
-        <thead>
-          <tr>
-            <th style="width:72px;">種別</th>
-            <th style="width:180px;">アクションアイテム</th>
-            <th>内容・詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="tag tag-d">Design</span></td>
-            <td><div class="task-name">院内ラボ設計の検討</div></td>
-            <td><div class="task-detail">院内ラボを設置する場合の必要な広さ（目標10〜13坪）・必要人員・設備について検討し、内装設計に反映できるよう具体的なイメージをまとめる</div></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-r">Research</span></td>
-            <td><div class="task-name">海外検査・料金情報の調査</div></td>
-            <td><div class="task-detail">海外（特にギリシャ等）で実施されている検査・治療介入の内容と料金を調査し、競合・自院での導入可否を検討（太田先生と連携）</div></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-d">Decision</span></td>
-            <td><div class="task-name">外注検査の現実性の整理</div></td>
-            <td><div class="task-detail">外注検査（ビタミンD・フェリチン・ホルモン等）について現実的な検査会社・ターンアラウンドタイム・コストを整理</div></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Charles + 坂端宏治 -->
-    <div class="assignee-block">
-      <div class="assignee-header">
-        <div>
-          <div class="assignee-name">Charles・坂端宏治</div>
-          <div class="assignee-role">台北拠点責任者 / SPIC運営</div>
-        </div>
-        <div class="assignee-deadline">4月30日</div>
-      </div>
-      <table class="action-table">
-        <thead>
-          <tr>
-            <th style="width:72px;">種別</th>
-            <th style="width:180px;">アクションアイテム</th>
-            <th>内容・詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="tag tag-r">Research</span></td>
-            <td><div class="task-name">台北クリニック現状整理</div></td>
-            <td><div class="task-detail">台北・日本元気クリニックの現状（坪数・設備・スタッフ構成・月間患者数・主要メニューと価格帯）を整理し、y Clinicとのギャップを明確化<span style="font-weight:500;color:var(--mid);"> → Charles</span></div></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-r">Research</span></td>
-            <td><div class="task-name">台湾規制・手続きの確認</div></td>
-            <td><div class="task-detail">台湾における医療規制・手続きについて、今回のy Clinicで実施可能なこと・不可能なことを整理。海外検査料金調査も含む<span style="font-weight:500;color:var(--mid);"> → Charles・坂端宏治・太田先生</span></div></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-s">Strategy</span></td>
-            <td><div class="task-name">台湾クリニックの改善点整理</div></td>
-            <td><div class="task-detail">現在の台湾クリニックで直すべき点・変更したい点・今後取り組みたい新メニューや料金体系についてまとめて提案<span style="font-weight:500;color:var(--mid);"> → Charles</span></div></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Takayuki -->
-    <div class="assignee-block">
-      <div class="assignee-header">
-        <div>
-          <div class="assignee-name">芝田崇行（SPIC）</div>
-          <div class="assignee-role">プロジェクト統括 / 戦略・資料作成</div>
-        </div>
-        <div class="assignee-deadline">次回MTG</div>
-      </div>
-      <table class="action-table">
-        <thead>
-          <tr>
-            <th style="width:72px;">種別</th>
-            <th style="width:180px;">アクションアイテム</th>
-            <th>内容・詳細</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="tag tag-r">Research</span></td>
-            <td><div class="task-name">世界の理想的クリニック事例リサーチ</div></td>
-            <td><div class="task-detail">国内外の理想的なクリニック事例（世界12施設：Neko Health・Chi Longevity・Sheba・Lanserhof・Buchinger・Cooper Clinic等）を資料化し、次回会議で共有</div></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-s">Strategy</span></td>
-            <td><div class="task-name">内装・施設設計のゾーニング案</div></td>
-            <td><div class="task-detail">横浜旗艦（80坪）のゾーニング設計・動線設計の基本案を設計事務所と検討開始。院内ラボ位置・前進型動線の実現可否を確認</div></td>
-          </tr>
-          <tr>
-            <td><span class="tag tag-s">Strategy</span></td>
-            <td><div class="task-name">監修契約・名称使用条件の書面化</div></td>
-            <td><div class="task-detail">柳澤先生との監修契約・名称使用条件（「Y = Yanagisawa」の使用含む）の書面化を法務と連携して進める</div></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="sub-topic">
+      <div class="sub-topic-title">今後の課題</div>
+      <div class="sub-topic-body">今後の課題として、検査・治療内容の選定、施設設計、料金体系、規制対応、ネットワーク連携、教育機能強化などが挙げられ、各担当者が調査・検討を進めることとなった。</div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- SECTION 6: スケジュール -->
-  <!-- ══════════════════════════════════════ -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">Schedule</span>
-      <h2 class="section-title">今後のスケジュール</h2>
-    </div>
-
-    <div class="schedule-grid">
-      <div class="schedule-row">
-        <div class="schedule-period">2026.04<br>〜 06</div>
-        <div class="schedule-content">
-          <div class="schedule-phase">Phase 0 — 準備</div>
-          <div class="schedule-title">設立準備・設計着手フェーズ</div>
-          <ul class="schedule-items">
-            <li>柳澤先生との監修契約・名称使用条件の書面化</li>
-            <li>横浜スカイビル25F 内装設計・ゾーニング着手</li>
-            <li>鎌倉リブランディング計画策定</li>
-            <li>台北 Charles院長との提携契約・リニューアル計画着手</li>
-            <li>医療チーム採用開始（院長・看護師・栄養士・コンシェルジュ）</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-period">2026.07<br>〜 09</div>
-        <div class="schedule-content">
-          <div class="schedule-phase">Phase 1 — 確立</div>
-          <div class="schedule-title">プロトコル確立・仮運用フェーズ</div>
-          <ul class="schedule-items">
-            <li>y Screen / y Executive / y Longevity Programの標準プロトコル確定（柳澤先生監修）</li>
-            <li>アプリMVP開発（結果閲覧・経年比較・再検査通知・チャット）</li>
-            <li>創業コホート100〜150名の募集・仮説検証開始</li>
-            <li>鎌倉・台北の内装更新・メニュー移植準備</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-period" style="color:var(--gold);font-weight:500;">2026.10</div>
-        <div class="schedule-content">
-          <div class="schedule-phase">Phase 2 — 開業 🎯</div>
-          <div class="schedule-title">横浜旗艦・鎌倉 同時オープン</div>
-          <ul class="schedule-items">
-            <li>横浜旗艦：創業コホート対象にソフトオープン（招待制）</li>
-            <li>鎌倉：y Clinic Kamakuraとしてリブランディングオープン</li>
-            <li>「SPICクリニック事業本格始動」としてメディア発表（柳澤先生同席）</li>
-            <li>NPS・継続率・改善率の検証開始</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-period">2027<br>前半</div>
-        <div class="schedule-content">
-          <div class="schedule-phase">Phase 3 — 拡大</div>
-          <div class="schedule-title">台北・東京意思決定フェーズ</div>
-          <ul class="schedule-items">
-            <li>台北：y Clinic Taipeiとしてリニューアルオープン</li>
-            <li>横浜KPI達成確認（入口→Program転換率15%、Membership継続率60%、NPS 70以上）→ 東京出店の意思決定</li>
-            <li>データレジストリ構築・学術提携開始</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="schedule-row">
-        <div class="schedule-period">2027後半<br>〜 2028</div>
-        <div class="schedule-content">
-          <div class="schedule-phase">Phase 4 — 全国・国際</div>
-          <div class="schedule-title">全国・国際展開フェーズ</div>
-          <ul class="schedule-items">
-            <li>東京出店（都心旗艦）</li>
-            <li>大阪・名古屋・福岡等 全国主要都市への展開</li>
-            <li>シンガポール：医療パートナー＋Kenko連携による展開</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <!-- FOLLOW-UP -->
+  <div class="action-section">
+    <div class="action-section-title">フォローアップタスク</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:200px;">タスク</th>
+          <th>内容</th>
+          <th style="width:120px;">担当</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="task-title">クリニック思想・指針の決定</td>
+          <td>クリニックで進めていくべき思想や考え方について、五つの案を読み、どれを採用するか決定し、意見をフィードバックする。</td>
+          <td class="assignee">柳澤先生</td>
+        </tr>
+        <tr>
+          <td class="task-title">検査項目リスト案へのフィードバック</td>
+          <td>たたき台として提示された検査項目リストについて、内容の是非や追加・修正点をフィードバックする。</td>
+          <td class="assignee">柳澤先生</td>
+        </tr>
+        <tr>
+          <td class="task-title">ロンジェビティプログラム設計</td>
+          <td>ロンジェビティプログラムの栄養介入や骨格設計について、現状の知見をもとに相談・提案をまとめる。</td>
+          <td class="assignee">柳澤先生</td>
+        </tr>
+        <tr>
+          <td class="task-title">既存プロトコルの棚卸し</td>
+          <td>鎌倉クリニックや点滴医療研究会で使用している既存プロトコルのうち、今回の新クリニックに取り入れるべきものをピックアップして共有する。</td>
+          <td class="assignee">柳澤先生</td>
+        </tr>
+        <tr>
+          <td class="task-title">院内ラボ設計の検討</td>
+          <td>院内にラボを設置する場合の必要な広さや必要人員、設備について検討し、内装設計に反映できるようイメージをまとめる。</td>
+          <td class="assignee">松村先生</td>
+        </tr>
+        <tr>
+          <td class="task-title">海外検査・料金情報の調査</td>
+          <td>海外（特に台湾やギリシャ等）で実施されている検査や治療介入の内容と料金について調査し、競合や自院での導入可否を検討する。</td>
+          <td class="assignee">太田先生、Charles</td>
+        </tr>
+        <tr>
+          <td class="task-title">台湾クリニック現状整理</td>
+          <td>台北の日本元気クリニックの現状（広さ、設備、スタッフ、患者数、提供メニュー等）を整理し、日本と共通・独自でできることをまとめる。</td>
+          <td class="assignee">Charles</td>
+        </tr>
+        <tr>
+          <td class="task-title">台湾規制・手続きの確認</td>
+          <td>台湾における医療規制や手続きについて、今回の新クリニックで実施可能なこと・不可能なことを整理し、情報をリサーチしてまとめる。</td>
+          <td class="assignee">Charles、坂端宏治</td>
+        </tr>
+        <tr>
+          <td class="task-title">台湾クリニックの改善点整理</td>
+          <td>現在の台湾クリニックで直すべき点や変更したい点、今後取り組みたい新メニューや料金体系についてまとめて提案する。</td>
+          <td class="assignee">Charles</td>
+        </tr>
+        <tr>
+          <td class="task-title">世界の理想的クリニック事例リサーチ</td>
+          <td>日本国内外の理想的なクリニック事例をリサーチし、次回会議で共有できるよう資料をまとめる。</td>
+          <td class="assignee">Takayuki</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- NEXT MEETING -->
-  <!-- ══════════════════════════════════════ -->
-  <div class="next-meeting">
-    <div>
-      <div class="nm-label">次回MTG</div>
-      <div class="nm-value">2026年 5月中旬（日程調整中）</div>
-      <div class="nm-note">各先生のアクションアイテム提出確認後に日程を確定。坂端宏治より連絡。</div>
-    </div>
-    <div style="height:40px;width:1px;background:rgba(255,255,255,0.1);flex-shrink:0;"></div>
-    <div>
-      <div class="nm-label">次回MTGの主要議題</div>
-      <div style="font-size:.82rem;color:rgba(255,255,255,0.65);line-height:1.9;margin-top:.3rem;">
-        世界12施設 事例研究の共有<br>
-        検査項目リスト・プロトコル骨格の確認<br>
-        台湾クリニック現状と改善案の議論<br>
-        施設ゾーニング案のレビュー
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── FOOTER ─── -->
   <div class="doc-footer">
-    <div class="footer-brand">y Clinic — Future Health by SPIC</div>
-    <div class="footer-meta">
-      Doc. #001 — 第1回キックオフMTG議事録<br>
-      2026年4月13日 作成 · 株式会社スピック<br>
-      Confidential — Internal Use Only
-    </div>
+    y Clinic — Future Health by SPIC &nbsp;·&nbsp; キックオフMTG議事録 2026.04.13 &nbsp;·&nbsp; Confidential
   </div>
 
-</div><!-- /page -->
-
+</div>
 </body>
 </html>
