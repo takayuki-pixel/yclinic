@@ -8,188 +8,75 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy: #0F1F3D;
-  --navy-mid: #1B3160;
-  --accent: #2B5BA8;
-  --gold: #B08D4A;
-  --gold-light: #D4AF70;
-  --bg: #F8F6F1;
-  --white: #FFFFFF;
-  --text: #1A1A2E;
-  --text-mid: #3D3D5C;
-  --text-muted: #6B6B8A;
-  --border: rgba(15,31,61,0.12);
-}
+:root{--navy:#0F1F3D;--navy-mid:#1B3160;--accent:#2B5BA8;--gold:#B08D4A;--gold-light:#D4AF70;--bg:#F8F6F1;--white:#FFFFFF;--text:#1A1A2E;--text-mid:#3D3D5C;--text-muted:#6B6B8A;--border:rgba(15,31,61,0.12);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Noto Sans JP','Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-
-/* language */
 .t-en,.t-zh{display:none;}
 body.lang-en .t-ja{display:none;}body.lang-en .t-en{display:inherit;}
 body.lang-zh .t-ja{display:none;}body.lang-zh .t-zh{display:inherit;}
 body.lang-en .t-zh{display:none;}body.lang-zh .t-en{display:none;}
-
-/* lock screen */
-#lock-screen{
-  position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;
-  z-index:9999;background:var(--navy);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Noto Sans JP',sans-serif;
-}
-#lock-box{
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);
-  border-radius:14px;padding:48px 52px;width:340px;text-align:center;
-}
-#lock-logo{font-family:'DM Serif Display',serif;font-size:42px;color:#fff;margin-bottom:4px;letter-spacing:-0.01em;}
+#lock-screen{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;z-index:9999;background:var(--navy);display:flex;align-items:center;justify-content:center;}
+#lock-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:48px 52px;width:340px;text-align:center;}
+#lock-logo{font-family:'DM Serif Display',serif;font-size:42px;color:#fff;margin-bottom:4px;}
 #lock-logo span{color:#D4AF70;}
 #lock-sub{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:36px;}
-#lock-label{font-size:12px;color:rgba(255,255,255,0.5);text-align:left;margin-bottom:8px;letter-spacing:0.06em;}
-#lock-input{
-  width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);
-  border-radius:6px;padding:12px 14px;font-size:15px;color:#fff;letter-spacing:0.12em;
-  outline:none;margin-bottom:14px;font-family:'Noto Sans JP',sans-serif;box-sizing:border-box;
-  transition:border-color .2s;
-}
+#lock-label{font-size:12px;color:rgba(255,255,255,0.5);text-align:left;margin-bottom:8px;}
+#lock-input{width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:12px 14px;font-size:15px;color:#fff;letter-spacing:0.12em;outline:none;margin-bottom:14px;box-sizing:border-box;transition:border-color .2s;}
 #lock-input:focus{border-color:#D4AF70;}
 #lock-input.error{border-color:#E24B4A;animation:shake .3s;}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-#lock-btn{
-  width:100%;background:#D4AF70;color:#0F1F3D;border:none;border-radius:6px;
-  padding:12px;font-size:14px;font-weight:700;cursor:pointer;
-  font-family:'Noto Sans JP',sans-serif;letter-spacing:0.06em;transition:opacity .15s;
-}
+#lock-btn{width:100%;background:#D4AF70;color:#0F1F3D;border:none;border-radius:6px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.06em;transition:opacity .15s;}
 #lock-btn:hover{opacity:0.88;}
 #lock-error{font-size:12px;color:#F09595;margin-top:10px;min-height:16px;}
 #lock-hint{font-size:11px;color:rgba(255,255,255,0.2);margin-top:28px;}
-
-/* top bar */
-.topbar{
-  background:var(--navy);display:flex;align-items:center;
-  justify-content:space-between;padding:10px 32px;
-  position:sticky;top:0;z-index:100;
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
-.topbar-left{font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);letter-spacing:0.04em;}
+.topbar{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:10px 32px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.08);}
+.topbar-left{font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);}
 .topbar-left span{color:var(--gold-light);}
 .lang-btns{display:flex;gap:4px;}
-.lang-btn{
-  padding:5px 13px;font-size:12px;font-weight:500;
-  border:1px solid rgba(255,255,255,0.2);background:transparent;
-  color:rgba(255,255,255,0.5);border-radius:3px;cursor:pointer;
-  font-family:'Noto Sans JP',sans-serif;transition:all .15s;
-}
+.lang-btn{padding:5px 13px;font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.5);border-radius:3px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s;}
 .lang-btn:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.85);}
 .lang-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700;}
-
-/* hero */
-.hero{
-  background:var(--navy);padding:56px 40px 48px;
-  position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;top:-60px;right:-40px;
-  width:280px;height:280px;border:1px solid rgba(255,255,255,0.05);border-radius:50%;
-}
-.hero::after{
-  content:'';position:absolute;bottom:-30px;right:80px;
-  width:140px;height:140px;border:1px solid rgba(176,141,74,0.15);border-radius:50%;
-}
+.logout-btn{background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.45);border-radius:4px;padding:4px 12px;font-size:11px;cursor:pointer;margin-left:12px;transition:all .15s;}
+.logout-btn:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);}
+.hero{background:var(--navy);padding:56px 40px 48px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;right:-40px;width:280px;height:280px;border:1px solid rgba(255,255,255,0.05);border-radius:50%;}
+.hero::after{content:'';position:absolute;bottom:-30px;right:80px;width:140px;height:140px;border:1px solid rgba(176,141,74,0.15);border-radius:50%;}
 .hero-inner{max-width:860px;margin:0 auto;}
 .hero-eyebrow{font-size:11px;letter-spacing:0.16em;color:var(--gold-light);text-transform:uppercase;margin-bottom:14px;}
-.hero-title{font-family:'DM Serif Display',serif;font-size:52px;color:#fff;line-height:1;letter-spacing:-0.01em;margin-bottom:12px;}
+.hero-title{font-family:'DM Serif Display',serif;font-size:52px;color:#fff;line-height:1;margin-bottom:12px;}
 .hero-title span{color:var(--gold-light);}
-.hero-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:0;}
-.hero-count{
-  display:inline-flex;align-items:center;gap:8px;
-  margin-top:20px;background:rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.12);border-radius:20px;
-  padding:5px 16px;font-size:12px;color:rgba(255,255,255,0.6);
-}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.45);}
+.hero-count{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:5px 16px;font-size:12px;color:rgba(255,255,255,0.6);}
 .hero-count strong{color:var(--gold-light);font-size:15px;}
-
-/* cards */
 .main{max-width:860px;margin:0 auto;padding:40px 40px 80px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
-.card{
-  background:var(--white);border:1px solid var(--border);border-radius:10px;
-  padding:20px;text-decoration:none;color:inherit;
-  display:flex;flex-direction:column;gap:8px;
-  transition:transform .15s,box-shadow .15s;
-  cursor:pointer;position:relative;
-}
+.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:20px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;transition:transform .15s,box-shadow .15s;cursor:pointer;position:relative;}
 .card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(15,31,61,0.1);}
-.card-badge{
-  position:absolute;top:12px;right:12px;
-  background:var(--gold);color:var(--navy);
-  font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;
-  letter-spacing:0.06em;
-}
-.card-cat{
-  display:inline-block;font-size:11px;font-weight:700;
-  padding:2px 9px;border-radius:3px;letter-spacing:0.06em;
-  width:fit-content;
-}
+.card-badge{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;}
+.card-cat{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:3px;width:fit-content;}
 .card-title{font-size:16px;font-weight:700;color:var(--navy);font-family:'Noto Serif JP',serif;line-height:1.5;}
 .card-desc{font-size:12px;color:var(--text-muted);line-height:1.6;flex:1;}
 .card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:4px;padding-top:10px;border-top:1px solid var(--border);}
-.card-date{font-size:11px;color:var(--text-muted);letter-spacing:0.04em;}
+.card-date{font-size:11px;color:var(--text-muted);}
 .card-arrow{font-size:14px;color:var(--accent);}
-
-.empty{
-  text-align:center;padding:60px 20px;
-  font-size:14px;color:var(--text-muted);
-}
-
-/* logout */
-.logout-btn{
-  background:none;border:1px solid rgba(255,255,255,0.2);
-  color:rgba(255,255,255,0.45);border-radius:4px;
-  padding:4px 12px;font-size:11px;cursor:pointer;
-  font-family:'Noto Sans JP',sans-serif;
-  transition:all .15s;margin-left:12px;
-}
-.logout-btn:hover{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);}
+.empty{text-align:center;padding:60px;font-size:14px;color:var(--text-muted);}
 </style>
 </head>
 <body class="lang-ja">
-
-<!-- lock screen -->
 <div id="lock-screen">
   <div id="lock-box">
     <div id="lock-logo">Project <span>y</span>Clinic</div>
     <div id="lock-sub">SPIC | Confidential</div>
-    <div id="lock-label">
-      <span class="t-ja">パスワード</span>
-      <span class="t-en">Password</span>
-      <span class="t-zh">密碼</span>
-    </div>
-    <input id="lock-input" type="password" placeholder="••••••••"
-      onkeydown="if(event.key==='Enter')checkPassword()" autocomplete="off">
-    <button id="lock-btn" onclick="checkPassword()">
-      <span class="t-ja">入室する</span>
-      <span class="t-en">Enter</span>
-      <span class="t-zh">進入</span>
-    </button>
+    <div id="lock-label"><span class="t-ja">パスワード</span><span class="t-en">Password</span><span class="t-zh">密碼</span></div>
+    <input id="lock-input" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkPassword()" autocomplete="off">
+    <button id="lock-btn" onclick="checkPassword()"><span class="t-ja">入室する</span><span class="t-en">Enter</span><span class="t-zh">進入</span></button>
     <div id="lock-error"></div>
-    <div id="lock-hint">
-      <span class="t-ja">アクセス権のある方のみ</span>
-      <span class="t-en">Authorized access only</span>
-      <span class="t-zh">僅限授權人員</span>
-    </div>
+    <div id="lock-hint"><span class="t-ja">アクセス権のある方のみ</span><span class="t-en">Authorized access only</span><span class="t-zh">僅限授權人員</span></div>
   </div>
 </div>
-
-<!-- top bar -->
 <div class="topbar">
-  <div class="topbar-left">
-    <span>Project yClinic</span>
-    &nbsp;|&nbsp; SPIC Confidential
-    <button class="logout-btn" onclick="logout()">
-      <span class="t-ja">ログアウト</span>
-      <span class="t-en">Logout</span>
-      <span class="t-zh">登出</span>
-    </button>
+  <div class="topbar-left"><span>Project yClinic</span> &nbsp;|&nbsp; SPIC Confidential
+    <button class="logout-btn" onclick="logout()"><span class="t-ja">ログアウト</span><span class="t-en">Logout</span><span class="t-zh">登出</span></button>
   </div>
   <div class="lang-btns">
     <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
@@ -197,32 +84,16 @@ body.lang-en .t-zh{display:none;}body.lang-zh .t-en{display:none;}
     <button class="lang-btn" onclick="setLang('zh')">繁體中文</button>
   </div>
 </div>
-
-<!-- hero -->
 <div class="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow">Project yClinic | Document Hub</p>
+    <p class="hero-eyebrow">Project yClinic | Document Portal</p>
     <h1 class="hero-title">Project <span>y</span>Clinic</h1>
-    <p class="hero-sub">
-      <span class="t-ja">関係者限定ドキュメントポータル</span>
-      <span class="t-en">Authorized personnel only — Document Portal</span>
-      <span class="t-zh">限授權人員閱覽 — 文件入口</span>
-    </p>
-    <div class="hero-count">
-      <strong>1</strong>
-      <span class="t-ja">件のドキュメント</span>
-      <span class="t-en">documents available</span>
-      <span class="t-zh">份文件</span>
-    </div>
+    <p class="hero-sub"><span class="t-ja">関係者限定ドキュメントポータル</span><span class="t-en">Authorized personnel only</span><span class="t-zh">限授權人員閱覽</span></p>
+    <div class="hero-count"><strong>1</strong>&nbsp;<span class="t-ja">件のドキュメント</span><span class="t-en">documents</span><span class="t-zh">份文件</span></div>
   </div>
 </div>
-
-<!-- cards -->
-<div class="main">
-  <div class="grid">
-    
-    <a class="card" href="kickoff.html" onclick="return goPage(this, event)">
-      <span class="card-badge">最新</span>
+<div class="main"><div class="grid">
+<a class="card" href="kickoff.html" onclick="return goPage(this,event)"><span class="card-badge">最新</span>
       <div class="card-cat t-ja" style="background:#2B5BA820;color:#2B5BA8;">キックオフ</div>
       <div class="card-cat t-en" style="background:#2B5BA820;color:#2B5BA8;">Kickoff</div>
       <div class="card-cat t-zh" style="background:#2B5BA820;color:#2B5BA8;">啟動</div>
@@ -235,62 +106,15 @@ body.lang-en .t-zh{display:none;}body.lang-zh .t-en{display:none;}
       <div class="card-foot">
         <span class="card-date">2026.04.13</span>
         <span class="card-arrow">→</span>
-      </div>
-    </a>
-  </div>
-  
-</div>
-
+      </div></a>
+</div></div>
 <script>
-const PASS = 'spic2026';
-const SK = 'yclinic_auth';
-
-function checkPassword() {
-  const input = document.getElementById('lock-input');
-  const err = document.getElementById('lock-error');
-  if (input.value === PASS) {
-    sessionStorage.setItem(SK, '1');
-    document.getElementById('lock-screen').style.display = 'none';
-    document.body.style.overflow = '';
-  } else {
-    input.classList.add('error');
-    err.textContent = 'パスワードが正しくありません / Incorrect password';
-    input.value = '';
-    setTimeout(() => input.classList.remove('error'), 400);
-  }
-}
-
-function logout() {
-  sessionStorage.removeItem(SK);
-  document.getElementById('lock-screen').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  document.getElementById('lock-input').value = '';
-  document.getElementById('lock-error').textContent = '';
-}
-
-function goPage(el, e) {
-  e.preventDefault();
-  sessionStorage.setItem(SK + '_pass', PASS);
-  window.location.href = el.getAttribute('href');
-  return false;
-}
-
-function setLang(lang) {
-  document.body.className = 'lang-' + lang;
-  document.querySelectorAll('.lang-btn').forEach(function(btn, i) {
-    btn.classList.toggle('active', ['ja','en','zh'][i] === lang);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  if (sessionStorage.getItem(SK) === '1') {
-    document.getElementById('lock-screen').style.display = 'none';
-    document.body.style.overflow = '';
-  } else {
-    document.body.style.overflow = 'hidden';
-    document.getElementById('lock-input').focus();
-  }
-});
+const PASS='spic2026',SK='yclinic_auth';
+function checkPassword(){const inp=document.getElementById('lock-input'),err=document.getElementById('lock-error');if(inp.value===PASS){sessionStorage.setItem(SK,'1');document.getElementById('lock-screen').style.display='none';document.body.style.overflow='';}else{inp.classList.add('error');err.textContent='パスワードが正しくありません / Incorrect password';inp.value='';setTimeout(()=>inp.classList.remove('error'),400);}}
+function logout(){sessionStorage.removeItem(SK);document.getElementById('lock-screen').style.display='flex';document.body.style.overflow='hidden';document.getElementById('lock-input').value='';document.getElementById('lock-error').textContent='';}
+function goPage(el,e){e.preventDefault();sessionStorage.setItem(SK+'_pass',PASS);window.location.href=el.getAttribute('href');return false;}
+function setLang(lang){document.body.className='lang-'+lang;document.querySelectorAll('.lang-btn').forEach(function(b,i){b.classList.toggle('active',['ja','en','zh'][i]===lang);});}
+document.addEventListener('DOMContentLoaded',function(){if(sessionStorage.getItem(SK)==='1'){document.getElementById('lock-screen').style.display='none';document.body.style.overflow='';}else{document.body.style.overflow='hidden';document.getElementById('lock-input').focus();}});
 </script>
 </body>
 </html>
