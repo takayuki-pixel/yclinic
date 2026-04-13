@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>yClinic — キックオフ計画書 2026.04.13</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0F1F3D;
+  --navy-mid: #1B3160;
+  --accent: #2B5BA8;
+  --gold: #B08D4A;
+  --gold-light: #D4AF70;
+  --bg: #F8F6F1;
+  --bg2: #EEEBE4;
+  --white: #FFFFFF;
+  --text: #1A1A2E;
+  --text-mid: #3D3D5C;
+  --text-muted: #6B6B8A;
+  --border: rgba(15,31,61,0.12);
+  --border-strong: rgba(15,31,61,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans JP', 'Noto Sans TC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ── Language switching ──────────────────── */
+.t-en, .t-zh { display: none; }
+body.lang-en .t-ja { display: none; }
+body.lang-en .t-en { display: inherit; }
+body.lang-zh .t-ja { display: none; }
+body.lang-zh .t-zh { display: inherit; }
+body.lang-en .t-zh { display: none; }
+body.lang-zh .t-en { display: none; }
+
+
+.av-photo {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── Lang switcher bar ───────────────────── */
+.lang-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.lang-project {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.08em;
+}
+.lang-project strong { color: var(--gold-light); font-weight: 500; }
+.lang-btns { display: flex; gap: 4px; }
+.lang-btn {
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: rgba(255,255,255,0.55);
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: 0.04em;
+  transition: all .15s;
+}
+.lang-btn:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); }
+.lang-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 700; }
+
+.page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+/* ── Cover ───────────────────────────────── */
+.cover {
+  background: var(--navy);
+  color: var(--white);
+  padding: 64px 64px 52px;
+  margin: 0 -32px 56px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 320px; height: 320px;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; right: 60px;
+  width: 180px; height: 180px;
+  border: 1px solid rgba(176,141,74,0.18);
+  border-radius: 50%;
+}
+.cover-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+.codename-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(176,141,74,0.15);
+  border: 1px solid rgba(176,141,74,0.35);
+  border-radius: 4px;
+  padding: 5px 14px 5px 10px;
+  margin-bottom: 18px;
+}
+.codename-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 700;
+  padding-right: 10px;
+  border-right: 1px solid rgba(176,141,74,0.3);
+}
+.codename-value { font-size: 13px; color: var(--white); font-weight: 500; }
+.cover-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 68px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.cover-title span { color: var(--gold-light); }
+.cover-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.name-tbd {
+  background: rgba(255,255,255,0.08);
+  border: 1px dashed rgba(255,255,255,0.25);
+  border-radius: 3px;
+  padding: 2px 10px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.06em;
+}
+.cover-headline {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.85);
+  max-width: 520px;
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.cover-meta {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+.cover-meta-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+.cover-meta-value {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ── Sections ────────────────────────────── */
+.section { margin-bottom: 64px; }
+.section-num {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.section-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--navy);
+}
+.subsection-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy-mid);
+  margin: 28px 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.subsection-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px; height: 16px;
+  background: var(--gold);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Shibata message ─────────────────────── */
+.shibata-wrap {
+  background: var(--navy);
+  border-radius: 10px;
+  padding: 36px 40px;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.shibata-wrap::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 160px; height: 160px;
+  border: 1px solid rgba(176,141,74,0.15);
+  border-radius: 50%;
+}
+.shibata-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.shibata-avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(176,141,74,0.2);
+  border: 1px solid rgba(176,141,74,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+.shibata-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+.shibata-role {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+}
+.shibata-body {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  line-height: 2.0;
+  color: rgba(255,255,255,0.85);
+}
+.shibata-body p { margin-bottom: 14px; }
+.shibata-body p:last-child { margin-bottom: 0; }
+.shibata-sign {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: right;
+  font-size: 13px;
+  color: var(--gold-light);
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* ── Notes ───────────────────────────────── */
+.naming-note {
+  background: #FFF8EC;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 18px;
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.naming-note strong { color: var(--navy); }
+.tbd-inline {
+  display: inline-block;
+  background: #FFF4E0;
+  border: 1px dashed var(--gold);
+  border-radius: 3px;
+  padding: 1px 8px;
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.info-note {
+  background: #EBF0FA;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 18px;
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.info-note strong { color: var(--navy); }
+
+/* ── Tables ──────────────────────────────── */
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.tbl th {
+  background: var(--navy);
+  color: var(--white);
+  padding: 10px 14px;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.tbl td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-mid);
+  vertical-align: top;
+  line-height: 1.7;
+}
+.tbl tr:nth-child(even) td { background: var(--bg2); }
+.tbl .td-key { font-weight: 500; color: var(--navy-mid); width: 150px; white-space: nowrap; }
+.tbl .td-hl { font-weight: 700; color: var(--navy); font-family: 'Noto Serif JP', serif; font-size: 14px; }
+
+/* ── Menu table ──────────────────────────── */
+.menu-intro {
+  background: var(--bg2);
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  border: 1px dashed var(--border-strong);
+}
+.menu-intro strong { color: var(--navy); }
+.menu-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.menu-tbl th {
+  background: var(--navy);
+  color: var(--white);
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.menu-tbl td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.7;
+}
+.menu-tbl tr:nth-child(even) td { background: var(--bg2); }
+.menu-tbl tr:hover td { background: #EFF3FA; }
+.menu-name {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 14px;
+  display: block;
+  margin-bottom: 2px;
+}
+.menu-sub { font-size: 11px; color: var(--text-muted); }
+.menu-price {
+  font-weight: 700;
+  color: var(--navy-mid);
+  white-space: nowrap;
+  font-size: 13px;
+}
+.menu-price .period { font-size: 11px; color: var(--text-muted); font-weight: 400; }
+.menu-time { color: var(--text-muted); white-space: nowrap; font-size: 12px; }
+.menu-desc { font-size: 12px; color: var(--text-mid); line-height: 1.7; }
+.draft-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(176,141,74,0.12);
+  border: 1px solid rgba(176,141,74,0.35);
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+/* ── Agenda ──────────────────────────────── */
+.agenda-list { list-style: none; }
+.agenda-item {
+  display: flex;
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.agenda-item:last-child { border-bottom: none; }
+.agenda-part {
+  font-size: 11px;
+  color: var(--white);
+  background: var(--navy-mid);
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.agenda-theme { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.agenda-detail { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── Layer cards ─────────────────────────── */
+.layer-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-bottom: 20px; }
+.layer-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.layer-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+}
+.layer-card.c1::before { background: var(--accent); }
+.layer-card.c2::before { background: #2A8A5A; }
+.layer-card.c3::before { background: var(--gold); }
+.layer-card.c4::before { background: #7B4A9E; }
+.layer-num { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; letter-spacing: 0.06em; }
+.layer-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.layer-en { font-size: 11px; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+.layer-desc { font-size: 12px; color: var(--text-mid); line-height: 1.7; }
+
+/* ── Method ──────────────────────────────── */
+.method-intro {
+  background: var(--navy);
+  color: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  padding: 18px 22px;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+.method-intro strong { color: var(--gold-light); }
+.method-tabs { display: flex; gap: 4px; margin-bottom: 18px; border-bottom: 2px solid var(--border); }
+.method-tab {
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.method-tab:hover { color: var(--navy); }
+.method-tab.active { color: var(--navy); border-bottom-color: var(--gold); font-weight: 700; }
+.method-panel { display: none; }
+.method-panel.active { display: block; }
+.method-header {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+}
+.method-name { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.method-desc { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 6px; }
+.method-usage { font-size: 12px; color: var(--text-muted); }
+.method-usage span { color: var(--accent); font-weight: 500; }
+.principle-list { list-style: none; }
+.principle-item { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 8px; }
+.p-num { font-size: 10px; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; font-weight: 700; margin-bottom: 5px; }
+.p-core { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 7px; font-family: 'Noto Serif JP', serif; line-height: 1.5; }
+.p-why { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 8px; }
+.p-example { font-size: 12px; color: var(--text-muted); background: var(--bg); border-radius: 6px; padding: 8px 12px; line-height: 1.7; }
+.p-example::before { content: '具体例 │ '; font-weight: 700; color: var(--text-mid); }
+body.lang-en .p-example::before { content: 'Example │ '; }
+body.lang-zh .p-example::before { content: '具體例 │ '; }
+
+/* ── Action items ────────────────────────── */
+.doctor-section { margin-bottom: 36px; }
+.doctor-head {
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 8px 8px 0 0;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.doctor-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0;
+}
+.av-y { background: rgba(176,141,74,0.3); color: var(--gold-light); }
+.av-m { background: rgba(74,126,199,0.3); color: #7EB8FF; }
+.av-c { background: rgba(42,138,90,0.3); color: #7EDDB0; }
+.doctor-name { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+.doctor-role { font-size: 11px; color: rgba(255,255,255,0.5); }
+.doctor-deadline {
+  margin-left: auto;
+  font-size: 11px;
+  background: rgba(176,141,74,0.25);
+  color: var(--gold-light);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.action-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-top: none; }
+.action-table th {
+  background: #F0EDE4;
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 7px 14px;
+  text-align: left;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+.action-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.7; }
+.action-table tr:last-child td { border-bottom: none; }
+.action-table tr:nth-child(even) td { background: #FDFCF8; }
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.tag-p { background: #1E5C38; color: #A8E6C4; }
+.tag-m { background: #1A3C7A; color: #A8C8FF; }
+.tag-r { background: #5C3A00; color: #F0C870; }
+.at-task { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.at-detail { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── Structure ───────────────────────────── */
+.struct-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.struct-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.struct-card.katamine { border-color: var(--accent); background: #EBF0FA; grid-column: 1/-1; }
+.struct-card.spic-team { background: var(--bg); border: 1px dashed var(--border-strong); grid-column: 1/-1; }
+.sc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.sc-av {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.sc-av-y { background: rgba(176,141,74,0.15); color: var(--gold); border: 1px solid rgba(176,141,74,0.3); }
+.sc-av-m { background: rgba(43,91,168,0.1); color: var(--accent); border: 1px solid rgba(43,91,168,0.25); }
+.sc-av-c { background: rgba(42,138,90,0.1); color: #2A8A5A; border: 1px solid rgba(42,138,90,0.25); }
+.sc-av-k { background: var(--accent); color: var(--white); }
+.sc-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.sc-role { font-size: 11px; color: var(--text-muted); }
+.sc-tasks { list-style: none; border-top: 1px solid var(--border); padding-top: 8px; }
+.sc-tasks li { font-size: 12px; color: var(--text-mid); padding: 3px 0; border-bottom: 1px solid var(--border); line-height: 1.6; }
+.sc-tasks li:last-child { border-bottom: none; }
+.sc-tasks li::before { content: '— '; color: var(--text-muted); }
+.spic-sub-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; padding-top: 12px; border-top: 1px dashed var(--border-strong); margin-top: 12px; }
+.spic-sub-label { font-size: 12px; font-weight: 700; color: var(--navy-mid); margin-bottom: 3px; }
+.spic-sub-desc { font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── Schedule ────────────────────────────── */
+.phase-item { display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+.phase-item:last-child { border-bottom: none; }
+.phase-badge {
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-align: center;
+  min-width: 82px;
+}
+.phase-badge.highlight { background: var(--gold); color: var(--navy); }
+.phase-period { font-size: 11px; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 3px; }
+.phase-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+.phase-items { font-size: 12px; color: var(--text-mid); line-height: 1.8; }
+
+/* ── NG ──────────────────────────────────── */
+.ng-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
+.ng-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid #CC3333; border-radius: 6px; padding: 14px; }
+.ng-num { font-size: 20px; font-weight: 700; color: #CC3333; opacity: 0.2; margin-bottom: 5px; }
+.ng-title { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 5px; line-height: 1.4; }
+.ng-reason { font-size: 11px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── Footer ──────────────────────────────── */
+.footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.45);
+  padding: 28px 64px;
+  margin: 56px -32px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+.footer-quote { font-family: 'Noto Serif JP', serif; font-size: 14px; color: rgba(255,255,255,0.72); font-style: italic; }
+
+@media print {
+  .lang-bar { display: none; }
+  .method-panel { display: block !important; }
+  .method-tabs { display: none; }
+  .t-en, .t-zh { display: none !important; }
+  .t-ja { display: inherit !important; }
+}
+</style>
+<style>
+/* ── Password lock screen ─────────────────── */
+#lock-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: #0F1F3D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+#lock-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 48px 52px;
+  width: 340px;
+  text-align: center;
+}
+#lock-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 42px;
+  color: #fff;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+#lock-logo span { color: #D4AF70; }
+#lock-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+#lock-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-align: left;
+  margin-bottom: 8px;
+  letter-spacing: 0.06em;
+}
+#lock-input {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 0.12em;
+  outline: none;
+  margin-bottom: 14px;
+  font-family: 'Noto Sans JP', sans-serif;
+  box-sizing: border-box;
+  transition: border-color .2s;
+}
+#lock-input:focus { border-color: #D4AF70; }
+#lock-input.error { border-color: #E24B4A; animation: shake .3s; }
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-6px)}
+  75%{transform:translateX(6px)}
+}
+#lock-btn {
+  width: 100%;
+  background: #D4AF70;
+  color: #0F1F3D;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: 0.06em;
+  transition: opacity .15s;
+}
+#lock-btn:hover { opacity: 0.88; }
+#lock-error {
+  font-size: 12px;
+  color: #F09595;
+  margin-top: 10px;
+  min-height: 16px;
+}
+#lock-hint {
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  margin-top: 28px;
+}
+</style>
+<script>
+// ── Password configuration ────────────────
+// Change this value to set your password
+const CORRECT_PASSWORD = 'spic2026';
+
+// Session key (stays unlocked while browser tab is open)
+const SESSION_KEY = 'yclinic_auth';
+
+function checkPassword() {
+  const input = document.getElementById('lock-input');
+  const err   = document.getElementById('lock-error');
+  if (input.value === CORRECT_PASSWORD) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('lock-screen').style.display = 'none';
+    document.body.style.overflow = '';
+  } else {
+    input.classList.add('error');
+    err.textContent = 'パスワードが正しくありません。 / Incorrect password.';
+    input.value = '';
+    setTimeout(() => input.classList.remove('error'), 400);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    document.getElementById('lock-screen').style.display = 'none';
+    document.body.style.overflow = '';
+  } else {
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lock-input').focus();
+  }
+});
+</script>
+</head>
+<body class="lang-ja">
+
+<!-- ══ LOCK SCREEN ═══════════════════════ -->
+<div id="lock-screen">
+  <div id="lock-box">
+    <div id="lock-logo">Project <span>y</span>Clinic</div>
+    <div id="lock-sub">Confidential ｜ SPIC</div>
+    <div id="lock-label">パスワード / Password</div>
+    <input
+      id="lock-input"
+      type="password"
+      placeholder="••••••••"
+      onkeydown="if(event.key==='Enter')checkPassword()"
+      autocomplete="off"
+    >
+    <button id="lock-btn" onclick="checkPassword()">
+      入室する &nbsp;/&nbsp; Enter
+    </button>
+    <div id="lock-error"></div>
+    <div id="lock-hint">アクセス権のある方のみ / Authorized access only</div>
+  </div>
+</div>
+
+<!-- ══ LANG BAR ══════════════════════════ -->
+<div class="lang-bar">
+  <span class="lang-project">
+    <strong>Project yClinic</strong> &nbsp;|&nbsp; SPIC Kickoff 2026.04.13 &nbsp;|&nbsp; Confidential
+  </span>
+  <div class="lang-btns">
+    <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+    <button class="lang-btn" onclick="setLang('zh')">繁體中文</button>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══ COVER ════════════════════════════ -->
+<div class="cover">
+  <p class="cover-eyebrow">
+    <span class="t-ja">Project yClinic ｜ SPIC ｜ Confidential</span>
+    <span class="t-en">Project yClinic ｜ SPIC ｜ Confidential</span>
+    <span class="t-zh">Project yClinic ｜ SPIC ｜ Confidential</span>
+  </p>
+  <div class="codename-banner">
+    <span class="codename-label">
+      <span class="t-ja">コードネーム</span>
+      <span class="t-en">Codename</span>
+      <span class="t-zh">代號</span>
+    </span>
+    <span class="codename-value">yClinic</span>
+  </div>
+  <h1 class="cover-title">Project <span>y</span>Clinic</h1>
+  <p class="cover-sub">
+    <span class="t-ja">正式名称は本日の討議にて決定</span>
+    <span class="t-en">Official name to be decided in today's discussion</span>
+    <span class="t-zh">正式名稱將於本日討論中決定</span>
+    <span class="name-tbd">
+      <span class="t-ja">正式名称 TBD</span>
+      <span class="t-en">Official Name TBD</span>
+      <span class="t-zh">正式名稱 TBD</span>
+    </span>
+  </p>
+  <p class="cover-headline">
+    <span class="t-ja">クリニック事業 キックオフ計画書<br>横浜スカイビル25F 開業 × 鎌倉・台北リブランディング</span>
+    <span class="t-en">Clinic Business Kickoff Document<br>Yokohama Sky Building 25F Launch × Kamakura &amp; Taipei Rebranding</span>
+    <span class="t-zh">診所事業啟動計畫書<br>橫濱Sky Building 25F 開幕 × 鎌倉・台北品牌重塑</span>
+  </p>
+  <div class="cover-meta">
+    <div>
+      <p class="cover-meta-label"><span class="t-ja">日付</span><span class="t-en">Date</span><span class="t-zh">日期</span></p>
+      <p class="cover-meta-value">2026年4月13日</p>
+    </div>
+    <div>
+      <p class="cover-meta-label"><span class="t-ja">出席者</span><span class="t-en">Attendees</span><span class="t-zh">出席者</span></p>
+      <p class="cover-meta-value">
+        <span class="t-ja">柳澤先生・松村先生・チャールズ先生・SPIC</span>
+        <span class="t-en">Dr. Yanagisawa, Dr. Matsumura, Dr. Charles, SPIC</span>
+        <span class="t-zh">柳澤先生・松村先生・查爾斯先生・SPIC</span>
+      </p>
+    </div>
+    <div>
+      <p class="cover-meta-label"><span class="t-ja">開業目標</span><span class="t-en">Opening Target</span><span class="t-zh">開幕目標</span></p>
+      <p class="cover-meta-value">
+        <span class="t-ja">2026年10月（横浜旗艦・鎌倉同時）</span>
+        <span class="t-en">October 2026 (Yokohama flagship + Kamakura simultaneous)</span>
+        <span class="t-zh">2026年10月（橫濱旗艦・鎌倉同時開幕）</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S00 SHIBATA MESSAGE ═══════════════ -->
+<div class="section">
+  <p class="section-num">
+    <span class="t-ja">Section 00</span>
+    <span class="t-en">Section 00</span>
+    <span class="t-zh">Section 00</span>
+  </p>
+  <h2 class="section-title">
+    <span class="t-ja">芝田崇行（株式会社スピック）― 想いと覚悟</span>
+    <span class="t-en">Takayuki Shibata (SPIC) — Vision & Conviction</span>
+    <span class="t-zh">芝田崇行（SPIC）― 初衷與決心</span>
+  </h2>
+
+  <div class="shibata-wrap">
+    <div class="shibata-head">
+      <div class="shibata-avatar">芝田</div>
+      <div>
+        <p class="shibata-name">
+          <span class="t-ja">芝田 崇行</span>
+          <span class="t-en">Takayuki Shibata</span>
+          <span class="t-zh">芝田 崇行</span>
+        </p>
+        <p class="shibata-role">
+          <span class="t-ja">株式会社スピック ｜ 代表取締役</span>
+          <span class="t-en">SPIC Corporation ｜ Representative Director</span>
+          <span class="t-zh">SPIC株式會社 ｜ 代表取締役</span>
+        </p>
+      </div>
+    </div>
+    <div class="shibata-body">
+
+      <div class="t-ja">
+        <p>私たちが今、構想しているのは、単に新しい医療施設をひとつつくる話ではありません。</p>
+        <p>柳澤先生が長年にわたり、臨床・教育・発信を通じて伝えてこられた医療の本質を、次の時代へ、そして国境を越えて未来へとつないでいくための拠点をつくる試みです。</p>
+        <p>病名だけを見る医療ではなく、人を全体として診る医療。検査値だけを追うのではなく、その人の栄養、生活、睡眠、ストレス、回復力まで含めて考える医療。そして、難しい医療を専門家の中だけに閉じ込めず、一般の人にも理解できる言葉で開いていく医療。それが、柳澤先生の医療の本質だったと、私たちは受け止めています。</p>
+        <p>病気になってから対処するだけでなく、病気になる前の変化を見つけ、身体の声を読み取り、検査・栄養・生活習慣・必要な医療介入を統合しながら、一人ひとりの未来の健康を設計していく医療——それが、これからの時代に本当に必要なものだと確信しています。</p>
+        <p>検査は、不安を煽るためではなく、理解を深めるために。栄養は、商品を売るためではなく、身体の土台を整えるために。医療は、治療だけでなく、未来を守るために。</p>
+        <p>SPICは前に出るつもりはありません。先生方の思想と臨床知を未来へつなぐための器を整える、それが私たちの役割です。看板をつくるのではなく、文化を残す。施設をつくるのではなく、次の時代の医療のあり方を育てる。その覚悟で、このプロジェクトに臨みます。</p>
+        <p>柳澤先生、松村先生、チャールズ先生——どうか、この構想の趣旨にご賛同いただき、診療思想・教育のあり方・未来へ受け継ぐべき医療の姿について、ご助言とお力添えを賜れましたら幸いです。</p>
+      </div>
+
+      <div class="t-en">
+        <p>What we are building is not simply a new medical facility.</p>
+        <p>It is an attempt to create a hub that carries the essence of the medicine Dr. Yanagisawa has transmitted through decades of clinical work, education, and communication — forward to the next generation, and across borders into the future.</p>
+        <p>Medicine that sees the whole person, not just the name of a disease. Medicine that considers nutrition, lifestyle, sleep, stress, and recovery — not just test values. Medicine that opens difficult knowledge in language ordinary people can understand, rather than enclosing it within specialists alone. That is how we understand the medicine Dr. Yanagisawa has always practised.</p>
+        <p>Not only responding after disease strikes — but detecting changes before it does, reading the body's signals, and integrating tests, nutrition, lifestyle, and medical intervention to design each individual's future health. That is the medicine we believe this age truly needs.</p>
+        <p>Tests: not to amplify anxiety, but to deepen understanding. Nutrition: not to sell products, but to build the body's foundation. Medicine: not only to treat, but to protect the future.</p>
+        <p>SPIC does not intend to step forward. Our role is to serve as the vessel that connects the philosophy and clinical knowledge of our doctors to what comes next. Not to build a signboard — but to preserve a culture. Not to build a facility — but to cultivate a new model of medicine for the age to come. That is the commitment with which we approach this project.</p>
+        <p>Dr. Yanagisawa, Dr. Matsumura, Dr. Charles — we sincerely hope you will share in this vision and offer your guidance on clinical philosophy, the future of medical education, and the shape of the medicine we wish to pass on.</p>
+      </div>
+
+      <div class="t-zh">
+        <p>我們現在構想的，並非單純建立一所新的醫療設施。</p>
+        <p>這是一項嘗試——打造一個場所，將柳澤先生數十年來透過臨床、教育與發信所傳遞的醫療本質，繼往開來，跨越國境，延續至未來。</p>
+        <p>不只看病名，而是整體診察一個人的醫療。不只追尋檢查數值，更將營養、生活、睡眠、壓力、恢復力納入考量的醫療。不將深奧的醫學知識封閉在專家之中，而是以一般人也能理解的語言敞開分享的醫療。這就是我們所理解的柳澤先生的醫療本質。</p>
+        <p>不只是在生病之後應對，而是在生病之前就察覺身體的變化，讀取身體的聲音，整合檢查、營養、生活習慣與必要的醫療介入，為每一個人設計未來的健康——這正是我們相信這個時代真正需要的醫療。</p>
+        <p>檢查：不是為了引發不安，而是為了加深理解。營養：不是為了販售商品，而是為了整頓身體的根基。醫療：不只是治療，更是為了守護未來。</p>
+        <p>SPIC不打算站在前台。我們的角色是整備一個容器，將先生方的思想與臨床知識連結至未來。不是製造招牌，而是留存文化。不是建設設施，而是培育下一個時代的醫療形態。懷抱這樣的決心，我們投身於這個專案。</p>
+        <p>柳澤先生、松村先生、查爾斯先生——衷心希望各位認同這份構想的宗旨，並就診療思想、教育方式，以及應傳承至未來的醫療形態，賜予指導與協助。</p>
+      </div>
+
+    </div>
+    <p class="shibata-sign">
+      <span class="t-ja">芝田 崇行 ｜ 株式会社スピック</span>
+      <span class="t-en">Takayuki Shibata ｜ SPIC Corporation</span>
+      <span class="t-zh">芝田 崇行 ｜ SPIC株式會社</span>
+    </p>
+  </div>
+</div>
+
+<!-- ══ S01 AGENDA ════════════════════════ -->
+<div class="section">
+  <p class="section-num">Section 01</p>
+  <h2 class="section-title">
+    <span class="t-ja">本日のアジェンダ</span>
+    <span class="t-en">Today's Agenda</span>
+    <span class="t-zh">本日議程</span>
+  </h2>
+  <ul class="agenda-list">
+    <li class="agenda-item">
+      <span class="agenda-part">Part 1</span>
+      <div>
+        <p class="agenda-theme"><span class="t-ja">yClinic（仮称）の思想・コンセプト共有</span><span class="t-en">yClinic Vision &amp; Concept Overview</span><span class="t-zh">yClinic（暫定）理念・概念說明</span></p>
+        <p class="agenda-detail"><span class="t-ja">SPICよりプロジェクトの本質・ブランド設計・サービス5層モデルを説明</span><span class="t-en">SPIC presents the project's essence, brand design, and 5-layer service model</span><span class="t-zh">由SPIC說明專案本質、品牌設計及5層服務模型</span></p>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-part">Part 2</span>
+      <div>
+        <p class="agenda-theme"><span class="t-ja">各先生の役割と期待することの確認</span><span class="t-en">Roles &amp; Expectations Alignment</span><span class="t-zh">各先生角色與期望確認</span></p>
+        <p class="agenda-detail"><span class="t-ja">担当領域・権限範囲・連携方法を合意。監修契約の書面化方針も共有</span><span class="t-en">Align on responsibilities, authority, and collaboration approach. Share documentation plan for supervision contracts</span><span class="t-zh">就負責領域、權限範圍及合作方式達成共識，並說明監修合約書面化方針</span></p>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-part">Part 3</span>
+      <div>
+        <p class="agenda-theme"><span class="t-ja">正式名称の討議・決定 ＋ yMethod洗練案</span><span class="t-en">Official Name Discussion &amp; yMethod Refinement</span><span class="t-zh">正式名稱討論・決定 ＋ yMethod精煉方向</span></p>
+        <p class="agenda-detail"><span class="t-ja">コードネーム「yClinic」をベースに正式ブランド名を討議・決定。yMethodの3つの方向性案を提示し、柳澤先生にご判断いただく</span><span class="t-en">Discuss and decide the official brand name based on the codename "yClinic". Present 3 direction options for yMethod for Dr. Yanagisawa's decision</span><span class="t-zh">以代號「yClinic」為基礎，討論並決定正式品牌名稱；提示yMethod三項方向，由柳澤先生裁定</span></p>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-part">Part 4</span>
+      <div>
+        <p class="agenda-theme"><span class="t-ja">スケジュール・マイルストーン確認</span><span class="t-en">Schedule &amp; Milestone Review</span><span class="t-zh">時程・里程碑確認</span></p>
+        <p class="agenda-detail"><span class="t-ja">Phase 0〜2の主要アクションと4月末提出締切を共有</span><span class="t-en">Share key actions for Phase 0–2 and end-of-April submission deadline</span><span class="t-zh">共享Phase 0〜2主要行動事項及4月底提交截止日期</span></p>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-part">Part 5</span>
+      <div>
+        <p class="agenda-theme"><span class="t-ja">初動アクション依頼・質疑・次回日程</span><span class="t-en">Action Items, Q&amp;A, Next Meeting</span><span class="t-zh">初動行動事項・問答・次次會議日程</span></p>
+        <p class="agenda-detail"><span class="t-ja">各先生へのリサーチ依頼を確認。次回定例MTG日程を決定</span><span class="t-en">Confirm research assignments for each doctor. Decide next regular meeting date</span><span class="t-zh">確認各先生研究任務，決定下次定期會議日期</span></p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- ══ S02 OVERVIEW ══════════════════════ -->
+<div class="section">
+  <p class="section-num">Section 02</p>
+  <h2 class="section-title">
+    <span class="t-ja">yClinic プロジェクト概要</span>
+    <span class="t-en">yClinic Project Overview</span>
+    <span class="t-zh">yClinic 專案概要</span>
+  </h2>
+
+  <div class="naming-note">
+    <span class="t-ja">「<strong>yClinic</strong>」はプロジェクトのコードネーム（作業名）です。<strong>正式なブランド名称は本日の討議にて皆様と決定</strong>します。以下「コードネーム」欄は討議結果を反映して更新予定です。</span>
+    <span class="t-en">"<strong>yClinic</strong>" is the project codename. The <strong>official brand name will be decided together in today's discussion</strong>. The "Codename" row below will be updated to reflect the outcome.</span>
+    <span class="t-zh">「<strong>yClinic</strong>」為本專案之代號（作業名稱）。<strong>正式品牌名稱將於本日討論中共同決定</strong>。下方「代號」欄位將依討論結果更新。</span>
+  </div>
+
+  <table class="tbl">
+    <tr>
+      <td class="td-key"><span class="t-ja">プロジェクトの本質</span><span class="t-en">Project Essence</span><span class="t-zh">專案本質</span></td>
+      <td class="td-hl"><span class="t-ja">予防医療・点滴療法・栄養医療の「標準（OS）」を定義するプロジェクト</span><span class="t-en">Defining the "standard (OS)" for preventive medicine, infusion therapy, and nutritional medicine</span><span class="t-zh">定義預防醫學・點滴療法・營養醫學「標準（OS）」的專案</span></td>
+    </tr>
+    <tr>
+      <td class="td-key"><span class="t-ja">コードネーム</span><span class="t-en">Codename</span><span class="t-zh">代號</span></td>
+      <td><strong>yClinic</strong> <span class="tbd-inline"><span class="t-ja">正式名称 TBD</span><span class="t-en">Official Name TBD</span><span class="t-zh">正式名稱 TBD</span></span><br><span style="font-size:12px;color:#6B6B8A"><span class="t-ja">「y」に込める意味（Yanagisawa / Your / Year-over-year / Why / Yokohama）は討議のたたき台として提示</span><span class="t-en">Meanings embedded in "y": Yanagisawa / Your / Year-over-year / Why / Yokohama — presented as a starting point for discussion</span><span class="t-zh">「y」所含之意涵（Yanagisawa / Your / Year-over-year / Why / Yokohama）作為討論起點提示</span></span></td>
+    </tr>
+    <tr>
+      <td class="td-key"><span class="t-ja">医療監修</span><span class="t-en">Medical Supervision</span><span class="t-zh">醫療監修</span></td>
+      <td><span class="t-ja">柳澤厚生医師（予防医療・栄養療法）</span><span class="t-en">Dr. Atsuo Yanagisawa (Preventive Medicine &amp; Nutritional Therapy)</span><span class="t-zh">柳澤厚生醫師（預防醫學・營養療法）</span></td>
+    </tr>
+    <tr>
+      <td class="td-key"><span class="t-ja">旗艦開業</span><span class="t-en">Flagship Opening</span><span class="t-zh">旗艦開幕</span></td>
+      <td><span class="t-ja">2026年10月　横浜スカイビル25階（約80坪）</span><span class="t-en">October 2026 — Yokohama Sky Building 25F (approx. 264 m²)</span><span class="t-zh">2026年10月　橫濱Sky Building 25樓（約80坪）</span></td>
+    </tr>
+    <tr>
+      <td class="td-key"><span class="t-ja">同時展開</span><span class="t-en">Simultaneous Launch</span><span class="t-zh">同步展開</span></td>
+      <td><span class="t-ja">鎌倉リブランディング（同時）・台北リニューアル（2027年前半）</span><span class="t-en">Kamakura rebranding (simultaneous) · Taipei renewal (H1 2027)</span><span class="t-zh">鎌倉品牌重塑（同步）・台北重新開幕（2027年上半年）</span></td>
+    </tr>
+    <tr>
+      <td class="td-key"><span class="t-ja">将来展開</span><span class="t-en">Future Expansion</span><span class="t-zh">未來展開</span></td>
+      <td><span class="t-ja">東京（2027後半）→ 全国主要都市・シンガポール（2028〜）</span><span class="t-en">Tokyo (H2 2027) → Major Japanese cities &amp; Singapore (2028–)</span><span class="t-zh">東京（2027下半年）→ 全國主要城市・新加坡（2028〜）</span></td>
+    </tr>
+  </table>
+
+  <div class="subsection-title"><span class="t-ja">4層の戦略構造</span><span class="t-en">4-Layer Strategic Structure</span><span class="t-zh">4層戰略架構</span></div>
+  <div class="layer-grid">
+    <div class="layer-card c1">
+      <p class="layer-num">Layer 01</p>
+      <p class="layer-name"><span class="t-ja">Flagship 診療</span><span class="t-en">Flagship — Clinical</span><span class="t-zh">Flagship 診療</span></p>
+      <p class="layer-en"><span class="t-ja">患者が来る場所</span><span class="t-en">Where patients come</span><span class="t-zh">患者就診之處</span></p>
+      <p class="layer-desc"><span class="t-ja">y Screen〜y Longevity Programを横浜旗艦で実証・確立</span><span class="t-en">yScreen through yLongevity Program proven and established at Yokohama flagship</span><span class="t-zh">於橫濱旗艦實證並確立yScreen〜yLongevity Program</span></p>
+    </div>
+    <div class="layer-card c2">
+      <p class="layer-num">Layer 02</p>
+      <p class="layer-name"><span class="t-ja">Institute 教育</span><span class="t-en">Institute — Education</span><span class="t-zh">Institute 教育</span></p>
+      <p class="layer-en"><span class="t-ja">医師が学ぶ場所</span><span class="t-en">Where physicians learn</span><span class="t-zh">醫師學習之處</span></p>
+      <p class="layer-desc"><span class="t-ja">yAcademyで柳澤先生の思想を各拠点の医師に継承</span><span class="t-en">yAcademy transmits Dr. Yanagisawa's philosophy to physicians at all sites</span><span class="t-zh">透過yAcademy將柳澤先生的思想傳承給各據點醫師</span></p>
+    </div>
+    <div class="layer-card c3">
+      <p class="layer-num">Layer 03</p>
+      <p class="layer-name"><span class="t-ja">Network 連携</span><span class="t-en">Network — Collaboration</span><span class="t-zh">Network 連結</span></p>
+      <p class="layer-en"><span class="t-ja">国際ネットワーク</span><span class="t-en">International network</span><span class="t-zh">國際網絡</span></p>
+      <p class="layer-desc"><span class="t-ja">鎌倉・台北・シンガポールへ拡張する国際クリニックネットワーク</span><span class="t-en">International clinic network expanding to Kamakura, Taipei, and Singapore</span><span class="t-zh">延伸至鎌倉、台北、新加坡的國際診所網絡</span></p>
+    </div>
+    <div class="layer-card c4">
+      <p class="layer-num">Layer 04</p>
+      <p class="layer-name"><span class="t-ja">Protocol 標準化</span><span class="t-en">Protocol — Standardization</span><span class="t-zh">Protocol 標準化</span></p>
+      <p class="layer-en"><span class="t-ja">再現可能な医療</span><span class="t-en">Reproducible medicine</span><span class="t-zh">可複製的醫療</span></p>
+      <p class="layer-desc"><span class="t-ja">誰が担っても同品質で再現できるプロトコルを設計・継承</span><span class="t-en">Protocols designed and transmitted so any practitioner can deliver consistent quality</span><span class="t-zh">設計並傳承任何醫師皆可以同等品質複製的醫療流程</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S03 yMETHOD ════════════════════════ -->
+<div class="section">
+  <p class="section-num">Section 03</p>
+  <h2 class="section-title">
+    <span class="t-ja">yMethod ― 洗練の方向性</span>
+    <span class="t-en">yMethod — Refinement Directions</span>
+    <span class="t-zh">yMethod ― 精煉方向</span>
+  </h2>
+  <div class="method-intro">
+    <span class="t-ja">現行の「yMethod」はオペレーション原則として正確だが、「医療哲学」として外に出るには言語がまだ硬い。以下<strong>3つの方向性案</strong>を提示します。<strong>どの言語感が柳澤先生の思想に最も近いか</strong>をご判断いただき、最終的な言葉は先生に決めていただきます。文書化・デザイン化の実作業はSPIC（片峰取締役統括）が担います。</span>
+    <span class="t-en">The current "yMethod" is operationally precise, but the language is still too rigid to stand as a <em>medical philosophy</em>. Three directional options are presented below. <strong>Dr. Yanagisawa will judge which language best reflects his philosophy</strong> and make the final determination. SPIC (under Director Katamine) will handle all documentation and design work.</span>
+    <span class="t-zh">現行的「yMethod」作為營運原則精確無誤，但作為「醫療哲學」對外呈現時，語言仍顯生硬。以下提示<strong>三項方向性方案</strong>，<strong>請柳澤先生判斷哪種語言最貼近其思想</strong>，最終措辭由先生決定。文書化・設計化等實際作業由SPIC（片峰取締役統籌）負責。</span>
+  </div>
+  <div class="method-tabs">
+    <button class="method-tab active" onclick="switchMethod(0)">
+      <span class="t-ja">方向性 A ― 問いの医学</span>
+      <span class="t-en">Direction A — Medicine of Questions</span>
+      <span class="t-zh">方向性 A ― 問詢的醫學</span>
+    </button>
+    <button class="method-tab" onclick="switchMethod(1)">
+      <span class="t-ja">方向性 B ― 5つの約束</span>
+      <span class="t-en">Direction B — 5 Promises</span>
+      <span class="t-zh">方向性 B ― 五項承諾</span>
+    </button>
+    <button class="method-tab" onclick="switchMethod(2)">
+      <span class="t-ja">方向性 C ― 循環の設計</span>
+      <span class="t-en">Direction C — Designing the Cycle</span>
+      <span class="t-zh">方向性 C ― 循環設計</span>
+    </button>
+  </div>
+
+  <!-- Panel A -->
+  <div id="mp-0" class="method-panel active">
+    <div class="method-header">
+      <p class="method-name"><span class="t-ja">方向性 A「問いの医学」</span><span class="t-en">Direction A: "Medicine of Questions"</span><span class="t-zh">方向性 A「問詢的醫學」</span></p>
+      <p class="method-desc"><span class="t-ja">y Clinicの核心にある「Why?」をそのまま原則の構造にする。すべての原則が「なぜ？」から始まる。</span><span class="t-en">The "Why?" at yClinic's core becomes the very structure of the principles. Every principle begins with a question.</span><span class="t-zh">將yClinic核心的「Why?」直接作為原則的結構，所有原則皆從「為何？」開始。</span></p>
+      <p class="method-usage"><span class="t-ja">向いている使い方：</span><span class="t-en">Best suited for: </span><span class="t-zh">適用場景：</span><span><span class="t-ja">対外発信・ブランドブック・学会発表</span><span class="t-en">External communications, brand book, academic presentations</span><span class="t-zh">對外發布・品牌手冊・學術發表</span></span></p>
+    </div>
+    <ul class="principle-list">
+      <li class="principle-item">
+        <p class="p-num">01</p>
+        <p class="p-core"><span class="t-ja">検査の前に、「なぜ」を問う</span><span class="t-en">Ask "why" before we test</span><span class="t-zh">檢查之前，先問「為何」</span></p>
+        <p class="p-why"><span class="t-ja">数値を集める前に、なぜ今この状態にあるのかを問う姿勢こそが医療の起点である。</span><span class="t-en">Before gathering numbers, asking why the body is in this state is the true starting point of medicine.</span><span class="t-zh">在收集數值之前，詢問「為何身體呈現這種狀態」才是醫療真正的起點。</span></p>
+        <p class="p-example"><span class="t-ja">問診・生活歴・栄養歴をデータの前に丁寧に聞く。検査は「問いへの答え探し」として設計する。</span><span class="t-en">Intake history, lifestyle, and nutritional history are taken carefully before data collection. Tests are designed as "searches for answers to the question."</span><span class="t-zh">在收集數據前，仔細詢問問診、生活史、營養史。將檢查設計為「尋找問題答案」的過程。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">02</p>
+        <p class="p-core"><span class="t-ja">なぜ届かないのかを、先に考える</span><span class="t-en">First, ask why it doesn't reach</span><span class="t-zh">先思考「為何無法到達」</span></p>
+        <p class="p-why"><span class="t-ja">栄養は「摂取量」ではなく「到達量」で語られるべきだ。吸収を前提に介入を設計する。</span><span class="t-en">Nutrition should be measured not by intake but by delivery. Interventions are designed with absorption as the premise.</span><span class="t-zh">營養應以「到達量」而非「攝取量」來衡量，以吸收為前提設計介入方案。</span></p>
+        <p class="p-example"><span class="t-ja">「何mgを飲むか」ではなく「何mgが実際に届くか」から逆算して処方する。Lypo-Cの設計思想と同じ。</span><span class="t-en">Prescribe by back-calculating "how many mg actually arrive" rather than "how many mg are taken." This mirrors Lypo-C's design philosophy.</span><span class="t-zh">從「實際到達多少mg」而非「服用多少mg」逆推處方，與Lypo-C的設計理念一致。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">03</p>
+        <p class="p-core"><span class="t-ja">なぜ良くなるのかを、患者と共有する</span><span class="t-en">Share with patients why they are improving</span><span class="t-zh">與患者共享「為何好轉」</span></p>
+        <p class="p-why"><span class="t-ja">ブラックボックスの改善は医療ではない。変化の根拠を患者が理解できる言語で説明する。</span><span class="t-en">Improvement inside a black box is not medicine. The rationale for change is explained in language the patient can understand.</span><span class="t-zh">黑盒子裡的改善不是醫療，要用患者能理解的語言解釋變化的根據。</span></p>
+        <p class="p-example"><span class="t-ja">「フェリチンが上がったからエネルギーが出るようになった」を、患者自身が説明できる状態をゴールにする。</span><span class="t-en">The goal is for the patient to be able to say in their own words: "My energy improved because my ferritin increased."</span><span class="t-zh">目標是讓患者能夠自行表達：「因為鐵蛋白升高，所以精力變好了。」</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">04</p>
+        <p class="p-core"><span class="t-ja">回復と治療を、混同しない</span><span class="t-en">Never conflate recovery and treatment</span><span class="t-zh">恢復與治療，不可混淆</span></p>
+        <p class="p-why"><span class="t-ja">癒しは医療の補完であって代替ではない。それぞれが正しい場所にあることで、全体の信頼が保たれる。</span><span class="t-en">Healing is a complement to medicine, not a substitute. Each in its proper place preserves overall trust.</span><span class="t-zh">療癒是醫療的補充而非替代，各就其位才能維護整體的信任。</span></p>
+        <p class="p-example"><span class="t-ja">yRecoveryは医療と連続させるが、処方とは明確に分離して案内する。</span><span class="t-en">yRecovery flows continuously with medicine but is presented as clearly distinct from prescriptions.</span><span class="t-zh">yRecovery與醫療相連，但在說明時與處方明確區分。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">05</p>
+        <p class="p-core"><span class="t-ja">思想は、誰が担っても受け継がれる</span><span class="t-en">The philosophy is passed on, whoever carries it</span><span class="t-zh">思想，無論由誰傳承皆能延續</span></p>
+        <p class="p-why"><span class="t-ja">属人的な医療は複製できない。柳澤先生の問いを継承できる仕組みをつくることがyMethodの最終目的である。</span><span class="t-en">Person-dependent medicine cannot be replicated. Creating a system that can inherit Dr. Yanagisawa's way of questioning is yMethod's ultimate goal.</span><span class="t-zh">依賴個人的醫療無法複製，建立能傳承柳澤先生問詢方式的機制，正是yMethod的終極目標。</span></p>
+        <p class="p-example"><span class="t-ja">yAcademyで医師が「なぜ？を問う姿勢」を学ぶ。プロトコルではなく、思考の型を伝承する。</span><span class="t-en">At yAcademy, physicians learn the "habit of asking why." What is transmitted is not a protocol but a pattern of thinking.</span><span class="t-zh">在yAcademy，醫師學習「提問的態度」，傳承的是思考模式，而非流程。</span></p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Panel B -->
+  <div id="mp-1" class="method-panel">
+    <div class="method-header">
+      <p class="method-name"><span class="t-ja">方向性 B「5つの約束」</span><span class="t-en">Direction B: "5 Promises"</span><span class="t-zh">方向性 B「五項承諾」</span></p>
+      <p class="method-desc"><span class="t-ja">原則を患者への「約束」として再定義する。「私たちはこうします」という宣言の形で医師・患者双方に向けた言語になる。</span><span class="t-en">Principles are redefined as "promises" to patients. In the form of "we will do this," the language speaks to both physicians and patients.</span><span class="t-zh">將原則重新定義為對患者的「承諾」，以「我們將這樣做」的宣言形式，形成面向醫師與患者的共同語言。</span></p>
+      <p class="method-usage"><span class="t-ja">向いている使い方：</span><span class="t-en">Best suited for: </span><span class="t-zh">適用場景：</span><span><span class="t-ja">患者向け説明資料・クリニック掲示・Webサイト</span><span class="t-en">Patient materials, clinic signage, website</span><span class="t-zh">患者說明資料・診所展示・網站</span></span></p>
+    </div>
+    <ul class="principle-list">
+      <li class="principle-item">
+        <p class="p-num">Promise 01</p>
+        <p class="p-core"><span class="t-ja">検査する前に、あなたの「なぜ」を聞く</span><span class="t-en">We listen to your "why" before we test</span><span class="t-zh">在檢查之前，我們聆聽您的「為何」</span></p>
+        <p class="p-why"><span class="t-ja">数値の前に、あなたの状態・生活・感覚を聞く。それが医療の出発点だと考えている。</span><span class="t-en">Before numbers, we listen to your condition, your life, your sense of self. That is where we believe medicine begins.</span><span class="t-zh">在數值之前，我們聆聽您的狀態、生活與感受。我們認為這才是醫療的起點。</span></p>
+        <p class="p-example"><span class="t-ja">初回問診を最低30分確保。「何が気になってここに来たか」から始める。</span><span class="t-en">At least 30 minutes secured for the initial consultation. Starting with "what brought you here today."</span><span class="t-zh">初診問診至少確保30分鐘，從「什麼讓您今天前來」開始。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">Promise 02</p>
+        <p class="p-core"><span class="t-ja">介入は処方として渡す。商品として売らない</span><span class="t-en">We give interventions as prescriptions. We do not sell them as products</span><span class="t-zh">介入以處方形式提供，不以商品販售</span></p>
+        <p class="p-why"><span class="t-ja">サプリも点滴も、あなたのデータに基づいて必要だと判断したものだけを提案する。</span><span class="t-en">Supplements and infusions — we only recommend what we have judged necessary based on your data.</span><span class="t-zh">補充品與點滴，我們只推薦根據您的數據判斷為必要的項目。</span></p>
+        <p class="p-example"><span class="t-ja">「この結果だからこのビタミンDが必要です」という説明なしに、商品を案内することはしない。</span><span class="t-en">We will never recommend a product without explaining "this is why your results show you need this vitamin D."</span><span class="t-zh">若無「因此結果顯示您需要此維他命D」的說明，我們不會推薦任何產品。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">Promise 03</p>
+        <p class="p-core"><span class="t-ja">説明できない数値は、使わない</span><span class="t-en">We do not use numbers we cannot explain</span><span class="t-zh">無法解釋的數值，我們不使用</span></p>
+        <p class="p-why"><span class="t-ja">「AIが判定しました」で終わるスコアは使わない。あなたが「なるほど」と思える指標だけを採用する。</span><span class="t-en">We do not use scores that end with "the AI determined this." We only adopt indicators that make you think "I understand."</span><span class="t-zh">我們不使用以「AI判定」作結的分數，只採用讓您覺得「原來如此」的指標。</span></p>
+        <p class="p-example"><span class="t-ja">論文に基づいた指標のみ使用し、その根拠を必ず説明する。ブラックボックスは排除する。</span><span class="t-en">Only evidence-based indicators are used, with rationale always explained. Black boxes are eliminated.</span><span class="t-zh">僅使用有文獻依據的指標，且必定說明其根據，排除所有黑盒子。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">Promise 04</p>
+        <p class="p-core"><span class="t-ja">1年後のあなたと比べる。今日だけで終わらない</span><span class="t-en">We compare you with yourself one year later. We do not end at today</span><span class="t-zh">與一年後的您比較，不以今天作結</span></p>
+        <p class="p-why"><span class="t-ja">一度の健診で「異常なし」と言って終わることはしない。経年のデータで変化を設計する。</span><span class="t-en">We will not conclude a single check-up with "nothing abnormal." We design change through longitudinal data.</span><span class="t-zh">我們不會在一次檢查後以「無異常」作結，而是透過縱向數據設計變化。</span></p>
+        <p class="p-example"><span class="t-ja">年次比較レポートを標準提供。「去年より骨密度が変化している」という文脈で介入を提案する。</span><span class="t-en">Year-over-year comparison reports provided as standard. Interventions proposed in the context of "your bone density has changed since last year."</span><span class="t-zh">標準提供年度比較報告，以「您的骨密度相較去年有所變化」的脈絡提出介入建議。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">Promise 05</p>
+        <p class="p-core"><span class="t-ja">担当が変わっても、あなたへの医療は変わらない</span><span class="t-en">Even if your doctor changes, your care does not</span><span class="t-zh">無論換了誰負責，您的醫療不會改變</span></p>
+        <p class="p-why"><span class="t-ja">「あの先生でないと」という医療は、長期には続かない。チームで再現できる医療をつくる。</span><span class="t-en">Medicine that depends on "only that doctor" cannot continue long-term. We build medicine that a team can reproduce.</span><span class="t-zh">「只有那位醫師才行」的醫療無法長期持續，我們建立團隊可複製的醫療。</span></p>
+        <p class="p-example"><span class="t-ja">引き継ぎプロトコル・データ蓄積により、どの拠点・どの医師でも同水準の医療を提供する。</span><span class="t-en">Through handover protocols and accumulated data, any site and any physician can deliver the same standard of care.</span><span class="t-zh">透過交接流程與數據積累，任何據點、任何醫師皆可提供同等水準的醫療。</span></p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Panel C -->
+  <div id="mp-2" class="method-panel">
+    <div class="method-header">
+      <p class="method-name"><span class="t-ja">方向性 C「循環の設計」</span><span class="t-en">Direction C: "Designing the Cycle"</span><span class="t-zh">方向性 C「循環設計」</span></p>
+      <p class="method-desc"><span class="t-ja">y Clinicの本質「検査→解釈→介入→再測定→継続」のループを哲学的言語で表現する。現行5原則に最も近い構造を保ちながら言語の品位を上げる。</span><span class="t-en">The essential loop of yClinic — test → interpret → intervene → re-measure → continue — expressed in philosophical language. Closest to the existing 5 principles while elevating the language.</span><span class="t-zh">以哲學語言表達yClinic的核心循環「檢查→解讀→介入→再測量→持續」，在最貼近現行5原則結構的同時提升語言品位。</span></p>
+      <p class="method-usage"><span class="t-ja">向いている使い方：</span><span class="t-en">Best suited for: </span><span class="t-zh">適用場景：</span><span><span class="t-ja">医師・医療機関向け資料・toBプレゼン・学術連携</span><span class="t-en">Materials for physicians / healthcare institutions, B2B presentations, academic partnerships</span><span class="t-zh">面向醫師・醫療機構資料、B2B簡報、學術合作</span></span></p>
+    </div>
+    <ul class="principle-list">
+      <li class="principle-item">
+        <p class="p-num">01</p>
+        <p class="p-core"><span class="t-ja">仮説なき検査は、記録にすぎない</span><span class="t-en">Testing without hypothesis is mere record-keeping</span><span class="t-zh">無假設的檢查，不過是記錄而已</span></p>
+        <p class="p-why"><span class="t-ja">検査は「網羅」ではなく「検証」である。問いが先にあって、はじめて検査は医療になる。</span><span class="t-en">Testing is verification, not coverage. A test becomes medicine only when the question comes first.</span><span class="t-zh">檢查是「驗證」而非「全面覆蓋」，只有先有問題，檢查才能成為醫療。</span></p>
+        <p class="p-example"><span class="t-ja">問診で立てた仮説に対して検査項目を選択する。すべてを測ることが目的ではない。</span><span class="t-en">Test items are selected against the hypothesis formed in the intake. Measuring everything is not the goal.</span><span class="t-zh">依據問診建立的假設選擇檢查項目，目的不在於測量一切。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">02</p>
+        <p class="p-core"><span class="t-ja">介入は、届くことを前提に設計する</span><span class="t-en">Interventions are designed with delivery as the premise</span><span class="t-zh">介入以「到達」為前提進行設計</span></p>
+        <p class="p-why"><span class="t-ja">栄養の量ではなく、栄養の到達を設計する。吸収の設計なき介入は、期待を裏切る。</span><span class="t-en">We design nutrient delivery, not nutrient quantity. Intervention without absorption design betrays expectations.</span><span class="t-zh">設計的是營養的「到達」而非「量」，沒有吸收設計的介入只會辜負期待。</span></p>
+        <p class="p-example"><span class="t-ja">経口・点滴・リポソーム化の選択は、腸内環境・炎症状態・生活習慣から逆算して決める。</span><span class="t-en">Choice of oral, infusion, or liposomal form is determined by back-calculation from gut environment, inflammation status, and lifestyle.</span><span class="t-zh">口服、點滴或脂質體形式的選擇，從腸道環境、炎症狀態、生活習慣逆推決定。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">03</p>
+        <p class="p-core"><span class="t-ja">変化の根拠は、患者と共有する</span><span class="t-en">The rationale for change is shared with the patient</span><span class="t-zh">變化的根據，與患者共享</span></p>
+        <p class="p-why"><span class="t-ja">数値が改善した理由を患者が理解したとき、はじめて行動変容が起きる。説明できない改善は、再現されない。</span><span class="t-en">Behavioural change happens only when the patient understands why their numbers improved. Improvement without explanation is not reproducible.</span><span class="t-zh">只有當患者理解數值改善的原因，行為改變才會發生。無法解釋的改善不可複製。</span></p>
+        <p class="p-example"><span class="t-ja">「なぜ良くなったか」のメカニズムを患者本人が語れる状態をKPIとして設定する。</span><span class="t-en">Set as a KPI: the patient being able to articulate for themselves "why they got better."</span><span class="t-zh">將患者能夠自行表達「為何好轉」的機制，設定為KPI。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">04</p>
+        <p class="p-core"><span class="t-ja">再測定なき介入は、実験にすぎない</span><span class="t-en">Intervention without re-measurement is merely an experiment</span><span class="t-zh">沒有再測量的介入，不過是實驗</span></p>
+        <p class="p-why"><span class="t-ja">検査と介入の間に再測定がなければ、改善したかどうかが誰にもわからない。循環が閉じてはじめて医療になる。</span><span class="t-en">Without re-measurement between test and intervention, no one can know if improvement occurred. The cycle must close for it to be medicine.</span><span class="t-zh">若檢查與介入之間沒有再測量，沒有人能知道是否已改善，循環閉合才能成為醫療。</span></p>
+        <p class="p-example"><span class="t-ja">Longevity Programでは90日後の再測定を必須設計とし、初回との比較レポートを必ず出す。</span><span class="t-en">In the Longevity Program, re-measurement after 90 days is built in as mandatory, and a comparative report with the initial results is always issued.</span><span class="t-zh">在Longevity Program中，90天後的再測量為必要設計，且必定出具與初次比較的報告。</span></p>
+      </li>
+      <li class="principle-item">
+        <p class="p-num">05</p>
+        <p class="p-core"><span class="t-ja">再現可能な医療だけが、継承される</span><span class="t-en">Only reproducible medicine is passed on</span><span class="t-zh">只有可複製的醫療，才能被傳承</span></p>
+        <p class="p-why"><span class="t-ja">名医の直感は医療資産だが、再現できなければ伝わらない。プロトコルに落とせるものだけが、次の世代の医師に届く。</span><span class="t-en">A great physician's intuition is a medical asset — but if it cannot be reproduced, it cannot be transmitted. Only what can be reduced to protocol reaches the next generation.</span><span class="t-zh">名醫的直覺是醫療資產，但若無法複製則無法傳遞，只有能化為流程的才能傳達給下一代醫師。</span></p>
+        <p class="p-example"><span class="t-ja">柳澤先生の判断プロセスをyAcademyで言語化・教育化する。「先生のような医師を増やす」ことが目標。</span><span class="t-en">Dr. Yanagisawa's decision-making process is articulated and taught at yAcademy. The goal: "increasing the number of physicians like him."</span><span class="t-zh">在yAcademy將柳澤先生的判斷過程語言化並教育化，目標是「增加像先生一樣的醫師」。</span></p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══ S04 MENU ═══════════════════════════ -->
+<div class="section">
+  <p class="section-num">Section 04</p>
+  <h2 class="section-title">
+    <span class="t-ja">仮想メニュー表（たたき台）</span>
+    <span class="t-en">Draft Service Menu</span>
+    <span class="t-zh">初擬服務菜單（草案）</span>
+  </h2>
+
+  <div class="draft-badge">
+    <span class="t-ja">たたき台 ― 正式メニューは各先生方との討議にて確定</span>
+    <span class="t-en">Draft — Final menu to be confirmed through discussion with all doctors</span>
+    <span class="t-zh">草案 ― 正式菜單將透過與各先生討論後確定</span>
+  </div>
+
+  <div class="menu-intro">
+    <span class="t-ja">以下は横浜旗艦での展開を想定した<strong>仮想メニューのたたき台</strong>です。検査項目・所要時間・価格帯はすべて仮設定であり、柳澤先生・松村先生との協議を経て正式決定します。「y Screen」等のサービス名もブランド名確定と合わせて見直しの可能性があります。</span>
+    <span class="t-en">The following is a <strong>draft hypothetical menu</strong> for the Yokohama flagship. All test items, durations, and price ranges are provisional and will be finalised in consultation with Dr. Yanagisawa and Dr. Matsumura. Service names such as "y Screen" may also be revised alongside the final brand name decision.</span>
+    <span class="t-zh">以下為橫濱旗艦展開之<strong>假設菜單草案</strong>。所有檢查項目、所需時間及價格範圍均為暫定，將與柳澤先生、松村先生協商後正式確定。「y Screen」等服務名稱亦可能隨品牌名稱確定而調整。</span>
+  </div>
+
+  <table class="menu-tbl">
+    <thead>
+      <tr>
+        <th style="width:140px;"><span class="t-ja">サービス</span><span class="t-en">Service</span><span class="t-zh">服務</span></th>
+        <th style="width:90px;"><span class="t-ja">所要時間</span><span class="t-en">Duration</span><span class="t-zh">所需時間</span></th>
+        <th style="width:150px;"><span class="t-ja">価格帯（税込）</span><span class="t-en">Price Range (incl. tax)</span><span class="t-zh">價格區間（含稅）</span></th>
+        <th><span class="t-ja">内容・対象</span><span class="t-en">Content &amp; Target</span><span class="t-zh">內容・對象</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="menu-name">y Screen</span>
+          <span class="menu-sub"><span class="t-ja">ベースライン検査</span><span class="t-en">Baseline assessment</span><span class="t-zh">基準評估</span></span>
+        </td>
+        <td class="menu-time">60〜75 min</td>
+        <td><span class="menu-price t-ja">¥55,000<br>〜¥88,000</span><span class="menu-price t-en">$370<br>〜$590</span><span class="menu-price t-zh">NT$11,700<br>〜NT$18,700</span></td>
+        <td class="menu-desc">
+          <span class="t-ja">基礎問診・身体計測・主要血液尿検査（CBC/CRP/HbA1c/生化学）・血圧・ECG・体組成・血管代謝可視化・医師による結果説明。初回・年次受診者向け。</span>
+          <span class="t-en">Intake, body measurements, key blood/urine tests (CBC/CRP/HbA1c/biochemistry), BP, ECG, body composition, vascular/metabolic visualisation, physician results consultation. For first-time and annual patients.</span>
+          <span class="t-zh">基礎問診・身體測量・主要血液尿液檢查（CBC/CRP/HbA1c/生化學）・血壓・心電圖・體組成・血管代謝可視化・醫師結果說明。適合初診及年度受診者。</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="menu-name">y Screen Plus</span>
+          <span class="menu-sub"><span class="t-ja">精密評価型</span><span class="t-en">Detailed evaluation</span><span class="t-zh">精密評估型</span></span>
+        </td>
+        <td class="menu-time">90 min</td>
+        <td><span class="menu-price t-ja">¥110,000<br>〜¥165,000</span><span class="menu-price t-en">$730<br>〜$1,100</span><span class="menu-price t-zh">NT$23,400<br>〜NT$35,100</span></td>
+        <td class="menu-desc">
+          <span class="t-ja">y Screen＋睡眠・ストレス評価、CGM（連続血糖測定）、腸内環境、ホルモンパネル等の選択式オプション。Longevity Program転換を目指す方向け。</span>
+          <span class="t-en">y Screen plus sleep/stress evaluation, CGM (continuous glucose monitoring), gut microbiome, hormone panel and other optional add-ons. For those aiming to transition into the Longevity Program.</span>
+          <span class="t-zh">y Screen加上睡眠・壓力評估、CGM（持續血糖監測）、腸道環境、荷爾蒙面板等選擇性項目。適合計畫轉入Longevity Program者。</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="menu-name">y Executive</span>
+          <span class="menu-sub"><span class="t-ja">経営者・富裕層向け</span><span class="t-en">For executives &amp; HNW</span><span class="t-zh">企業家・富裕人士</span></span>
+        </td>
+        <td class="menu-time"><span class="t-ja">半日〜1日</span><span class="t-en">Half–full day</span><span class="t-zh">半天〜全天</span></td>
+        <td><span class="menu-price t-ja">¥250,000<br>〜¥500,000</span><span class="menu-price t-en">$1,670<br>〜$3,330</span><span class="menu-price t-zh">NT$53,200<br>〜NT$106,400</span></td>
+        <td class="menu-desc">
+          <span class="t-ja">専門医面談、詳細ラボ（ビタミン・ホルモン・重金属・栄養素精密検査）、栄養・運動・睡眠設計、必要時画像検査連携。経営者・富裕層・海外患者向け。</span>
+          <span class="t-en">Specialist consultation, detailed labs (vitamins, hormones, heavy metals, precise nutritional panel), nutrition/exercise/sleep design, imaging referral as needed. For executives, HNW individuals, and overseas patients.</span>
+          <span class="t-zh">專科醫師面診・詳細檢驗（維他命・荷爾蒙・重金屬・精密營養素檢查）・營養/運動/睡眠設計・必要時影像轉介。適合企業家、富裕人士及海外患者。</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="menu-name">y Longevity<br>Program</span>
+          <span class="menu-sub"><span class="t-ja">継続伴走型</span><span class="t-en">Sustained accompaniment</span><span class="t-zh">持續陪伴型</span></span>
+        </td>
+        <td class="menu-time">90 / 180 / 365日</td>
+        <td><span class="menu-price t-ja">¥330,000<br>〜¥660,000<span class="period"> /90日</span></span><span class="menu-price t-en">$2,200<br>〜$4,400<span class="period"> /90 days</span></span><span class="menu-price t-zh">NT$70,200<br>〜NT$140,400<span class="period"> /90天</span></span></td>
+        <td class="menu-desc">
+          <span class="t-ja">検査→栄養・点滴介入→生活改善→再測定のサイクルを90日・180日・12か月で設計。栄養・運動・睡眠・更年期・代謝・腸・認知予防を伴走。粗利の中核。</span>
+          <span class="t-en">A designed cycle of test → nutritional/infusion intervention → lifestyle improvement → re-measurement, over 90, 180, or 365 days. Accompaniment across nutrition, exercise, sleep, menopause, metabolism, gut health, and cognitive prevention. The core gross-margin driver.</span>
+          <span class="t-zh">以90天、180天、365天設計「檢查→營養・點滴介入→生活改善→再測量」循環，全程陪伴營養、運動、睡眠、更年期、代謝、腸道、認知預防。毛利核心。</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="menu-name">y Membership</span>
+          <span class="menu-sub"><span class="t-ja">年会費制</span><span class="t-en">Annual membership</span><span class="t-zh">年費制</span></span>
+        </td>
+        <td class="menu-time"><span class="t-ja">年間</span><span class="t-en">Annual</span><span class="t-zh">年度</span></td>
+        <td><span class="menu-price t-ja">¥132,000<br>〜¥360,000<span class="period"> /年</span></span><span class="menu-price t-en">$880<br>〜$2,400<span class="period"> /year</span></span><span class="menu-price t-zh">NT$28,100<br>〜NT$76,600<span class="period"> /年</span></span></td>
+        <td class="menu-desc">
+          <span class="t-ja">検査結果閲覧・経年比較・医師チャット・優先予約・再検査割引・家族アカウント・海外拠点連携。LTVと継続率の本体。</span>
+          <span class="t-en">Results access, year-over-year comparison, physician chat, priority booking, re-test discount, family accounts, overseas site access. The engine of LTV and retention.</span>
+          <span class="t-zh">查閱檢查結果・年度比較・醫師諮詢・優先預約・再檢折扣・家庭帳戶・海外據點連結。LTV與留存率的核心。</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="menu-name">y Recovery</span>
+          <span class="menu-sub"><span class="t-ja">回復・体験レイヤー</span><span class="t-en">Recovery &amp; experience layer</span><span class="t-zh">恢復・體驗層</span></span>
+        </td>
+        <td class="menu-time"><span class="t-ja">随時</span><span class="t-en">As needed</span><span class="t-zh">隨時</span></td>
+        <td><span class="menu-price" style="font-size:12px;"><span class="t-ja">別途案内</span><span class="t-en">See pricing sheet</span><span class="t-zh">另行通知</span></span></td>
+        <td class="menu-desc">
+          <span class="t-ja">睡眠回復プログラム・リフレクソロジー・軽い温熱・呼吸リラクゼーション。医療と連続させるが処方とは分離。法人向けウェルネス導線にも活用。</span>
+          <span class="t-en">Sleep recovery programme, reflexology, light thermal therapy, breathing relaxation. Flows continuously with medicine but remains distinct from prescriptions. Also functions as a corporate wellness pipeline.</span>
+          <span class="t-zh">睡眠恢復計畫・足底按摩・輕度溫熱・呼吸放鬆。與醫療連續但與處方明確區分，亦可作為企業健康管理的導流管道。</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="display:flex;gap:16px;font-size:11px;color:var(--text-muted);padding:6px 14px 10px;flex-wrap:wrap;">
+    <span class="t-ja">※ 参考換算レート：1 USD = 150円 ／ 1 TWD = 4.7円（概算）</span>
+    <span class="t-en">※ Reference exchange rates: USD 1 = ¥150 / TWD 1 = ¥4.7 (approximate)</span>
+    <span class="t-zh">※ 參考匯率：1 USD = ¥150 / 1 TWD = ¥4.7（概算）</span>
+  </div>
+  <div style="font-size:12px;color:var(--text-muted);padding:8px 14px;background:var(--bg2);border-radius:6px;line-height:1.7;">
+    <span class="t-ja">※ 価格・検査項目・サービス名はたたき台です。正式決定は柳澤先生・松村先生との討議を経て行います。</span>
+    <span class="t-en">※ Prices, test items, and service names are provisional drafts. Final decisions will be made following discussion with Dr. Yanagisawa and Dr. Matsumura.</span>
+    <span class="t-zh">※ 價格、檢查項目及服務名稱均為草案，正式決定將於與柳澤先生、松村先生討論後進行。</span>
+  </div>
+</div>
+
+<!-- ══ S05 ACTION ITEMS ═══════════════════ -->
+<div class="section">
+  <p class="section-num">Section 05</p>
+  <h2 class="section-title">
+    <span class="t-ja">各先生へのアクションアイテム</span>
+    <span class="t-en">Action Items for Each Doctor</span>
+    <span class="t-zh">各先生行動事項</span>
+  </h2>
+  <div class="info-note">
+    <span class="t-ja">各先生方への連絡調整・サポートは<strong>SPIC 片峰取締役</strong>が担当します。実作業はSPICが行い、先生方には方向性のご判断をいただきます。<strong>第一回提出締切：2026年4月30日</strong></span>
+    <span class="t-en">All coordination and support for each doctor is handled by <strong>SPIC Director Katamine</strong>. SPIC handles the actual work; doctors provide directional judgement. <strong>First submission deadline: 30 April 2026</strong></span>
+    <span class="t-zh">各先生的聯絡協調與支援由<strong>SPIC 片峰取締役</strong>負責。實際作業由SPIC執行，請各先生提供方向性判斷。<strong>第一次提交截止：2026年4月30日</strong></span>
+  </div>
+
+  <!-- 柳澤先生 -->
+  <div class="doctor-section">
+    <div class="doctor-head">
+      <div class="doctor-avatar av-y" style="padding:0;overflow:hidden;"><img class="av-photo" src="data:image/jpeg;base64,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" alt="yanagisawa" style="object-position:center 15%;"></div>
+      <div>
+        <p class="doctor-name"><span class="t-ja">柳澤厚生先生</span><span class="t-en">Dr. Atsuo Yanagisawa</span><span class="t-zh">柳澤厚生先生</span></p>
+        <p class="doctor-role"><span class="t-ja">医療思想・プロトコル監修</span><span class="t-en">Medical Philosophy &amp; Protocol Supervision</span><span class="t-zh">醫療思想・流程監修</span></p>
+      </div>
+      <span class="doctor-deadline"><span class="t-ja">4月30日提出</span><span class="t-en">Due Apr 30</span><span class="t-zh">4月30日提交</span></span>
+    </div>
+    <table class="action-table">
+      <tr>
+        <th style="width:72px;"><span class="t-ja">種別</span><span class="t-en">Type</span><span class="t-zh">類別</span></th>
+        <th style="width:200px;"><span class="t-ja">アクションアイテム</span><span class="t-en">Action Item</span><span class="t-zh">行動事項</span></th>
+        <th><span class="t-ja">詳細</span><span class="t-en">Details</span><span class="t-zh">詳細</span></th>
+      </tr>
+      <tr><td><span class="tag tag-p">Proto</span></td><td><p class="at-task"><span class="t-ja">yMethodの5原則を詳細化・文書化</span><span class="t-en">Elaborate and document the 5 yMethod principles</span><span class="t-zh">詳細化並文書化yMethod的5項原則</span></p></td><td><p class="at-detail"><span class="t-ja">本日決定の方向性をベースに、各原則の運用基準を言語化（SPICが文書化を担当）</span><span class="t-en">Based on today's chosen direction, articulate operational standards for each principle (SPIC handles documentation)</span><span class="t-zh">以本日決定的方向性為基礎，將各原則的運用基準語言化（SPIC負責文書化）</span></p></td></tr>
+      <tr><td><span class="tag tag-m">Menu</span></td><td><p class="at-task"><span class="t-ja">検査項目リスト草案へのフィードバック</span><span class="t-en">Feedback on draft test item list</span><span class="t-zh">對草擬檢查項目清單提供回饋</span></p></td><td><p class="at-detail"><span class="t-ja">y Screen・y Screen Plus・y Executiveの必須/オプション/外注項目の3分類について監修</span><span class="t-en">Supervise the 3-category structure (required/optional/outsourced) for y Screen, y Screen Plus, and y Executive</span><span class="t-zh">監修y Screen、y Screen Plus、y Executive的必要/選擇/外包3項分類</span></p></td></tr>
+      <tr><td><span class="tag tag-m">Menu</span></td><td><p class="at-task"><span class="t-ja">Longevity Programの栄養介入骨格設計</span><span class="t-en">Design the nutritional intervention framework for Longevity Program</span><span class="t-zh">設計Longevity Program的營養介入骨架</span></p></td><td><p class="at-detail"><span class="t-ja">90日プログラムの介入ステップとLypo-C・点滴の組み込み方針（SPICが設計補助）</span><span class="t-en">Intervention steps for the 90-day programme and Lypo-C/infusion integration policy (SPIC provides design support)</span><span class="t-zh">90天計畫的介入步驟與Lypo-C・點滴整合方針（SPIC提供設計輔助）</span></p></td></tr>
+      <tr><td><span class="tag tag-r">Research</span></td><td><p class="at-task"><span class="t-ja">既存プロトコルの棚卸し</span><span class="t-en">Inventory of existing protocols</span><span class="t-zh">現有流程盤點</span></p></td><td><p class="at-detail"><span class="t-ja">鎌倉クリニック・点滴療法研究会で蓄積されたプロトコルのうち、yClinicに移植できるものを抽出</span><span class="t-en">Extract from Kamakura clinic and IV Therapy Research Society protocols those transferable to yClinic</span><span class="t-zh">從鎌倉診所及點滴療法研究會積累的流程中，提取可移植至yClinic的內容</span></p></td></tr>
+    </table>
+  </div>
+
+  <!-- 松村先生 -->
+  <div class="doctor-section">
+    <div class="doctor-head">
+      <div class="doctor-avatar av-m" style="padding:0;overflow:hidden;"><img class="av-photo" src="data:image/jpeg;base64,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" alt="matsumura" style="object-position:center 15%;"></div>
+      <div>
+        <p class="doctor-name"><span class="t-ja">松村先生</span><span class="t-en">Dr. Matsumura</span><span class="t-zh">松村先生</span></p>
+        <p class="doctor-role"><span class="t-ja">医療総括・横浜旗艦 現場設計</span><span class="t-en">Medical Director &amp; Yokohama Site Design</span><span class="t-zh">醫療總括・橫濱旗艦現場設計</span></p>
+      </div>
+      <span class="doctor-deadline"><span class="t-ja">4月30日提出</span><span class="t-en">Due Apr 30</span><span class="t-zh">4月30日提交</span></span>
+    </div>
+    <table class="action-table">
+      <tr><th style="width:72px;"><span class="t-ja">種別</span><span class="t-en">Type</span><span class="t-zh">類別</span></th><th style="width:200px;"><span class="t-ja">アクションアイテム</span><span class="t-en">Action Item</span><span class="t-zh">行動事項</span></th><th><span class="t-ja">詳細</span><span class="t-en">Details</span><span class="t-zh">詳細</span></th></tr>
+      <tr><td><span class="tag tag-r">Research</span></td><td><p class="at-task"><span class="t-ja">院内ラボ検査機器リスト作成</span><span class="t-en">Create in-house lab equipment list</span><span class="t-zh">建立院內檢驗設備清單</span></p></td><td><p class="at-detail"><span class="t-ja">10〜13坪ラボ想定。CBC/CRP/HbA1c等即時処理機器のメーカー・導入費・ランニングコスト調査</span><span class="t-en">Based on 10–13 tsubo lab. Research manufacturers, initial and running costs for instant-processing equipment (CBC/CRP/HbA1c, etc.)</span><span class="t-zh">以10〜13坪實驗室為前提，調查CBC/CRP/HbA1c等即時處理設備的廠商、導入費及運行成本</span></p></td></tr>
+      <tr><td><span class="tag tag-r">Research</span></td><td><p class="at-task"><span class="t-ja">80坪モデルの人材構成設計</span><span class="t-en">Design staffing structure for 80-tsubo model</span><span class="t-zh">設計80坪模型的人員配置</span></p></td><td><p class="at-detail"><span class="t-ja">医師・看護師・検査技師・コーチ・受付・マネージャーの必要人数・役割・採用難易度・想定年収を整理</span><span class="t-en">Organise required headcount, roles, hiring difficulty, and expected salary for physicians, nurses, lab technicians, coaches, reception, and managers</span><span class="t-zh">整理醫師、護理師、檢驗師、教練、接待、經理的所需人數、職責、招募難度及預估薪資</span></p></td></tr>
+      <tr><td><span class="tag tag-m">Menu</span></td><td><p class="at-task"><span class="t-ja">競合メニュー・価格調査</span><span class="t-en">Competitor menu &amp; pricing survey</span><span class="t-zh">競爭對手菜單及定價調查</span></p></td><td><p class="at-detail"><span class="t-ja">神宮前統合医療・Wellness系3〜5院対象。yClinicとの差別化ポイントの整理まで</span><span class="t-en">Targeting Jingumae Integrative Medicine and 3–5 Wellness-type clinics. Through to organising yClinic's differentiation points</span><span class="t-zh">對象為神宮前整合醫療及3〜5家Wellness型診所，整理至yClinic的差異化要點</span></p></td></tr>
+      <tr><td><span class="tag tag-r">Research</span></td><td><p class="at-task"><span class="t-ja">外注ラボ候補選定</span><span class="t-en">Select external lab candidates</span><span class="t-zh">選定外包檢驗候選</span></p></td><td><p class="at-detail"><span class="t-ja">ビタミンD・フェリチン・ホルモン等の精度・TAT・コスト比較</span><span class="t-en">Compare accuracy, TAT (turnaround time), and costs for vitamin D, ferritin, hormones, etc.</span><span class="t-zh">比較維他命D、鐵蛋白、荷爾蒙等的精確度、TAT及成本</span></p></td></tr>
+    </table>
+  </div>
+
+  <!-- チャールズ先生 -->
+  <div class="doctor-section">
+    <div class="doctor-head">
+      <div class="doctor-avatar av-c" style="padding:0;overflow:hidden;"><img class="av-photo" src="data:image/jpeg;base64,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" alt="charles" style="object-position:center 15%;"></div>
+      <div>
+        <p class="doctor-name"><span class="t-ja">チャールズ先生</span><span class="t-en">Dr. Charles</span><span class="t-zh">查爾斯先生</span></p>
+        <p class="doctor-role"><span class="t-ja">台北拠点 リブランディング責任者</span><span class="t-en">Taipei Site Rebranding Lead</span><span class="t-zh">台北據點品牌重塑負責人</span></p>
+      </div>
+      <span class="doctor-deadline"><span class="t-ja">4月30日提出</span><span class="t-en">Due Apr 30</span><span class="t-zh">4月30日提交</span></span>
+    </div>
+    <table class="action-table">
+      <tr><th style="width:72px;"><span class="t-ja">種別</span><span class="t-en">Type</span><span class="t-zh">類別</span></th><th style="width:200px;"><span class="t-ja">アクションアイテム</span><span class="t-en">Action Item</span><span class="t-zh">行動事項</span></th><th><span class="t-ja">詳細</span><span class="t-en">Details</span><span class="t-zh">詳細</span></th></tr>
+      <tr><td><span class="tag tag-r">Research</span></td><td><p class="at-task"><span class="t-ja">台北既存クリニックの現状スペック整理</span><span class="t-en">Inventory current Taipei clinic specs</span><span class="t-zh">整理台北現有診所現況規格</span></p></td><td><p class="at-detail"><span class="t-ja">坪数・設備・スタッフ構成・月間患者数・主要メニューと価格帯。yClinicとのギャップを明確化</span><span class="t-en">Floor area, equipment, staffing, monthly patients, key menu and pricing. Clearly identify gaps with yClinic</span><span class="t-zh">坪數、設備、人員配置、每月患者數、主要菜單及價格帶，明確找出與yClinic的差距</span></p></td></tr>
+      <tr><td><span class="tag tag-r">Research</span></td><td><p class="at-task"><span class="t-ja">台湾における規制・手続きの確認</span><span class="t-en">Confirm Taiwan regulations &amp; procedures</span><span class="t-zh">確認台灣法規與申辦手續</span></p></td><td><p class="at-detail"><span class="t-ja">高濃度ビタミンC点滴・栄養点滴の承認状況、外資ブランドのクリニック展開に必要な手続きをリサーチ</span><span class="t-en">Research approval status for high-dose vitamin C and nutritional infusions, and procedures for foreign brand clinic operations in Taiwan</span><span class="t-zh">研究高濃度維他命C點滴・營養點滴的核准狀況，以及外資品牌在台開設診所所需的申辦手續</span></p></td></tr>
+      <tr><td><span class="tag tag-m">Menu</span></td><td><p class="at-task"><span class="t-ja">台北版メニューの調整提案</span><span class="t-en">Propose menu adaptations for Taipei</span><span class="t-zh">提出台北版菜單調整建議</span></p></td><td><p class="at-detail"><span class="t-ja">台湾人患者層の特性をふまえた横浜プロトコルからの追加・除外項目を提案</span><span class="t-en">Propose additions and exclusions from the Yokohama protocol based on the characteristics of Taiwanese patients</span><span class="t-zh">依台灣患者特性，提出從橫濱流程中增減的項目建議</span></p></td></tr>
+      <tr><td><span class="tag tag-p">Proto</span></td><td><p class="at-task"><span class="t-ja">改修・投資概算の整理</span><span class="t-en">Organise renovation &amp; investment estimates</span><span class="t-zh">整理改裝及投資概算</span></p></td><td><p class="at-detail"><span class="t-ja">看板・内装・機器・スタッフ教育・システム連携のそれぞれについて規模感を整理</span><span class="t-en">Organise scale estimates for signage, interior, equipment, staff training, and systems integration</span><span class="t-zh">分別整理招牌、裝修、設備、人員培訓及系統整合的規模估算</span></p></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ══ S06 STRUCTURE ══════════════════════ -->
+<div class="section">
+  <p class="section-num">Section 06</p>
+  <h2 class="section-title">
+    <span class="t-ja">プロジェクト体制</span>
+    <span class="t-en">Project Structure</span>
+    <span class="t-zh">專案體制</span>
+  </h2>
+  <div class="info-note">
+    <span class="t-ja">各先生方には<strong>思想・方向性の決定と監修</strong>に集中していただきます。<strong>片峰取締役（SPIC）</strong>が各先生の担当窓口となり、SPICが文書化・設計・システム・採用等の実作業をすべて担います。</span>
+    <span class="t-en">Each doctor focuses on <strong>philosophical direction and supervision</strong>. <strong>Director Katamine (SPIC)</strong> serves as each doctor's point of contact, with SPIC handling all practical work including documentation, design, systems, and recruitment.</span>
+    <span class="t-zh">各先生專注於<strong>思想・方向性決定及監修</strong>。<strong>片峰取締役（SPIC）</strong>擔任各先生的負責窗口，SPIC承擔包括文書化・設計・系統・招募等所有實際作業。</span>
+  </div>
+  <div class="struct-grid">
+    <div class="struct-card">
+      <div class="sc-head"><div class="sc-av sc-av-y" style="padding:0;overflow:hidden;"><img class="av-photo" src="data:image/jpeg;base64,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" alt="yanagisawa" style="object-position:center 15%;"></div><div><p class="sc-name"><span class="t-ja">柳澤厚生先生</span><span class="t-en">Dr. Yanagisawa</span><span class="t-zh">柳澤厚生先生</span></p><p class="sc-role"><span class="t-ja">医療思想・最終判断</span><span class="t-en">Philosophy &amp; Final Decisions</span><span class="t-zh">醫療思想・最終判斷</span></p></div></div>
+      <ul class="sc-tasks">
+        <li><span class="t-ja">yMethodの最終言語決定</span><span class="t-en">Final yMethod language</span><span class="t-zh">yMethod最終措辭決定</span></li>
+        <li><span class="t-ja">検査プロトコルの監修</span><span class="t-en">Protocol supervision</span><span class="t-zh">檢查流程監修</span></li>
+        <li><span class="t-ja">栄養介入の原則設計</span><span class="t-en">Nutritional intervention principles</span><span class="t-zh">營養介入原則設計</span></li>
+        <li><span class="t-ja">対外発信・学会への顔</span><span class="t-en">External/academic presence</span><span class="t-zh">對外發布・學術代表</span></li>
+      </ul>
+    </div>
+    <div class="struct-card">
+      <div class="sc-head"><div class="sc-av sc-av-m" style="padding:0;overflow:hidden;"><img class="av-photo" src="data:image/jpeg;base64,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" alt="matsumura" style="object-position:center 15%;"></div><div><p class="sc-name"><span class="t-ja">松村先生</span><span class="t-en">Dr. Matsumura</span><span class="t-zh">松村先生</span></p><p class="sc-role"><span class="t-ja">医療総括・横浜現場</span><span class="t-en">Medical Director &amp; Yokohama Site</span><span class="t-zh">醫療總括・橫濱現場</span></p></div></div>
+      <ul class="sc-tasks">
+        <li><span class="t-ja">横浜旗艦のプロトコル実装</span><span class="t-en">Yokohama protocol implementation</span><span class="t-zh">橫濱旗艦流程實施</span></li>
+        <li><span class="t-ja">医療チームの採用・育成</span><span class="t-en">Team recruitment &amp; development</span><span class="t-zh">醫療團隊招募・培育</span></li>
+        <li><span class="t-ja">機器・ラボの最終選定</span><span class="t-en">Final equipment &amp; lab selection</span><span class="t-zh">設備・實驗室最終選定</span></li>
+        <li><span class="t-ja">診療品質管理</span><span class="t-en">Clinical quality management</span><span class="t-zh">診療品質管理</span></li>
+      </ul>
+    </div>
+    <div class="struct-card">
+      <div class="sc-head"><div class="sc-av sc-av-c" style="padding:0;overflow:hidden;"><img class="av-photo" src="data:image/jpeg;base64,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" alt="charles" style="object-position:center 15%;"></div><div><p class="sc-name"><span class="t-ja">チャールズ先生</span><span class="t-en">Dr. Charles</span><span class="t-zh">查爾斯先生</span></p><p class="sc-role"><span class="t-ja">台北拠点責任者</span><span class="t-en">Taipei Site Lead</span><span class="t-zh">台北據點負責人</span></p></div></div>
+      <ul class="sc-tasks">
+        <li><span class="t-ja">台北リブランド判断</span><span class="t-en">Taipei rebranding decisions</span><span class="t-zh">台北品牌重塑判斷</span></li>
+        <li><span class="t-ja">台湾規制・現地対応</span><span class="t-en">Taiwan regulations &amp; local adaptation</span><span class="t-zh">台灣法規・在地應對</span></li>
+        <li><span class="t-ja">プロトコルの現地適応</span><span class="t-en">Protocol localisation</span><span class="t-zh">流程在地化</span></li>
+        <li><span class="t-ja">アジア医療ネットワーク窓口</span><span class="t-en">Asian medical network liaison</span><span class="t-zh">亞洲醫療網絡窗口</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="struct-card katamine">
+    <div class="sc-head"><div class="sc-av sc-av-k" style="padding:0;overflow:hidden;"><img class="av-photo" src="data:image/jpeg;base64,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" alt="katamine" style="object-position:center 15%;"></div><div><p class="sc-name"><span class="t-ja">片峰取締役（SPIC）</span><span class="t-en">Director Katamine (SPIC)</span><span class="t-zh">片峰取締役（SPIC）</span></p><p class="sc-role"><span class="t-ja">各先生の担当窓口・プロジェクト推進統括</span><span class="t-en">Doctor liaison &amp; overall project lead</span><span class="t-zh">各先生負責窗口・專案推進統籌</span></p></div></div>
+    <ul class="sc-tasks" style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;">
+      <li><span class="t-ja">各先生の意思決定サポート・相談窓口</span><span class="t-en">Support doctors' decisions; consultation point</span><span class="t-zh">支援各先生決策・諮詢窗口</span></li>
+      <li><span class="t-ja">SPIC実作業チームへの指示・進捗管理</span><span class="t-en">Direct SPIC team; track progress</span><span class="t-zh">指示SPIC實作團隊・管理進度</span></li>
+      <li><span class="t-ja">先生方とSPICのブリッジ・翻訳役</span><span class="t-en">Bridge and translator between doctors and SPIC</span><span class="t-zh">擔任醫師與SPIC之間的橋樑・翻譯者</span></li>
+      <li><span class="t-ja">スケジュール・マイルストーンの全体管理</span><span class="t-en">Overall schedule &amp; milestone management</span><span class="t-zh">全面管理時程與里程碑</span></li>
+    </ul>
+  </div>
+  <div class="struct-card spic-team">
+    <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;font-weight:600;"><span class="t-ja">SPIC 実作業チーム（片峰取締役 統括）</span><span class="t-en">SPIC Implementation Team (under Director Katamine)</span><span class="t-zh">SPIC實作團隊（片峰取締役統籌）</span></p>
+    <div class="spic-sub-grid">
+      <div><p class="spic-sub-label"><span class="t-ja">プロトコル設計</span><span class="t-en">Protocol Design</span><span class="t-zh">流程設計</span></p><p class="spic-sub-desc"><span class="t-ja">yMethod文書化・検査項目整理・介入プログラム設計</span><span class="t-en">yMethod documentation, test item organisation, intervention programme design</span><span class="t-zh">yMethod文書化・檢查項目整理・介入計畫設計</span></p></div>
+      <div><p class="spic-sub-label"><span class="t-ja">施設・採用</span><span class="t-en">Facilities &amp; Recruitment</span><span class="t-zh">設施・招募</span></p><p class="spic-sub-desc"><span class="t-ja">内装設計・機器調達・医療チーム採用業務</span><span class="t-en">Interior design, equipment procurement, medical team hiring</span><span class="t-zh">室內設計・設備採購・醫療團隊招募</span></p></div>
+      <div><p class="spic-sub-label"><span class="t-ja">システム・アプリ</span><span class="t-en">Systems &amp; App</span><span class="t-zh">系統・應用程式</span></p><p class="spic-sub-desc"><span class="t-ja">アプリMVP・経年比較・データ連携基盤</span><span class="t-en">App MVP, year-over-year comparison, data integration</span><span class="t-zh">應用程式MVP・年度比較・數據整合基礎</span></p></div>
+      <div><p class="spic-sub-label"><span class="t-ja">ブランド・発信</span><span class="t-en">Brand &amp; Communications</span><span class="t-zh">品牌・發布</span></p><p class="spic-sub-desc"><span class="t-ja">yClinicデザイン・メディア対応・学会発信準備</span><span class="t-en">yClinic design, media relations, academic outreach preparation</span><span class="t-zh">yClinic設計・媒體應對・學術發布準備</span></p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S07 SCHEDULE ═══════════════════════ -->
+<div class="section">
+  <p class="section-num">Section 07</p>
+  <h2 class="section-title">
+    <span class="t-ja">スケジュール・マイルストーン</span>
+    <span class="t-en">Schedule &amp; Milestones</span>
+    <span class="t-zh">時程・里程碑</span>
+  </h2>
+  <div class="phase-item">
+    <div><div class="phase-badge">Phase 0</div><p style="font-size:10px;text-align:center;color:var(--text-muted);margin-top:3px;"><span class="t-ja">設立準備</span><span class="t-en">Preparation</span><span class="t-zh">籌備</span></p></div>
+    <div><p class="phase-period">2026年 4〜6月</p><p class="phase-name"><span class="t-ja">基盤整備フェーズ</span><span class="t-en">Foundation Phase</span><span class="t-zh">基礎建設階段</span></p><p class="phase-items"><span class="t-ja">監修契約の書面化 ／ 横浜内装設計・ゾーニング着手 ／ 鎌倉リブランド計画策定 ／ 台北提携契約着手 ／ 医療チーム採用開始</span><span class="t-en">Supervision contract documentation / Yokohama interior design &amp; zoning start / Kamakura rebrand planning / Taipei partnership contract initiation / Medical team recruitment begins</span><span class="t-zh">監修合約書面化 ／ 橫濱室內設計・分區規劃啟動 ／ 鎌倉品牌重塑計畫制定 ／ 台北合作合約啟動 ／ 醫療團隊招募開始</span></p></div>
+  </div>
+  <div class="phase-item">
+    <div><div class="phase-badge">Phase 1</div><p style="font-size:10px;text-align:center;color:var(--text-muted);margin-top:3px;"><span class="t-ja">確立</span><span class="t-en">Establish</span><span class="t-zh">確立</span></p></div>
+    <div><p class="phase-period">2026年 7〜9月</p><p class="phase-name"><span class="t-ja">プロトコル確立フェーズ</span><span class="t-en">Protocol Establishment Phase</span><span class="t-zh">流程確立階段</span></p><p class="phase-items"><span class="t-ja">標準プロトコル確定 ／ アプリMVP開発 ／ 創業コホート100〜150名の募集仮説検証開始</span><span class="t-en">Finalise standard protocols / App MVP development / Begin validating founding cohort recruitment hypothesis (100–150 people)</span><span class="t-zh">確定標準流程 ／ 應用程式MVP開發 ／ 開始驗證創始會員（100〜150名）招募假設</span></p></div>
+  </div>
+  <div class="phase-item">
+    <div><div class="phase-badge highlight">Phase 2</div><p style="font-size:10px;text-align:center;color:var(--gold);margin-top:3px;"><span class="t-ja">開業</span><span class="t-en">Open</span><span class="t-zh">開幕</span></p></div>
+    <div><p class="phase-period">2026年 10月</p><p class="phase-name" style="color:var(--gold);"><span class="t-ja">同時オープン ★</span><span class="t-en">Simultaneous Opening ★</span><span class="t-zh">同步開幕 ★</span></p><p class="phase-items"><span class="t-ja">横浜旗艦ソフトオープン（招待制） ／ 鎌倉リブランディングオープン ／ メディア発表（柳澤先生同席）</span><span class="t-en">Yokohama flagship soft open (by invitation) / Kamakura rebranding open / Media announcement (Dr. Yanagisawa present)</span><span class="t-zh">橫濱旗艦軟開幕（邀請制）／ 鎌倉品牌重塑開幕 ／ 媒體發表（柳澤先生出席）</span></p></div>
+  </div>
+  <div class="phase-item">
+    <div><div class="phase-badge">Phase 3</div><p style="font-size:10px;text-align:center;color:var(--text-muted);margin-top:3px;"><span class="t-ja">拡大</span><span class="t-en">Expand</span><span class="t-zh">擴大</span></p></div>
+    <div><p class="phase-period">2027年 前半</p><p class="phase-name"><span class="t-ja">台北・東京意思決定フェーズ</span><span class="t-en">Taipei &amp; Tokyo Decision Phase</span><span class="t-zh">台北・東京決策階段</span></p><p class="phase-items"><span class="t-ja">台北リニューアルオープン ／ 横浜KPI達成確認 → 東京出店の意思決定 ／ データレジストリ構築</span><span class="t-en">Taipei renewal opening / Confirm Yokohama KPI achievement → Tokyo expansion decision / Data registry construction</span><span class="t-zh">台北重新開幕 ／ 確認橫濱KPI達成 → 東京展店決策 ／ 資料庫建構</span></p></div>
+  </div>
+  <div class="phase-item">
+    <div><div class="phase-badge">Phase 4</div><p style="font-size:10px;text-align:center;color:var(--text-muted);margin-top:3px;"><span class="t-ja">全国・国際</span><span class="t-en">National &amp; Global</span><span class="t-zh">全國・國際</span></p></div>
+    <div><p class="phase-period">2027年後半〜2028年</p><p class="phase-name"><span class="t-ja">全国・国際展開フェーズ</span><span class="t-en">National &amp; International Expansion Phase</span><span class="t-zh">全國・國際展開階段</span></p><p class="phase-items"><span class="t-ja">東京出店 ／ 大阪・名古屋・福岡展開 ／ シンガポール：医療パートナー＋Kenko連携</span><span class="t-en">Tokyo opening / Osaka, Nagoya, Fukuoka expansion / Singapore: medical partner + Kenko integration</span><span class="t-zh">東京展店 ／ 大阪・名古屋・福岡展開 ／ 新加坡：醫療夥伴＋Kenko整合</span></p></div>
+  </div>
+</div>
+
+<!-- ══ S08 NG ══════════════════════════════ -->
+<div class="section">
+  <p class="section-num">Section 08</p>
+  <h2 class="section-title">
+    <span class="t-ja">絶対にやってはいけないこと</span>
+    <span class="t-en">What We Must Never Do</span>
+    <span class="t-zh">絕對不能做的事</span>
+  </h2>
+  <div class="ng-grid">
+    <div class="ng-card"><p class="ng-num">01</p><p class="ng-title"><span class="t-ja">全身MRIを主役にする</span><span class="t-en">Making full-body MRI the centrepiece</span><span class="t-zh">以全身MRI為主角</span></p><p class="ng-reason"><span class="t-ja">不安販売に寄りやすく一過性になる。二階建てオプションに留める</span><span class="t-en">Prone to fear-based selling; becomes a one-off. Keep as an optional add-on</span><span class="t-zh">容易淪為恐懼銷售且曇花一現，僅作為附加選項</span></p></div>
+    <div class="ng-card"><p class="ng-num">02</p><p class="ng-title"><span class="t-ja">サプリ販売主導</span><span class="t-en">Supplement-sales-led model</span><span class="t-zh">以補充品銷售為主導</span></p><p class="ng-reason"><span class="t-ja">「売るために診る」構図は医療信頼とLypo-Cブランドの両方を毀損する</span><span class="t-en">"Examining to sell" damages both medical credibility and the Lypo-C brand</span><span class="t-zh">「為了銷售而診察」的模式損害醫療信任及Lypo-C品牌</span></p></div>
+    <div class="ng-card"><p class="ng-num">03</p><p class="ng-title"><span class="t-ja">単発健診モデル</span><span class="t-en">One-off check-up model</span><span class="t-zh">單次健診模型</span></p><p class="ng-reason"><span class="t-ja">年1回の点検だけでは継続率が低く、LTVが伸びない</span><span class="t-en">Annual check-ups alone yield low retention and flat LTV</span><span class="t-zh">僅靠年度健診留存率低，LTV無法增長</span></p></div>
+    <div class="ng-card"><p class="ng-num">04</p><p class="ng-title"><span class="t-ja">テック主導（Forward化）</span><span class="t-en">Tech-led (Forward Health failure)</span><span class="t-zh">科技主導（Forward化）</span></p><p class="ng-reason"><span class="t-ja">ハードウェア偏重・医師関係の軽視が崩壊要因。2024年閉業の教訓</span><span class="t-en">Hardware obsession and sidelining physicians caused collapse. Lesson from Forward Health's 2024 closure</span><span class="t-zh">硬體偏重・輕視醫師關係是崩潰原因，2024年停業的教訓</span></p></div>
+    <div class="ng-card"><p class="ng-num">05</p><p class="ng-title"><span class="t-ja">医師個人ブランド依存</span><span class="t-en">Dependence on individual physician brand</span><span class="t-zh">依賴醫師個人品牌</span></p><p class="ng-reason"><span class="t-ja">再現可能なプロトコルに依存する構造をとる。属人化は拡大の障壁となる</span><span class="t-en">The structure must rest on reproducible protocols. Personalisation becomes a barrier to scale</span><span class="t-zh">架構應依賴可複製流程，個人化將成為擴展的障礙</span></p></div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ═════════════════════════════ -->
+<div class="footer">
+  <p class="footer-quote">
+    <span class="t-ja">Why? ― なぜ、あなたの体は今この状態にあるのか。<br><span style="font-size:12px;font-style:normal;">知る。整える。続ける。 ― Project yClinic</span></span>
+    <span class="t-en">Why? ― Why is your body in this state right now?<br><span style="font-size:12px;font-style:normal;">Know. Align. Continue. ― Project yClinic</span></span>
+    <span class="t-zh">Why? ― 為何您的身體現在呈現這種狀態？<br><span style="font-size:12px;font-style:normal;">了解。調整。持續。 ― Project yClinic</span></span>
+  </p>
+  <p>© 2026 SPIC Corporation ｜ Confidential<br>
+  <span style="font-size:11px;opacity:0.55;"><span class="t-ja">正式名称は本日の討議にて決定予定</span><span class="t-en">Official name to be decided today</span><span class="t-zh">正式名稱將於本日討論中決定</span></span></p>
+</div>
+
+</div><!-- /.page -->
+
+<script>
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('onclick') === "setLang('" + lang + "')");
+  });
+}
+function switchMethod(idx) {
+  document.querySelectorAll('.method-tab').forEach(function(t, i) { t.classList.toggle('active', i === idx); });
+  document.querySelectorAll('.method-panel').forEach(function(p, i) { p.classList.toggle('active', i === idx); });
+}
+</script>
+</body>
+</html>
