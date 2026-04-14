@@ -36,7 +36,7 @@ body {
   font-weight: 300;
 }
 
-body.zh { font-family: var(--font-body-zh); }
+body.lang-zh { font-family: var(--font-body-zh); }
 
 /* ─── LANGUAGE TOGGLE ─── */
 .lang-bar {
@@ -87,10 +87,10 @@ body.zh { font-family: var(--font-body-zh); }
 .ja-inline { display: inline; }
 .zh-inline { display: none; }
 
-body.zh .ja { display: none; }
-body.zh .zh { display: block; }
-body.zh .ja-inline { display: none; }
-body.zh .zh-inline { display: inline; }
+body.lang-zh .ja { display: none; }
+body.lang-zh .zh { display: block; }
+body.lang-zh .ja-inline { display: none; }
+body.lang-zh .zh-inline { display: inline; }
 
 /* For elements that should always show (bi-lingual labels like clinic names) */
 .bilingual {}
@@ -1534,10 +1534,10 @@ footer {
 function setLang(lang) {
   const body = document.body;
   if (lang === 'zh') {
-    body.classList.add('zh');
+    body.classList.add('lang-zh');
     document.documentElement.lang = 'zh-TW';
   } else {
-    body.classList.remove('zh');
+    body.classList.remove('lang-zh');
     document.documentElement.lang = 'ja';
   }
   document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
