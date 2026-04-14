@@ -6,7 +6,7 @@ on:
     paths:
       - '**.html'
       - '!index.html'
-  workflow_dispatch:  # 手動実行ボタンを有効化
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -24,13 +24,63 @@ jobs:
       - name: Generate index.html via Python
         run: |
           python3 << 'PYEOF'
-          import os, glob, datetime, json, zoneinfo
+          import os, glob, datetime, zoneinfo
 
-          # HTMLファイル収集（index.html / login.html 除く）
-          files = sorted([
-              f for f in glob.glob("*.html")
-              if f not in ("index.html", "login.html")
-          ])
+          # ─────────────────────────────────────────────────────────────
+          # ファイルごとの日中タイトル・日付・カテゴリ を定義
+          # 新しいファイルを追加したらここに追記してください
+          # キー = ファイル名（.html なし）
+          # ─────────────────────────────────────────────────────────────
+          FILE_META = {
+              "y_clinic_kickoff": {
+                  "ja": "y Clinic クリニック事業 キックオフ計画書",
+                  "zh": "y Clinic 診所事業啟動計畫書",
+                  "date_ja": "2026年4月13日",
+                  "date_zh": "2026年4月13日",
+                  "category": "presentation",
+              },
+              "y_clinic_minutes_20260413": {
+                  "ja": "第1回 キックオフMTG 議事録",
+                  "zh": "第1次啟動會議 會議記錄",
+                  "date_ja": "2026年4月13日",
+                  "date_zh": "2026年4月13日",
+                  "category": "minutes",
+              },
+              "y_clinic_deep_research_bilingual": {
+                  "ja": "世界12施設 深層分析（日本語／繁體中文）",
+                  "zh": "全球12診所深度分析（日文／繁體中文）",
+                  "date_ja": "2026年4月14日",
+                  "date_zh": "2026年4月14日",
+                  "category": "strategy",
+              },
+              "y_clinic_deep_research": {
+                  "ja": "世界12施設 深層分析（日本語）",
+                  "zh": "全球12診所深度分析（日文）",
+                  "date_ja": "2026年4月14日",
+                  "date_zh": "2026年4月14日",
+                  "category": "strategy",
+              },
+              "y_clinic_global_benchmark": {
+                  "ja": "世界クリニック分析 — y Clinic戦略フレームワーク",
+                  "zh": "全球診所分析 — y Clinic戰略框架",
+                  "date_ja": "2026年4月13日",
+                  "date_zh": "2026年4月13日",
+                  "category": "strategy",
+              },
+          }
+
+          badge_map = {
+              "minutes":      ("badge-minutes",      "議事録", "會議記錄"),
+              "strategy":     ("badge-strategy",     "分析",   "分析"),
+              "presentation": ("badge-presentation", "資料",   "資料"),
+              "other":        ("badge-other",         "HTML",   "HTML"),
+          }
+          cat_class = {
+              "minutes":      "cat-minutes",
+              "strategy":     "cat-strategy",
+              "presentation": "cat-presentation",
+              "other":        "cat-other",
+          }
 
           def get_category(name):
               n = name.lower()
@@ -39,34 +89,45 @@ jobs:
               if "kickoff" in n or "proposal" in n: return "presentation"
               return "other"
 
-          badge_map = {
-              "minutes":      ("badge-minutes",      "議事録"),
-              "strategy":     ("badge-strategy",     "分析"),
-              "presentation": ("badge-presentation", "資料"),
-              "other":        ("badge-other",         "HTML"),
-          }
-          cat_map = {
-              "minutes":      "cat-minutes",
-              "strategy":     "cat-strategy",
-              "presentation": "cat-presentation",
-              "other":        "cat-other",
-          }
+          # ファイル収集
+          files = sorted([
+              f for f in glob.glob("*.html")
+              if f not in ("index.html", "login.html")
+          ])
 
-          jst = zoneinfo.ZoneInfo("Asia/Tokyo")
-          updated = datetime.datetime.now(jst).strftime("%Y年%m月%d日 %H:%M JST")
+          jst     = zoneinfo.ZoneInfo("Asia/Tokyo")
+          updated_ja = datetime.datetime.now(jst).strftime("%Y年%m月%d日 %H:%M JST")
+          updated_zh = datetime.datetime.now(jst).strftime("%Y年%m月%d日 %H:%M JST")
           count   = len(files)
 
           items_html = ""
           for f in files:
-              name = f[:-5]  # .html 除去
-              cat  = get_category(name)
-              cls, label = badge_map[cat]
+              stem = f[:-5]
+              meta = FILE_META.get(stem)
+              cat  = meta["category"] if meta else get_category(stem)
+              cls, badge_ja, badge_zh = badge_map.get(cat, badge_map["other"])
+
+              title_ja  = meta["ja"]      if meta else stem
+              title_zh  = meta["zh"]      if meta else stem
+              date_ja   = meta["date_ja"] if meta else "—"
+              date_zh   = meta["date_zh"] if meta else "—"
+
               items_html += f"""
-                <li class="file-item {cat_map[cat]}">
+                <li class="file-item {cat_class.get(cat,'cat-other')}">
                   <a class="file-link" href="{f}">
-                    <span class="file-badge {cls}">{label}</span>
+                    <span class="file-badge {cls}">
+                      <span class="t-ja">{badge_ja}</span>
+                      <span class="t-zh">{badge_zh}</span>
+                    </span>
                     <div class="file-info">
-                      <div class="file-name">{name}</div>
+                      <div class="file-name">
+                        <span class="t-ja">{title_ja}</span>
+                        <span class="t-zh">{title_zh}</span>
+                      </div>
+                      <div class="file-date">
+                        <span class="t-ja">{date_ja}</span>
+                        <span class="t-zh">{date_zh}</span>
+                      </div>
                     </div>
                     <span class="file-arrow">&#8594;</span>
                   </a>
@@ -78,17 +139,26 @@ jobs:
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-          <title>yClinic &#8212; 社内資料一覧</title>
+          <title>yClinic &#8212; 社内資料一覧 / 社內資料一覧</title>
           <link rel="preconnect" href="https://fonts.googleapis.com">
-          <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
           <style>
           :root{{--navy:#0F1F3D;--navy-mid:#1B3160;--accent:#2B5BA8;--gold:#B08D4A;--gold-light:#D4AF70;--bg:#F8F6F1;--bg2:#EEEBE4;--white:#FFFFFF;--text:#1A1A2E;--text-mid:#3D3D5C;--text-muted:#6B6B8A;--border:rgba(15,31,61,0.12);--border-strong:rgba(15,31,61,0.25);}}
           *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0;}}
           body{{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.8;}}
-          .lang-bar{{position:sticky;top:0;z-index:100;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:8px 32px;border-bottom:1px solid rgba(255,255,255,0.08);}}
+          body.lang-zh{{font-family:'Noto Sans TC',sans-serif;}}
+          .t-zh{{display:none;}}
+          body.lang-zh .t-ja{{display:none;}}
+          body.lang-zh .t-zh{{display:inline;}}
+          .lang-bar{{position:sticky;top:0;z-index:100;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:8px 32px;border-bottom:1px solid rgba(255,255,255,0.08);gap:12px;flex-wrap:wrap;}}
           .lang-project{{font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.08em;}}
           .lang-project strong{{color:var(--gold-light);font-weight:500;}}
-          .logout-btn{{padding:5px 14px;font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.55);border-radius:3px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;letter-spacing:0.04em;transition:all .15s;}}
+          .lang-right{{display:flex;align-items:center;gap:8px;}}
+          .lang-btns{{display:flex;gap:4px;}}
+          .lang-btn{{padding:4px 12px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.55);border-radius:3px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;letter-spacing:0.04em;transition:all .15s;}}
+          .lang-btn:hover{{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.85);}}
+          .lang-btn.active{{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700;}}
+          .logout-btn{{padding:4px 12px;font-size:11px;font-weight:500;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.55);border-radius:3px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;letter-spacing:0.04em;transition:all .15s;}}
           .logout-btn:hover{{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.85);}}
           .page{{max-width:920px;margin:0 auto;padding:0 32px 80px;}}
           .cover{{background:var(--navy);color:var(--white);padding:48px 64px 40px;margin:0 -32px 56px;position:relative;overflow:hidden;}}
@@ -104,6 +174,7 @@ jobs:
           .section{{margin-bottom:48px;}}
           .section-num{{font-size:11px;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;font-weight:500;}}
           .section-title{{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--navy);}}
+          body.lang-zh .section-title{{font-family:'Noto Sans TC',sans-serif;}}
           .file-list{{list-style:none;}}
           .file-item{{background:var(--white);border:1px solid var(--border);margin-bottom:-1px;position:relative;overflow:hidden;}}
           .file-item:first-child{{border-radius:8px 8px 0 0;}}
@@ -123,36 +194,74 @@ jobs:
           .badge-presentation{{background:rgba(42,138,90,0.1);color:#1F7A4A;}}
           .badge-other{{background:var(--bg2);color:var(--text-muted);}}
           .file-info{{flex:1;min-width:0;}}
-          .file-name{{font-size:14px;font-weight:500;color:var(--text-mid);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .12s;}}
+          .file-name{{font-size:14px;font-weight:500;color:var(--text-mid);line-height:1.5;transition:color .12s;}}
+          .file-date{{font-size:11px;color:var(--text-muted);margin-top:2px;letter-spacing:0.04em;}}
           .file-arrow{{font-size:14px;color:var(--border-strong);flex-shrink:0;transition:color .12s,transform .12s;}}
           .file-link:hover .file-arrow{{color:var(--accent);transform:translateX(3px);}}
           </style>
           </head>
           <body>
           <div class="lang-bar">
-            <span class="lang-project"><strong>y Clinic</strong> &nbsp;&mdash;&nbsp; 社内資料ポータル</span>
-            <button class="logout-btn" onclick="logout()">ログアウト</button>
+            <span class="lang-project"><strong>y Clinic</strong> &nbsp;&mdash;&nbsp;
+              <span class="t-ja">社内資料ポータル</span>
+              <span class="t-zh">社內資料入口</span>
+            </span>
+            <div class="lang-right">
+              <div class="lang-btns">
+                <button class="lang-btn active" id="btn-ja" onclick="setLang('ja')">日本語</button>
+                <button class="lang-btn" id="btn-zh" onclick="setLang('zh')">繁體中文</button>
+              </div>
+              <button class="logout-btn" onclick="logout()">
+                <span class="t-ja">ログアウト</span>
+                <span class="t-zh">登出</span>
+              </button>
+            </div>
           </div>
           <div class="page">
             <div class="cover">
               <div class="cover-eyebrow">Future Health by SPIC</div>
               <div class="cover-title">y<span> Clinic</span></div>
-              <div class="cover-sub">プロジェクト 社内資料ポータル</div>
+              <div class="cover-sub">
+                <span class="t-ja">プロジェクト 社内資料ポータル</span>
+                <span class="t-zh">專案 社內資料入口</span>
+              </div>
               <div class="cover-meta">
-                <div><div class="cover-meta-label">資料数</div><div class="cover-meta-value">{count}件</div></div>
-                <div><div class="cover-meta-label">自動更新日時</div><div class="cover-meta-value">{updated}</div></div>
-                <div><div class="cover-meta-label">プロジェクト</div><div class="cover-meta-value">y Clinic 横浜旗艦 2026</div></div>
+                <div>
+                  <div class="cover-meta-label"><span class="t-ja">資料数</span><span class="t-zh">資料數</span></div>
+                  <div class="cover-meta-value">{count}<span class="t-ja">件</span><span class="t-zh">份</span></div>
+                </div>
+                <div>
+                  <div class="cover-meta-label"><span class="t-ja">自動更新日時</span><span class="t-zh">自動更新時間</span></div>
+                  <div class="cover-meta-value">
+                    <span class="t-ja">{updated_ja}</span>
+                    <span class="t-zh">{updated_zh}</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="cover-meta-label"><span class="t-ja">プロジェクト</span><span class="t-zh">專案</span></div>
+                  <div class="cover-meta-value">y Clinic 横浜旗艦 2026</div>
+                </div>
               </div>
             </div>
             <div class="section">
               <p class="section-num">Documents</p>
-              <h2 class="section-title">資料一覧</h2>
-              <ul class="file-list">{items_html if items_html else '<li style="padding:16px;color:var(--text-muted);">資料なし</li>'}</ul>
+              <h2 class="section-title">
+                <span class="t-ja">資料一覧</span>
+                <span class="t-zh">資料一覽</span>
+              </h2>
+              <ul class="file-list">{items_html if items_html else '<li style="padding:16px;color:var(--text-muted);">—</li>'}</ul>
             </div>
           </div>
           <script>
           if(sessionStorage.getItem('yclinic_auth')!=='1'){{window.location.href='login.html';}}
           function logout(){{sessionStorage.removeItem('yclinic_auth');window.location.href='login.html';}}
+          function setLang(lang){{
+            var b=document.body;
+            if(lang==='zh'){{b.classList.add('lang-zh');document.documentElement.lang='zh-TW';}}
+            else{{b.classList.remove('lang-zh');document.documentElement.lang='ja';}}
+            document.getElementById('btn-ja').classList.toggle('active',lang==='ja');
+            document.getElementById('btn-zh').classList.toggle('active',lang==='zh');
+          }}
           </script>
           </body>
           </html>"""
