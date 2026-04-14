@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>y Clinic — フレームワーク</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141210;--ink-mid:#2C2820;--ink-lt:#4A4540;
+  --cream:#F9F5EF;--cream-2:#F0EBE1;--cream-3:#E6E0D4;--white:#FDFAF6;
+  --gold:#A8832A;--gold-lt:#C9A84C;--gold-pale:rgba(168,131,42,0.12);
+  --rule:rgba(20,18,16,0.10);--rule-mid:rgba(20,18,16,0.18);--muted:#7A7268;
+  --deep:#0A1628;--accent:#2B5BA8;--green:#2A7A50;
+  --display:'Cormorant Garamond','Noto Serif JP',Georgia,serif;
+  --sans:'Noto Sans JP',sans-serif;--sans-zh:'Noto Sans TC',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.85;-webkit-font-smoothing:antialiased}
+body.zh{font-family:var(--sans-zh)}
+
+/* bilingual */
+.zh{display:none}.jab{display:block}.zhb{display:none}
+body.zh .ja{display:none}body.zh .zh{display:inline}
+body.zh .jab{display:none}body.zh .zhb{display:block}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);height:48px;border-bottom:1px solid rgba(255,255,255,0.06);gap:12px}
+.nav-brand{font-family:var(--display);font-size:1.15rem;font-weight:400;color:var(--gold-lt);letter-spacing:.04em;white-space:nowrap}
+.nav-doc{font-family:var(--mono);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.22)}
+.nav-link{font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;border:1px solid rgba(255,255,255,0.15);padding:3px 10px;transition:all .15s;white-space:nowrap}
+.nav-link:hover{color:var(--gold-lt);border-color:var(--gold-lt)}
+.nav-right{display:flex;gap:3px;align-items:center}
+.lb{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.4);cursor:pointer;transition:all .15s}
+.lb:hover{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.35)}
+.lb.on{background:var(--gold);color:var(--deep);border-color:var(--gold);font-weight:400}
+
+/* hero */
+.hero{background:var(--deep);min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:clamp(48px,8vw,96px) clamp(20px,5vw,64px) 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-80px;width:520px;height:520px;border:1px solid rgba(168,131,42,0.07);border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:320px;height:320px;border:1px solid rgba(168,131,42,0.04);border-radius:50%;pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:36px}
+.hero-kicker{font-family:var(--display);font-size:clamp(16px,2.2vw,22px);font-weight:300;font-style:italic;color:rgba(255,255,255,0.45);margin-bottom:16px;letter-spacing:.01em}
+.hero-title{font-family:var(--display);font-size:clamp(36px,6vw,80px);font-weight:300;line-height:1.15;color:var(--white);max-width:720px;margin-bottom:40px;letter-spacing:-.01em}
+.hero-title em{font-style:italic;color:var(--gold-lt)}
+.os-pill{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(168,131,42,0.3);padding:10px 18px;margin-bottom:40px}
+.os-pill-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt)}
+.os-pill-text{font-family:var(--display);font-size:1.05rem;font-weight:400;color:var(--white);letter-spacing:.02em}
+.hero-mini-flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-bottom:40px}
+.mf-item{text-align:center;padding:0 10px}
+.mf-en{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:3px}
+.mf-ja{font-size:.78rem;color:rgba(255,255,255,.55)}
+.mf-op{font-size:.9rem;color:rgba(255,255,255,.12);padding:0 2px;align-self:center}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;padding:24px 0;border-top:1px solid rgba(255,255,255,0.06);position:relative;z-index:1;flex-wrap:wrap;gap:12px}
+.hb-meta{display:flex;gap:40px;flex-wrap:wrap}
+.hb-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:3px}
+.hb-val{font-size:.85rem;color:rgba(255,255,255,.6);font-weight:300}
+.scroll-cue{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+
+/* layout */
+.wrap{max-width:860px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+
+/* section */
+.sec{padding:72px 0 0;border-bottom:1px solid var(--rule)}
+.sec:last-of-type{border-bottom:none}
+.sec-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sec-title{font-family:var(--display);font-size:clamp(26px,4vw,44px);font-weight:300;line-height:1.25;color:var(--ink);margin-bottom:32px;letter-spacing:-.01em}
+.sec-title em{font-style:italic;color:var(--gold)}
+body.zh .sec-title{font-size:clamp(22px,3.5vw,36px)}
+
+/* body text */
+.bt{font-size:.95rem;color:var(--ink-mid);line-height:2.0;margin-bottom:22px;max-width:640px}
+.bt strong{color:var(--ink);font-weight:500}
+.bt em{color:var(--gold);font-style:normal}
+
+/* OS definition box */
+.os-def{background:var(--deep);padding:40px 48px;margin:32px 0;position:relative;overflow:hidden}
+.os-def::after{content:'OS';position:absolute;right:-10px;bottom:-20px;font-family:var(--display);font-size:8rem;font-weight:300;color:rgba(168,131,42,0.06);line-height:1;pointer-events:none}
+.os-def-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:14px;position:relative;z-index:1}
+.os-def-title{font-family:var(--display);font-size:clamp(22px,3vw,34px);font-weight:300;color:var(--white);margin-bottom:16px;letter-spacing:.01em;position:relative;z-index:1}
+.os-def-body{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.9;max-width:520px;position:relative;z-index:1}
+.os-def-body strong{color:rgba(255,255,255,.82);font-weight:500}
+.os-def-body em{color:var(--gold-lt);font-style:normal}
+.os-def-founding{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);font-family:var(--display);font-size:1.05rem;font-weight:400;font-style:italic;color:var(--gold-lt);position:relative;z-index:1}
+.os-def-founding small{display:block;font-family:var(--mono);font-size:.48rem;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-top:5px}
+
+/* 6 layers */
+.layers{margin:36px 0;display:flex;flex-direction:column;gap:0}
+.layer{display:grid;grid-template-columns:64px 1fr;border-bottom:1px solid var(--rule);transition:background .15s}
+.layer:first-child{border-top:1px solid var(--rule)}
+.layer:hover{background:var(--cream-2)}
+.l-num{background:var(--deep);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 0 20px;gap:2px;flex-shrink:0;transition:background .15s}
+.layer:hover .l-num{background:#0F1F3D}
+.l-n{font-family:var(--display);font-size:1.5rem;font-weight:300;color:rgba(255,255,255,.3);line-height:1}
+.layer:hover .l-n{color:var(--gold-lt)}
+.l-body{padding:22px 22px 24px}
+.l-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+.l-name{font-family:var(--display);font-size:1.1rem;font-weight:400;color:var(--ink);letter-spacing:.01em}
+.l-sub{font-size:.8rem;color:var(--muted);font-weight:300}
+.l-tag{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-pale);padding:2px 7px}
+.l-axis{font-family:var(--display);font-size:.95rem;font-style:italic;color:var(--gold);margin-bottom:8px;line-height:1.5}
+body.zh .l-axis{font-style:normal}
+.l-desc{font-size:.88rem;color:var(--ink-mid);line-height:1.85;margin-bottom:10px}
+.l-desc strong{color:var(--ink);font-weight:500}
+.l-desc em{color:var(--gold);font-style:normal}
+.l-insight{font-size:.8rem;color:var(--muted);border-left:2px solid var(--gold-pale);padding:6px 10px;margin-bottom:10px;font-style:italic;line-height:1.7}
+body.zh .l-insight{font-style:normal}
+.l-bench{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:.75rem;color:var(--muted)}
+.bench-label{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase}
+.chip{background:var(--cream-2);border:1px solid var(--rule-mid);font-family:var(--mono);font-size:.48rem;letter-spacing:.06em;padding:2px 7px;color:var(--muted)}
+
+/* world benchmarks */
+.benchmarks{margin:36px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bm-card{background:var(--white);border:1px solid var(--rule-mid);padding:18px 20px;position:relative;overflow:hidden}
+.bm-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%}
+.bm-card.mayo::before{background:var(--accent)}
+.bm-card.neko::before{background:var(--green)}
+.bm-card.chi::before{background:var(--gold)}
+.bm-card.sheba::before{background:#6B3FA0}
+.bm-card.buchinger::before{background:var(--ink-lt)}
+.bm-name{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.bm-card.mayo .bm-name{color:var(--accent)}
+.bm-card.neko .bm-name{color:var(--green)}
+.bm-card.chi .bm-name{color:var(--gold)}
+.bm-card.sheba .bm-name{color:#6B3FA0}
+.bm-card.buchinger .bm-name{color:var(--ink-lt)}
+.bm-lesson{font-size:.85rem;color:var(--ink-mid);line-height:1.8;margin-bottom:8px}
+.bm-lesson strong{color:var(--ink);font-weight:500}
+.bm-layer{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* absorption */
+.abs-box{background:var(--white);border:1px solid var(--rule-mid);border-left:2px solid var(--gold);padding:28px 32px;margin:28px 0}
+.abs-box-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.abs-box-title{font-family:var(--display);font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:10px;letter-spacing:.01em}
+body.zh .abs-box-title{font-family:var(--sans-zh);font-size:1.05rem;font-weight:500}
+.abs-box-body{font-size:.9rem;color:var(--ink-mid);line-height:1.9;margin-bottom:20px}
+.abs-box-body strong{color:var(--ink);font-weight:500}
+.chain{display:flex;flex-wrap:wrap;gap:0;align-items:center}
+.chain-step{display:flex;align-items:center;gap:0}
+.chain-text{font-size:.8rem;font-weight:500;color:var(--muted);background:var(--cream-2);border:1px solid var(--rule-mid);padding:5px 12px;text-decoration:line-through;text-decoration-color:rgba(140,60,50,.35)}
+.chain-text.final{background:var(--deep);color:var(--white);border-color:var(--deep);text-decoration:none}
+.chain-arrow{font-size:.75rem;color:var(--rule-mid);padding:0 5px}
+
+/* formula */
+.formula-block{background:var(--deep);padding:36px 44px 32px;margin:36px 0;display:flex;align-items:center;gap:0;flex-wrap:wrap}
+.fi{text-align:center;padding:0 8px}
+.fi-en{font-family:var(--mono);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:3px}
+.fi-ja{font-size:.8rem;color:rgba(255,255,255,.55)}
+.fop{font-size:.95rem;color:rgba(255,255,255,.15);padding:0 3px;align-self:center}
+.formula-result{width:100%;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.07);text-align:center;font-size:.85rem;color:rgba(255,255,255,.4)}
+.formula-result strong{color:var(--gold-lt)}
+
+/* pull quote */
+.pull{margin:36px 0;padding:0 0 0 22px;border-left:2px solid var(--gold);max-width:580px}
+.pull-text{font-family:var(--display);font-size:clamp(18px,2.5vw,24px);font-weight:400;font-style:italic;line-height:1.65;color:var(--ink)}
+body.zh .pull-text{font-style:normal;font-size:clamp(16px,2.2vw,20px)}
+
+/* final */
+.final-block{background:var(--deep);margin:0 clamp(-20px,-5vw,-64px);padding:80px clamp(20px,5vw,64px) 88px;text-align:center;position:relative;overflow:hidden}
+.final-block::before{content:'';position:absolute;left:50%;top:-100px;transform:translateX(-50%);width:600px;height:600px;border:1px solid rgba(168,131,42,0.05);border-radius:50%;pointer-events:none}
+.final-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.final-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:36px}
+.final-eq{font-family:var(--display);font-size:clamp(14px,2vw,20px);font-weight:300;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:40px}
+.final-eq strong{color:var(--gold-lt)}
+.final-def-text{font-family:var(--display);font-size:clamp(20px,3.5vw,40px);font-weight:300;color:var(--white);line-height:1.4;margin-bottom:32px;letter-spacing:-.01em}
+.final-def-text em{font-style:italic;color:var(--gold-lt)}
+body.zh .final-def-text{font-size:clamp(18px,3vw,34px)}
+.final-sub{font-size:.88rem;color:rgba(255,255,255,.4);line-height:1.9;max-width:520px;margin:0 auto 40px}
+.final-link{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(168,131,42,0.35);padding:10px 20px;font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-lt);text-decoration:none;transition:all .2s}
+.final-link:hover{background:var(--gold);color:var(--deep);border-color:var(--gold)}
+
+/* responsive */
+@media(max-width:600px){
+  .benchmarks{grid-template-columns:1fr}
+  .formula-block{padding:24px 20px}.chain{flex-direction:column;align-items:flex-start}
+  .chain-arrow{transform:rotate(90deg)}
+  .final-block{padding:64px 20px 72px}.nav-doc{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">y Clinic</div>
+  <div class="nav-doc"><span class="ja">フレームワーク</span><span class="zh">框架</span></div>
+  <div class="nav-right">
+    <a class="nav-link" href="y_clinic_declaration.html"><span class="ja">← 設立宣言</span><span class="zh">← 設立宣言</span></a>
+    <button class="lb on" id="btn-ja" onclick="setLang('ja')">日本語</button>
+    <button class="lb" id="btn-zh" onclick="setLang('zh')">繁體中文</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="ja">y Clinic — フレームワーク / Framework · Confidential 2026</span>
+      <span class="zh">y Clinic — 框架 / Framework · Confidential 2026</span>
+    </div>
+    <div class="hero-kicker">
+      <span class="ja">宣言を実装に変える、6層の設計図。</span>
+      <span class="zh">將宣言轉化為實作的6層設計圖。</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="jab">Human-centered<br><em>Preventive Operating System</em></span>
+      <span class="zhb">Human-centered<br><em>Preventive Operating System</em></span>
+    </h1>
+    <div class="hero-mini-flow">
+      <div class="mf-item"><div class="mf-en">Entry</div><div class="mf-ja"><span class="ja">入口</span><span class="zh">入口</span></div></div>
+      <div class="mf-op">→</div>
+      <div class="mf-item"><div class="mf-en">Assessment</div><div class="mf-ja"><span class="ja">評価</span><span class="zh">評估</span></div></div>
+      <div class="mf-op">→</div>
+      <div class="mf-item"><div class="mf-en">Interpretation</div><div class="mf-ja"><span class="ja">解釈</span><span class="zh">解讀</span></div></div>
+      <div class="mf-op">→</div>
+      <div class="mf-item"><div class="mf-en">Intervention</div><div class="mf-ja"><span class="ja">介入</span><span class="zh">介入</span></div></div>
+      <div class="mf-op">→</div>
+      <div class="mf-item"><div class="mf-en">Continuum</div><div class="mf-ja"><span class="ja">継続</span><span class="zh">持續</span></div></div>
+      <div class="mf-op">→</div>
+      <div class="mf-item"><div class="mf-en">Institute</div><div class="mf-ja"><span class="ja">社会基盤</span><span class="zh">社會基盤</span></div></div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hb-meta">
+      <div><div class="hb-label"><span class="ja">中心概念</span><span class="zh">核心概念</span></div><div class="hb-val">Human-centered Preventive OS</div></div>
+      <div><div class="hb-label"><span class="ja">独自軸</span><span class="zh">獨有軸</span></div><div class="hb-val">Precision Prevention through Absorption Design</div></div>
+      <div><div class="hb-label"><span class="ja">世界参照施設</span><span class="zh">世界參照機構</span></div><div class="hb-val">Mayo · Neko · Sheba · Chi · Buchinger</div></div>
+    </div>
+    <div class="scroll-cue">↓ scroll</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ── SECTION 01: OS定義 ── -->
+<div class="sec">
+  <p class="sec-label"><span class="ja">Section 01 — 医療OSの定義</span><span class="zh">Section 01 — 醫療OS的定義</span></p>
+  <h2 class="sec-title">
+    <span class="jab">「検査をすること」ではなく、<br><em>「人の未来を設計すること」</em>。</span>
+    <span class="zhb">不是「做檢查」，<br>而是<em>「設計人的未來」</em>。</span>
+  </h2>
+
+  <p class="bt">
+    <span class="jab">世界の先端クリニックを見比べると、強い施設はそれぞれ違う顔を持ちながらも、実は共通して「入口」「評価」「解釈」「介入」「継続」「知の蓄積」を一つの流れにしています。y Clinicが目指すべきものは「高級健診」でも「会員制クリニック」でもなく、<strong>予防医療をOSとして実装する統合型モデル</strong>です。</span>
+    <span class="zhb">縱觀世界頂尖診所，各強勢機構雖面貌各異，但實際上都共同擁有「入口」「評估」「解讀」「介入」「持續」「知識積累」這一連貫的流動。y Clinic應追求的並非「高級健診」也非「會員制診所」，而是<strong>將預防醫療作為作業系統實作的整合型模型</strong>。</span>
+  </p>
+
+  <div class="os-def">
+    <div class="os-def-label"><span class="ja">y Clinic — 中心概念</span><span class="zh">y Clinic — 核心概念</span></div>
+    <div class="os-def-title">Human-centered Preventive Operating System</div>
+    <div class="os-def-body">
+      <span class="jab"><strong>社会課題に応答し続けるための、人を中心にした予防・回復・継続の医療OS。</strong><br>「検査をすること」ではなく、「検査を起点に人の未来を設計すること」。エビデンスを待つだけでなく、現場から問いを立て医療を更新し続ける。<em>そして、その全ての根底にあるのは——</em></span>
+      <span class="zhb"><strong>為了持續回應社會課題，以人為中心的預防・恢復・持續的醫療OS。</strong><br>不是「做檢查」，而是「以檢查為起點設計人的未來」。不只是等待實證，而是從現場提出問題、持續更新醫療。<em>而流淌在這一切根底的——</em></span>
+    </div>
+    <div class="os-def-founding">
+      <span class="ja">患者様の、心と身体に優しい医療</span>
+      <span class="zh">對患者的身心都溫柔的醫療</span>
+      <small>
+        <span class="ja">芝田乃丞 — SPIC 創業者 / すべての設計の根底にある言葉</span>
+        <span class="zh">芝田乃丞 — SPIC 創辦人 / 流淌在所有設計根底的話語</span>
+      </small>
+    </div>
+  </div>
+  <div style="padding-bottom:72px"></div>
+</div>
+
+<!-- ── SECTION 02: 6層モデル ── -->
+<div class="sec">
+  <p class="sec-label"><span class="ja">Section 02 — 6層モデル</span><span class="zh">Section 02 — 6層模型</span></p>
+  <h2 class="sec-title">
+    <span class="jab">入口から<em>社会への応答基盤</em>まで、<br>切らずにつなげた設計。</span>
+    <span class="zhb">從入口到<em>對社會的回應基盤</em>，<br>一脈相連的設計。</span>
+  </h2>
+
+  <div class="layers">
+
+    <!-- Layer 1 -->
+    <div class="layer">
+      <div class="l-num"><div class="l-n">1</div></div>
+      <div class="l-body">
+        <div class="l-head">
+          <div class="l-name">Y Entry</div>
+          <div class="l-sub"><span class="ja">入口設計</span><span class="zh">入口設計</span></div>
+          <div class="l-tag"><span class="ja">軽く、深く</span><span class="zh">輕盈而深刻</span></div>
+        </div>
+        <div class="l-axis">
+          <span class="ja">「売る入口」ではなく、「また来たい入口」を設計する。</span>
+          <span class="zh">設計的是「想再來的入口」，而非「銷售的入口」。</span>
+        </div>
+        <div class="l-desc">
+          <span class="jab">最初の接点は「人生を変えるフルパッケージ」ではなく、<strong>「自分の状態が一気に見える入口」</strong>にする。価格より再訪の設計。入口で全てを売ろうとすると、継続の構造が崩れる。重要なのは、来院した日に「また来たい」と思わせること——その感情の設計が Layer 1 の本質です。</span>
+          <span class="zhb">第一個接觸點不是「改變人生的完整套餐」，而是<strong>「一眼就能看清自己狀態的入口」</strong>。設計的重點在於回訪而非價格。若試圖在入口就銷售一切，持續的結構將崩潰。重要的是，在就診當天讓患者產生「想再來」的感受——這種情感的設計才是Layer 1的本質。</span>
+        </div>
+        <div class="l-insight">
+          <span class="ja">Neko Healthが示すもの：60分・即時説明・高翌年予約率。入口は軽くても良い。</span>
+          <span class="zh">Neko Health所示：60分鐘、即時說明、高翌年預約率。入口可以輕盈。</span>
+        </div>
+        <div class="l-bench"><span class="bench-label"><span class="ja">参照</span><span class="zh">參照</span></span><span class="chip">Neko Health</span></div>
+      </div>
+    </div>
+
+    <!-- Layer 2 -->
+    <div class="layer">
+      <div class="l-num"><div class="l-n">2</div></div>
+      <div class="l-body">
+        <div class="l-head">
+          <div class="l-name">Y Assessment</div>
+          <div class="l-sub"><span class="ja">多面的評価</span><span class="zh">多面向評估</span></div>
+          <div class="l-tag"><span class="ja">数値より構造</span><span class="zh">結構勝於數值</span></div>
+        </div>
+        <div class="l-axis">
+          <span class="ja">「何の数値か」ではなく、「この人の健康の構造は何か」を問う。</span>
+          <span class="zh">不問「是什麼數值」，而問「這個人的健康結構是什麼」。</span>
+        </div>
+        <div class="l-desc">
+          <span class="jab">「数値を集める」のではなく、<strong>「その人の今の状態を多面的に理解する」</strong>ことが目的。血液検査だけでなく、睡眠・ストレス・身体組成・行動・認知機能・回復力までを一つの評価軸に束ねる。目指す体験は「検査が終わった」ではなく<em>「自分の健康の構造が見えた」</em>です。</span>
+          <span class="zhb">目的不是「收集數值」，而是<strong>「多面向理解此人當前的狀態」</strong>。不僅是血液檢查，更將睡眠、壓力、體組成、行為、認知功能、恢復力整合為一個評估軸。目標體驗不是「檢查結束了」，而是<em>「看清了自己的健康結構」</em>。</span>
+        </div>
+        <div class="l-insight">
+          <span class="ja">Shebaが示すもの：450+バイオマーカー・12ステーションによる multidimensional evaluation。単一の数値ではなく、人の「状態の地図」を描く。</span>
+          <span class="zh">Sheba所示：450+生物標誌物、12站式的多維評估。不是單一數值，而是描繪人的「狀態地圖」。</span>
+        </div>
+        <div class="l-bench"><span class="bench-label"><span class="ja">参照</span><span class="zh">參照</span></span><span class="chip">Sheba Longevity</span><span class="chip">Chi Longevity</span></div>
+      </div>
+    </div>
+
+    <!-- Layer 3 -->
+    <div class="layer">
+      <div class="l-num"><div class="l-n">3</div></div>
+      <div class="l-body">
+        <div class="l-head">
+          <div class="l-name">Y Interpretation</div>
+          <div class="l-sub"><span class="ja">未来設計の解釈</span><span class="zh">未來設計的解讀</span></div>
+          <div class="l-tag"><span class="ja">問題より未来</span><span class="zh">未來勝於問題</span></div>
+        </div>
+        <div class="l-axis">
+          <span class="ja">医師が語るのは「何が問題か」ではなく、「この人の未来に何が起こりうるか」。</span>
+          <span class="zh">醫師述說的不是「哪裡有問題」，而是「此人的未來可能發生什麼」。</span>
+        </div>
+        <div class="l-desc">
+          <span class="jab">検査結果は、返すだけでは価値にならない。<strong>日本の多くのクリニックに欠けているのはここです。</strong>医師が"unhurried physician time"を使って、個別の未来に語りかける時間——ここで初めて、検査が「過去の診断」ではなく<em>「未来の設計」</em>に変わります。</span>
+          <span class="zhb">僅僅返還檢查結果並無法創造價值。<strong>這正是日本許多診所所欠缺的部分。</strong>醫師利用"unhurried physician time"，對個別的未來進行述說的時間——在這裡，檢查才第一次從「過去的診斷」轉變為<em>「未來的設計」</em>。</span>
+        </div>
+        <div class="l-insight">
+          <span class="ja">Mayo Clinicが示すもの：個別行程の設計と「unhurried physician time」。短時間でも深い信頼は作れる。</span>
+          <span class="zh">Mayo Clinic所示：個別行程的設計與「unhurried physician time」。即使時間短暫也能建立深度信任。</span>
+        </div>
+        <div class="l-bench"><span class="bench-label"><span class="ja">参照</span><span class="zh">參照</span></span><span class="chip">Mayo Clinic</span></div>
+      </div>
+    </div>
+
+    <!-- Layer 4 -->
+    <div class="layer">
+      <div class="l-num"><div class="l-n">4</div></div>
+      <div class="l-body">
+        <div class="l-head">
+          <div class="l-name">Y Intervention</div>
+          <div class="l-sub"><span class="ja">統合的介入</span><span class="zh">整合性介入</span></div>
+          <div class="l-tag"><span class="ja">処方として届ける</span><span class="zh">以處方遞送</span></div>
+        </div>
+        <div class="l-axis">
+          <span class="ja">プロダクトは「売り物」ではなく、「医療プロトコルに組み込まれた介入手段」として機能する。</span>
+          <span class="zh">產品不是「販售商品」，而是作為「融入醫療方案的介入手段」發揮功能。</span>
+        </div>
+        <div class="l-desc">
+          <span class="jab">単なる治療でもサプリ販売でもない。栄養・点滴・生活習慣・睡眠・運動・ストレスケアを統合した介入。<strong>Lypo-Cや関連製品が生きるのは、"医療プロトコルに組み込まれた介入手段"として</strong>です。ここにこそスピックの優位性があります。介入は処方から始まり、身体に届くことで完成します。</span>
+          <span class="zhb">既非單純的治療，也非補充品銷售。整合營養、點滴、生活習慣、睡眠、運動、壓力管理的介入。<strong>Lypo-C及相關產品發揮作用，是作為「融入醫療方案的介入手段」</strong>。SPIC的優勢正在於此。介入從處方開始，在送達身體時才得以完成。</span>
+        </div>
+        <div class="l-insight">
+          <span class="ja">Chi・Shebaが示すもの：personalized intervention plan × longevity care plan。評価とセットで初めて介入が意味を持つ。</span>
+          <span class="zh">Chi・Sheba所示：個人化介入計畫 × 長壽護理計畫。與評估相結合，介入才具有意義。</span>
+        </div>
+        <div class="l-bench"><span class="bench-label"><span class="ja">参照</span><span class="zh">參照</span></span><span class="chip">Chi Longevity</span><span class="chip">Sheba</span></div>
+      </div>
+    </div>
+
+    <!-- Layer 5 -->
+    <div class="layer">
+      <div class="l-num"><div class="l-n">5</div></div>
+      <div class="l-body">
+        <div class="l-head">
+          <div class="l-name">Y Continuum</div>
+          <div class="l-sub"><span class="ja">継続関係の設計</span><span class="zh">持續關係的設計</span></div>
+          <div class="l-tag"><span class="ja">関係が先、手段が後</span><span class="zh">關係在先，手段在後</span></div>
+        </div>
+        <div class="l-axis">
+          <span class="ja">強いクリニックは「来院一回の完成度」ではなく、「次回来る理由」まで設計している。</span>
+          <span class="zh">強大的診所設計的不是「單次就診的完整度」，而是「下次再來的理由」。</span>
+        </div>
+        <div class="l-desc">
+          <span class="jab">当日完結の価値と、30日・90日・1年単位の伴走をセットに。<strong>会員制やアプリは目的ではなく、継続運用の手段です。</strong>関係性の継続を先に設計する——これが正しい順番。会費モデルを先に置くのではなく、<em>「また来たい」という感情が先にある</em>。</span>
+          <span class="zhb">將當日完結的價值與30天、90天、1年為單位的陪伴相互結合。<strong>會員制與App不是目的，而是持續運作的手段。</strong>先設計關係的持續性——這才是正確的順序。不是先設立會費模式，而是<em>先有「想再來」的情感</em>。</span>
+        </div>
+        <div class="l-insight">
+          <span class="ja">Mayo・Nekoが示すもの：career-long relationship と高翌年予約率。継続は設計できる。</span>
+          <span class="zh">Mayo・Neko所示：career-long relationship與高翌年預約率。持續性是可以設計的。</span>
+        </div>
+        <div class="l-bench"><span class="bench-label"><span class="ja">参照</span><span class="zh">參照</span></span><span class="chip">Mayo Clinic</span><span class="chip">Neko Health</span></div>
+      </div>
+    </div>
+
+    <!-- Layer 6 -->
+    <div class="layer">
+      <div class="l-num"><div class="l-n">6</div></div>
+      <div class="l-body">
+        <div class="l-head">
+          <div class="l-name">Y Institute</div>
+          <div class="l-sub"><span class="ja">社会への応答基盤</span><span class="zh">對社會的回應基盤</span></div>
+          <div class="l-tag"><span class="ja">知を次へ渡す</span><span class="zh">將知識傳遞給下一代</span></div>
+        </div>
+        <div class="l-axis">
+          <span class="ja">社会がまだ答えを持たない健康課題に、医師が応答し続けるための基盤。</span>
+          <span class="zh">讓醫師能夠持續回應社會尚無答案的健康課題的基盤。</span>
+        </div>
+        <div class="l-desc">
+          <span class="jab">y Clinicを単なる成功クリニックから引き上げる層。<strong>診療現場で終わらず、医師教育・プロトコル開発・症例蓄積・海外拠点共有・学会連携まで含めて、初めてその意味が完成します。</strong>ここまで行ったとき、y Clinicは「良いクリニック」を超え、<em>社会的インフラ</em>になります。</span>
+          <span class="zhb">將y Clinic從成功診所提升到更高層次的層次。<strong>不止步於診療現場，包含醫師教育、方案開發、病例積累、海外據點共享、學術會議連結，才能第一次完成其意義。</strong>達到這一步時，y Clinic超越了「好診所」，成為<em>社會基礎建設</em>。</span>
+        </div>
+        <div class="l-insight">
+          <span class="ja">Shebaが示すもの：研究・教育・AI・innovation の統合。Buchinger が示すもの：100年の知の蓄積と継承。</span>
+          <span class="zh">Sheba所示：研究・教育・AI・創新的整合。Buchinger所示：100年的知識積累與傳承。</span>
+        </div>
+        <div class="l-bench"><span class="bench-label"><span class="ja">参照</span><span class="zh">參照</span></span><span class="chip">Sheba</span><span class="chip">Buchinger Wilhelmi</span></div>
+      </div>
+    </div>
+
+  </div><!-- /layers -->
+  <div style="padding-bottom:72px"></div>
+</div>
+
+<!-- ── SECTION 03: 世界のロールモデル ── -->
+<div class="sec">
+  <p class="sec-label"><span class="ja">Section 03 — 世界のロールモデル</span><span class="zh">Section 03 — 世界標竿模型</span></p>
+  <h2 class="sec-title">
+    <span class="jab">各層に、世界の<em>先端モデル</em>が対応する。</span>
+    <span class="zhb">各層對應著世界的<em>頂尖模型</em>。</span>
+  </h2>
+
+  <p class="bt">
+    <span class="jab">y Clinicは、これらをそのまま模倣するのではなく、柳澤先生の思想・日本的文脈・アジア展開の視点で<strong>再統合する</strong>存在です。</span>
+    <span class="zhb">y Clinic並非直接模仿這些機構，而是以柳澤先生的思想、日本脈絡、亞洲展開的視角<strong>重新整合</strong>的存在。</span>
+  </p>
+
+  <div class="benchmarks">
+    <div class="bm-card mayo">
+      <div class="bm-name">Mayo Clinic</div>
+      <div class="bm-lesson"><strong><span class="ja">短期間でも深い信頼は作れる。</span><span class="zh">即使時間短暫也能建立深度信任。</span></strong><br><span class="ja">个別行程 + unhurried physician time + Executive Health の設計哲学</span><span class="zh">個別行程 + unhurried physician time + Executive Health設計哲學</span></div>
+      <div class="bm-layer"><span class="ja">→ Layer 3 (Interpretation) · Layer 5 (Continuum)</span><span class="zh">→ Layer 3 · Layer 5</span></div>
+    </div>
+    <div class="bm-card neko">
+      <div class="bm-name">Neko Health</div>
+      <div class="bm-lesson"><strong><span class="ja">入口は軽くても良い。</span><span class="zh">入口可以輕盈。</span></strong><br><span class="ja">60分スキャン + 即時説明 + 高翌年予約率。受診を習慣にする設計</span><span class="zh">60分掃描 + 即時說明 + 高翌年預約率。將就診設計為習慣</span></div>
+      <div class="bm-layer"><span class="ja">→ Layer 1 (Entry) · Layer 5 (Continuum)</span><span class="zh">→ Layer 1 · Layer 5</span></div>
+    </div>
+    <div class="bm-card chi">
+      <div class="bm-name">Chi Longevity</div>
+      <div class="bm-lesson"><strong><span class="ja">健康長寿は多面的評価と個別化介入の連続体。</span><span class="zh">健康長壽是多面向評估與個人化介入的連續體。</span></strong><br><span class="ja">precision-led longevity medicine × healthspan</span><span class="zh">precision-led longevity medicine × healthspan</span></div>
+      <div class="bm-layer"><span class="ja">→ Layer 2 (Assessment) · Layer 4 (Intervention)</span><span class="zh">→ Layer 2 · Layer 4</span></div>
+    </div>
+    <div class="bm-card sheba">
+      <div class="bm-name">Sheba Longevity</div>
+      <div class="bm-lesson"><strong><span class="ja">臨床と研究を分離しない。</span><span class="zh">臨床與研究不分離。</span></strong><br><span class="ja">学術・AI・innovation を longevity center の中核機能に。450+バイオマーカー</span><span class="zh">將學術、AI、創新設為longevity center的核心功能。450+生物標誌物</span></div>
+      <div class="bm-layer"><span class="ja">→ Layer 2 (Assessment) · Layer 6 (Institute)</span><span class="zh">→ Layer 2 · Layer 6</span></div>
+    </div>
+    <div class="bm-card buchinger">
+      <div class="bm-name">Buchinger Wilhelmi</div>
+      <div class="bm-lesson"><strong><span class="ja">100年の蓄積が権威になる。</span><span class="zh">100年的積累成為權威。</span></strong><br><span class="ja">継続する知の蓄積と次世代への継承。医療は一代で終わらない</span><span class="zh">持續的知識積累與傳承給下一代。醫療不在一個世代結束</span></div>
+      <div class="bm-layer"><span class="ja">→ Layer 6 (Institute)</span><span class="zh">→ Layer 6</span></div>
+    </div>
+  </div>
+
+  <div class="pull">
+    <div class="pull-text">
+      <span class="jab">y Clinicは、それらを日本的・アジア的・柳澤先生的文脈で再統合する存在です。</span>
+      <span class="zhb">y Clinic是在日本、亞洲、柳澤先生的脈絡中重新整合這一切的存在。</span>
+    </div>
+  </div>
+  <div style="padding-bottom:72px"></div>
+</div>
+
+<!-- ── SECTION 04: Absorption Design ── -->
+<div class="sec">
+  <p class="sec-label"><span class="ja">Section 04 — スピックの独自軸</span><span class="zh">Section 04 — SPIC獨有優勢</span></p>
+  <h2 class="sec-title">
+    <span class="jab">評価で終わらず、<em>身体に届くまで責任を持つ</em>。</span>
+    <span class="zhb">不止步於評估，<em>對送達身體的設計負責到底</em>。</span>
+  </h2>
+
+  <p class="bt">
+    <span class="jab">海外モデルの多くは、評価・予測・介入まで強い。しかし<strong>「栄養をどう身体に届けるか」という思想をクリニックの中心に持っているところは多くありません</strong>。スピックはここで明確に差別化できます。これが、y Clinicのフレームワーク全体を貫く固有の軸です。</span>
+    <span class="zhb">許多海外模型在評估、預測、介入方面都很強。然而<strong>將「如何將營養送達身體」的思想置於診所核心的機構並不多</strong>。SPIC在這裡能夠做出明確的差異化。這是貫穿y Clinic整個框架的固有優勢軸。</span>
+  </p>
+
+  <div class="abs-box">
+    <div class="abs-box-label"><span class="ja">SPIC 独自の差別化軸</span><span class="zh">SPIC獨有差異化優勢</span></div>
+    <div class="abs-box-title">Precision Prevention through Absorption Design</div>
+    <div class="abs-box-body">
+      <span class="jab">ただの precision prevention ではなく、「身体に届く設計まで責任を持つ」予防医療。<strong>Lypo-Cをはじめとしたスピックのプロダクト資産が、初めて戦略的に美しく医療に組み込まれる</strong>のはここです。商品として売るのではなく、医療プロトコルの一部として処方される。</span>
+      <span class="zhb">不僅是precision prevention，而是「對送達身體的設計也負責到底」的預防醫療。<strong>以Lypo-C為首的SPIC產品資產，第一次以戰略性的美麗方式融入醫療之中</strong>。不是作為商品販售，而是作為醫療方案的一部分被處方。</span>
+    </div>
+    <div class="chain">
+      <div class="chain-step">
+        <div class="chain-text"><span class="ja">評価して終わらない</span><span class="zh">不止步於評估</span></div>
+        <div class="chain-arrow">→</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-text"><span class="ja">説明して終わらない</span><span class="zh">不止步於說明</span></div>
+        <div class="chain-arrow">→</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-text"><span class="ja">行動だけでも終わらない</span><span class="zh">不止步於行動</span></div>
+        <div class="chain-arrow">→</div>
+      </div>
+      <div class="chain-step">
+        <div class="chain-text final"><span class="ja">身体に届く設計まで責任を持つ</span><span class="zh">對送達身體的設計負責到底</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding-bottom:72px"></div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- FINAL FORMULA & CONCLUSION -->
+<div class="final-block">
+  <div class="final-inner">
+    <div class="final-label">
+      <span class="ja">y Clinic フレームワーク — 定義</span>
+      <span class="zh">y Clinic 框架 — 定義</span>
+    </div>
+
+    <div class="formula-block" style="max-width:700px;margin:0 auto 40px;justify-content:center">
+      <div class="fi"><div class="fi-en">Entry</div><div class="fi-ja"><span class="ja">入口</span><span class="zh">入口</span></div></div>
+      <div class="fop">×</div>
+      <div class="fi"><div class="fi-en">Assessment</div><div class="fi-ja"><span class="ja">評価</span><span class="zh">評估</span></div></div>
+      <div class="fop">×</div>
+      <div class="fi"><div class="fi-en">Interpretation</div><div class="fi-ja"><span class="ja">解釈</span><span class="zh">解讀</span></div></div>
+      <div class="fop">×</div>
+      <div class="fi"><div class="fi-en">Intervention</div><div class="fi-ja"><span class="ja">介入</span><span class="zh">介入</span></div></div>
+      <div class="fop">×</div>
+      <div class="fi"><div class="fi-en">Continuum</div><div class="fi-ja"><span class="ja">継続</span><span class="zh">持續</span></div></div>
+      <div class="fop">×</div>
+      <div class="fi"><div class="fi-en">Institute</div><div class="fi-ja"><span class="ja">社会基盤</span><span class="zh">社會基盤</span></div></div>
+      <div class="formula-result">
+        <strong>y Clinic</strong> &nbsp;=&nbsp;
+        <span class="ja">入口から社会への応答基盤まで切らずにつなげた、予防医療の統合モデル</span>
+        <span class="zh">從入口到對社會的回應基盤一脈相連的預防醫療整合模型</span>
+      </div>
+    </div>
+
+    <div class="final-def-text">
+      <span class="jab">予防医療を<em>「点」</em>ではなく<em>「流れ」</em>として実装する。</span>
+      <span class="zhb">將預防醫療以<em>「流動」</em>而非<em>「點」</em>的方式實作。</span>
+    </div>
+
+    <div class="final-sub">
+      <span class="jab">人を多面的に理解し、個別介入を設計し、継続伴走し、その知を次の拠点と次の医師へ渡していく医療OSの旗艦拠点。</span>
+      <span class="zhb">多面向理解人、設計個別介入、持續陪伴，並將知識傳遞給下一個據點與下一位醫師——醫療OS的旗艦據點。</span>
+    </div>
+
+    <a class="final-link" href="y_clinic_declaration.html">
+      <span class="ja">← 設立宣言を読む</span>
+      <span class="zh">← 閱讀設立宣言</span>
+    </a>
+  </div>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.toggle('zh',l==='zh');
+  document.documentElement.lang=l==='zh'?'zh-TW':'ja';
+  document.getElementById('btn-ja').classList.toggle('on',l==='ja');
+  document.getElementById('btn-zh').classList.toggle('on',l==='zh');
+}
+</script>
+</body>
+</html>

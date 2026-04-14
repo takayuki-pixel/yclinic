@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<title>y Clinic — 設立宣言</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141210;--ink-mid:#2C2820;--ink-lt:#4A4540;
+  --cream:#F9F5EF;--cream-2:#F0EBE1;--cream-3:#E6E0D4;--white:#FDFAF6;
+  --gold:#A8832A;--gold-lt:#C9A84C;--gold-pale:rgba(168,131,42,0.12);
+  --rule:rgba(20,18,16,0.10);--rule-mid:rgba(20,18,16,0.18);--muted:#7A7268;
+  --deep:#0A1628;--accent:#2B5BA8;--green:#2A7A50;
+  --display:'Cormorant Garamond','Noto Serif JP',Georgia,serif;
+  --sans:'Noto Sans JP',sans-serif;--sans-zh:'Noto Sans TC',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.85;-webkit-font-smoothing:antialiased}
+body.zh{font-family:var(--sans-zh)}
+
+/* bilingual */
+.zh{display:none}.jab{display:block}.zhb{display:none}
+body.zh .ja{display:none}body.zh .zh{display:inline}
+body.zh .jab{display:none}body.zh .zhb{display:block}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,64px);height:48px;border-bottom:1px solid rgba(255,255,255,0.06);gap:12px}
+.nav-brand{font-family:var(--display);font-size:1.15rem;font-weight:400;color:var(--gold-lt);letter-spacing:.04em;white-space:nowrap}
+.nav-doc{font-family:var(--mono);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.22)}
+.nav-link{font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;border:1px solid rgba(255,255,255,0.15);padding:3px 10px;transition:all .15s;white-space:nowrap}
+.nav-link:hover{color:var(--gold-lt);border-color:var(--gold-lt)}
+.nav-right{display:flex;gap:3px;align-items:center}
+.lb{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:rgba(255,255,255,0.4);cursor:pointer;transition:all .15s}
+.lb:hover{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.35)}
+.lb.on{background:var(--gold);color:var(--deep);border-color:var(--gold);font-weight:400}
+
+/* hero */
+.hero{background:var(--deep);min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:clamp(48px,8vw,96px) clamp(20px,5vw,64px) 0;position:relative;overflow:hidden}
+.hero::before{content:'宣';position:absolute;bottom:-4vw;right:-2vw;font-family:var(--display);font-size:clamp(200px,28vw,400px);font-weight:300;color:rgba(168,131,42,0.05);line-height:1;pointer-events:none;user-select:none}
+.hero::after{content:'';position:absolute;top:-80px;left:38%;width:500px;height:500px;border:1px solid rgba(168,131,42,0.07);border-radius:50%;pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:40px}
+.hero-title{font-family:var(--display);font-size:clamp(36px,6vw,80px);font-weight:300;line-height:1.2;color:var(--white);max-width:740px;margin-bottom:48px;letter-spacing:-.01em}
+.hero-title em{font-style:italic;color:var(--gold-lt)}
+.founding{border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;align-items:baseline;gap:20px;max-width:600px;margin-bottom:48px}
+.founding-text{font-family:var(--display);font-size:1.35rem;font-weight:400;font-style:italic;color:var(--gold-lt);letter-spacing:.02em;flex-shrink:0}
+.founding-attr{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.25)}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;padding:24px 0;border-top:1px solid rgba(255,255,255,0.06);position:relative;z-index:1;flex-wrap:wrap;gap:12px}
+.hb-meta{display:flex;gap:40px;flex-wrap:wrap}
+.hb-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:3px}
+.hb-val{font-size:.85rem;color:rgba(255,255,255,.6);font-weight:300}
+.scroll-cue{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+
+/* layout */
+.wrap{max-width:860px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+
+/* section */
+.sec{padding:72px 0 0;border-bottom:1px solid var(--rule)}
+.sec:last-of-type{border-bottom:none}
+.sec-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sec-title{font-family:var(--display);font-size:clamp(26px,4vw,44px);font-weight:300;line-height:1.25;color:var(--ink);margin-bottom:32px;letter-spacing:-.01em}
+.sec-title em{font-style:italic;color:var(--gold)}
+body.zh .sec-title{font-size:clamp(22px,3.5vw,36px)}
+
+/* body */
+.bt{font-size:.95rem;color:var(--ink-mid);line-height:2.0;margin-bottom:22px;max-width:640px}
+.bt strong{color:var(--ink);font-weight:500}
+.bt em{color:var(--gold);font-style:normal}
+
+/* timeline */
+.timeline{margin:36px 0;display:flex;flex-direction:column;gap:0}
+.tl-item{display:grid;grid-template-columns:96px 1fr;border-bottom:1px solid var(--rule);padding:22px 0;gap:0;align-items:start}
+.tl-item:first-child{border-top:1px solid var(--rule)}
+.tl-era{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding-right:20px;padding-top:3px;line-height:1.6}
+.tl-body{font-size:.9rem;color:var(--ink-mid);line-height:1.9}
+.tl-body strong{color:var(--ink);font-weight:500}
+.tl-body em{color:var(--gold);font-style:normal}
+
+/* pull quote */
+.pull{margin:40px 0;padding:0 0 0 24px;border-left:2px solid var(--gold);max-width:580px}
+.pull-text{font-family:var(--display);font-size:clamp(18px,2.6vw,26px);font-weight:400;font-style:italic;line-height:1.65;color:var(--ink)}
+body.zh .pull-text{font-style:normal;font-size:clamp(16px,2.3vw,22px)}
+
+/* shift table */
+.shift{margin:32px 0}
+.shift-row{display:grid;grid-template-columns:1fr 32px 1fr;border-bottom:1px solid var(--rule);padding:14px 0;align-items:center;gap:0}
+.shift-row:first-child{border-top:1px solid var(--rule)}
+.s-old{font-size:.88rem;color:var(--muted);text-decoration:line-through;text-align:right;padding-right:10px}
+.s-arrow{text-align:center;color:var(--gold);font-size:.85rem}
+.s-new{font-size:.9rem;color:var(--ink);font-weight:500;padding-left:10px}
+
+/* strike list */
+.xlist{list-style:none;margin:28px 0;max-width:520px}
+.xlist li{display:flex;gap:14px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--rule);font-size:.9rem;color:var(--muted)}
+.xlist li:first-child{border-top:1px solid var(--rule)}
+.xlist li span.txt{text-decoration:line-through}
+.xmark{font-family:var(--mono);font-size:.65rem;color:rgba(140,60,50,.45);flex-shrink:0}
+
+/* dark block */
+.dk{background:var(--deep);padding:44px 52px;margin:40px 0;position:relative;overflow:hidden}
+.dk::after{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border:1px solid rgba(168,131,42,0.1);border-radius:50%;pointer-events:none}
+.dk-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:18px;position:relative;z-index:1}
+.dk-text{font-family:var(--display);font-size:clamp(18px,2.5vw,26px);font-weight:400;color:var(--white);line-height:1.8;position:relative;z-index:1;max-width:540px}
+.dk-text em{font-style:italic;color:var(--gold-lt)}
+body.zh .dk-text{font-size:clamp(16px,2.2vw,22px);font-style:normal}
+.dk-sub{font-size:.85rem;color:rgba(255,255,255,.4);margin-top:16px;line-height:1.8;position:relative;z-index:1;max-width:480px}
+
+/* for-table */
+.for-table{margin:32px 0}
+.for-row{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--rule);padding:20px 0;align-items:start}
+.for-row:first-child{border-top:1px solid var(--rule)}
+.for-lbl{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding-right:18px;padding-top:2px}
+.for-lbl.c1{color:var(--accent)}
+.for-lbl.c2{color:var(--gold)}
+.for-lbl.c3{color:var(--green)}
+.for-txt{font-size:.9rem;color:var(--ink-mid);line-height:1.85}
+.for-txt strong{color:var(--ink);font-weight:500}
+.for-txt em{color:var(--gold);font-style:normal}
+
+/* final declaration section */
+.decl-section{background:var(--deep);margin:0 clamp(-20px,-5vw,-64px);padding:88px clamp(20px,5vw,64px) 96px;position:relative;overflow:hidden}
+.decl-section::before{content:'';position:absolute;left:50%;top:-120px;transform:translateX(-50%);width:640px;height:640px;border:1px solid rgba(168,131,42,0.05);border-radius:50%;pointer-events:none}
+.decl-inner{max-width:860px;margin:0 auto;position:relative;z-index:1}
+.decl-eyebrow{font-family:var(--mono);font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:48px;text-align:center}
+.decl-yclinic{text-align:center;margin-bottom:56px}
+.decl-y{font-family:var(--display);font-size:clamp(80px,14vw,180px);font-weight:300;font-style:italic;color:rgba(212,175,112,0.12);line-height:.85;display:block}
+.decl-name{font-family:var(--display);font-size:clamp(22px,4vw,46px);font-weight:300;color:var(--white);letter-spacing:.06em;margin-top:-12px}
+.decl-name span{color:var(--gold-lt)}
+
+.flags{max-width:620px;margin:0 auto 72px;display:flex;flex-direction:column;gap:0}
+.flag{display:flex;gap:22px;padding:26px 0;border-bottom:1px solid rgba(255,255,255,0.07);align-items:flex-start}
+.flag:first-child{border-top:1px solid rgba(255,255,255,0.07)}
+.flag-n{font-family:var(--display);font-size:2rem;font-weight:300;color:rgba(168,131,42,0.2);line-height:1;flex-shrink:0;width:26px;margin-top:2px}
+.flag-txt{font-family:var(--display);font-size:clamp(18px,2.8vw,26px);font-weight:400;color:var(--white);line-height:1.65}
+body.zh .flag-txt{font-family:var(--sans-zh);font-size:clamp(15px,2.4vw,21px)}
+.flag-txt em{font-style:italic;color:var(--gold-lt)}
+body.zh .flag-txt em{font-style:normal}
+
+.mission-block{max-width:580px;margin:0 auto;text-align:center;padding-top:56px;border-top:1px solid rgba(255,255,255,0.07)}
+.mission-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:20px}
+.mission-text{font-family:var(--display);font-size:clamp(14px,2vw,18px);font-weight:400;color:rgba(255,255,255,.6);line-height:2.1}
+body.zh .mission-text{font-family:var(--sans-zh);font-size:clamp(13px,1.8vw,16px)}
+.mission-text strong{color:rgba(255,255,255,.88)}
+.founding-close{margin-top:48px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.07);text-align:center;font-family:var(--display);font-size:1.2rem;font-weight:400;font-style:italic;color:var(--gold-lt);letter-spacing:.03em}
+.founding-close span{display:block;font-family:var(--mono);font-size:.5rem;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:8px}
+
+/* spic note */
+.spic-note{background:var(--cream-2);border:1px solid var(--rule-mid);border-left:2px solid var(--gold);padding:20px 24px;margin:32px 0;max-width:640px}
+.spic-note-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.spic-note-text{font-size:.9rem;color:var(--ink-mid);line-height:1.85}
+.spic-note-text strong{color:var(--ink);font-weight:500}
+.spic-note-text em{color:var(--gold);font-style:normal}
+
+/* responsive */
+@media(max-width:600px){
+  .shift-row{grid-template-columns:1fr;gap:2px}.s-old{text-align:left}
+  .for-row{grid-template-columns:1fr}.decl-section{padding:64px 20px 72px}
+  .dk{padding:28px 24px}.nav-doc{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">y Clinic</div>
+  <div class="nav-doc"><span class="ja">設立宣言</span><span class="zh">設立宣言</span></div>
+  <div class="nav-right">
+    <a class="nav-link" href="y_clinic_framework.html"><span class="ja">フレームワーク →</span><span class="zh">框架 →</span></a>
+    <button class="lb on" id="btn-ja" onclick="setLang('ja')">日本語</button>
+    <button class="lb" id="btn-zh" onclick="setLang('zh')">繁體中文</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="ja">y Clinic — 設立宣言 / Founding Declaration · Confidential 2026</span>
+      <span class="zh">y Clinic — 設立宣言 / Founding Declaration · Confidential 2026</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="jab">
+        私たちは新しい治療を<em>売りたいのではない</em>。<br>
+        社会が取り残した健康課題に対して、<br>
+        医師が責任を持って<em>応答できる仕組みを残したい</em>。
+      </span>
+      <span class="zhb">
+        我們並不想<em>販售新的治療</em>。<br>
+        而是想留下讓醫師能夠負責地<br>
+        <em>回應社會所遺留的健康課題</em>的機制。
+      </span>
+    </h1>
+    <div class="founding">
+      <div class="founding-text">
+        <span class="ja">患者様の、心と身体に優しい医療</span>
+        <span class="zh">對患者的身心都溫柔的醫療</span>
+      </div>
+      <div class="founding-attr">
+        <span class="ja">芝田乃丞 — SPIC 創業者</span>
+        <span class="zh">芝田乃丞 — SPIC 創辦人</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hb-meta">
+      <div><div class="hb-label"><span class="ja">医療思想監修</span><span class="zh">醫療思想監修</span></div><div class="hb-val">Dr. Atsuo Yanagisawa</div></div>
+      <div><div class="hb-label"><span class="ja">創業者</span><span class="zh">創辦人</span></div><div class="hb-val">Takayuki Shibata / SPIC Corporation</div></div>
+      <div><div class="hb-label"><span class="ja">拠点</span><span class="zh">據點</span></div><div class="hb-val"><span class="ja">横浜 2026 → 鎌倉 · 台北 · SG</span><span class="zh">橫濱 2026 → 鎌倉 · 台北 · SG</span></div></div>
+    </div>
+    <div class="scroll-cue">↓ scroll</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ── SECTION 01: 歴史の流れ ── -->
+<div class="sec" style="border-bottom:1px solid var(--rule)">
+  <p class="sec-label"><span class="ja">Section 01 — 起源の物語</span><span class="zh">Section 01 — 起源的故事</span></p>
+  <h2 class="sec-title">
+    <span class="jab">これは、<em>新しいことを始める</em>話ではない。</span>
+    <span class="zhb">這並不是<em>開始新事物</em>的故事。</span>
+  </h2>
+
+  <p class="bt">
+    <span class="jab">振り返ると、私たちは常に新しい治療や検査、サプリメントに挑戦してきました。しかし、それらは決して「新しいものをやりたい」という動機から始まったものではありません。必ずその手前に、解決されていない社会課題があり、医療として応えるべき現場の声がありました。</span>
+    <span class="zhb">回顧過去，我們始終在挑戰新的治療、檢查與補充品。然而，這些從來都不是出於「想嘗試新事物」的動機。在此之前，必定存在著尚未解決的社會課題，以及需要以醫療來回應的現場聲音。</span>
+  </p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-era">
+        <span class="ja">鎌倉クリニック<br>2004年〜</span>
+        <span class="zh">鎌倉診所<br>2004年〜</span>
+      </div>
+      <div class="tl-body">
+        <span class="jab">一人のアメリカ人の悪性リンパ腫患者が「ビタミンCを大量に打ってほしい」と求めてきた。調べ、実施し、議論し、学び、広げていく中で、点滴療法研究会へとつながっていった。<em>「新しい医療」をつくろうとしたわけではなく、目の前の患者の要請に向き合った結果、医療の形が変わっていった。</em>その流れはやがてLypo-Cというプロダクトへ、さらに多くの人に届けるための仕組みへと展開していった。</span>
+        <span class="zhb">一位美國的惡性淋巴瘤患者要求「大量注射維生素C」。在調查、實施、討論、學習、推廣的過程中，連結至點滴療法研究會。<em>並非想打造「新醫療」，而是面對眼前患者的訴求後，醫療的形態自然改變了。</em>這股流動最終延伸為Lypo-C產品，再進一步發展為讓更多人得以受惠的機制。</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-era">
+        <span class="ja">東日本大震災<br>2011年</span>
+        <span class="zh">東日本大地震<br>2011年</span>
+      </div>
+      <div class="tl-body">
+        <span class="jab">被爆という未曾有の状況の中で、東電作業員や地域の人々に対して、医療として何ができるかを現場で考え続けた。<em>既存の医療の枠組みでは答えが出ない中で、栄養療法という観点から応答した。</em></span>
+        <span class="zhb">在史無前例的輻射曝露情況下，持續在現場思考對東電作業人員及地區居民醫療能做什麼。<em>在既有醫療框架無法給出答案的情況下，從營養療法的角度進行了回應。</em></span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-era">
+        <span class="ja">子宮頸がん<br>ワクチン問題</span>
+        <span class="zh">子宮頸癌<br>疫苗問題</span>
+      </div>
+      <div class="tl-body">
+        <span class="jab">既存の医療だけでは答えが出ない中で、<em>若年女性に対してどう向き合うべきかを考え続けた。</em>答えのない問いに逃げずに残った。</span>
+        <span class="zhb">在既有醫療無法給出答案的情況下，<em>持續思考應如何面對年輕女性。</em>面對沒有答案的問題，沒有逃避而是留了下來。</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-era">
+        <span class="ja">コロナウイルス<br>2020年〜</span>
+        <span class="zh">新冠病毒<br>2020年〜</span>
+      </div>
+      <div class="tl-body">
+        <span class="jab">明確な正解がない中で、<em>医師として、現場として、どのようなプロトコルを組むべきかを考え、動いてきた。</em>これも同じ流れの上にある。</span>
+        <span class="zhb">在沒有明確正確答案的情況下，<em>作為醫師、作為現場，持續思考並行動——應建立怎樣的診療方案。</em>這也處於同一流動之上。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pull">
+    <div class="pull-text">
+      <span class="jab">ここに共通しているのは、「新しい治療をやりたい」ではなく、既存の医療の枠組みだけでは足りない時に、医師が責任を引き受けたということだ。</span>
+      <span class="zhb">這些的共同點，是「不是想嘗試新治療」，而是在既有醫療框架不足時，醫師承擔了責任。</span>
+    </div>
+  </div>
+
+  <p class="bt" style="margin-top:8px">
+    <span class="jab">そして過程が決して閉じていなかったことも重要です。医師同士がつながり、学び合い、国境を越えて連携しながら、医療が個人の技術ではなく<strong>共有される知として育っていった</strong>。点滴療法研究会というかたちで体現されたこれこそが、私たちの最大の価値でした。</span>
+    <span class="zhb">而且這個過程從未封閉，這一點也很重要。醫師之間相互連結、共同學習、跨越國界攜手合作，使醫療不再是個人技術，而是<strong>作為共享的知識成長茁壯</strong>。以點滴療法研究會的形式所體現的這一點，正是我們最大的價值。</span>
+  </p>
+  <div style="padding-bottom:72px"></div>
+</div>
+
+<!-- ── SECTION 02: 行動の正統性 ── -->
+<div class="sec">
+  <p class="sec-label"><span class="ja">Section 02 — 正統性</span><span class="zh">Section 02 — 正統性</span></p>
+  <h2 class="sec-title">
+    <span class="jab">柳澤先生の思想が強いのは、<em>知識があるからではない</em>。</span>
+    <span class="zhb">柳澤先生思想之所以強大，<em>並非因為知識淵博</em>。</span>
+  </h2>
+
+  <p class="bt">
+    <span class="jab">患者の要望、社会課題、未整理のリスクに対して、<strong>医師として考え、調べ、試し、共有し、広げてきた</strong>。その積み重ねがあるからです。これは単なる経験値ではなく、行動の正統性です。しかも、ただの権威ではなく、<em>行動の正統性</em>です。</span>
+    <span class="zhb">面對患者的要求、社會課題、尚未釐清的風險，<strong>以醫師身份思考、調查、嘗試、分享並推廣</strong>。正是因為有這些積累。這不僅是經驗值的積累，而是行動的正統性。而且不是單純的權威，而是<em>行動的正統性</em>。</span>
+  </p>
+
+  <p class="bt">
+    <span class="jab">人は「最新」よりも「なぜそれをやるのか」に動かされる。そしてこの"なぜ"が、かなり深い。鎌倉からの20年以上の歴史が、その"なぜ"に厚みを与えている。</span>
+    <span class="zhb">人們受到的感動，來自「為什麼這樣做」而非「最新」。而這個「為什麼」，相當深刻。超過20年從鎌倉開始的歷史，賦予了這個「為什麼」厚度。</span>
+  </p>
+
+  <div class="shift">
+    <div class="shift-row">
+      <div class="s-old"><span class="ja">病気を治す人</span><span class="zh">治療疾病的人</span></div>
+      <div class="s-arrow">→</div>
+      <div class="s-new"><span class="ja">社会課題に対して最初に応答する人</span><span class="zh">率先回應社會課題的人</span></div>
+    </div>
+    <div class="shift-row">
+      <div class="s-old"><span class="ja">エビデンスを待つだけの人</span><span class="zh">只等待實證的人</span></div>
+      <div class="s-arrow">→</div>
+      <div class="s-new"><span class="ja">現場から問いを立てる人</span><span class="zh">從現場提出問題的人</span></div>
+    </div>
+    <div class="shift-row">
+      <div class="s-old"><span class="ja">個人で抱え込む人</span><span class="zh">獨自承擔的人</span></div>
+      <div class="s-arrow">→</div>
+      <div class="s-new"><span class="ja">学び合い、国境を越えて知を接続する人</span><span class="zh">相互學習、跨越國界連結知識的人</span></div>
+    </div>
+    <div class="shift-row">
+      <div class="s-old"><span class="ja">一代で完結させる人</span><span class="zh">在一個世代內完成的人</span></div>
+      <div class="s-arrow">→</div>
+      <div class="s-new"><span class="ja">次の世代と次の国へ渡していく人</span><span class="zh">傳遞給下一個世代與下一個國家的人</span></div>
+    </div>
+  </div>
+
+  <div class="spic-note">
+    <div class="spic-note-label"><span class="ja">SPICの役割</span><span class="zh">SPIC的角色</span></div>
+    <div class="spic-note-text">
+      <span class="jab">スピックが特異なのは、その一連の動きに対して、<strong>医師の横に立ち、プロダクト・教育・学会・ネットワークという形で"支える構造"をつくってきた</strong>ことです。スピックは医療の主役になるのではなく、医師が動きやすい環境をつくり、現場で生まれた知を整理し、広げ、継続させる仕組みをつくる。<em>商品を売るために医療をつくるのではなく、医療の中で必要とされるものを、適切な形で届けるための手段として存在する。</em></span>
+      <span class="zhb">SPIC的獨特之處，在於面對這一連串的行動，<strong>站在醫師身旁，以產品、教育、學術會議、網絡的形式「打造支撐結構」</strong>。SPIC不是成為醫療的主角，而是打造醫師易於行動的環境，整理現場產生的知識，建立使其擴展與持續的機制。<em>不是為了銷售商品而打造醫療，而是作為以適當形式遞送醫療中所需物品的手段而存在。</em></span>
+    </div>
+  </div>
+  <div style="padding-bottom:72px"></div>
+</div>
+
+<!-- ── SECTION 03: これは何でないか ── -->
+<div class="sec">
+  <p class="sec-label"><span class="ja">Section 03 — 誘惑の断絶</span><span class="zh">Section 03 — 斷絕誘惑</span></p>
+  <h2 class="sec-title">
+    <span class="jab">これは何では<em>ない</em>か。</span>
+    <span class="zhb">這<em>不是</em>什麼。</span>
+  </h2>
+
+  <p class="bt">
+    <span class="jab">いま世の中に増えている予防医療クリニックの多くは、<strong>検査・パーソナル化・データ化・サブスク</strong>を前面に出している。市場としては正しいし、時代にも合っている。けれどそのほとんどは「より便利な健康管理」か「より洗練された自由診療」に留まっている。</span>
+    <span class="zhb">如今世界上不斷增加的預防醫療診所，大多以<strong>檢查、個人化、數據化、訂閱制</strong>為前面。從市場角度來說是正確的，也符合時代潮流。然而其中大多數止步於「更便利的健康管理」或「更精緻的自由診療」。</span>
+  </p>
+
+  <ul class="xlist">
+    <li><span class="xmark">×</span><span class="txt"><span class="ja">予防医療の新しいトレンドへの参入</span><span class="zh">加入預防醫療的新趨勢</span></span></li>
+    <li><span class="xmark">×</span><span class="txt"><span class="ja">ロンジェビティブームへの便乗</span><span class="zh">搭乘長壽熱潮的順風車</span></span></li>
+    <li><span class="xmark">×</span><span class="txt"><span class="ja">自由診療の高級化・差別化</span><span class="zh">自由診療的高級化與差異化</span></span></li>
+    <li><span class="xmark">×</span><span class="txt"><span class="ja">富裕層向けの体験型クリニック</span><span class="zh">面向富裕階層的體驗型診所</span></span></li>
+    <li><span class="xmark">×</span><span class="txt"><span class="ja">社会課題に応答する医療の「再制度化」を目的としないもの</span><span class="zh">不以回應社會課題的醫療「再制度化」為目的的事物</span></span></li>
+  </ul>
+
+  <div class="dk">
+    <div class="dk-label"><span class="ja">本質</span><span class="zh">本質</span></div>
+    <div class="dk-text">
+      <span class="jab">y Clinicが語るべき本質は、市場ニーズではない。<br><em>社会がまだ答えを持たない局面で、医師が現場で応答してきた歴史</em>である。</span>
+      <span class="zhb">y Clinic應述說的本質，並非市場需求。<br><em>而是在社會尚未找到答案的局面中，醫師在現場持續回應的歷史</em>。</span>
+    </div>
+    <div class="dk-sub">
+      <span class="ja">これは空理空論ではなく、すでにやってきた歴史がある。新しく掲げる理想ではなく、今までやってきたことを、自覚的に定義し直すだけだからです。</span>
+      <span class="zh">這並非空談，已有過去的歷史作為佐證。不是新提出的理想，而僅僅是對迄今所做之事的自覺性重新定義。</span>
+    </div>
+  </div>
+  <div style="padding-bottom:72px"></div>
+</div>
+
+<!-- ── SECTION 04: 社会的インフラ ── -->
+<div class="sec">
+  <p class="sec-label"><span class="ja">Section 04 — 社会的インフラ構想</span><span class="zh">Section 04 — 社會基礎建設構想</span></p>
+  <h2 class="sec-title">
+    <span class="jab">「クリニック構想」ではなく、<em>「社会的インフラ構想」</em>。</span>
+    <span class="zhb">不是「診所構想」，而是<em>「社會基礎建設構想」</em>。</span>
+  </h2>
+
+  <p class="bt">
+    <span class="jab">これまでは、良い医師が個別に動いていた。良いネットワークが個別に支えていた。良いプロダクトが個別に生まれていた。それを今度は、<strong>ひとつのクリニックを起点に、再現可能な仕組みとして定義し直す</strong>。ここまで行ったとき、思想は"感動する話"ではなく、<em>時代を動かす設計図</em>になる。</span>
+    <span class="zhb">迄今，優秀的醫師各自行動。良好的網絡各自支撐。優良的產品各自誕生。而這次，<strong>以一家診所為起點，將其重新定義為可複製的機制</strong>。達到這一步時，思想就從「令人感動的故事」，轉變為<em>推動時代的設計圖</em>。</span>
+  </p>
+
+  <div class="for-table">
+    <div class="for-row">
+      <div class="for-lbl c1"><span class="ja">患者にとって</span><span class="zh">對患者而言</span></div>
+      <div class="for-txt">
+        <span class="jab">どこにも答えがない不安に対して、<strong>逃げずに向き合う場所</strong>。最新の技術ではなく、「あなたの問いに誠実に向き合う医師がいる」という確信を与える場所。</span>
+        <span class="zhb">面對無處可尋答案的不安，<strong>不逃避、正面對應的場所</strong>。不是最新技術，而是給予「有醫師誠實面對你的問題」這一確信的場所。</span>
+      </div>
+    </div>
+    <div class="for-row">
+      <div class="for-lbl c2"><span class="ja">医師にとって</span><span class="zh">對醫師而言</span></div>
+      <div class="for-txt">
+        <span class="jab">既存の枠だけでは解決できない課題に対して、<strong>孤立せず取り組める場所</strong>。学び合い、プロトコルを共有し、次の世代へ知を渡せる構造がある場所。</span>
+        <span class="zhb">面對僅靠既有框架無法解決的課題，<strong>不孤立、能夠投入的場所</strong>。擁有相互學習、共享診療方案、將知識傳遞給下一代的結構的場所。</span>
+      </div>
+    </div>
+    <div class="for-row">
+      <div class="for-lbl c3"><span class="ja">社会にとって</span><span class="zh">對社會而言</span></div>
+      <div class="for-txt">
+        <span class="jab">制度や市場がまだ遅れている問題に対して、<strong>医療が先回りして応答する場所</strong>。そして、その応答を再現可能な仕組みとして定義し、<em>次の国へ、次の世代へ渡していく</em>場所。</span>
+        <span class="zhb">面對制度和市場尚落後的問題，<strong>醫療率先回應的場所</strong>。並且將這種回應定義為可複製的機制，<em>傳遞給下一個國家、下一個世代</em>的場所。</span>
+      </div>
+    </div>
+  </div>
+  <div style="padding-bottom:72px"></div>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- FINAL DECLARATION -->
+<div class="decl-section">
+  <div class="decl-inner">
+    <div class="decl-eyebrow">
+      <span class="ja">設立宣言 — Founding Declaration</span>
+      <span class="zh">設立宣言 — Founding Declaration</span>
+    </div>
+    <div class="decl-yclinic">
+      <span class="decl-y">y</span>
+      <div class="decl-name">y<span> Clinic</span></div>
+    </div>
+
+    <div class="flags">
+      <div class="flag">
+        <div class="flag-n">1</div>
+        <div class="flag-txt">
+          <span class="jab">答えのない健康課題から、<em>逃げない</em>。</span>
+          <span class="zhb">不逃避沒有答案的健康課題。</span>
+        </div>
+      </div>
+      <div class="flag">
+        <div class="flag-n">2</div>
+        <div class="flag-txt">
+          <span class="jab">現場から問いを立て、<em>医療を更新し続ける</em>。</span>
+          <span class="zhb">從現場提出問題，<em>持續更新醫療</em>。</span>
+        </div>
+      </div>
+      <div class="flag">
+        <div class="flag-n">3</div>
+        <div class="flag-txt">
+          <span class="jab">それを一人の力で終わらせず、<em>次の世代と次の国へ渡していく</em>。</span>
+          <span class="zhb">不讓這一切止步於一人之力，<em>傳遞給下一個世代與下一個國家</em>。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mission-block">
+      <div class="mission-label"><span class="ja">使命</span><span class="zh">使命</span></div>
+      <div class="mission-text">
+        <span class="jab">
+          私たちは、病気を診るだけの医療ではなく、<br>
+          社会にまだ解決されていない健康課題が生まれたとき、<br>
+          <strong>医師が最初に応答し、学び合い、国境を越えて連携し、<br>
+          その知を次の医療へとつないでいける基盤をつくる。</strong>
+        </span>
+        <span class="zhb">
+          我們不只打造診治疾病的醫療，<br>
+          當社會中尚未解決的健康課題出現時，<br>
+          <strong>讓醫師率先回應、相互學習、跨越國界攜手合作，<br>
+          建立能將這份知識傳遞給下一個醫療的基盤。</strong>
+        </span>
+      </div>
+      <div class="founding-close">
+        <span class="ja">患者様の、心と身体に優しい医療</span>
+        <span class="zh">對患者的身心都溫柔的醫療</span>
+        <span>
+          <span class="ja">芝田乃丞 — SPIC 創業者</span>
+          <span class="zh">芝田乃丞 — SPIC 創辦人</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.toggle('zh',l==='zh');
+  document.documentElement.lang=l==='zh'?'zh-TW':'ja';
+  document.getElementById('btn-ja').classList.toggle('on',l==='ja');
+  document.getElementById('btn-zh').classList.toggle('on',l==='zh');
+}
+</script>
+</body>
+</html>
