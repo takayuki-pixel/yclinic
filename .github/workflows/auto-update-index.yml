@@ -32,6 +32,27 @@ jobs:
           # キー = ファイル名（.html なし）
           # ─────────────────────────────────────────────────────────────
           FILE_META = {
+              "y_clinic_declaration": {
+                  "ja": "y Clinic — 設立宣言",
+                  "zh": "y Clinic — 設立宣言",
+                  "date_ja": "2026年4月15日",
+                  "date_zh": "2026年4月15日",
+                  "category": "strategy",
+              },
+              "y_clinic_framework": {
+                  "ja": "y Clinic — フレームワーク",
+                  "zh": "y Clinic — 框架",
+                  "date_ja": "2026年4月15日",
+                  "date_zh": "2026年4月15日",
+                  "category": "strategy",
+              },
+              "y_clinic_philosophy": {
+                  "ja": "y Clinic — 思想・宣言・フレームワーク",
+                  "zh": "y Clinic — 思想・宣言・框架",
+                  "date_ja": "2026年4月15日",
+                  "date_zh": "2026年4月15日",
+                  "category": "strategy",
+              },
               "y_clinic_kickoff": {
                   "ja": "y Clinic クリニック事業 キックオフ計画書",
                   "zh": "y Clinic 診所事業啟動計畫書",
