@@ -107,6 +107,15 @@ FILES = [
 # 以下は変更不要
 # ============================================================
 
+import os
+
+# ディレクトリに存在するファイルのみに絞り込む
+_before = len(FILES)
+FILES = [f for f in FILES if os.path.isfile(f["file"])]
+_removed = _before - len(FILES)
+if _removed:
+    print(f"[skip] {_removed} file(s) not found in repo — excluded from index")
+
 BADGE = {
     "philosophy":   ("badge-philosophy", "思想",   "思想"),
     "strategy":     ("badge-strategy",   "分析",   "分析"),
