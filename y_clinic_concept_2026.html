@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <title>yClinic — 全体構想書 2026</title>
-<meta name="yclinic:title" content="yClinic 全体構想書 2026 — 医師の想いを継ぐ医療の様式">
-<meta name="yclinic:description" content="医師の志・柳澤先生の歩み・SPICの20年・世界の先進クリニックとの比較・なぜ2026年か・6層臨床体系・具体的検査と治療・サービス階層・拠点展開・名称3案を完全統合した最新版マスタードキュメント。">
+<meta name="yclinic:title" content="yClinic 全体構想書 2026 — 医師の想いを継ぐ医療の体系と様式">
+<meta name="yclinic:description" content="医師の志・柳澤先生の歩み・SPICの20年・世界の先進クリニックとの比較・なぜ2026年か・6層臨床体系・具体的検査と治療・SPICの様式（スタイル）・サービス階層・拠点展開・名称3案を完全統合した最新版マスタードキュメント。">
 <meta name="yclinic:category" content="overview">
 <meta name="yclinic:date" content="2026-04-27">
 
@@ -100,7 +100,7 @@ body.lang-zh .zh{display:inherit}
 .chapter-lead{font-size:13px;color:rgba(255,255,255,.55);line-height:1.9;max-width:520px;margin:0 auto}
 
 /* ── SECTION ─────────────────────────── */
-.sec{margin-bottom:64px}
+.sec{margin-bottom:64px;min-width:0}
 .sec-eye{display:flex;align-items:center;gap:14px;margin-bottom:12px}
 .sec-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase}
 .sec-tag{font-size:9px;font-weight:700;padding:2px 9px;border-radius:3px;letter-spacing:.12em;text-transform:uppercase}
@@ -292,6 +292,61 @@ body.lang-zh .zh{display:inherit}
   .chapter{margin:40px 0 32px;border-radius:6px}
   .closing{margin:40px 0 0;border-radius:6px}
 }
+
+
+/* ── LAYOUT INTEGRITY FIXES ── */
+.page > * { min-width: 0; }
+.sec { overflow: visible; }
+
+/* Inline grid children - prevent overflow */
+[style*="display:grid"] { min-width: 0; }
+[style*="display:grid"] > * { min-width: 0; overflow: hidden; }
+
+/* Social activity cards inner grid fix */
+@media(max-width:700px){
+  div[style*="grid-template-columns:1fr 1fr"][style*="gap:24px"],
+  div[style*="grid-template-columns:1fr 1fr"][style*="gap:36px"],
+  div[style*="grid-template-columns:1fr 1fr"][style*="gap:40px"],
+  div[style*="grid-template-columns:1fr 1fr"][style*="gap:48px"]{
+    grid-template-columns:1fr!important;
+  }
+}
+
+/* Chapter/closing negative margin should not cause overflow */
+.chapter, .closing { overflow: hidden; }
+
+/* Fix: y concept 5-col grid on smaller screens */
+@media(max-width:700px){
+  div[style*="grid-template-columns:repeat(5,1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media(max-width:400px){
+  div[style*="grid-template-columns:repeat(5,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── INLINE GRID RESPONSIVE FIXES ── */
+@media(max-width:860px){
+  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr 1fr!important}
+  div[style*="grid-template-columns:repeat(6"]{grid-template-columns:1fr 1fr 1fr!important}
+  div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:auto 1fr"]{grid-template-columns:1fr!important}
+  .cover-title{font-size:30px!important}
+  .manifesto{padding:28px 28px!important}
+  .manifesto p{font-size:14px!important}
+  .spic-box{padding:28px 28px!important}
+  .chapter{padding:40px 28px!important;margin:60px -18px 40px!important}
+  .closing{padding:48px 28px!important;margin:60px -18px 0!important}
+  .page{padding:36px 18px 0!important}
+}
+@media(max-width:540px){
+  div[style*="grid-template-columns:repeat(6"]{grid-template-columns:1fr 1fr!important}
+  .cover-title{font-size:24px!important}
+}
+
 </style>
 
 <script>
@@ -596,7 +651,7 @@ function setLang(l){
 <div class="sec">
   <div class="sec-eye"><span class="sec-num">Section 03</span><span class="sec-tag hist">SPIC History</span></div>
   <h2 class="sec-h"><span class="ja">SPICの原点 ― Style, Personal, Image, Creator</span><span class="zh">SPIC的原點 ― Style, Personal, Image, Creator</span></h2>
-  <p class="sec-lead"><span class="ja">SPICのSはStyleである。人の個性と生き方を、PersonalなImageとしてCreatorする会社として出発したSPICが、柳澤先生との出会いを経て、「医師の想いを様式（Style）として継ぐ」プロジェクトに至ったことは、必然であった。</span><span class="zh">SPIC的S是Style。以Creator個人個性與生活方式為Personal Image的公司為起點，SPIC經由與柳澤醫師的相遇，走向「以樣式（Style）傳承醫師心意」的計畫，這是必然的。</span></p>
+  <p class="sec-lead"><span class="ja">SPICのSはStyleである。人の個性と生き方を、PersonalなImageとしてCreatorする会社として出発したSPICが、柳澤先生との出会いを経て、「医師の想いを様式（スタイル）として継ぐ」プロジェクトに至ったことは、必然であった。</span><span class="zh">SPIC的S是Style。以Creator個人個性與生活方式為Personal Image的公司為起點，SPIC經由與柳澤醫師的相遇，走向「以樣式（Style）傳承醫師心意」的計畫，這是必然的。</span></p>
 
   <div class="timeline">
     <div class="tl-item major">
@@ -884,88 +939,13 @@ function setLang(l){
   </div>
 </div>
 
-
-    <thead>
-      <tr>
-        <th style="width:160px"><span class="ja">クリニック</span><span class="zh">診所</span></th>
-        <th style="width:120px"><span class="ja">価格帯</span><span class="zh">價格帶</span></th>
-        <th><span class="ja">強み</span><span class="zh">優勢</span></th>
-        <th><span class="ja">限界・課題</span><span class="zh">限制・課題</span></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="clinic-name">Clinique La Prairie</span><span class="clinic-origin">スイス 1931年創立</span></td>
-        <td>CHF 20,000+/週</td>
-        <td><span class="world-marker str">強み</span> <span class="ja">細胞療法・抗加齢の老舗ブランド。高い国際的信頼性。</span><span class="zh">細胞療法、抗衰老之老牌品牌，國際信賴度高。</span></td>
-        <td><span class="world-marker lim">限界</span> <span class="ja">リゾート型で継続管理が弱い。高額すぎて層が限定される。</span><span class="zh">度假型，持續管理能力弱。費用過高，客群受限。</span></td>
-      </tr>
-      <tr>
-        <td><span class="clinic-name">Cleveland Clinic Wellness</span><span class="clinic-origin">米国</span></td>
-        <td>$3,000〜$15,000</td>
-        <td><span class="world-marker str">強み</span> <span class="ja">エビデンスベース。機能性医学と統合医療の高い信頼性。</span><span class="zh">以實證為基礎，功能醫學與整合醫療信賴度高。</span></td>
-        <td><span class="world-marker lim">限界</span> <span class="ja">日本・アジアへの文化的翻訳が困難。継続性が薄い。</span><span class="zh">難以文化性翻譯至日本及亞洲。持續性薄弱。</span></td>
-      </tr>
-      <tr>
-        <td><span class="clinic-name">SHA Wellness Clinic</span><span class="clinic-origin">スペイン</span></td>
-        <td>€3,000+/週</td>
-        <td><span class="world-marker str">強み</span> <span class="ja">マクロビオティック栄養と医療の統合。ホリスティックな体験設計。</span><span class="zh">宏觀生食與醫療之整合，整體性體驗設計。</span></td>
-        <td><span class="world-marker lim">限界</span> <span class="ja">滞在型のため継続通院モデルではない。地理的限定。</span><span class="zh">住宿型，非持續回診模型。地理限制。</span></td>
-      </tr>
-      <tr>
-        <td><span class="clinic-name">Parsley Health</span><span class="clinic-origin">米国（テック系）</span></td>
-        <td>$300+/月</td>
-        <td><span class="world-marker str">強み</span> <span class="ja">機能性医学のサブスク化。デジタルとリアルの統合。</span><span class="zh">機能醫學訂閱化，數位與現實整合。</span></td>
-        <td><span class="world-marker lim">限界</span> <span class="ja">医師の思想より事業モデルが主役。栄養介入の深度が浅い。</span><span class="zh">事業模型優先於醫師思想。營養介入深度不足。</span></td>
-      </tr>
-      <tr>
-        <td><span class="clinic-name">Forward Health</span><span class="clinic-origin">米国 2024年閉業</span></td>
-        <td>$149/月（サブスク）</td>
-        <td><span class="world-marker str">強み</span> <span class="ja">テック先進性。スキャン技術。話題性。</span><span class="zh">科技先進性，掃描技術，話題性。</span></td>
-        <td><span class="world-marker lim">失敗</span> <span class="ja">テック主導・医師軽視・思想の欠如。10億ドル調達も閉業。教訓：思想なき医療は継続しない。</span><span class="zh">科技主導、輕視醫師、缺乏思想。籌資10億美元仍關閉。教訓：沒有思想的醫療無法持續。</span></td>
-      </tr>
-      <tr>
-        <td><span class="clinic-name">神宮前統合医療クリニック</span><span class="clinic-origin">日本・東京</span></td>
-        <td>¥30,000〜¥150,000</td>
-        <td><span class="world-marker str">強み</span> <span class="ja">「検査で深く見つける」が強み。日本での統合医療の先行者。</span><span class="zh">「以檢查深入發現」為優勢。日本整合醫療之先行者。</span></td>
-        <td><span class="world-marker lim">限界</span> <span class="ja">介入・再測定・国際展開まで含む全体設計には至っていない。</span><span class="zh">尚未達到含介入、再測量、國際展開之完整設計。</span></td>
-      </tr>
-      <tr class="yclinic-row">
-        <td><span class="clinic-name">yClinic（yClinic）</span><span class="clinic-origin">日本・横浜 2026.10〜</span></td>
-        <td>¥55,000〜¥660,000+</td>
-        <td><span class="world-marker y">yClinic</span> <span class="ja">柳澤先生20年の臨床思想を基盤に、検査→解釈→介入→再測定の循環を様式として確立。国際展開・教育・継続を一体設計。医師の想いが先にあり、テックは補助。</span><span class="zh">以柳澤醫師20年臨床思想為基礎，確立「檢查→解釋→介入→再測量」循環為樣式。國際展開、教育、持續一體設計。醫師的心意在先，科技為輔。</span></td>
-        <td><span class="ja">創業初年度のため認知度なし。プロトコルの標準化が急務（Phase 1の課題）。</span><span class="zh">創業初年度無知名度。流程標準化為急務（Phase 1課題）。</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- 構造的空白 -->
-  <div class="space-box" style="margin-top:24px">
-    <div class="space-box-inner">
-      <div>
-        <p class="space-label"><span class="ja">構造的な空白</span><span class="zh">結構性空白</span></p>
-        <p class="space-title"><span class="ja">保険診療が<em>届かない場所</em>に、<br>医師の本来の志がある</span><span class="zh">健保診療<em>無法觸及之處</em>，<br>正是醫師本來志向所在</span></p>
-        <p class="space-body"><span class="ja">国民皆保険制度は急性疾患・外傷への対応において偉大な制度である。しかし予防・未病・生活習慣の継続的管理をその枠に押し込もうとすれば、医師も医療機関も疲弊し、医師が本来向き合うべき「健康そのもの」が置き去りになる。これは制度の欠陥ではなく、構造的な必然である。自費診療の場は、医師の志の逃げ場ではない。医師の志が本来ある場所である。</span><span class="zh">國民健保制度在應對急性疾患及外傷方面是偉大的制度。然而若強將預防、未病、生活習慣之持續管理納入其框架，醫師及醫療機構將疲憊不堪，醫師本應面對的「健康本身」被遺棄。這並非制度缺陷，而是結構性必然。自費診療的場所，並非醫師志向的逃避之地，而是醫師志向本來應在之處。</span></p>
-      </div>
-      <div>
-        <p class="space-label"><span class="ja">yClinicが応える問い</span><span class="zh">yClinic所回應的問題</span></p>
-        <p class="space-body" style="color:rgba(255,255,255,.75);font-size:13px;line-height:2.1">
-          <span class="ja">「異常値はないと言われたのに、なぜ体調が悪いのか」<br>「年齢のせいだと言われ続けているが、本当にそうなのか」<br>「疲れが取れない。眠れない。太りやすくなった」<br>「自分の身体の本当の状態を知りたい」<br>「病気になる前に、何かできることがあるはずだ」</span>
-          <span class="zh">「被告知無異常，為何身體狀況不好？」<br>「一直被說是年齡因素，真的是這樣嗎？」<br>「疲勞難消，無法入眠，容易發胖」<br>「想了解自己身體真正的狀態」<br>「在生病之前，應該有什麼可以做的」</span>
-        </p>
-        <p class="space-body" style="margin-top:14px"><span class="ja">これらの問いに、保険診療は構造的に答えられない。yClinicはこの問いに、逃げずに応え続ける。</span><span class="zh">對於這些問題，健保診療在結構上無法回答。yClinic對這些問題，不逃避地持續回應。</span></p>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ════════════════════════════════════ -->
 <!-- CHAPTER IV  医療の様式              -->
 <!-- ════════════════════════════════════ -->
 <div class="chapter">
   <p class="chapter-num">Chapter IV</p>
-  <h2 class="chapter-title"><span class="ja">医療の様式 ― 4層の戦略と6層の臨床体系</span><span class="zh">醫療的樣式 ― 4層戰略與6層臨床體系</span></h2>
-  <p class="chapter-lead"><span class="ja">「様式」とは単なる手順ではない。思想が宿った形であり、継承可能な形である。</span><span class="zh">「樣式」並非單純的程序，而是蘊含思想的形態，是可傳承的形態。</span></p>
+  <h2 class="chapter-title"><span class="ja">医療の様式と体系 ― 4層の戦略と6層の臨床体系</span><span class="zh">醫療的樣式與體系 ― 4層戰略與6層臨床體系</span></h2>
+  <p class="chapter-lead"><span class="ja">「様式」とは思想が宿った継承可能な形。「体系」とは臨床プロセスの再現可能な構造。この二つが揃って初めて、医師の想いが次へと手渡される。</span><span class="zh">「樣式」是蘊含思想的可傳承形態。「體系」是臨床流程的可複製結構。兩者兼備，醫師的心意才得以傳遞給下一代。</span></p>
 </div>
 
 <!-- Section: 4層 -->
@@ -1332,51 +1312,142 @@ function setLang(l){
 <!-- ════════════════════════════════════ -->
 <div class="chapter">
   <p class="chapter-num">Chapter VII</p>
-  <h2 class="chapter-title"><span class="ja">名称について ― 3案、医師に選んでいただく</span><span class="zh">關於名稱 ― 3項方案，請醫師選擇</span></h2>
-  <p class="chapter-lead"><span class="ja">コードネーム「yClinic」で進めながら、正式名称は次回会議の課題とする。「y」の読み方・意味は、医師が決める。なぜなら、この医療の主役は医師だからである。</span><span class="zh">以代號「yClinic」推進，正式名稱作為下次會議的課題。「y」的讀法及意涵由醫師決定，因為此醫療的主角是醫師。</span></p>
+  <h2 class="chapter-title"><span class="ja">「y」というコンセプト ― そして正式名称へ</span><span class="zh">「y」的概念 ― 以及邁向正式名稱</span></h2>
+  <p class="chapter-lead"><span class="ja">一文字の中に、このプロジェクトのすべてが宿っている。コードネーム「yClinic」で進めながら、正式名称は次回会議の課題とする。</span><span class="zh">一個字母之中，蘊含了此計畫的全部。以代號「yClinic」推進，正式名稱作為下次會議的課題。</span></p>
+</div>
+
+<!-- y コンセプト -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section —</span><span class="sec-tag clin">Concept</span></div>
+  <h2 class="sec-h"><span class="ja">「y」 ― 問いかけという姿勢</span><span class="zh">「y」 ― 提問的姿態</span></h2>
+  <p class="sec-lead"><span class="ja">大文字の「Y」は権威的・医療的な堅さを持つ。小文字の「y」は違う。それは問いかけの柔らかさであり、「なぜ？」という医師の最初の一言であり、患者に寄り添う姿勢そのものである。iPhoneの「i」が「私のもの」という親密さを一文字で体現したように、「y」はこの医療の本質を静かに担う。</span><span class="zh">大寫「Y」具有權威性、醫療的堅硬感。小寫「y」不同。它是提問的溫柔，是醫師最初一句「為何？」，是貼近患者的姿態本身。如同iPhone的「i」以一個字母體現「屬於我」的親密感，「y」靜靜承載此醫療的本質。</span></p>
+
+  <!-- y の大きな表示 + 5つの意味 -->
+  <div style="background:var(--deep);border-radius:8px;overflow:hidden;margin-bottom:14px">
+    <!-- Hero -->
+    <div style="padding:52px 56px 40px;text-align:center;border-bottom:1px solid rgba(255,255,255,.08)">
+      <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:160px;color:var(--gold-l);line-height:.85;margin-bottom:20px;letter-spacing:-.02em">y</p>
+      <p style="font-family:'Noto Serif JP',serif;font-size:15px;color:rgba(255,255,255,.7);line-height:2;max-width:560px;margin:0 auto">
+        <span class="ja">「なぜ、あなたの身体は今この状態にあるのか」<br>その問いから、すべてが始まる。</span>
+        <span class="zh">「為何您的身體現在處於此狀態」<br>所有一切，從此問題開始。</span>
+      </p>
+    </div>
+    <!-- 5 meanings -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr)">
+      <div style="padding:24px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.06)">
+        <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:32px;color:var(--gold-l);line-height:1;margin-bottom:10px">Y</p>
+        <p style="font-size:12px;font-weight:700;color:#fff;margin-bottom:6px">Yanagisawa</p>
+        <p style="font-size:10.5px;color:rgba(255,255,255,.45);line-height:1.7"><span class="ja">柳澤先生の20年の<br>思想を継ぐ</span><span class="zh">傳承柳澤醫師<br>20年的思想</span></p>
+      </div>
+      <div style="padding:24px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.06)">
+        <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:32px;color:var(--gold-l);line-height:1;margin-bottom:10px">Y</p>
+        <p style="font-size:12px;font-weight:700;color:#fff;margin-bottom:6px">Your Health</p>
+        <p style="font-size:10.5px;color:rgba(255,255,255,.45);line-height:1.7"><span class="ja">あなた個人の<br>健康を設計する</span><span class="zh">為您個人<br>設計健康</span></p>
+      </div>
+      <div style="padding:24px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.06);background:rgba(168,131,42,.08)">
+        <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:32px;color:var(--gold-l);line-height:1;margin-bottom:10px">Y</p>
+        <p style="font-size:12px;font-weight:700;color:var(--gold-l);margin-bottom:6px">Why?</p>
+        <p style="font-size:10.5px;color:rgba(255,255,255,.55);line-height:1.7"><span class="ja">問いから始める<br>医師の矜持</span><span class="zh">從提問開始<br>醫師的矜持</span></p>
+      </div>
+      <div style="padding:24px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.06)">
+        <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:32px;color:var(--gold-l);line-height:1;margin-bottom:10px">Y</p>
+        <p style="font-size:12px;font-weight:700;color:#fff;margin-bottom:6px">Year-over-year</p>
+        <p style="font-size:10.5px;color:rgba(255,255,255,.45);line-height:1.7"><span class="ja">経年比較で<br>健康を設計する</span><span class="zh">以縱向比較<br>設計健康</span></p>
+      </div>
+      <div style="padding:24px 20px;text-align:center">
+        <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:32px;color:var(--gold-l);line-height:1;margin-bottom:10px">Y</p>
+        <p style="font-size:12px;font-weight:700;color:#fff;margin-bottom:6px">Yokohama</p>
+        <p style="font-size:10.5px;color:rgba(255,255,255,.45);line-height:1.7"><span class="ja">すべてが始まる<br>横浜という場</span><span class="zh">一切開始的<br>橫濱之地</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why小文字か -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:24px 28px">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--crimson);letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">大文字 Y の問題</p>
+      <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:56px;color:rgba(20,18,16,.15);line-height:1;margin-bottom:12px">Y</p>
+      <p style="font-size:12.5px;color:var(--mid);line-height:1.85"><span class="ja">大文字の「Y」は権威的・医療的な堅さを持つ。「私たちが正しい」という宣言に聞こえる。しかしこの医療の姿勢は、宣言ではなく問いかけである。</span><span class="zh">大寫「Y」具有權威性、醫療的堅硬感，聽起來像是「我們是正確的」的宣言。然而此醫療的姿態並非宣言，而是提問。</span></p>
+    </div>
+    <div style="background:var(--deep);border-radius:6px;padding:24px 28px">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold-l);letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">小文字 y の強さ</p>
+      <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:56px;color:var(--gold-l);line-height:1;margin-bottom:12px">y</p>
+      <p style="font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.85"><span class="ja">小文字の「y」は問いかけの柔らかさを帯びる。患者のそばに静かに寄り添う。「なぜ？」と一緒に考える医師の姿勢。この文字が、医師と患者の関係を定義する。</span><span class="zh">小寫「y」帶有提問的溫柔。靜靜地貼近患者身旁。與患者一起思考「為何？」的醫師姿態。這個字母定義了醫師與患者的關係。</span></p>
+    </div>
+  </div>
+
+  <!-- 商標問題と方向性 -->
+  <div style="background:var(--cream2);border:1px solid var(--border2);border-radius:6px;padding:22px 28px">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px">Note — 商標・名称について</p>
+    <p style="font-size:12.5px;color:var(--text);line-height:1.9"><span class="ja">「yClinic」「y Clinic」は既存クリニックとの商標上の重複が懸念される。柳澤先生（Yanagisawa）・柳澤先生ご本人からのYの使用許諾は得ている。しかし商標リスクを回避しながらも「y」の精神を残す形を選ぶことが、次回会議の課題となる。<strong>「y」は文字である前に哲学であり、正式名称がどのような形であっても、その問いかけの姿勢はこのプロジェクトの根幹として残り続ける。</strong></span><span class="zh">「yClinic」「y Clinic」有與現有診所商標重疊的疑慮。已獲柳澤醫師（Yanagisawa）本人Y使用許可。然而在迴避商標風險的同時保留「y」的精神，是下次會議的課題。<strong>「y」先於字母而存在的是哲學，無論正式名稱為何種形態，那份提問的姿態將作為此計畫的根幹持續存在。</strong></span></p>
+  </div>
 </div>
 
 <div class="sec">
+  <p class="sec-lead"><span class="ja">3案を医師に提示し、次回会議で選択いただく。それぞれ異なる方向性——国際性・医療の格調・日本語の温かさ——を持つ。「y」の精神と「応える医療」の哲学は、どの名称を選んでもこのプロジェクトの根幹として変わらない。</span><span class="zh">向醫師提示3項方案，於下次會議選擇。各自具備不同方向性——國際性、醫療格調、日語的溫暖。無論選擇哪個名稱，「y」的精神與「應答的醫療」哲學都將作為此計畫的根幹不變。</span></p>
+
   <div class="name-grid">
+
+    <!-- 案A: SPIC Wellness Clinic -->
+    <div class="name-card">
+      <div class="name-header">
+        <div class="name-letter" style="font-size:22px;font-style:normal;font-family:'Noto Sans JP',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--gold)">SPIC<br>Wellness</div>
+        <div>
+          <p class="name-main"><span class="ja">案A：SPIC Wellness Clinic</span><span class="zh">方案A：SPIC Wellness Clinic</span></p>
+          <p class="name-read"><span class="ja">読み：スピック ウェルネス クリニック</span><span class="zh">讀法：SPIC Wellness Clinic</span></p>
+        </div>
+      </div>
+      <div class="name-body">
+        <p class="name-philosophy"><span class="ja">SPICという<em>伴走者の名前</em>を前面に出す選択。「私たちが主役ではない、しかし責任を持って立っている」という謙虚さと誠実さ。「Wellness」は医療とウェルネスの橋渡しを担い、予防医療の入口として機能する。医師には「SPICが作ったクリニック」という明確な背景が伝わる。国際展開において「SPIC」ブランドが資産として機能する。</span><span class="zh">將<em>伴走者SPIC的名字</em>置於前台的選擇。「我們並非主角，但負責地站在這裡」的謙遜與誠實。「Wellness」承擔醫療與健康之間的橋梁，作為預防醫療的入口發揮功能。對醫師而言，「SPIC所建立的診所」的背景明確。在國際展開中，「SPIC」品牌作為資產發揮功能。</span></p>
+        <p class="name-rationale"><span class="ja"><strong>利点</strong>：ブランドの一貫性が高く、toBクリニック・法人向けの信頼性を既存SPICブランドで担保できる。Lypo-CとのブランドラインとしてSPICエコシステムの拡張として見せやすい。<strong>検討点</strong>：「Wellness」は予防医療よりも幅広い概念のため、柳澤先生の医療思想の深みと合致しているか確認が必要。</span><span class="zh"><strong>優點</strong>：品牌一致性高，可憑藉既有SPIC品牌為toB診所及企業客戶提供信賴背書。易於呈現為Lypo-C品牌線的延伸，作為SPIC生態系統的擴展。<strong>考量點</strong>：「Wellness」概念比預防醫療更廣泛，需確認是否與柳澤醫師醫療思想的深度吻合。</span></p>
+      </div>
+    </div>
+
+    <!-- 案B: Y Medical Clinic -->
+    <div class="name-card">
+      <div class="name-header">
+        <div class="name-letter">Y</div>
+        <div>
+          <p class="name-main"><span class="ja">案B：Y Medical Clinic</span><span class="zh">方案B：Y Medical Clinic</span></p>
+          <p class="name-read"><span class="ja">読み：ワイ メディカル クリニック</span><span class="zh">讀法：Y Medical Clinic</span></p>
+        </div>
+      </div>
+      <div class="name-body">
+        <p class="name-philosophy"><span class="ja">「Medical」という言葉が医療機関としての<em>格調と信頼性</em>を先に確立する。Wellnessではなく、あくまで医療である、という宣言。大文字「Y」は、Yanagisawa・Your・Year-over-year・Why?・Yokohama、いずれの意味でも読むことができ、かつ医療機関としての強さも持つ。国際展開において「Y Medical」は記憶されやすく、医師・患者の双方に届く。</span><span class="zh">「Medical」一詞先確立醫療機構的<em>格調與信賴性</em>。是宣言：並非Wellness，而是純粹的醫療。大寫「Y」可解讀為Yanagisawa、Your、Year-over-year、Why?、Yokohama中的任何一意，同時具備醫療機構的力量感。在國際展開中，「Y Medical」易於記憶，能同時傳達給醫師與患者。</span></p>
+        <p class="name-rationale"><span class="ja"><strong>利点</strong>：「Medical」が医師に最も自然に響く。大文字YはWhy?と重なる力強さを持ちつつ、「y Clinic」のような商標リスクを回避しやすい。国際的な診療所名として最も標準的で信頼されやすい形式。<strong>検討点</strong>：大文字Yと小文字yのブランドポリシーをどう整理するか（日本語表記はYメディカルクリニック）。</span><span class="zh"><strong>優點</strong>：「Medical」對醫師而言最自然。大寫Y具有與Why?重疊的力量感，同時較「y Clinic」更易迴避商標風險。作為國際診所名稱，是最標準且易建立信賴的形式。<strong>考量點</strong>：如何整理大寫Y與小寫y的品牌方針（日語表記為Yメディカルクリニック）。</span></p>
+      </div>
+    </div>
+
+    <!-- 案C: y元氣クリニック -->
+    <div class="name-card">
+      <div class="name-header">
+        <div class="name-letter" style="font-size:28px;font-style:italic;letter-spacing:-.01em;line-height:1.2">y<span style="font-family:'Noto Serif JP',serif;font-style:normal;font-size:26px;color:var(--deep)">元氣</span></div>
+        <div>
+          <p class="name-main"><span class="ja">案C：y元氣クリニック</span><span class="zh">方案C：y元氣クリニック</span></p>
+          <p class="name-read"><span class="ja">読み：ワイ げんき クリニック</span><span class="zh">讀法：y Genki Clinic</span></p>
+        </div>
+      </div>
+      <div class="name-body">
+        <p class="name-philosophy"><span class="ja">「元氣」はSPICが2004年に鎌倉で開設した最初のクリニック、鎌倉元氣クリニックに宿る言葉である。<em>原点の継承</em>が名前の中に刻まれている。東洋医学における「元気（げんき）」は単なる活力ではなく、<em>万物の根源にある生命エネルギー</em>を意味する。「元」は宇宙の大本、「氣」は生命の流れ。小文字「y」と組み合わせることで、問いかけの柔らかさと、生命の根本への向き合いが一語に収まる。</span><span class="zh">「元氣」是SPIC於2004年在鎌倉開設的第一家診所——鎌倉元氣クリニック——中所蘊含的詞彙。<em>原點的傳承</em>刻寫在名稱之中。東方醫學中的「元気（げんき）」不只是活力，而是<em>萬物根源的生命能量</em>。「元」是宇宙之本，「氣」是生命的流動。與小寫「y」組合，提問的溫柔與面對生命根本的態度，凝縮於一語之中。</span></p>
+        <p class="name-rationale"><span class="ja"><strong>利点</strong>：鎌倉元氣クリニックからの継承という「20年の物語」が名前の中に生きている。日本語話者に最も温かく、親しみやすい。「y元氣」の「y」がWhy?・Yanagisawa双方の意味を担える。アジア展開においても漢字「元氣」は韓国・台湾・中国でも読まれる。<strong>検討点</strong>：国際展開では「y Genki Clinic」としての表記が必要。「Wellness Clinic」より医療機関としての格調が出にくいという意見もありうる。</span><span class="zh"><strong>優點</strong>：從鎌倉元氣クリニック傳承的「20年故事」活在名稱之中。對日語使用者最溫暖、最親切。「y元氣」的「y」可同時承擔Why?及Yanagisawa兩重意涵。在亞洲展開中，漢字「元氣」在韓國、台灣、中國也可被閱讀。<strong>考量點</strong>：國際展開需採用「y Genki Clinic」表記。相較「Wellness Clinic」，作為醫療機構的格調感可能較弱，或有此意見。</span></p>
+      </div>
+    </div>
+
+    <!-- 案D: Clinic "y" -->
     <div class="name-card">
       <div class="name-header">
         <div class="name-letter">"y"</div>
         <div>
-          <p class="name-main"><span class="ja">案A：Clinic "y"</span><span class="zh">方案A：Clinic "y"</span></p>
+          <p class="name-main"><span class="ja">案D：Clinic "y"</span><span class="zh">方案D：Clinic "y"</span></p>
           <p class="name-read"><span class="ja">読み：クリニック ワイ（または 読み方を定めない）</span><span class="zh">讀法：Clinic "y"（或不定讀法）</span></p>
         </div>
       </div>
       <div class="name-body">
-        <p class="name-philosophy"><span class="ja">Clinicという言葉が医療機関としての格調を先に確立し、その後ろに<em>"y"</em>が問いとして静かに置かれる。Clinicが先頭に来ることで、「医療である」という自明の前提を崩さない。</span><span class="zh">Clinic一詞先確立醫療機構的格調，其後<em>"y"</em>作為問題靜靜置於後方。Clinic居前，不動搖「是醫療」的不言而喻前提。</span></p>
-        <p class="name-rationale"><span class="ja">名称を初めて見た人は自然に問う——「なぜ"y"なのか」。その問い自体がすでに"y"＝Why?の精神と一致している。Yanagisawa、Your、Year-over-year、Why?、Yokohama——読む人がそれぞれの入口からこの医療の本質に辿り着く、開かれた問いかけとして機能する。商標上の「y Clinic」との差異としてクォーテーションマークを活用する。</span><span class="zh">初次看到名稱的人自然會問——「為何是"y"？」。這個問題本身已與"y"＝Why?的精神一致。Yanagisawa、Your、Year-over-year、Why?、Yokohama——讓讀者從各自的入口抵達此醫療的本質，作為開放式提問發揮功能。利用引號作為與商標「y Clinic」的區別。</span></p>
+        <p class="name-philosophy"><span class="ja">Clinicという言葉が医療機関としての格調を先に確立し、その後ろに<em>"y"</em>が問いとして静かに置かれる。名称を初めて見た人は自然に問う——「なぜ"y"なのか」。その問い自体がすでに<em>y＝Why?</em>の精神と一致している。Yanagisawa・Your・Year-over-year・Why?・Yokohama——読む人がそれぞれの入口からこの医療の本質に辿り着く、<em>開かれた問いかけ</em>として機能する。</span><span class="zh">Clinic一詞先確立醫療機構的格調，其後<em>"y"</em>作為問題靜靜置於後方。初次看到名稱的人自然會問——「為何是"y"？」。這個問題本身已與<em>y＝Why?</em>的精神一致。Yanagisawa、Your、Year-over-year、Why?、Yokohama——讓讀者從各自的入口抵達此醫療的本質，作為<em>開放式提問</em>發揮功能。</span></p>
+        <p class="name-rationale"><span class="ja"><strong>利点</strong>：最も哲学が凝縮されており、名称そのものがこのプロジェクトの本質を語る。クォーテーションマークが既存「y Clinic」との商標上の差異として機能しうる。国際的にも「y」一文字は言語を超えて記憶される。<strong>検討点</strong>：既存クリニック（横浜Y.CLINIC等）との商標確認が必要。読み方・意味の説明が初見では伝わりにくいため、副題との組み合わせが有効。</span><span class="zh"><strong>優點</strong>：哲學最為凝練，名稱本身即訴說此計畫的本質。引號可作為與現有「y Clinic」的商標差異。「y」一字在國際上也能跨越語言被記憶。<strong>考量點</strong>：需確認與現有診所（橫濱Y.CLINIC等）之商標。初見時讀法及意涵不易傳達，建議搭配副標題使用。</span></p>
       </div>
     </div>
-    <div class="name-card">
-      <div class="name-header">
-        <div class="name-letter" style="font-size:44px">問診</div>
-        <div>
-          <p class="name-main"><span class="ja">案B：問診（Monshin）</span><span class="zh">方案B：問診（Monshin）</span></p>
-          <p class="name-read"><span class="ja">読み：もんしん。国際表記：MONSHIN</span><span class="zh">讀法：Monshin。國際表記：MONSHIN</span></p>
-        </div>
-      </div>
-      <div class="name-body">
-        <p class="name-philosophy"><span class="ja">「問う」と「診る」が一語に収まる。医師が患者に問い、患者が自分自身に問う。問診は医療の最初の行為であり、<em>本質への入口</em>でもある。「正しく診る、正しく考える」という医師の矜持がこの一語に宿っている。</span><span class="zh">「問」與「診」凝縮於一語。醫師問患者，患者問自己。問診是醫療的第一個行為，也是<em>通往本質的入口</em>。醫師「正確診視、正確思考」的矜持蘊含於這一語之中。</span></p>
-        <p class="name-rationale"><span class="ja">漢字二文字の格調を持ちながら、発音として国際的に覚えやすい。「Monshin Clinic」「Clinic Monshin」いずれの語順でも成立する。「問診」という言葉は医師が日常的に使う言葉であり、違和感がない。ただし既存の商標確認が必要。</span><span class="zh">具備漢字二字之格調，發音上國際上也易記。「Monshin Clinic」「Clinic Monshin」兩種語序均成立。「問診」是醫師日常使用之詞彙，不感違和。但需確認既有商標。</span></p>
-      </div>
-    </div>
-    <div class="name-card">
-      <div class="name-header">
-        <div class="name-letter" style="font-size:56px">応</div>
-        <div>
-          <p class="name-main"><span class="ja">案C：応（Kotae）</span><span class="zh">方案C：応（Kotae）</span></p>
-          <p class="name-read"><span class="ja">読み：こたえ。または「おう（Ō）」。Clinic 応。</span><span class="zh">讀法：Kotae。或「Ō」。Clinic 応。</span></p>
-        </div>
-      </div>
-      <div class="name-body">
-        <p class="name-philosophy"><span class="ja">社会が答えを持たない問いに、医師が逃げずに<em>応え続ける</em>。その一語。漢字一文字の静けさと強さ。「応える」は受動でも能動でもある——問いがあれば応える、患者がいれば応える。このプロジェクトの核心を一文字に凝縮した。</span><span class="zh">對社會尚無答案的問題，醫師不逃避地<em>持續回應</em>。就是這一語。漢字一字的靜謐與力量。「回應」既非被動也非主動——有問題就回應，有患者就回應。將此計畫的核心凝縮於一字之中。</span></p>
-        <p class="name-rationale"><span class="ja">最も格調があり、最も哲学が宿っている。しかし固有名詞として成立させるには副題との組み合わせが必要になる可能性がある。「Clinic 応」として使う場合、日本語話者には直感的だが国際的な認知には工夫が必要。読み方は「こたえ」と「おう」のどちらにするかも検討事項。</span><span class="zh">最具格調，最蘊含哲學。但作為固有名詞成立，可能需要與副標題組合。作為「Clinic 応」使用時，日語使用者直覺明瞭，但國際認知需要巧思。讀法採「Kotae」或「Ō」亦為討論事項。</span></p>
-      </div>
-    </div>
+
   </div>
 </div>
 
@@ -1416,7 +1487,7 @@ function setLang(l){
     <div class="spic-box-inner">
       <div>
         <p class="spic-label"><span class="ja">SPICとは何者か</span><span class="zh">SPIC是何者</span></p>
-        <p class="spic-title"><span class="ja">SPICのSはStyleである。<br>医師の想いを<em>様式</em>として継ぐ、伴走者である。</span><span class="zh">SPIC的S是Style。<br>以<em>樣式</em>傳承醫師心意的伴走者。</span></p>
+        <p class="spic-title"><span class="ja">SPICのSはStyleである。<br>医師の想いを<em>様式（スタイル）</em>として継ぐ、伴走者である。</span><span class="zh">SPIC的S是Style。<br>以<em>樣式（風格）</em>傳承醫師心意的伴走者。</span></p>
         <p class="spic-desc"><span class="ja">主役は医師であり、医師の想いである。SPICは場所を作り、記録し、教育の仕組みを整え、国際展開の構造を設計する。表に出るのは医師の志であり、SPICはその志が継承可能な形になるための器を作る。</span><span class="zh">主角是醫師，是醫師的心意。SPIC建立場所、記錄、整備教育機制、設計國際展開架構。呈現於前台的是醫師的志向，SPIC打造使那份志向得以傳承的容器。</span></p>
       </div>
       <div>
@@ -1440,7 +1511,7 @@ function setLang(l){
     <span class="zh">醫師（いし），是持有<em>醫志（いし）</em>之人。<br>繼承那份志向，是此計畫的全部。</span>
   </h2>
   <p class="closing-body">
-    <span class="ja">柳澤先生が「野に下る」選択をしてから18年。その間、先生は患者を想い続け、応え続け、伝え続けた。その想いを次の医師に、次の国に、次の世代に手渡す様式を確立する。それが2026年10月、横浜から始まる。</span>
+    <span class="ja">柳澤先生が「野に下る」選択をしてから18年。その間、先生は患者を想い続け、応え続け、伝え続けた。その想いを次の医師に、次の国に、次の世代に手渡す<strong>体系と様式</strong>を確立する。それが2026年10月、横浜から始まる。</span>
     <span class="zh">自柳澤醫師做出「下野」選擇以來已18年。其間，先生持續想念患者、持續回應、持續傳達。確立將那份心意傳遞予下一位醫師、下一個國家、下一個世代的樣式。那將於2026年10月，從橫濱開始。</span>
   </p>
   <p class="closing-tagline">
@@ -1448,7 +1519,7 @@ function setLang(l){
     <span class="zh">了解。調整。持續。 ― yClinic</span>
   </p>
   <p class="closing-meta">
-    © 2026 SPIC Corporation ｜ Confidential ｜ y_clinic_concept_2026.html ｜ v1.0 ｜ 2026.04.27<br>
+    © 2026 SPIC Corporation ｜ Confidential ｜ y_clinic_concept_2026.html ｜ v1.5 ｜ 2026.04.27<br>
     <span style="font-size:10px"><span class="ja">コードネーム「yClinic」 — 正式名称は次回会議にて医師の判断により決定</span><span class="zh">代號「yClinic」— 正式名稱將於下次會議由醫師判斷決定</span></span>
   </p>
 </div>
