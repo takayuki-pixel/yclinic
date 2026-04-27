@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>yClinic — 全体構想書 2026</title>
+<meta name="yclinic:title" content="yClinic 全体構想書 2026 — 医師の想いを継ぐ医療の様式">
+<meta name="yclinic:description" content="医師の志・柳澤先生の歩み・SPICの20年・世界の先進クリニックとの比較・なぜ2026年か・6層臨床体系・具体的検査と治療・サービス階層・拠点展開・名称3案を完全統合した最新版マスタードキュメント。">
+<meta name="yclinic:category" content="overview">
+<meta name="yclinic:date" content="2026-04-27">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:    #141210;
+  --cream:  #F9F5EF;
+  --cream2: #EDE8DF;
+  --gold:   #A8832A;
+  --gold-l: #C9A84C;
+  --deep:   #0A1628;
+  --deep2:  #162240;
+  --white:  #FFFFFF;
+  --text:   #1E1B17;
+  --mid:    #4A4540;
+  --muted:  #8A8278;
+  --border: rgba(20,18,16,0.12);
+  --border2:rgba(20,18,16,0.22);
+  --crimson:#7A2535;
+  --crimson2:#9B3547;
+  --green:  #3A6B4A;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  font-size:14px;
+  line-height:1.85;
+}
+
+/* ── LOCK ─────────────────────────────── */
+#lock{position:fixed;inset:0;z-index:9999;background:var(--deep);display:flex;align-items:center;justify-content:center}
+#lbox{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:52px 56px;width:350px;text-align:center}
+#lmark{font-family:'DM Serif Display',serif;font-size:52px;color:#fff;font-style:italic;margin-bottom:6px}
+#lmark span{color:var(--gold-l)}
+#lsub{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:.14em;text-transform:uppercase;margin-bottom:40px}
+#linput{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:6px;padding:13px 16px;font-size:15px;color:#fff;letter-spacing:.14em;outline:none;margin-bottom:14px;transition:border-color .2s}
+#linput:focus{border-color:var(--gold-l)}
+#linput.err{border-color:#d94f4f;animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+#lbtn{width:100%;background:var(--gold);color:var(--deep);border:none;border-radius:6px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;letter-spacing:.06em;transition:opacity .15s}
+#lbtn:hover{opacity:.85}
+#lerr{font-size:11px;color:#f09595;margin-top:10px;min-height:16px}
+#lhint{font-size:10px;color:rgba(255,255,255,0.18);margin-top:28px}
+
+/* ── LANG BAR ──────────────────────────── */
+.lbar{position:sticky;top:0;z-index:100;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:8px 36px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.lbar-title{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:.1em}
+.lbar-title strong{color:var(--gold-l);font-weight:500}
+.lbtns{display:flex;gap:4px}
+.lbtn2{padding:5px 16px;font-size:11px;border:1px solid rgba(255,255,255,0.18);background:transparent;color:rgba(255,255,255,0.5);border-radius:3px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all .15s}
+.lbtn2:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.07)}
+.lbtn2.on{background:var(--gold);color:var(--deep);border-color:var(--gold);font-weight:700}
+
+/* ── LANG SWITCH ──────────────────────── */
+.zh{display:none}
+body.lang-zh .ja{display:none}
+body.lang-zh .zh{display:inherit}
+
+/* ── PAGE ─────────────────────────────── */
+.page{max-width:980px;margin:0 auto;padding:60px 36px 0}
+
+/* ── COVER ────────────────────────────── */
+.cover{padding:80px 0 64px;border-bottom:1px solid var(--border)}
+.cover-eye{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-bottom:28px}
+.cover-title{font-family:'Noto Serif JP',serif;font-size:46px;font-weight:700;color:var(--deep);line-height:1.35;margin-bottom:14px;letter-spacing:.01em}
+.cover-title em{font-style:normal;color:var(--gold)}
+.cover-sub{font-family:'DM Serif Display',serif;font-style:italic;font-size:20px;color:var(--gold);margin-bottom:36px;letter-spacing:.02em}
+
+.manifesto{background:var(--deep);color:#fff;padding:40px 52px;border-radius:8px;margin:36px 0 48px;position:relative;overflow:hidden}
+.manifesto::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-l),transparent)}
+.manifesto-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.22em;color:var(--gold-l);text-transform:uppercase;margin-bottom:20px}
+.manifesto p{font-family:'Noto Serif JP',serif;font-size:16px;line-height:2;color:rgba(255,255,255,.88);margin-bottom:14px}
+.manifesto p:last-child{margin-bottom:0}
+.manifesto em{color:var(--gold-l);font-style:normal;font-weight:700}
+
+.cover-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-top:28px;border-top:1px dashed var(--border2)}
+.cmeta-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-family:'IBM Plex Mono',monospace}
+.cmeta-val{font-size:12px;color:var(--deep);font-weight:500;line-height:1.6}
+
+/* ── CHAPTER DIVIDER ─────────────────── */
+.chapter{margin:80px -36px 60px;background:linear-gradient(135deg,var(--deep) 0%,var(--deep2) 100%);padding:60px 72px;text-align:center;position:relative}
+.chapter::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.chapter-num{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.28em;color:var(--gold-l);text-transform:uppercase;margin-bottom:16px}
+.chapter-title{font-family:'Noto Serif JP',serif;font-size:28px;font-weight:700;color:#fff;line-height:1.5;margin-bottom:12px}
+.chapter-lead{font-size:13px;color:rgba(255,255,255,.55);line-height:1.9;max-width:520px;margin:0 auto}
+
+/* ── SECTION ─────────────────────────── */
+.sec{margin-bottom:64px}
+.sec-eye{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.sec-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase}
+.sec-tag{font-size:9px;font-weight:700;padding:2px 9px;border-radius:3px;letter-spacing:.12em;text-transform:uppercase}
+.sec-tag.hist{background:rgba(168,131,42,.15);color:var(--gold)}
+.sec-tag.why{background:rgba(122,37,53,.12);color:var(--crimson)}
+.sec-tag.clin{background:rgba(10,22,40,.1);color:var(--deep)}
+.sec-tag.world{background:rgba(58,107,74,.12);color:var(--green)}
+.sec-h{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:700;color:var(--deep);margin-bottom:10px;line-height:1.5}
+.sec-lead{font-size:13px;color:var(--mid);margin-bottom:28px;line-height:1.95;max-width:820px}
+
+/* ── TIMELINE ────────────────────────── */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--gold),rgba(168,131,42,.2))}
+.tl-item{position:relative;margin-bottom:28px;padding-left:18px}
+.tl-item::before{content:'';position:absolute;left:-22px;top:7px;width:10px;height:10px;background:var(--cream);border:2px solid var(--gold);border-radius:50%}
+.tl-item.major::before{background:var(--gold);width:12px;height:12px;top:6px;left:-23px}
+.tl-year{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.1em;margin-bottom:3px}
+.tl-title{font-size:14px;font-weight:700;color:var(--deep);margin-bottom:4px}
+.tl-desc{font-size:12px;color:var(--mid);line-height:1.75}
+
+/* ── ACHIEVEMENT GRID ────────────────── */
+.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ach-card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:18px 20px}
+.ach-icon{font-size:20px;margin-bottom:8px}
+.ach-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:26px;color:var(--gold);line-height:1}
+.ach-label{font-size:11px;color:var(--mid);line-height:1.6;margin-top:4px}
+
+/* ── WHY 2026 ────────────────────────── */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.why-card{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--crimson);border-radius:4px;padding:20px 24px}
+.why-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:28px;color:var(--crimson);opacity:.35;line-height:1;margin-bottom:6px}
+.why-title{font-size:14px;font-weight:700;color:var(--deep);margin-bottom:8px;line-height:1.4}
+.why-desc{font-size:12px;color:var(--mid);line-height:1.8}
+.why-desc strong{color:var(--deep)}
+
+/* ── WORLD CLINIC ────────────────────── */
+.world-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:12px}
+.world-table th{background:var(--deep);color:#fff;padding:11px 14px;text-align:left;font-weight:500;font-size:10px;letter-spacing:.08em}
+.world-table td{padding:12px 14px;border-top:1px solid var(--border);vertical-align:top;line-height:1.7}
+.world-table tr:nth-child(odd) td{background:rgba(249,245,239,.5)}
+.world-table .clinic-name{font-weight:700;color:var(--deep)}
+.world-table .clinic-origin{font-size:10px;color:var(--muted);display:block;letter-spacing:.04em}
+.world-table .yclinic-row td{background:rgba(168,131,42,.06);border-left:3px solid var(--gold)}
+.world-table .yclinic-row .clinic-name{color:var(--gold)}
+.world-marker{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;margin-bottom:2px}
+.world-marker.str{background:rgba(58,107,74,.12);color:var(--green)}
+.world-marker.lim{background:rgba(122,37,53,.1);color:var(--crimson)}
+.world-marker.y{background:rgba(168,131,42,.15);color:var(--gold)}
+
+/* ── SPACE 構造的空白 ─────────────────── */
+.space-box{background:var(--deep);color:#fff;padding:36px 48px;border-radius:8px;margin:24px 0}
+.space-box-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.space-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px}
+.space-title{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;line-height:1.7;margin-bottom:12px}
+.space-title em{color:var(--gold-l);font-style:normal}
+.space-body{font-size:12px;color:rgba(255,255,255,.65);line-height:1.9}
+
+/* ── 4-LAYER ─────────────────────────── */
+.four-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.four-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;padding:18px 16px}
+.four-num{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.16em}
+.four-name{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;color:var(--deep);margin:4px 0 3px}
+.four-en{font-family:'DM Serif Display',serif;font-style:italic;font-size:11px;color:var(--gold);margin-bottom:10px}
+.four-who{font-size:12.5px;font-weight:700;color:var(--deep2);margin-bottom:8px;padding-bottom:8px;border-bottom:1px dashed var(--border)}
+.four-desc{font-size:11px;color:var(--mid);line-height:1.75}
+
+/* ── 6-LAYER OS ──────────────────────── */
+.six-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:14px}
+.six-layer{background:var(--white);border:1px solid var(--border);border-top:2px solid var(--deep);border-radius:4px;padding:14px 10px;position:relative}
+.six-layer.l6{border-top-color:var(--gold);background:rgba(168,131,42,.04)}
+.six-arrow{position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:12px;font-weight:700;z-index:2}
+.six-layer:last-child .six-arrow{display:none}
+.six-num{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.12em;text-align:center}
+.six-name{font-size:12px;font-weight:700;color:var(--deep);text-align:center;margin:3px 0;line-height:1.4}
+.six-q{font-size:10px;color:var(--mid);text-align:center;line-height:1.6;padding-top:6px;border-top:1px dashed var(--border)}
+
+/* ── ASSESSMENT TABLE ────────────────── */
+.assess-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:12px;margin-bottom:14px}
+.assess-table th{background:var(--deep2);color:#fff;padding:11px 14px;text-align:left;font-size:10px;font-weight:500;letter-spacing:.08em}
+.assess-table td{padding:11px 14px;border-top:1px solid var(--border);vertical-align:top;line-height:1.7}
+.assess-table tr:nth-child(even) td{background:rgba(237,232,223,.4)}
+.tier-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em}
+.tier-badge.t1{background:rgba(10,22,40,.1);color:var(--deep)}
+.tier-badge.t2{background:rgba(168,131,42,.15);color:var(--gold)}
+.tier-badge.t3{background:rgba(122,37,53,.1);color:var(--crimson)}
+.items-list{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--deep2);line-height:1.8}
+
+/* ── TREATMENT ───────────────────────── */
+.treat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.treat-card{background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.treat-header{background:var(--deep2);color:#fff;padding:12px 18px}
+.treat-header h4{font-size:13px;font-weight:700;letter-spacing:.02em}
+.treat-header p{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.06em;margin-top:2px}
+.treat-body{padding:14px 18px}
+.treat-item{font-size:12px;color:var(--text);padding:5px 0;border-bottom:1px solid var(--border);line-height:1.7}
+.treat-item:last-child{border-bottom:none}
+.treat-item strong{color:var(--deep);display:block;font-size:11.5px}
+.treat-item span{color:var(--mid);font-size:11px}
+
+/* ── PRIORITY STEPS ──────────────────── */
+.priority-steps{display:grid;gap:10px}
+.pstep{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:16px 20px;display:grid;grid-template-columns:60px 1fr;gap:16px;align-items:start}
+.pstep-num{text-align:center}
+.pstep-circle{width:44px;height:44px;border-radius:50%;background:var(--deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-style:italic;font-size:20px;margin:0 auto}
+.pstep-priority{font-size:9px;color:var(--muted);letter-spacing:.1em;text-align:center;margin-top:4px;text-transform:uppercase}
+.pstep-title{font-size:14px;font-weight:700;color:var(--deep);margin-bottom:6px}
+.pstep-desc{font-size:12px;color:var(--mid);line-height:1.8}
+.pstep-desc strong{color:var(--deep)}
+
+/* ── SERVICE GRID ────────────────────── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.svc-card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:18px 20px}
+.svc-card.entry{border-top:3px solid var(--deep)}
+.svc-card.core{border-top:3px solid var(--crimson)}
+.svc-card.support{border-top:3px solid var(--gold)}
+.svc-name{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:700;color:var(--deep)}
+.svc-tag{font-size:10px;color:var(--muted);margin-bottom:10px;display:block}
+.svc-time{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--deep2);margin-bottom:6px}
+.svc-price{font-size:13px;font-weight:700;color:var(--gold);border-top:1px dashed var(--border);padding-top:8px;margin:8px 0}
+.svc-role{font-size:11.5px;color:var(--mid);line-height:1.75}
+.svc-role strong{color:var(--deep)}
+
+/* ── ROADMAP ─────────────────────────── */
+.roadmap{background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.rm-row{display:grid;grid-template-columns:110px 120px 100px 1fr;border-bottom:1px solid var(--border);padding:13px 20px;gap:14px;align-items:start}
+.rm-row:last-child{border-bottom:none}
+.rm-row.hdr{background:var(--deep);padding:10px 20px}
+.rm-row.hdr div{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.rm-row.flag{background:rgba(168,131,42,.04);border-left:3px solid var(--gold)}
+.rm-site{font-size:13px;font-weight:700;color:var(--deep)}
+.rm-site-en{font-family:'DM Serif Display',serif;font-style:italic;font-size:10px;color:var(--gold);display:block}
+.rm-time{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--crimson);font-weight:500}
+.rm-type{font-size:10px;color:var(--muted);background:var(--cream2);padding:3px 8px;border-radius:3px;display:inline-block}
+.rm-role{font-size:11.5px;color:var(--mid);line-height:1.7}
+
+/* ── NAME 3 CANDIDATES ───────────────── */
+.name-grid{display:grid;gap:16px}
+.name-card{background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.name-header{background:linear-gradient(to right,var(--cream2),var(--white));padding:20px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:20px}
+.name-letter{font-family:'DM Serif Display',serif;font-style:italic;font-size:52px;color:var(--gold);line-height:1}
+.name-main{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:var(--deep)}
+.name-read{font-size:11px;color:var(--muted);margin-top:2px}
+.name-body{padding:18px 28px}
+.name-philosophy{font-size:13px;color:var(--text);line-height:1.9;margin-bottom:12px}
+.name-philosophy em{color:var(--gold);font-style:normal;font-weight:700}
+.name-rationale{font-size:12px;color:var(--mid);line-height:1.8;padding-top:12px;border-top:1px dashed var(--border)}
+
+/* ── SPIC ROLE ───────────────────────── */
+.spic-box{background:var(--deep);color:#fff;padding:40px 52px;border-radius:8px;margin-top:28px}
+.spic-box-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.spic-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);margin-bottom:14px}
+.spic-title{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;line-height:1.7;margin-bottom:14px}
+.spic-title em{color:var(--gold-l);font-style:normal}
+.spic-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.9}
+.spic-assets{display:grid;gap:10px;margin-top:14px}
+.spic-asset{display:flex;gap:14px;align-items:start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.spic-asset:last-child{border-bottom:none}
+.spic-asset-n{font-family:'DM Serif Display',serif;font-style:italic;font-size:18px;color:var(--gold-l);flex-shrink:0;width:22px}
+.spic-asset-text{font-size:12px;color:rgba(255,255,255,.65);line-height:1.7}
+.spic-asset-text strong{color:#fff;display:block;font-size:12.5px}
+
+/* ── NG ──────────────────────────────── */
+.ng-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ng-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--crimson);border-radius:4px;padding:14px 16px}
+.ng-n{font-family:'DM Serif Display',serif;font-style:italic;font-size:22px;color:var(--crimson);opacity:.25;line-height:1;margin-bottom:4px}
+.ng-title{font-size:12.5px;font-weight:700;color:var(--deep);margin-bottom:5px;line-height:1.4}
+.ng-reason{font-size:11px;color:var(--mid);line-height:1.65}
+
+/* ── CLOSING ─────────────────────────── */
+.closing{background:linear-gradient(135deg,var(--deep) 0%,var(--deep2) 100%);color:#fff;padding:72px 64px;margin:80px -36px 0;text-align:center;position:relative}
+.closing::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.closing-title{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;line-height:1.7;margin-bottom:16px}
+.closing-title em{color:var(--gold-l);font-style:normal}
+.closing-body{font-size:13px;color:rgba(255,255,255,.6);line-height:2;max-width:580px;margin:0 auto 28px}
+.closing-tagline{font-family:'DM Serif Display',serif;font-style:italic;font-size:17px;color:var(--gold-l)}
+.closing-meta{font-size:11px;color:rgba(255,255,255,.25);margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08)}
+
+@media(max-width:860px){
+  .four-grid,.six-flow,.svc-grid,.ng-grid,.why-grid{grid-template-columns:1fr 1fr}
+  .ach-grid{grid-template-columns:1fr 1fr 1fr}
+  .treat-grid{grid-template-columns:1fr}
+  .spic-box-inner,.space-box-inner{grid-template-columns:1fr}
+  .rm-row{grid-template-columns:1fr}
+  .cover-meta{grid-template-columns:1fr 1fr}
+}
+@media print{
+  .lbar,#lock{display:none}
+  body{overflow:visible}
+  .chapter{margin:40px 0 32px;border-radius:6px}
+  .closing{margin:40px 0 0;border-radius:6px}
+}
+</style>
+
+<script>
+const PW='spic2026',SK='yclinic_auth';
+function chk(){
+  const i=document.getElementById('linput'),e=document.getElementById('lerr');
+  if(i.value===PW){sessionStorage.setItem(SK,'1');document.getElementById('lock').style.display='none';document.body.style.overflow=''}
+  else{i.classList.add('err');e.textContent='パスワードが正しくありません。';i.value='';setTimeout(()=>i.classList.remove('err'),400)}
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  if(sessionStorage.getItem(SK)==='1'){document.getElementById('lock').style.display='none';document.body.style.overflow=''}
+  else{document.body.style.overflow='hidden';document.getElementById('linput').focus()}
+});
+function setLang(l){
+  document.body.className='lang-'+l;
+  document.querySelectorAll('.lbtn2').forEach(b=>b.classList.toggle('on',b.getAttribute('onclick')==="setLang('"+l+"')"));
+}
+</script>
+</head>
+<body class="lang-ja">
+
+<!-- LOCK -->
+<div id="lock">
+  <div id="lbox">
+    <div id="lmark">Clinic <span>"y"</span></div>
+    <div id="lsub">Confidential ｜ SPIC</div>
+    <label id="lsub" style="font-size:11px;color:rgba(255,255,255,.45);text-align:left;display:block;margin-bottom:8px;letter-spacing:.06em">パスワード</label>
+    <input id="linput" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')chk()" autocomplete="off">
+    <button id="lbtn" onclick="chk()">入室する</button>
+    <div id="lerr"></div>
+    <div id="lhint">アクセス権のある方のみ</div>
+  </div>
+</div>
+
+<!-- LANG BAR -->
+<div class="lbar">
+  <span class="lbar-title"><strong>yClinic</strong> &nbsp;|&nbsp; 全体構想書 2026 &nbsp;|&nbsp; Confidential</span>
+  <div class="lbtns">
+    <button class="lbtn2 on" onclick="setLang('ja')">日本語</button>
+    <button class="lbtn2" onclick="setLang('zh')">繁體中文</button>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══ COVER ════════════════════════════ -->
+<div class="cover">
+  <p class="cover-eye">yClinic ｜ Concept Document 2026 ｜ Confidential ｜ SPIC Corporation</p>
+  <h1 class="cover-title">
+    <span class="ja">医師の想いを継ぐ。<br><em>医療の様式を確立する。</em></span>
+    <span class="zh">繼承醫師的心意。<br><em>確立醫療的樣式。</em></span>
+  </h1>
+  <p class="cover-sub">
+    <span class="ja">yClinic 全体構想書 ― 2026年10月 横浜 開業</span>
+    <span class="zh">yClinic 整體構想書 ― 2026年10月 橫濱 開幕</span>
+  </p>
+
+  <div class="manifesto">
+    <p class="manifesto-label">宣言</p>
+    <p class="ja">医師（いし）とは、職業の名称であるとともに、<em>医の志（いし）</em>を持つ者の呼び名である。<br>その志の本義は、病気を治すことだけでなく、<em>病気にさせないこと</em>——<br>未病を見て、生活を設計し、社会が答えを持たない健康の問いに、逃げずに<em>応え続けること</em>にある。</p>
+    <p class="ja">柳澤厚生先生は、その志を行動で体現してきた医師である。<br>大学の任期を9年残したまま教授職を捨て、「患者という人間を見ること」をプロトコルより上に置き、<br>保険診療の枠を超えて患者に応え続けた。その20年の蓄積が、今、継承の時を迎えている。</p>
+    <p class="ja">SPICは、その想いを継ぐための器を作る<em>伴走者</em>である。<br>主役は医師であり、医師の想いである。<br>看板を作るためではない。<em>文化を残すために。</em></p>
+    <p class="zh">醫師（いし）不僅是職業名稱，更是持有<em>醫志（いし）</em>之人的稱謂。<br>其本義不只是治療疾病，更在於<em>不讓患者生病</em>——<br>洞察未病、設計生活，對於社會尚未能回答的健康問題，不逃避地<em>持續應答</em>。</p>
+    <p class="zh">柳澤厚生醫師，是以行動體現此志的醫師。<br>他捨棄剩餘9年任期的教授職位，將「看見患者這個人」置於醫療流程之上，<br>超越健保框架，持續回應患者。那20年的積累，如今正迎來傳承的時刻。</p>
+    <p class="zh">SPIC是為繼承那份心意而打造容器的<em>伴走者</em>。<br>主角是醫師，是醫師的心意。<br>並非為了製造招牌，而是<em>為了留存文化</em>。</p>
+  </div>
+
+  <!-- 設立宣言 3つの約束 -->
+  <div style="margin:36px 0 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+    <div style="background:var(--white);border:1px solid var(--border);border-top:2px solid var(--gold);border-radius:4px;padding:20px 22px">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px">Promise 01</p>
+      <p style="font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--deep);line-height:1.7"><span class="ja">答えのない健康課題から、<br><strong style="color:var(--crimson)">逃げない</strong>。</span><span class="zh">不逃避沒有答案的健康課題。</span></p>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--border);border-top:2px solid var(--gold);border-radius:4px;padding:20px 22px">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px">Promise 02</p>
+      <p style="font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--deep);line-height:1.7"><span class="ja">現場から問いを立て、<br><strong style="color:var(--crimson)">医療を更新し続ける</strong>。</span><span class="zh">從現場提出問題，<strong style="color:var(--crimson)">持續更新醫療</strong>。</span></p>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--border);border-top:2px solid var(--gold);border-radius:4px;padding:20px 22px">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px">Promise 03</p>
+      <p style="font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--deep);line-height:1.7"><span class="ja">一人の力で終わらせず、<br><strong style="color:var(--crimson)">次の世代と次の国へ渡す</strong>。</span><span class="zh">不讓這一切止步於一人之力，<strong style="color:var(--crimson)">傳遞給下一世代與下一國家</strong>。</span></p>
+    </div>
+  </div>
+
+  <!-- SPIC創業者の言葉 -->
+  <div style="background:var(--cream2);border-left:4px solid var(--gold);padding:20px 28px;margin:20px 0;border-radius:0 4px 4px 0">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px">SPIC Founding Vision — 芝田乃丞</p>
+    <p style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:var(--deep);letter-spacing:.03em"><span class="ja">患者様の、心と身体に優しい医療</span><span class="zh">對患者的身心都溫柔的醫療</span></p>
+    <p style="font-size:12px;color:var(--mid);margin-top:8px;line-height:1.8"><span class="ja">SPICの創業者・芝田乃丞が残した言葉。検査・介入・継続——すべての設計の根底にある原点。y Clinicはこの言葉が現代の医療の中で生き続けるための形を作るプロジェクトである。</span><span class="zh">SPIC創辦人芝田乃丞留下的話語。檢查、介入、持續——流淌在所有設計根底的原點。y Clinic是讓這句話在現代醫療中持續活存的計畫。</span></p>
+  </div>
+
+  <div class="cover-meta">
+    <div>
+      <p class="cmeta-label">Medical Supervision</p>
+      <p class="cmeta-val"><span class="ja">柳澤厚生先生（予防医療・栄養療法・点滴療法）</span><span class="zh">柳澤厚生醫師（預防醫學・營養療法・點滴療法）</span></p>
+    </div>
+    <div>
+      <p class="cmeta-label">Flagship Opening</p>
+      <p class="cmeta-val"><span class="ja">2026年10月 横浜スカイビル25F（約80坪）</span><span class="zh">2026年10月 橫濱Sky Building 25F（約80坪）</span></p>
+    </div>
+    <div>
+      <p class="cmeta-label">Codename</p>
+      <p class="cmeta-val">yClinic <span style="font-size:10px;color:var(--muted)"><span class="ja">正式名称 — 次回会議で決定</span><span class="zh">正式名稱 — 下次會議決定</span></span></p>
+    </div>
+    <div>
+      <p class="cmeta-label">SPIC Role</p>
+      <p class="cmeta-val"><span class="ja">医師の想いを継ぐ伴走者</span><span class="zh">繼承醫師心意的伴走者</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- CHAPTER I  歴史と功績               -->
+<!-- ════════════════════════════════════ -->
+<div class="chapter">
+  <p class="chapter-num">Chapter I</p>
+  <h2 class="chapter-title"><span class="ja">20年の歩み ― 柳澤先生とSPICの軌跡</span><span class="zh">20年的歷程 ― 柳澤醫師與SPIC的軌跡</span></h2>
+  <p class="chapter-lead"><span class="ja">このプロジェクトは突然生まれたものではない。20年をかけて蓄積されてきた思想と実践の、自然な帰結である。</span><span class="zh">此計畫並非突然誕生，而是歷經20年積累之思想與實踐的自然結果。</span></p>
+</div>
+
+<!-- Section 01: 柳澤先生の歩み -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 01</span><span class="sec-tag hist">History</span></div>
+  <h2 class="sec-h"><span class="ja">柳澤厚生先生 ― 医の本質に向き合い続けた医師の軌跡</span><span class="zh">柳澤厚生醫師 ― 持續面對醫療本質之醫師的軌跡</span></h2>
+  <p class="sec-lead"><span class="ja">杏林大学医学部卒業・同大学院修了。医学博士。米国ジェファーソン医科大学留学後、杏林大学内科助教授、保健学部救急救命学科教授を歴任。しかし先生は「大学の外でなければ医療に革命を起こせない」と確信し、<strong>任期9年を残したまま2008年に教授職を辞した。</strong>これが柳澤先生の「志」の体現である。</span><span class="zh">畢業於杏林大學醫學院、同大學院。醫學博士。赴美國傑弗遜醫科大學研修後，歷任杏林大學內科助理教授、保健學院急救生命科學科教授。然而，他確信「若不離開大學，無法在醫療上引發革命」，因此<strong>於2008年帶著9年任期辭去教授職位。</strong>這正是柳澤醫師「志」的體現。</span></p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <p class="tl-year">1990s</p>
+      <p class="tl-title"><span class="ja">キレーション療法・統合医療との出会い</span><span class="zh">結緣螯合療法・整合醫療</span></p>
+      <p class="tl-desc"><span class="ja">友人の父がキレーション治療で狭心症が劇的に改善。「これは心臓専門医の想像を越える回復だった」——保険診療の外に、有効だが届いていない医療があることを知る。</span><span class="zh">朋友的父親因螯合治療使狹心症大幅改善。「這是超越心臟專科醫師想像的恢復」——知道在健保診療之外，存在著有效但未被傳達的醫療。</span></p>
+    </div>
+    <div class="tl-item major">
+      <p class="tl-year">2000年代〜</p>
+      <p class="tl-title"><span class="ja">高濃度ビタミンC点滴療法を日本に導入</span><span class="zh">將高濃度維他命C點滴療法引進日本</span></p>
+      <p class="tl-desc"><span class="ja">海外研究者に問い合わせると「効果がある」と異口同音の回答。「自分が知らないだけで、みんな知っていた」——知識を独占せず、伝えることを使命とする姿勢がここに生まれた。以後、2,000名以上の医師に伝達。</span><span class="zh">向海外研究者詢問，異口同聲回答「有效」。「只是自己不知道，其他人都知道」——不獨佔知識、以傳達為使命的姿態在此誕生。此後傳達予2,000名以上醫師。</span></p>
+    </div>
+    <div class="tl-item major">
+      <p class="tl-year">2004年</p>
+      <p class="tl-title"><span class="ja">スピックサロン・メディカルクリニック（鎌倉）開設</span><span class="zh">開設SPIC Salon Medical Clinic（鎌倉）</span></p>
+      <p class="tl-desc"><span class="ja">教授職と並行し、神奈川県鎌倉市に統合医療クリニックを開設。柳澤先生の思想が初めて「拠点」を持った瞬間。現・鎌倉元氣クリニック。SPICとの協働の原点。</span><span class="zh">於神奈川縣鎌倉市開設整合醫療診所，同時兼任教授職。柳澤醫師的思想首次擁有「據點」的瞬間。現為鎌倉元氣クリニック，亦是與SPIC合作的原點。</span></p>
+    </div>
+    <div class="tl-item major">
+      <p class="tl-year">2007年</p>
+      <p class="tl-title"><span class="ja">点滴療法研究会 設立</span><span class="zh">設立點滴療法研究會</span></p>
+      <p class="tl-desc"><span class="ja">「新しい治療法は批判されやすい。人数が増えれば発信力も高まり、攻撃もされにくくなる。それは患者さんのためになる」——個人の実践を、ネットワークとして組織化する。現在750名以上の医師・歯科医師が参加。</span><span class="zh">「新療法容易受批評。人數增加則傳達力提升，也更不容易被攻擊。這對患者有益」——將個人實踐組織化為網絡。目前750名以上醫師及牙醫參與。</span></p>
+    </div>
+    <div class="tl-item major">
+      <p class="tl-year">2008年</p>
+      <p class="tl-title"><span class="ja">「野に下る」— 教授職を辞し、自由な医師として立つ</span><span class="zh">「下野」— 辭去教授職，以自由醫師身份立身</span></p>
+      <p class="tl-desc"><span class="ja">任期9年を残して杏林大学教授職を辞任。「医療保険の束縛から逃れ、患者さんのために最善の医療を自由に提供する存在でありたい」——この決断こそが「逃げずに立ち向かう医師」の体現である。</span><span class="zh">帶著9年任期辭去杏林大學教授職。「希望成為擺脫健保束縛，自由地為患者提供最佳醫療的存在」——這個決斷正是「不逃避、勇於面對的醫師」之體現。</span></p>
+    </div>
+    <div class="tl-item">
+      <p class="tl-year">2011年</p>
+      <p class="tl-title"><span class="ja">国際オーソモレキュラー医学会 殿堂入り（カナダ）</span><span class="zh">獲選國際分子矯正醫學會名人堂（加拿大）</span></p>
+      <p class="tl-desc"><span class="ja">日本人として画期的な受賞。栄養療法・点滴療法の分野で国際的権威として認められる。</span><span class="zh">作為日本人獲此殊榮意義重大。在營養療法、點滴療法領域獲國際認可。</span></p>
+    </div>
+    <div class="tl-item major">
+      <p class="tl-year">2012〜2023年</p>
+      <p class="tl-title"><span class="ja">国際オーソモレキュラー医学会 会長（カナダ）</span><span class="zh">國際分子矯正醫學會 會長（加拿大）</span></p>
+      <p class="tl-desc"><span class="ja">12年間にわたり国際学会のトップとして、この医療の様式を世界に発信し続けた。</span><span class="zh">12年間擔任國際學會頂端，持續向世界傳達此醫療樣式。</span></p>
+    </div>
+    <div class="tl-item">
+      <p class="tl-year">2014年</p>
+      <p class="tl-title"><span class="ja">アントワーヌ・ベシャン賞（フランス）、パールメーカー賞（アメリカ）受賞</span><span class="zh">獲頒安托萬·貝尚獎（法國）、Pearl Maker獎（美國）</span></p>
+    </div>
+    <div class="tl-item">
+      <p class="tl-year">2026年〜</p>
+      <p class="tl-title"><span class="ja">yClinic 医療思想・プロトコル監修</span><span class="zh">yClinic 醫療思想・流程監修</span></p>
+      <p class="tl-desc"><span class="ja">20年の蓄積を、継承可能な様式として確立するプロジェクトに参加。</span><span class="zh">參與將20年積累確立為可傳承樣式之計畫。</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 02: 柳澤先生の功績数値 -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 02</span><span class="sec-tag hist">Achievement</span></div>
+  <h2 class="sec-h"><span class="ja">数字が語る柳澤先生の実績</span><span class="zh">數字所呈現的柳澤醫師成就</span></h2>
+  <div class="ach-grid">
+    <div class="ach-card">
+      <p class="ach-icon">📄</p>
+      <p class="ach-num">150+</p>
+      <p class="ach-label"><span class="ja">医学研究論文。国際査読誌への掲載を含む。</span><span class="zh">醫學研究論文，含國際同儕評審期刊。</span></p>
+    </div>
+    <div class="ach-card">
+      <p class="ach-icon">🏥</p>
+      <p class="ach-num">2,000+</p>
+      <p class="ach-label"><span class="ja">先生から直接点滴療法を学んだ医師数。</span><span class="zh">直接向先生學習點滴療法之醫師人數。</span></p>
+    </div>
+    <div class="ach-card">
+      <p class="ach-icon">🌐</p>
+      <p class="ach-num">20+</p>
+      <p class="ach-label"><span class="ja">世界12ヶ国での招待講演・教育講演の回数。</span><span class="zh">於世界12個國家之受邀演講及教育演講次數。</span></p>
+    </div>
+    <div class="ach-card">
+      <p class="ach-icon">👨‍⚕️</p>
+      <p class="ach-num">750+</p>
+      <p class="ach-label"><span class="ja">点滴療法研究会 登録医師・歯科医師数（全国）。</span><span class="zh">點滴療法研究會 登記醫師及牙醫人數（全國）。</span></p>
+    </div>
+    <div class="ach-card">
+      <p class="ach-icon">🔬</p>
+      <p class="ach-num">12年</p>
+      <p class="ach-label"><span class="ja">国際オーソモレキュラー医学会 会長在任期間。</span><span class="zh">國際分子矯正醫學會 會長任期。</span></p>
+    </div>
+    <div class="ach-card">
+      <p class="ach-icon">📚</p>
+      <p class="ach-num">多数</p>
+      <p class="ach-label"><span class="ja">著書（『ビタミンCがガン細胞を殺す』『奇跡を起こす点滴でアンチエイジング』等）。海外翻訳版あり。</span><span class="zh">著作（《維他命C殺死癌細胞》《神奇點滴抗衰老》等），含海外翻譯版。</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 03: 柳澤先生の社会への応答 -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 03</span><span class="sec-tag why">Social Response</span></div>
+  <h2 class="sec-h"><span class="ja">社会への応答 ― 置き去りにされた人たちに、逃げずに向き合ってきた</span><span class="zh">對社會的回應 ― 不逃避地面對被遺棄之人</span></h2>
+  <p class="sec-lead"><span class="ja">柳澤先生の思想が強いのは、知識があるからではない。患者の要望、社会課題、未整理のリスクに対して、<strong>医師として考え、調べ、試し、共有し、広げてきた</strong>——その積み重ねがあるからである。「新しい治療をやりたい」ではなく、既存の医療の枠組みだけでは足りない時に、<strong>医師が責任を引き受けた</strong>ということである。</span><span class="zh">柳澤醫師思想之所以強大，並非因為知識淵博。而是面對患者的要求、社會課題、尚未釐清的風險，<strong>以醫師身份思考、調查、嘗試、分享並推廣</strong>——正是因為有這些積累。並非「想嘗試新治療」，而是在既有醫療框架不足時，<strong>醫師承擔了責任</strong>。</span></p>
+
+  <!-- 3事例 -->
+  <div style="display:grid;gap:16px;margin-bottom:28px">
+
+    <!-- 事例1: 福島 -->
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+      <div style="background:var(--deep2);color:#fff;padding:14px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center">
+        <div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:36px;color:var(--gold-l);line-height:1">01</div>
+        <div>
+          <p style="font-size:14px;font-weight:700"><span class="ja">福島原発事故後の被ばく者医療（2011年〜）</span><span class="zh">福島核電廠事故後的輻射暴露者醫療（2011年〜）</span></p>
+          <p style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-top:3px"><span class="ja">「誰もが触れたくない問題」に、最初に踏み込んだ医師</span><span class="zh">「沒有人想觸碰的問題」，最先踏入的醫師</span></p>
+        </div>
+      </div>
+      <div style="padding:18px 24px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div>
+          <p style="font-size:12px;color:var(--text);line-height:1.9"><span class="ja">事故後、多くの医師・医療機関が放射線被曝の問題への関与を避けた。風評リスク、科学的不確実性、政治的圧力——関わりたくない理由は山ほどあった。柳澤先生は現場に向かった。<strong>抗酸化点滴療法による被曝後ケアのプロトコルを開発し、世界12ヶ国で20回以上の招待講演を行った。</strong></span><span class="zh">事故後，許多醫師及醫療機構迴避了輻射暴露問題。風評風險、科學不確定性、政治壓力——有無數想迴避的理由。柳澤醫師走向了現場。<strong>開發了抗氧化點滴療法的輻射後護理方案，在世界12個國家進行了20次以上的受邀演講。</strong></span></p>
+        </div>
+        <div style="background:var(--cream2);border-radius:4px;padding:14px 18px">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px">yClinicへの接続</p>
+          <p style="font-size:11.5px;color:var(--text);line-height:1.8"><span class="ja">「保険診療の外に置き去りにされた患者に応える」——これはyClinicの存在意義そのものである。制度が答えを持たない問いに、医師が逃げずに立ち向かうことが「応える医療」の原点。</span><span class="zh">「回應被遺棄於健保診療之外的患者」——這正是yClinic存在意義的本質。醫師不逃避地面對制度無法回答的問題，是「回應的醫療」之原點。</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 事例2: 子宮頸がんワクチン -->
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+      <div style="background:var(--deep2);color:#fff;padding:14px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center">
+        <div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:36px;color:var(--gold-l);line-height:1">02</div>
+        <div>
+          <p style="font-size:14px;font-weight:700"><span class="ja">子宮頸がんワクチン副反応への対応（2013年〜）</span><span class="zh">子宮頸癌疫苗副反應的因應（2013年〜）</span></p>
+          <p style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-top:3px"><span class="ja">「心因性」と片付けられ行き場を失った若い女性たちに向き合った</span><span class="zh">被敷衍為「心因性」而無處求助的年輕女性，他正面迎向</span></p>
+        </div>
+      </div>
+      <div style="padding:18px 24px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div>
+          <p style="font-size:12px;color:var(--text);line-height:1.9"><span class="ja">HPVワクチン接種後に重篤な症状を訴えた少女たちが、多くの医療機関から「心因性」と診断され、適切な治療を受けられないまま行き場を失った。<strong>柳澤先生はその患者たちを受け入れ、栄養療法と点滴療法で向き合い続けた。</strong>誰も正式な答えを持たなかった問いに、医師として責任を引き受けた。</span><span class="zh">接種HPV疫苗後出現嚴重症狀的少女們，被許多醫療機構診斷為「心因性」，無法獲得適當治療，求助無門。<strong>柳澤醫師接納了這些患者，持續以營養療法和點滴療法面對她們。</strong>對於沒有人給出正式答案的問題，以醫師身份承擔了責任。</span></p>
+        </div>
+        <div style="background:var(--cream2);border-radius:4px;padding:14px 18px">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px">yClinicへの接続</p>
+          <p style="font-size:11.5px;color:var(--text);line-height:1.8"><span class="ja">「異常なしと言われたのに調子が悪い」「医師に相手にしてもらえない」——これがyClinicに来る患者の声と完全に重なる。yClinicは、制度の隙間に落ちた人たちへの「最初の応答者」になる場所である。</span><span class="zh">「被告知無異常卻身體不適」「得不到醫師的重視」——這與來到yClinic的患者的聲音完全重疊。yClinic是成為落入制度縫隙的人們「最初回應者」的場所。</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 事例3: COVID -->
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+      <div style="background:var(--deep2);color:#fff;padding:14px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center">
+        <div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:36px;color:var(--gold-l);line-height:1">03</div>
+        <div>
+          <p style="font-size:14px;font-weight:700"><span class="ja">COVID-19への栄養医学的アプローチ（2020年〜）</span><span class="zh">COVID-19的營養醫學應對方案（2020年〜）</span></p>
+          <p style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-top:3px"><span class="ja">世界がワクチン一辺倒の時に、免疫機能の根本からのアプローチを発信した</span><span class="zh">當世界一面倒向疫苗時，傳達了從免疫功能根本出發的方針</span></p>
+        </div>
+      </div>
+      <div style="padding:18px 24px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div>
+          <p style="font-size:12px;color:var(--text);line-height:1.9"><span class="ja">多くの医療機関がワクチンと抗ウイルス薬のみに集中していた時期に、<strong>ビタミンC・D・亜鉛による免疫機能強化のアプローチを発信し続けた。英国の「Vitamin C for Covid」科学諮問委員（2020年）を務め、国際的な知見の共有に貢献。</strong>Guardians for Health and Freedom（2024年）代表として、医療の自由という概念を継続的に訴えている。</span><span class="zh"><strong>在許多醫療機構只專注於疫苗和抗病毒藥物的時期，持續傳達以維他命C、D、鋅強化免疫功能的方針。擔任英國「Vitamin C for Covid」科學諮詢委員（2020年），貢獻於國際知識共享。</strong>作為Guardians for Health and Freedom（2024年）代表，持續倡導醫療自由的理念。</span></p>
+        </div>
+        <div style="background:var(--cream2);border-radius:4px;padding:14px 18px">
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px">yClinicへの接続</p>
+          <p style="font-size:11.5px;color:var(--text);line-height:1.8"><span class="ja">「現場から問いを立て、医療を更新し続ける」——これはyClinicの設立宣言そのものである。エビデンスを待つだけでなく、現場から問いを立てる医師の姿勢が、この医療の本質を定義する。</span><span class="zh">「從現場提出問題，持續更新醫療」——這正是yClinic設立宣言本身。不只是等待實證，而是從現場提出問題的醫師姿態，定義了此醫療的本質。</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2種類の空白 -->
+  <div style="background:var(--deep);color:#fff;padding:32px 44px;border-radius:8px">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold-l);letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px">2 Types of Structural Gap</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px">
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--gold-l);margin-bottom:8px"><span class="ja">構造的な空白</span><span class="zh">結構性空白</span></p>
+        <p style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.85"><span class="ja">制度の設計上、予防・未病・生活習慣管理が十分にカバーされない空白。保険診療の枠内では、この問いに応える時間も報酬もない。</span><span class="zh">制度設計上，預防、未病、生活習慣管理未能充分涵蓋的空白。在健保診療框架內，既無時間也無報酬回應這些問題。</span></p>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;color:var(--gold-l);margin-bottom:8px"><span class="ja">社会的な空白</span><span class="zh">社會性空白</span></p>
+        <p style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.85"><span class="ja">原因が解明されていない、または医療機関が関与を避ける問題。被ばく後遺症・ワクチン副反応・慢性症状の「異常なし」判定——ここに置き去りにされた患者がいる。</span><span class="zh">原因尚未釐清，或醫療機構迴避介入的問題。輻射後遺症、疫苗副反應、慢性症狀的「無異常」判定——有患者被遺棄於此。</span></p>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1)">
+      <p style="font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:#fff;text-align:center;line-height:1.8"><span class="ja">yClinicは、この両方の空白に応え続ける場所である。</span><span class="zh">yClinic是持續回應這兩種空白的場所。</span></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 03</span><span class="sec-tag hist">SPIC History</span></div>
+  <h2 class="sec-h"><span class="ja">SPICの原点 ― Style, Personal, Image, Creator</span><span class="zh">SPIC的原點 ― Style, Personal, Image, Creator</span></h2>
+  <p class="sec-lead"><span class="ja">SPICのSはStyleである。人の個性と生き方を、PersonalなImageとしてCreatorする会社として出発したSPICが、柳澤先生との出会いを経て、「医師の想いを様式（Style）として継ぐ」プロジェクトに至ったことは、必然であった。</span><span class="zh">SPIC的S是Style。以Creator個人個性與生活方式為Personal Image的公司為起點，SPIC經由與柳澤醫師的相遇，走向「以樣式（Style）傳承醫師心意」的計畫，這是必然的。</span></p>
+
+  <div class="timeline">
+    <div class="tl-item major">
+      <p class="tl-year">2004年</p>
+      <p class="tl-title"><span class="ja">鎌倉クリニック共同開設</span><span class="zh">共同開設鎌倉診所</span></p>
+      <p class="tl-desc"><span class="ja">柳澤先生との協働の起点。SPICがクリニック事業に初めて踏み込む。鎌倉という地に、思想の最初の形が生まれた。</span><span class="zh">與柳澤醫師合作的起點。SPIC首次踏入診所事業。在鎌倉之地，思想的最初形態誕生。</span></p>
+    </div>
+    <div class="tl-item major">
+      <p class="tl-year">2007年〜</p>
+      <p class="tl-title"><span class="ja">点滴療法研究会 設立支援・Lypo-C 開発</span><span class="zh">支援點滴療法研究會設立・開發Lypo-C</span></p>
+      <p class="tl-desc"><span class="ja">「必要なものを、必要な場所に届ける」——吸収設計の思想のもと、柳澤先生との共同開発でLypo-Cが生まれた。現在3,100以上の医療機関が採用。「Lypo-Cを使っている医師は、この思想を理解している医師」という信頼の連鎖。</span><span class="zh">「將必要之物送達必要之處」——以吸收設計的思想，與柳澤醫師共同開發Lypo-C誕生。目前3,100家以上醫療機構採用。「使用Lypo-C的醫師，是理解此思想的醫師」的信賴連鎖。</span></p>
+    </div>
+    <div class="tl-item">
+      <p class="tl-year">2020年代〜</p>
+      <p class="tl-title"><span class="ja">台湾・シンガポールへの展開</span><span class="zh">向台灣、新加坡展開</span></p>
+      <p class="tl-desc"><span class="ja">Charles先生との連携を軸に台湾展開。シンガポールKenko連携。国際ネットワークの土台を構築中。</span><span class="zh">以與Charles醫師的合作為軸展開台灣事業。新加坡Kenko連結。持續建構國際網絡基礎。</span></p>
+    </div>
+    <div class="tl-item major">
+      <p class="tl-year">2026年</p>
+      <p class="tl-title"><span class="ja">yClinic 開業 ― 5つの資産が初めて同時に結実する年</span><span class="zh">yClinic 開幕 ― 5項資產首次同時結果之年</span></p>
+      <p class="tl-desc"><span class="ja">臨床・教育・学会ネットワーク・プロダクト・国際展開。この5つが揃ったプレイヤーは他に存在しない。</span><span class="zh">臨床、教育、學會網絡、產品、國際展開。同時擁有此5項要素的玩家別無他者。</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- CHAPTER II  なぜ2026年か            -->
+<!-- ════════════════════════════════════ -->
+<div class="chapter">
+  <p class="chapter-num">Chapter II</p>
+  <h2 class="chapter-title"><span class="ja">なぜ2026年でなければならないか</span><span class="zh">為何必須是2026年</span></h2>
+  <p class="chapter-lead"><span class="ja">「いつかやる」ではない。今年でなければ、この形にはならない。その理由を6つ示す。</span><span class="zh">並非「總有一天要做」。若不是今年，便無法以此形態實現。以下呈現6項理由。</span></p>
+</div>
+
+<div class="sec">
+  <div class="why-grid">
+    <div class="why-card">
+      <p class="why-num">01</p>
+      <p class="why-title"><span class="ja">市場の成熟 ― 需要がようやく顕在化した</span><span class="zh">市場成熟 ― 需求終於顯現</span></p>
+      <p class="why-desc"><span class="ja">予防医療・ロンジェビティ市場は世界で急拡大中。日本でも高単価な健康管理への需要が顕在化し、<strong>参入者が急増している。</strong>しかし参入者のほとんどは思想を持たない。今こそ、20年の蓄積を持つ者が様式を定義する時である。</span><span class="zh">預防醫療及長壽市場在全球急速擴大。日本國內對高單價健康管理的需求也已顯現，<strong>進入者急速增加。</strong>然而大多數進入者沒有思想。正是擁有20年積累者定義樣式的時機。</span></p>
+    </div>
+    <div class="why-card">
+      <p class="why-num">02</p>
+      <p class="why-title"><span class="ja">柳澤先生の思想継承の臨界点</span><span class="zh">柳澤醫師思想傳承的臨界點</span></p>
+      <p class="why-desc"><span class="ja">20年の蓄積は今が最も伝達可能な状態にある。先生ご自身が「ニューエイジ・メディスン」と呼んできた医療の在り方を、<strong>継承可能な様式として文書化し、拠点を持ち、教育できる形にする。</strong>この機会を逃せば、属人的な記憶として風化する。</span><span class="zh">20年的積累如今處於最易傳達的狀態。先生自己稱之為「新時代醫學」的醫療方式，<strong>需文件化為可傳承的樣式，建立據點，以可教育的形態呈現。</strong>若錯過此機會，將作為屬人性記憶而消逝。</span></p>
+    </div>
+    <div class="why-card">
+      <p class="why-num">03</p>
+      <p class="why-title"><span class="ja">世代交代 ― 若い医師が空白の中に立っている</span><span class="zh">世代交替 ― 年輕醫師站在空白之中</span></p>
+      <p class="why-desc"><span class="ja">予防医療・栄養療法に関心を持つ若い医師が増えているが、<strong>学ぶべき「場所」と「体系」がない。</strong>yClinicが確立する様式は、次の世代の医師が迷わず参照できる基準になる。それが今すぐ必要とされている。</span><span class="zh">對預防醫療、營養療法感興趣的年輕醫師增加中，但<strong>缺乏可學習的「場所」與「體系」。</strong>yClinic確立之樣式，將成為下一代醫師可毫不猶豫參照的基準，這正是當下迫切需要的。</span></p>
+    </div>
+    <div class="why-card">
+      <p class="why-num">04</p>
+      <p class="why-title"><span class="ja">SPICの5資産が初めて揃った</span><span class="zh">SPIC的5項資產首次齊備</span></p>
+      <p class="why-desc"><span class="ja">臨床（鎌倉の原点）・教育（点滴療法研究会）・国際ネットワーク・プロダクト（Lypo-C）・台湾/シンガポール展開。<strong>この5つが同時に揃っているのは、今この瞬間だけである。</strong>どれか一つが欠けていれば、このプロジェクトは成立しない。</span><span class="zh">臨床（鎌倉原點）、教育（點滴療法研究會）、國際網絡、產品（Lypo-C）、台灣/新加坡展開。<strong>此5項同時齊備，僅在此刻。</strong>任一缺失，此計畫便無法成立。</span></p>
+    </div>
+    <div class="why-card">
+      <p class="why-num">05</p>
+      <p class="why-title"><span class="ja">Forward Healthの教訓が生きている間に</span><span class="zh">在Forward Health教訓仍活生生之時</span></p>
+      <p class="why-desc"><span class="ja">テック主導・医師関係軽視で2024年に閉業したForward Healthの教訓は、まだ市場の記憶に新しい。<strong>「医師が中心」「思想が根幹」の正しいモデルを、誤った記憶が風化する前に提示する。</strong></span><span class="zh">以科技主導、輕視醫師關係於2024年關閉的Forward Health教訓，市場記憶仍新。<strong>在錯誤記憶消退前，提出「醫師為中心」「思想為根幹」的正確模型。</strong></span></p>
+    </div>
+    <div class="why-card">
+      <p class="why-num">06</p>
+      <p class="why-title"><span class="ja">横浜という場の必然性</span><span class="zh">橫濱此地的必然性</span></p>
+      <p class="why-desc"><span class="ja">横浜スカイビル25階、SPICオフィス隣接、横浜駅直結。<strong>「Yokohama」の「y」がブランドと自然に重なる。</strong>開港の街・横浜は、日本が外に向けて開いてきた場所である。この医療の様式を世界に発信する起点として、これ以上の場はない。</span><span class="zh">橫濱Sky Building 25樓，SPIC辦公室相鄰，橫濱車站直結。<strong>「Yokohama」的「y」與品牌自然重疊。</strong>作為開港之城，橫濱是日本向外開放之地。作為向世界發信此醫療樣式的起點，此地無出其右。</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- CHAPTER III  世界の先進クリニック    -->
+<!-- ════════════════════════════════════ -->
+<div class="chapter">
+  <p class="chapter-num">Chapter III</p>
+  <h2 class="chapter-title"><span class="ja">世界の先進クリニックとの比較</span><span class="zh">與世界先進診所之比較</span></h2>
+  <p class="chapter-lead"><span class="ja">世界の最高水準と比較して、yClinicが何であり、何でないかを明確にする。</span><span class="zh">與世界最高水準比較，明確yClinic是什麼，不是什麼。</span></p>
+</div>
+
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section —</span><span class="sec-tag world">World Research</span></div>
+  <h2 class="sec-h"><span class="ja">世界12施設の深層分析 ― 学びと yClinic への示唆</span><span class="zh">全球12診所深度分析 ― 學習與對yClinic的啟示</span></h2>
+  <p class="sec-lead"><span class="ja">これらを模倣するのではなく、<strong>柳澤先生の思想・日本的文脈・アジア展開の視点で再統合する</strong>存在がyClinicである。各施設から何を学び、何を超えるのかを明確にする。</span><span class="zh">y Clinic並非模仿這些機構，而是以<strong>柳澤醫師的思想、日本脈絡、亞洲展開的視角重新整合</strong>的存在。明確從各機構學習什麼，超越什麼。</span></p>
+
+  <!-- Group A: 入口設計 -->
+  <div style="margin-bottom:32px">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)"><span class="ja">Group A — 入口設計の天才：「毎年来たくなる」を設計する</span><span class="zh">Group A — 入口設計天才：設計「讓人每年都想回來」</span></p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+        <div style="background:var(--cream2);padding:12px 18px;border-bottom:1px solid var(--border)">
+          <p style="font-size:13px;font-weight:700;color:var(--deep)">Neko Health</p>
+          <p style="font-size:10px;color:var(--muted)">Stockholm 2023 / London 2024 / NYC 2026 — £299・当日払い</p>
+        </div>
+        <div style="padding:14px 18px">
+          <p style="font-size:11.5px;color:var(--text);line-height:1.85;margin-bottom:10px"><span class="ja">70以上のセンサーと3Dスキャン（LiDAR）で5,000万データポイントを取得。<strong>放射線を一切使わない非侵襲型全身スキャン。</strong>60分以内に医師が画面を見ながら結果を説明。心血管・代謝・皮膚がん・血液異常をカバー。Series B $260M調達、評価額$1.7B。FT紙が「ヘルスケアのApple」と評した。</span><span class="zh">使用70個以上感測器及3D掃描（LiDAR），擷取5,000萬資料點。<strong>完全無輻射的非侵入式全身掃描。</strong>60分內醫師對著螢幕說明結果。涵蓋心血管、代謝、皮膚癌、血液異常。FT稱其為「醫療界的Apple」。</span></p>
+          <div style="background:rgba(168,131,42,.07);border-radius:4px;padding:10px 14px">
+            <p style="font-size:10px;font-weight:700;color:var(--gold);letter-spacing:.1em;margin-bottom:5px">★ <span class="ja">最重要数値：</span><span class="zh">最重要數值：</span></p>
+            <p style="font-size:11.5px;color:var(--deep);line-height:1.7"><span class="ja"><strong>80%</strong> — 当日その場で翌年分を予約・前払いする再来率<br>y Clinicへの示唆：「その場で来年を予約したくなる」終わり方の設計が y Screen のLTV設計の分岐点。UXが医療参加の障壁を消す。</span><span class="zh"><strong>80%</strong> — 當天當場預訂並預付明年費用的回訪率<br>對yClinic的啟示：「在現場就想預約明年」的結束設計，是y Screen LTV設計的關鍵分歧點。</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+        <div style="background:var(--cream2);padding:12px 18px;border-bottom:1px solid var(--border)">
+          <p style="font-size:13px;font-weight:700;color:var(--deep)">Cooper Clinic</p>
+          <p style="font-size:10px;color:var(--muted)">Dallas, Texas — 1970年創立 Dr. Kenneth H. Cooper / $2,500〜</p>
+        </div>
+        <div style="padding:14px 18px">
+          <p style="font-size:11.5px;color:var(--text);line-height:1.85;margin-bottom:10px"><span class="ja">「エアロビクス」を世界に広めた予防医学の祖が創立。<strong>累計265,000件以上の検査、10万人以上の患者データ、55年間の縦断的体力データ蓄積。</strong>6コンポーネント：医師診察・ラボ・心臓血管スクリーニング・CTスキャン・皮膚がんスクリーニング・栄養カウンセリング。VO2 max測定が標準含まれる。定期利用者の平均余命は一般より10年長い。</span><span class="zh">「有氧運動」推廣者、預防醫學之父所創立。<strong>累計超過265,000次檢查、10萬名以上患者數據、55年縱向體能數據積累。</strong>6大項目含VO2 max測定。定期就診者平均壽命比一般人長10年。</span></p>
+          <div style="background:rgba(168,131,42,.07);border-radius:4px;padding:10px 14px">
+            <p style="font-size:10px;font-weight:700;color:var(--gold);letter-spacing:.1em;margin-bottom:5px">★ <span class="ja">y Clinicへの最重要示唆：</span><span class="zh">對yClinic最重要的啟示：</span></p>
+            <p style="font-size:11.5px;color:var(--deep);line-height:1.7"><span class="ja"><strong>「50年かけて積み上げた研究蓄積がブランドそのもの」</strong>——SPICが20年以上かけて積み上げてきた点滴療法・栄養医療の知見と同じ構造。y Clinicの正統性の参照点として最重要。Cooper Clinicが示すもの：患者同意を得たデータが蓄積され、世界最大の予防医学研究データベースになった創業の物語。</span><span class="zh"><strong>「花費50年積累的研究積累本身就是品牌」</strong>——與SPIC花費20年以上積累的點滴療法、營養醫療知識相同的結構。是y Clinic正統性的最重要參照點。</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group B: 信頼の骨格 -->
+  <div style="margin-bottom:32px">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)"><span class="ja">Group B — 信頼の骨格：「どんな異常が出ても対応できる」という後方支援力</span><span class="zh">Group B — 信任骨幹：「無論出現什麼異常都能應對」的後方支援能力</span></p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+        <div style="background:var(--cream2);padding:12px 18px;border-bottom:1px solid var(--border)">
+          <p style="font-size:13px;font-weight:700;color:var(--deep)">Mayo Clinic Executive Health Program</p>
+          <p style="font-size:10px;color:var(--muted)">Minnesota / Arizona / Florida — Newsweek世界最高病院No.1（6年連続）/ $5,000〜</p>
+        </div>
+        <div style="padding:14px 18px">
+          <p style="font-size:11.5px;color:var(--text);line-height:1.85;margin-bottom:10px"><span class="ja"><strong>CEO・C-suite・VP以上の現役役員限定。</strong>1〜2日間プログラム。個別化された包括的評価：心臓血管・代謝・遺伝子・睡眠。最大の強みはMayo全体の専門科へのシームレスなリファーラル。<strong>「unhurried physician time」</strong>——医師が時間を惜しまずに個人の未来に語りかける診察設計。同日結果返却。専任コンシェルジュ付き。退職後は利用資格なし（現役特権）。</span><span class="zh"><strong>僅限CEO、C-suite、VP以上的現任高階主管。</strong>1〜2天計畫。涵蓋心血管、代謝、基因、睡眠的個人化綜合評估。最大優勢是可無縫轉介至Mayo整體各專科。<strong>「unhurried physician time」</strong>——醫師不吝時間，向個人的未來進行述說的診察設計。</span></p>
+          <div style="background:rgba(168,131,42,.07);border-radius:4px;padding:10px 14px">
+            <p style="font-size:11.5px;color:var(--deep);line-height:1.7"><span class="ja">y Clinicへの示唆：<strong>豪華さではなく「ここで判断できないことはない」という後方支援力が信頼を作る。</strong>柳澤先生のネットワーク（点滴療法研究会・オーソモレキュラー医学会）が「後方専門医連携」として機能する構造があれば、都市型でMayoと同種の信頼感を実現できる。</span><span class="zh">對yClinic的啟示：<strong>不在豪華，而在「這裡沒有無法判斷的事」的後方支援能力創造信任。</strong>若柳澤醫師的網絡作為「後方專科連結」功能，可在都市型實現與Mayo相同的信任感。</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+        <div style="background:var(--cream2);padding:12px 18px;border-bottom:1px solid var(--border)">
+          <p style="font-size:13px;font-weight:700;color:var(--deep)">Fountain Life</p>
+          <p style="font-size:10px;color:var(--muted)">USA — Peter Diamandis共同創設 / $20,000〜/年</p>
+        </div>
+        <div style="padding:14px 18px">
+          <p style="font-size:11.5px;color:var(--text);line-height:1.85;margin-bottom:10px"><span class="ja">「疾患を予防し、老化を遅らせる」をミッションに、AI・ゲノミクス・先端画像診断を統合。<strong>全身MRI（AI解析）・マルチオミクス・認知機能評価を含む包括的評価。</strong>個別化されたLongevity Planを提供。年会費制で継続管理。医師とAIコーチが組み合わさったサービス設計。</span><span class="zh">以「預防疾病、延緩老化」為使命，整合AI、基因組學、先進影像診斷。<strong>包含全身MRI（AI分析）、多組學、認知功能評估的綜合評估。</strong>提供個人化的Longevity Plan。年費制持續管理。</span></p>
+          <div style="background:rgba(168,131,42,.07);border-radius:4px;padding:10px 14px">
+            <p style="font-size:11.5px;color:var(--deep);line-height:1.7"><span class="ja">y Clinicへの示唆：MRIは<strong>「主役」ではなく「必要時の二階建てオプション」</strong>として設計する姿勢の参照点。テック活用の範囲と医師判断の優先度を明確に分ける必要がある。</span><span class="zh">對yClinic的啟示：MRI應設計為<strong>「非主角，而是必要時的二樓選項」</strong>。需明確區分科技活用範圍與醫師判斷優先度。</span></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Group C: Longevity Medicine最前線 -->
+  <div style="margin-bottom:32px">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)"><span class="ja">Group C — 健康長寿医学の最前線：医師が主語のLongevity Medicine</span><span class="zh">Group C — 健康長壽醫學最前線：以醫師為主導的Longevity Medicine</span></p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+        <div style="background:var(--cream2);padding:12px 18px;border-bottom:1px solid var(--border)">
+          <p style="font-size:13px;font-weight:700;color:var(--deep)">Chi Longevity</p>
+          <p style="font-size:10px;color:var(--muted)">Singapore — Prof. Andrea Maier 創設 2023 / Four Seasons連携</p>
+        </div>
+        <div style="padding:14px 18px">
+          <p style="font-size:11.5px;color:var(--text);line-height:1.85;margin-bottom:10px"><span class="ja"><strong>「シンガポール初の生物学的老化を遅らせることに特化した民間クリニック」。</strong>Prof. Andrea Maier（400本以上の査読論文・WHO顧問）が主導。精密医療・longevity medicine・healthspanを定義。Camden Medical CentreとFour Seasons内に2拠点。個別化された介入プランとlongevity care planを提供。</span><span class="zh"><strong>「新加坡首家專注於減緩生物性老化的民間診所」。</strong>Prof. Andrea Maier（400本以上の査読論文・WHO顧問）主導。提供個人化介入計畫與longevity care plan。</span></p>
+          <div style="background:rgba(168,131,42,.07);border-radius:4px;padding:10px 14px">
+            <p style="font-size:11.5px;color:var(--deep);line-height:1.7"><span class="ja">y Clinicへの示唆：<strong>シンガポールへの展開時の直接的な競合・連携候補。</strong>「longevity medicineの定義者」として先行しているが、柳澤先生の点滴療法プロトコルとの統合という独自軸でyClinicは差別化できる。→ Layer 2・Layer 4への参照。</span><span class="zh">對yClinic的啟示：<strong>新加坡展開時的直接競爭及合作候選。</strong>雖先行定義「longevity medicine」，但yClinic可以整合柳澤醫師點滴療法流程的獨有軸線進行差異化。</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+        <div style="background:var(--cream2);padding:12px 18px;border-bottom:1px solid var(--border)">
+          <p style="font-size:13px;font-weight:700;color:var(--deep)">Sheba Longevity Center</p>
+          <p style="font-size:10px;color:var(--muted)">Israel — Sheba Medical Center（WHO世界Top5病院）内</p>
+        </div>
+        <div style="padding:14px 18px">
+          <p style="font-size:11.5px;color:var(--text);line-height:1.85;margin-bottom:10px"><span class="ja"><strong>450以上のバイオマーカーによる12ステーションの多次元評価。</strong>臨床・研究・AI・innovationが本当に一体化している施設。学術水準のエビデンスに基づく介入プロトコル。個人の「生物学的年齢」を測定し、改善の軌跡を設計する。y ClinicのLayer 2（Assessment）とLayer 6（Institute）の最重要参照施設。</span><span class="zh"><strong>450個以上生物標誌物的12站式多維評估。</strong>臨床、研究、AI、創新真正融為一體的機構。以學術水準實證為基礎的介入流程。是y Clinic Layer 2及Layer 6的最重要參照機構。</span></p>
+          <div style="background:rgba(168,131,42,.07);border-radius:4px;padding:10px 14px">
+            <p style="font-size:11.5px;color:var(--deep);line-height:1.7"><span class="ja">y Clinicへの示唆：<strong>「臨床と研究を分離しない」——y Academyとy Clinicの診療データが研究蓄積になり、それがプロトコルとしてネットワーク医師に還元される構造。</strong>SPICの長期的な差別化軸として設計すべき。</span><span class="zh">對yClinic的啟示：<strong>「不分離臨床與研究」——y Academy與y Clinic的診療數據成為研究積累，再以流程形式回饋給網絡醫師的結構。</strong>應作為SPIC長期差異化軸設計。</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group D: 哲学と継承 -->
+  <div style="margin-bottom:32px">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)"><span class="ja">Group D — 哲学と継承：100年の知を次の世代へ渡す</span><span class="zh">Group D — 哲學與傳承：將百年知識傳遞給下一代</span></p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+        <div style="background:var(--cream2);padding:12px 18px;border-bottom:1px solid var(--border)">
+          <p style="font-size:13px;font-weight:700;color:var(--deep)">Buchinger Wilhelmi</p>
+          <p style="font-size:10px;color:var(--muted)">Germany / Spain — 1919年創立 / 断食医療の世界的権威</p>
+        </div>
+        <div style="padding:14px 18px">
+          <p style="font-size:11.5px;color:var(--text);line-height:1.85;margin-bottom:10px"><span class="ja">100年以上にわたる断食療法の研究蓄積。<strong>医師主導の治療的断食を「医療」として確立し、4世代にわたって継承。</strong>単なるウェルネス施設ではなく、科学的根拠に基づいた医療哲学を持つ施設。断食と再摂食の精密プロトコルが世界標準に。</span><span class="zh">超過100年的斷食療法研究積累。<strong>以醫師主導的治療性斷食確立為「醫療」，並傳承超過4個世代。</strong>並非單純的健康機構，而是擁有科學根據之醫療哲學的機構。</span></p>
+          <div style="background:rgba(168,131,42,.07);border-radius:4px;padding:10px 14px">
+            <p style="font-size:11.5px;color:var(--deep);line-height:1.7"><span class="ja">y Clinicへの示唆：<strong>「100年の蓄積が権威になる」——継続する知の蓄積と次世代への継承。</strong>医療は一代で終わらない。柳澤先生の20年を、100年の蓄積の始まりとして位置づける視点が必要。→ Layer 6（Institute）の設計思想として最重要。</span><span class="zh">對yClinic的啟示：<strong>「100年的積累成為權威」——持續的知識積累與傳承給下一代。</strong>醫療不在一個世代結束。需要將柳澤醫師的20年定位為100年積累的開始。→ 是Layer 6（Institute）設計思想的最重要參照。</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden">
+        <div style="background:var(--cream2);padding:12px 18px;border-bottom:1px solid var(--border)">
+          <p style="font-size:13px;font-weight:700;color:var(--deep)">SHA Wellness Clinic</p>
+          <p style="font-size:10px;color:var(--muted)">Spain — €3,000+/週 / マクロビオティック栄養と医療の統合</p>
+        </div>
+        <div style="padding:14px 18px">
+          <p style="font-size:11.5px;color:var(--text);line-height:1.85;margin-bottom:10px"><span class="ja">東洋の智慧（マクロビオティック）と西洋の最先端医学を融合。<strong>栄養哲学を臨床の中心に据えたとき、患者体験は全く変わる。</strong>食べることが治療である、という文化を受診の瞬間から帰宅後まで一貫させる。ホリスティックな体験設計の参照点。</span><span class="zh">融合東方智慧（宏觀生食）與西方最先端醫學。<strong>將營養哲學置於臨床核心時，患者體驗將完全改變。</strong>「飲食是治療」的文化從就診瞬間到回家後一貫貫徹。</span></p>
+          <div style="background:rgba(168,131,42,.07);border-radius:4px;padding:10px 14px">
+            <p style="font-size:11.5px;color:var(--deep);line-height:1.7"><span class="ja">y Clinicへの示唆：<strong>Lypo-Cを軸とした「吸収設計の思想」が、SHAの栄養哲学と同じ役割を果たせる。</strong>栄養を単なる補助ではなく介入の中心軸として設計することが、yClinicの独自性を作る。→ Precision Prevention through Absorption Design の実装参照。</span><span class="zh">對yClinic的啟示：<strong>以Lypo-C為軸的「吸收設計思想」能扮演與SHA營養哲學相同的角色。</strong>將營養設計為介入的核心軸，而非單純的補充，將創造yClinic的獨特性。</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6層マッピング -->
+  <div style="background:var(--deep);color:#fff;padding:32px 40px;border-radius:8px;margin-top:28px">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold-l);letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px"><span class="ja">6層 × 世界施設マッピング — どの層に誰から学ぶか</span><span class="zh">6層 × 世界機構對應 — 各層向誰學習</span></p>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px">
+      <div style="background:rgba(255,255,255,.06);border-radius:4px;padding:12px 10px;text-align:center">
+        <p style="font-size:10px;color:var(--gold-l);letter-spacing:.08em;margin-bottom:6px">L01 Entry</p>
+        <p style="font-size:11px;color:#fff;font-weight:700;line-height:1.5">Neko Health</p>
+        <p style="font-size:10px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.5"><span class="ja">80%再来率<br>UX設計</span><span class="zh">80%回訪率<br>UX設計</span></p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-radius:4px;padding:12px 10px;text-align:center">
+        <p style="font-size:10px;color:var(--gold-l);letter-spacing:.08em;margin-bottom:6px">L02 Assessment</p>
+        <p style="font-size:11px;color:#fff;font-weight:700;line-height:1.5">Sheba<br>Chi</p>
+        <p style="font-size:10px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.5"><span class="ja">450+バイオ<br>多次元評価</span><span class="zh">450+標記<br>多維評估</span></p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-radius:4px;padding:12px 10px;text-align:center">
+        <p style="font-size:10px;color:var(--gold-l);letter-spacing:.08em;margin-bottom:6px">L03 Interpretation</p>
+        <p style="font-size:11px;color:#fff;font-weight:700;line-height:1.5">Mayo Clinic</p>
+        <p style="font-size:10px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.5"><span class="ja">unhurried<br>physician time</span><span class="zh">不急促的<br>醫師時間</span></p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-radius:4px;padding:12px 10px;text-align:center">
+        <p style="font-size:10px;color:var(--gold-l);letter-spacing:.08em;margin-bottom:6px">L04 Intervention</p>
+        <p style="font-size:11px;color:#fff;font-weight:700;line-height:1.5">Chi / SHA<br>Buchinger</p>
+        <p style="font-size:10px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.5"><span class="ja">統合介入<br>栄養哲学</span><span class="zh">整合介入<br>營養哲學</span></p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-radius:4px;padding:12px 10px;text-align:center">
+        <p style="font-size:10px;color:var(--gold-l);letter-spacing:.08em;margin-bottom:6px">L05 Continuum</p>
+        <p style="font-size:11px;color:#fff;font-weight:700;line-height:1.5">Mayo<br>Neko</p>
+        <p style="font-size:10px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.5"><span class="ja">career-long<br>relationship</span><span class="zh">職涯長期<br>關係</span></p>
+      </div>
+      <div style="background:rgba(168,131,42,.15);border-radius:4px;padding:12px 10px;text-align:center;border:1px solid var(--gold)">
+        <p style="font-size:10px;color:var(--gold-l);letter-spacing:.08em;margin-bottom:6px">L06 Institute</p>
+        <p style="font-size:11px;color:#fff;font-weight:700;line-height:1.5">Sheba<br>Buchinger<br>Cooper</p>
+        <p style="font-size:10px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.5"><span class="ja">100年の知<br>継承の構造</span><span class="zh">百年知識<br>傳承結構</span></p>
+      </div>
+    </div>
+    <p style="font-size:11.5px;color:rgba(255,255,255,.5);margin-top:16px;text-align:center;line-height:1.8"><span class="ja">y Clinicはこれらを模倣しない。柳澤先生の思想・日本的文脈・Absorption Designという独自軸で再統合する。</span><span class="zh">y Clinic並非模仿這些機構，而是以柳澤醫師的思想、日本脈絡、Absorption Design的獨有軸線重新整合。</span></p>
+  </div>
+</div>
+
+<!-- SPIC独自軸：Precision Prevention through Absorption Design -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section —</span><span class="sec-tag world">SPIC Differentiator</span></div>
+  <h2 class="sec-h"><span class="ja">SPICにしかない軸 ― Precision Prevention through Absorption Design</span><span class="zh">唯有SPIC才有的優勢 ― Precision Prevention through Absorption Design</span></h2>
+  <p class="sec-lead"><span class="ja">海外モデルの多くは評価・予測・介入まで強い。しかし<strong>「栄養をどう身体に届けるか」という思想をクリニックの中心に持っているところは多くない。</strong>SPICはここで明確に差別化できる。体に届く設計まで責任を持つ。</span><span class="zh">許多海外模型在評估、預測、介入方面都很強。然而<strong>將「如何將營養送達身體」的思想置於診所核心的機構並不多。</strong>SPIC在這裡能夠做出明確的差異化。對送達身體的設計負責到底。</span></p>
+
+  <div style="background:linear-gradient(135deg,var(--deep) 0%,var(--deep2) 100%);color:#fff;padding:40px 52px;border-radius:8px">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold-l);letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px">SPIC Unique Axis</p>
+    <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:22px;color:var(--gold-l);margin-bottom:18px;line-height:1.5">Precision Prevention through Absorption Design</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px">
+      <div style="text-align:center;padding:14px 10px;background:rgba(255,255,255,.05);border-radius:4px">
+        <p style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:6px"><span class="ja">評価して終わらない</span><span class="zh">不止步於評估</span></p>
+        <p style="font-size:16px;color:var(--gold-l)">→</p>
+      </div>
+      <div style="text-align:center;padding:14px 10px;background:rgba(255,255,255,.05);border-radius:4px">
+        <p style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:6px"><span class="ja">説明して終わらない</span><span class="zh">不止步於說明</span></p>
+        <p style="font-size:16px;color:var(--gold-l)">→</p>
+      </div>
+      <div style="text-align:center;padding:14px 10px;background:rgba(255,255,255,.05);border-radius:4px">
+        <p style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:6px"><span class="ja">行動だけでも終わらない</span><span class="zh">不止步於行動</span></p>
+        <p style="font-size:16px;color:var(--gold-l)">→</p>
+      </div>
+      <div style="text-align:center;padding:14px 10px;background:rgba(168,131,42,.2);border-radius:4px;border:1px solid var(--gold)">
+        <p style="font-size:12px;color:var(--gold-l);font-weight:700;line-height:1.6"><span class="ja">身体に届く設計まで<br>責任を持つ</span><span class="zh">對送達身體的設計<br>負責到底</span></p>
+      </div>
+    </div>
+    <p style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.9"><span class="ja">Lypo-Cに代表される吸収設計技術は、単なるプロダクトではない。<strong>「必要なものを、必要な場所に届ける」という思想は、yClinicの介入プロトコル全体を貫く哲学である。</strong>点滴療法は最もダイレクトな吸収設計であり、栄養サプリメントの吸収設計（Lypo-C）はその延長線上にある。どの世界施設も持っていない、SPICだけが持てる軸。</span><span class="zh">以Lypo-C為代表的吸收設計技術並非單純的產品。<strong>「將必要之物送達必要之處」的思想，是貫穿yClinic整個介入流程的哲學。</strong>點滴療法是最直接的吸收設計，而保健品的吸收設計（Lypo-C）是其延伸。這是任何世界機構都不具備、唯有SPIC才能持有的優勢軸。</span></p>
+  </div>
+</div>
+
+
+    <thead>
+      <tr>
+        <th style="width:160px"><span class="ja">クリニック</span><span class="zh">診所</span></th>
+        <th style="width:120px"><span class="ja">価格帯</span><span class="zh">價格帶</span></th>
+        <th><span class="ja">強み</span><span class="zh">優勢</span></th>
+        <th><span class="ja">限界・課題</span><span class="zh">限制・課題</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="clinic-name">Clinique La Prairie</span><span class="clinic-origin">スイス 1931年創立</span></td>
+        <td>CHF 20,000+/週</td>
+        <td><span class="world-marker str">強み</span> <span class="ja">細胞療法・抗加齢の老舗ブランド。高い国際的信頼性。</span><span class="zh">細胞療法、抗衰老之老牌品牌，國際信賴度高。</span></td>
+        <td><span class="world-marker lim">限界</span> <span class="ja">リゾート型で継続管理が弱い。高額すぎて層が限定される。</span><span class="zh">度假型，持續管理能力弱。費用過高，客群受限。</span></td>
+      </tr>
+      <tr>
+        <td><span class="clinic-name">Cleveland Clinic Wellness</span><span class="clinic-origin">米国</span></td>
+        <td>$3,000〜$15,000</td>
+        <td><span class="world-marker str">強み</span> <span class="ja">エビデンスベース。機能性医学と統合医療の高い信頼性。</span><span class="zh">以實證為基礎，功能醫學與整合醫療信賴度高。</span></td>
+        <td><span class="world-marker lim">限界</span> <span class="ja">日本・アジアへの文化的翻訳が困難。継続性が薄い。</span><span class="zh">難以文化性翻譯至日本及亞洲。持續性薄弱。</span></td>
+      </tr>
+      <tr>
+        <td><span class="clinic-name">SHA Wellness Clinic</span><span class="clinic-origin">スペイン</span></td>
+        <td>€3,000+/週</td>
+        <td><span class="world-marker str">強み</span> <span class="ja">マクロビオティック栄養と医療の統合。ホリスティックな体験設計。</span><span class="zh">宏觀生食與醫療之整合，整體性體驗設計。</span></td>
+        <td><span class="world-marker lim">限界</span> <span class="ja">滞在型のため継続通院モデルではない。地理的限定。</span><span class="zh">住宿型，非持續回診模型。地理限制。</span></td>
+      </tr>
+      <tr>
+        <td><span class="clinic-name">Parsley Health</span><span class="clinic-origin">米国（テック系）</span></td>
+        <td>$300+/月</td>
+        <td><span class="world-marker str">強み</span> <span class="ja">機能性医学のサブスク化。デジタルとリアルの統合。</span><span class="zh">機能醫學訂閱化，數位與現實整合。</span></td>
+        <td><span class="world-marker lim">限界</span> <span class="ja">医師の思想より事業モデルが主役。栄養介入の深度が浅い。</span><span class="zh">事業模型優先於醫師思想。營養介入深度不足。</span></td>
+      </tr>
+      <tr>
+        <td><span class="clinic-name">Forward Health</span><span class="clinic-origin">米国 2024年閉業</span></td>
+        <td>$149/月（サブスク）</td>
+        <td><span class="world-marker str">強み</span> <span class="ja">テック先進性。スキャン技術。話題性。</span><span class="zh">科技先進性，掃描技術，話題性。</span></td>
+        <td><span class="world-marker lim">失敗</span> <span class="ja">テック主導・医師軽視・思想の欠如。10億ドル調達も閉業。教訓：思想なき医療は継続しない。</span><span class="zh">科技主導、輕視醫師、缺乏思想。籌資10億美元仍關閉。教訓：沒有思想的醫療無法持續。</span></td>
+      </tr>
+      <tr>
+        <td><span class="clinic-name">神宮前統合医療クリニック</span><span class="clinic-origin">日本・東京</span></td>
+        <td>¥30,000〜¥150,000</td>
+        <td><span class="world-marker str">強み</span> <span class="ja">「検査で深く見つける」が強み。日本での統合医療の先行者。</span><span class="zh">「以檢查深入發現」為優勢。日本整合醫療之先行者。</span></td>
+        <td><span class="world-marker lim">限界</span> <span class="ja">介入・再測定・国際展開まで含む全体設計には至っていない。</span><span class="zh">尚未達到含介入、再測量、國際展開之完整設計。</span></td>
+      </tr>
+      <tr class="yclinic-row">
+        <td><span class="clinic-name">yClinic（yClinic）</span><span class="clinic-origin">日本・横浜 2026.10〜</span></td>
+        <td>¥55,000〜¥660,000+</td>
+        <td><span class="world-marker y">yClinic</span> <span class="ja">柳澤先生20年の臨床思想を基盤に、検査→解釈→介入→再測定の循環を様式として確立。国際展開・教育・継続を一体設計。医師の想いが先にあり、テックは補助。</span><span class="zh">以柳澤醫師20年臨床思想為基礎，確立「檢查→解釋→介入→再測量」循環為樣式。國際展開、教育、持續一體設計。醫師的心意在先，科技為輔。</span></td>
+        <td><span class="ja">創業初年度のため認知度なし。プロトコルの標準化が急務（Phase 1の課題）。</span><span class="zh">創業初年度無知名度。流程標準化為急務（Phase 1課題）。</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 構造的空白 -->
+  <div class="space-box" style="margin-top:24px">
+    <div class="space-box-inner">
+      <div>
+        <p class="space-label"><span class="ja">構造的な空白</span><span class="zh">結構性空白</span></p>
+        <p class="space-title"><span class="ja">保険診療が<em>届かない場所</em>に、<br>医師の本来の志がある</span><span class="zh">健保診療<em>無法觸及之處</em>，<br>正是醫師本來志向所在</span></p>
+        <p class="space-body"><span class="ja">国民皆保険制度は急性疾患・外傷への対応において偉大な制度である。しかし予防・未病・生活習慣の継続的管理をその枠に押し込もうとすれば、医師も医療機関も疲弊し、医師が本来向き合うべき「健康そのもの」が置き去りになる。これは制度の欠陥ではなく、構造的な必然である。自費診療の場は、医師の志の逃げ場ではない。医師の志が本来ある場所である。</span><span class="zh">國民健保制度在應對急性疾患及外傷方面是偉大的制度。然而若強將預防、未病、生活習慣之持續管理納入其框架，醫師及醫療機構將疲憊不堪，醫師本應面對的「健康本身」被遺棄。這並非制度缺陷，而是結構性必然。自費診療的場所，並非醫師志向的逃避之地，而是醫師志向本來應在之處。</span></p>
+      </div>
+      <div>
+        <p class="space-label"><span class="ja">yClinicが応える問い</span><span class="zh">yClinic所回應的問題</span></p>
+        <p class="space-body" style="color:rgba(255,255,255,.75);font-size:13px;line-height:2.1">
+          <span class="ja">「異常値はないと言われたのに、なぜ体調が悪いのか」<br>「年齢のせいだと言われ続けているが、本当にそうなのか」<br>「疲れが取れない。眠れない。太りやすくなった」<br>「自分の身体の本当の状態を知りたい」<br>「病気になる前に、何かできることがあるはずだ」</span>
+          <span class="zh">「被告知無異常，為何身體狀況不好？」<br>「一直被說是年齡因素，真的是這樣嗎？」<br>「疲勞難消，無法入眠，容易發胖」<br>「想了解自己身體真正的狀態」<br>「在生病之前，應該有什麼可以做的」</span>
+        </p>
+        <p class="space-body" style="margin-top:14px"><span class="ja">これらの問いに、保険診療は構造的に答えられない。yClinicはこの問いに、逃げずに応え続ける。</span><span class="zh">對於這些問題，健保診療在結構上無法回答。yClinic對這些問題，不逃避地持續回應。</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- CHAPTER IV  医療の様式              -->
+<!-- ════════════════════════════════════ -->
+<div class="chapter">
+  <p class="chapter-num">Chapter IV</p>
+  <h2 class="chapter-title"><span class="ja">医療の様式 ― 4層の戦略と6層の臨床体系</span><span class="zh">醫療的樣式 ― 4層戰略與6層臨床體系</span></h2>
+  <p class="chapter-lead"><span class="ja">「様式」とは単なる手順ではない。思想が宿った形であり、継承可能な形である。</span><span class="zh">「樣式」並非單純的程序，而是蘊含思想的形態，是可傳承的形態。</span></p>
+</div>
+
+<!-- Section: 4層 -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 04</span><span class="sec-tag clin">Strategy</span></div>
+  <h2 class="sec-h"><span class="ja">4層の戦略構造 ― クリニックではなく、思想の拠点</span><span class="zh">4層戰略架構 ― 並非診所，而是思想的據點</span></h2>
+  <div class="four-grid">
+    <div class="four-card">
+      <p class="four-num">LAYER 01</p>
+      <p class="four-name"><span class="ja">Flagship</span><span class="zh">Flagship</span></p>
+      <p class="four-en">診療</p>
+      <p class="four-who"><span class="ja">患者が来る場所</span><span class="zh">患者就診之處</span></p>
+      <p class="four-desc"><span class="ja">y Screen〜y Longevity Programを横浜旗艦で実証・確立。創業コホート100〜150名で様式の再現性を検証する。</span><span class="zh">於橫濱旗艦實證並確立y Screen〜y Longevity Program。以創始世代100〜150名驗證樣式可複製性。</span></p>
+    </div>
+    <div class="four-card">
+      <p class="four-num">LAYER 02</p>
+      <p class="four-name"><span class="ja">Institute</span><span class="zh">Institute</span></p>
+      <p class="four-en">教育</p>
+      <p class="four-who"><span class="ja">医師が学ぶ場所</span><span class="zh">醫師學習之處</span></p>
+      <p class="four-desc"><span class="ja">y Academyで柳澤先生の思想を各拠点・toBクリニック医師に継承。Lypo-C採用3,100以上の医療機関への価値提供。</span><span class="zh">透過y Academy將柳澤醫師的思想傳承予各據點及toB診所醫師。對Lypo-C採用之3,100家以上醫療機構提供價值。</span></p>
+    </div>
+    <div class="four-card">
+      <p class="four-num">LAYER 03</p>
+      <p class="four-name"><span class="ja">Network</span><span class="zh">Network</span></p>
+      <p class="four-en">連携</p>
+      <p class="four-who"><span class="ja">国際展開の起点</span><span class="zh">國際展開之起點</span></p>
+      <p class="four-desc"><span class="ja">鎌倉・台北・シンガポールへ拡張。患者がどこでも同等の医療を受けられるネットワーク。横浜で確立した様式を各地に移植する。</span><span class="zh">延伸至鎌倉、台北、新加坡。讓患者於任何據點接受同等醫療的網絡。將橫濱確立的樣式移植至各地。</span></p>
+    </div>
+    <div class="four-card">
+      <p class="four-num">LAYER 04</p>
+      <p class="four-name"><span class="ja">Protocol</span><span class="zh">Protocol</span></p>
+      <p class="four-en">様式の継承</p>
+      <p class="four-who"><span class="ja">再現可能な医療</span><span class="zh">可複製的醫療</span></p>
+      <p class="four-desc"><span class="ja">誰が担当しても同じ本質が再現される形を設計・文書化。属人化を排除し、思想が次の医師に手渡せる形にする。</span><span class="zh">設計並文件化任何醫師皆能複製同等本質的形態。排除屬人化，使思想得以傳遞予下一位醫師。</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Section: 6層OS -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 05</span><span class="sec-tag clin">Clinical OS</span></div>
+  <h2 class="sec-h"><span class="ja">6層の臨床体系 ― 「応える」を設計する</span><span class="zh">6層臨床體系 ― 設計「應答」</span></h2>
+  <p class="sec-lead"><span class="ja">患者が「なんとなく不調」を抱えて来院してから、経年で健康を管理する会員になるまでの全体を6層で設計する。そして第6層は、個人の健康を超えて、社会への応答となる。</span><span class="zh">從患者帶著「總覺得不太對勁」就診，到成為經年管理健康之會員的全過程，以6層設計。第6層超越個人健康，成為對社會的回應。</span></p>
+
+  <div class="six-flow">
+    <div class="six-layer">
+      <p class="six-num">L 01</p>
+      <p class="six-name">Entry</p>
+      <p class="six-q"><span class="ja">なぜ来たか<br>問いを聞く</span><span class="zh">為何而來<br>聆聽問題</span></p>
+      <span class="six-arrow">▶</span>
+    </div>
+    <div class="six-layer">
+      <p class="six-num">L 02</p>
+      <p class="six-name">Assessment</p>
+      <p class="six-q"><span class="ja">何を測るか<br>正しく見る</span><span class="zh">測量什麼<br>正確觀察</span></p>
+      <span class="six-arrow">▶</span>
+    </div>
+    <div class="six-layer">
+      <p class="six-num">L 03</p>
+      <p class="six-name">Interpretation</p>
+      <p class="six-q"><span class="ja">何を意味するか<br>正しく考える</span><span class="zh">意義為何<br>正確思考</span></p>
+      <span class="six-arrow">▶</span>
+    </div>
+    <div class="six-layer">
+      <p class="six-num">L 04</p>
+      <p class="six-name">Intervention</p>
+      <p class="six-q"><span class="ja">何を変えるか<br>応える</span><span class="zh">改變什麼<br>回應</span></p>
+      <span class="six-arrow">▶</span>
+    </div>
+    <div class="six-layer">
+      <p class="six-num">L 05</p>
+      <p class="six-name">Continuum</p>
+      <p class="six-q"><span class="ja">何が変わったか<br>継続する</span><span class="zh">何者改變<br>持續</span></p>
+      <span class="six-arrow">▶</span>
+    </div>
+    <div class="six-layer l6">
+      <p class="six-num">L 06</p>
+      <p class="six-name">Institute</p>
+      <p class="six-q"><span class="ja">社会に何を返すか<br>応答し続ける</span><span class="zh">向社會回饋何者<br>持續應答</span></p>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--mid);margin-top:10px;line-height:1.8"><span class="ja">Layer 03「正しく考える」はまさに医師の矜持である。検査は手段であり、それを解釈し患者に届ける思考こそが医師の本質的な仕事である。</span><span class="zh">Layer 03「正確思考」正是醫師的矜持。檢查是手段，解釋並傳達予患者的思考，才是醫師本質性的工作。</span></p>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- CHAPTER V  具体的な検査と治療        -->
+<!-- ════════════════════════════════════ -->
+<div class="chapter">
+  <p class="chapter-num">Chapter V</p>
+  <h2 class="chapter-title"><span class="ja">具体的な評価・検査・治療・介入体系</span><span class="zh">具體的評估・檢查・治療・介入體系</span></h2>
+  <p class="chapter-lead"><span class="ja">何を測り、どう読み、何をするか。yClinicが実際に提供する医療の具体像を示す。</span><span class="zh">測量什麼、如何解讀、採取何種行動。呈現yClinic實際提供之醫療的具體圖像。</span></p>
+</div>
+
+<!-- Section 06: 評価・検査 -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 06</span><span class="sec-tag clin">Assessment</span></div>
+  <h2 class="sec-h"><span class="ja">評価・検査体系 ― 異常値が出る前の変化をとらえる</span><span class="zh">評估・檢查體系 ― 在數值異常前捕捉變化</span></h2>
+  <p class="sec-lead"><span class="ja">「全部その場で出さない」原則のもと、院内即時評価と外注精密評価の2層で設計する。重要なのは数値の羅列ではなく、<strong>正しく考えること</strong>——数値の組み合わせと推移から、なぜこの状態にあるのかを患者と医師が共に理解することである。</span><span class="zh">在「不全部當場出結果」原則下，以院內即時評估與外包精密評估之2層設計。重要的並非數值羅列，而是<strong>正確思考</strong>——從數值的組合與趨勢，讓患者與醫師共同理解為何處於此狀態。</span></p>
+
+  <table class="assess-table">
+    <thead>
+      <tr>
+        <th style="width:130px"><span class="ja">サービス</span><span class="zh">服務</span></th>
+        <th style="width:200px"><span class="ja">評価カテゴリ</span><span class="zh">評估類別</span></th>
+        <th><span class="ja">主要検査項目・評価内容</span><span class="zh">主要檢查項目・評估內容</span></th>
+        <th style="width:90px"><span class="ja">実施形態</span><span class="zh">實施形態</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="6"><span class="tier-badge t1">y Screen</span><br><span style="font-size:10px;color:var(--muted)">60〜75分</span></td>
+        <td><span class="ja">問診・生活習慣評価</span><span class="zh">問診・生活習慣評估</span></td>
+        <td class="items-list"><span class="ja">睡眠・食事・運動・ストレス・既往歴・家族歴・薬歴。生活習慣スコア算出。</span><span class="zh">睡眠、飲食、運動、壓力、病史、家族史、用藥史。生活習慣評分計算。</span></td>
+        <td><span class="ja">院内</span><span class="zh">院內</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">身体計測・体組成</span><span class="zh">身體測量・體組成</span></td>
+        <td class="items-list"><span class="ja">身長・体重・BMI・腹囲。体組成分析（骨格筋量・体脂肪・内臓脂肪レベル）。血圧・脈波速度（血管年齢）。</span><span class="zh">身高、體重、BMI、腰圍。體組成分析（骨骼肌量、體脂肪、內臟脂肪等級）。血壓、脈波速度（血管年齡）。</span></td>
+        <td><span class="ja">院内</span><span class="zh">院內</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">炎症・免疫</span><span class="zh">炎症・免疫</span></td>
+        <td class="items-list">CBC with diff → NLR算出 / hs-CRP<br><span style="font-size:10px;color:var(--muted)"><span class="ja">NLR≧3.0・hs-CRP≧0.2 mg/L を炎症サインとして解釈</span><span class="zh">NLR≧3.0、hs-CRP≧0.2 mg/L 作為炎症訊號解釋</span></span></td>
+        <td><span class="ja">院内</span><span class="zh">院內</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">糖代謝・脂質・肝</span><span class="zh">糖代謝・脂質・肝</span></td>
+        <td class="items-list">HbA1c / FPG / TG / HDL / LDL → TG/HDL比算出 / AST・ALT・γ-GTP / UA<br><span style="font-size:10px;color:var(--muted)"><span class="ja">TG/HDL≧2.0・UA>7.0 に注目。γ-GTP は前年比トレンドで読む</span><span class="zh">注目TG/HDL≧2.0、UA>7.0。γ-GTP以前年比趨勢解讀</span></span></td>
+        <td><span class="ja">院内</span><span class="zh">院內</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">甲状腺・基本ホルモン</span><span class="zh">甲狀腺・基本荷爾蒙</span></td>
+        <td class="items-list">TSH / FT3 / FT4<br><span style="font-size:10px;color:var(--muted)"><span class="ja">慢性疲労・代謝異常の背景として甲状腺機能を確認</span><span class="zh">作為慢性疲勞、代謝異常的背景確認甲狀腺功能</span></span></td>
+        <td><span class="ja">外注</span><span class="zh">外包</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">安静時心電図・尿</span><span class="zh">靜息心電圖・尿</span></td>
+        <td class="items-list"><span class="ja">12誘導ECG。尿定性・沈渣。</span><span class="zh">12導程ECG。尿液定性、沈渣。</span></td>
+        <td><span class="ja">院内</span><span class="zh">院內</span></td>
+      </tr>
+
+      <tr>
+        <td rowspan="5"><span class="tier-badge t2">y Screen Plus</span><br><span style="font-size:10px;color:var(--muted)">90分</span></td>
+        <td><span class="ja">インスリン抵抗性</span><span class="zh">胰島素阻抗</span></td>
+        <td class="items-list"><span class="ja">空腹時インスリン → HOMA-IR算出。正常血糖でもHOMA-IR≧2.5で代謝性炎症を診断。</span><span class="zh">空腹時胰島素 → 計算HOMA-IR。即使血糖正常，HOMA-IR≧2.5即診斷代謝性炎症。</span></td>
+        <td><span class="ja">外注</span><span class="zh">外包</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">栄養素・微量元素</span><span class="zh">營養素・微量元素</span></td>
+        <td class="items-list">Ferritin（<30: 潜在性鉄欠乏 />200: 炎症反応） / 25(OH)D（目標40-60 ng/mL） / Zinc / B12・葉酸 / ホモシステイン<br><span style="font-size:10px;color:var(--muted)"><span class="ja">炎症制御・メチル化回路・ミトコンドリア機能の基盤を評価</span><span class="zh">評估炎症控制、甲基化循環、粒線體功能之基礎</span></span></td>
+        <td><span class="ja">外注</span><span class="zh">外包</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">ホルモンパネル（選択式）</span><span class="zh">荷爾蒙面板（選擇式）</span></td>
+        <td class="items-list">DHEA-S / Cortisol（AM採血）→ Cortisol/DHEA-S比算出（≦0.05: 良好 /≧0.20: 要注意） / Free-T（男性、LOH評価）/ E2（女性）<br><span style="font-size:10px;color:var(--muted)"><span class="ja">「絶対値より日内変動（リズム）の維持が重要」</span><span class="zh">「相較絕對值，維持日內變動（節律）更重要」</span></span></td>
+        <td><span class="ja">外注</span><span class="zh">外包</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">睡眠・概日リズム評価</span><span class="zh">睡眠・晝夜節律評估</span></td>
+        <td class="items-list"><span class="ja">ウェアラブルデバイスによる睡眠データ解析（オプション）。コルチゾール日内変動（AM/PM採血）。</span><span class="zh">穿戴式裝置睡眠數據分析（選擇性）。皮質醇日內變動（AM/PM採血）。</span></td>
+        <td><span class="ja">院内/外注</span><span class="zh">院內/外包</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">連続血糖測定（CGM）</span><span class="zh">持續血糖監測（CGM）</span></td>
+        <td class="items-list"><span class="ja">2週間装着→食後血糖スパイク・血糖変動パターン解析。HbA1c正常でも血糖スパイクを捕捉。</span><span class="zh">配戴2週→食後血糖飆升、血糖變動模式分析。即使HbA1c正常亦可捕捉血糖飆升。</span></td>
+        <td><span class="ja">院内</span><span class="zh">院內</span></td>
+      </tr>
+
+      <tr>
+        <td rowspan="3"><span class="tier-badge t3">y Executive</span><br><span style="font-size:10px;color:var(--muted)"><span class="ja">半日〜1日</span><span class="zh">半天〜全天</span></span></td>
+        <td><span class="ja">詳細ホルモン・栄養精密検査</span><span class="zh">詳細荷爾蒙・精密營養檢查</span></td>
+        <td class="items-list"><span class="ja">性ホルモン全般（LH・FSH・SHBG含む）。甲状腺詳細（rT3含む）。有機酸検査（ミトコンドリア機能・腸内環境）。アミノ酸プロファイル。</span><span class="zh">全面性荷爾蒙（含LH、FSH、SHBG）。甲狀腺詳細（含rT3）。有機酸檢查（粒線體功能、腸道環境）。胺基酸分析。</span></td>
+        <td><span class="ja">外注</span><span class="zh">外包</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">重金属・毒素負荷</span><span class="zh">重金屬・毒素負荷</span></td>
+        <td class="items-list"><span class="ja">尿中重金属（水銀・鉛・カドミウム等）。慢性炎症・神経症状の原因探索。</span><span class="zh">尿中重金屬（汞、鉛、鎘等）。探索慢性炎症、神經症狀之原因。</span></td>
+        <td><span class="ja">外注</span><span class="zh">外包</span></td>
+      </tr>
+      <tr>
+        <td><span class="ja">画像検査・専門医連携</span><span class="zh">影像檢查・專科醫師連結</span></td>
+        <td class="items-list"><span class="ja">頸動脈超音波（動脈硬化評価）。骨密度（DEXA）。必要時MRI連携。動脈硬化リスクと骨粗鬆症リスクの経年管理。</span><span class="zh">頸動脈超音波（動脈硬化評估）。骨密度（DEXA）。必要時MRI連結。動脈硬化風險與骨質疏鬆風險之縱向管理。</span></td>
+        <td><span class="ja">外注連携</span><span class="zh">外包連結</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 07: 治療・介入 -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 07</span><span class="sec-tag clin">Intervention</span></div>
+  <h2 class="sec-h"><span class="ja">治療・介入体系 ― 優先順位を持って、応える</span><span class="zh">治療・介入體系 ― 以優先順序，回應</span></h2>
+  <p class="sec-lead"><span class="ja">介入は検査結果と症状に基づく医師の判断で行う。商品として売るのではなく、処方として組み込む。優先順位は上符先生が提示した「睡眠 → 食事・腸 → 体脂肪・栄養・ホルモン」の順序を基本とし、柳澤先生の点滴療法プロトコルと統合する。</span><span class="zh">介入基於檢查結果與症狀，由醫師判斷執行。並非作為商品販售，而是作為處方納入。優先順序以上符醫師提示的「睡眠→飲食・腸道→體脂肪・營養・荷爾蒙」為基礎，與柳澤醫師的點滴療法流程整合。</span></p>
+
+  <div class="priority-steps">
+    <div class="pstep">
+      <div class="pstep-num"><div class="pstep-circle">01</div><p class="pstep-priority">First</p></div>
+      <div>
+        <p class="pstep-title"><span class="ja">睡眠の最適化 ― 最もコストの低い抗炎症介入</span><span class="zh">睡眠最佳化 ― 成本最低的抗炎症介入</span></p>
+        <p class="pstep-desc"><span class="ja">概日リズム調整・睡眠衛生指導・コルチゾールリズム回復。<strong>7時間以上の質の高い睡眠</strong>はあらゆる介入の前提条件。夜間高コルチゾール（逆転パターン）は全身炎症を加速させる最大要因であり、最優先で是正する。Flat patternは副腎疲労の兆候として把握し、生活習慣の再設計から入る。</span><span class="zh">晝夜節律調整、睡眠衛生指導、皮質醇節律恢復。<strong>7小時以上高品質睡眠</strong>是所有介入的前提條件。夜間高皮質醇（逆轉模式）是加速全身炎症的最大因素，優先矯正。Flat pattern作為腎上腺疲勞的徵兆，從生活習慣重新設計入手。</span></p>
+      </div>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num"><div class="pstep-circle">02</div><p class="pstep-priority">Second</p></div>
+      <div>
+        <p class="pstep-title"><span class="ja">栄養点滴療法 ― 柳澤先生監修プロトコル</span><span class="zh">營養點滴療法 ― 柳澤醫師監修流程</span></p>
+        <p class="pstep-desc"><span class="ja">検査値・症状・医師判断に基づく点滴処方。<strong>高濃度ビタミンC点滴（IVC）</strong>：慢性疲労・免疫機能低下・酸化ストレス高値例に。12.5g〜75g段階的投与。<strong>マイヤーズカクテル</strong>：Mg・Ca・B群ビタミン・VC複合。慢性疲労・気管支・片頭痛。<strong>グルタチオン点滴</strong>：神経系保護・解毒・酸化ストレス。<strong>αリポ酸点滴</strong>：インスリン抵抗性・慢性肝炎・抗酸化。<strong>キレーション療法</strong>：重金属蓄積確認例に限定。</span><span class="zh">基於檢查值、症狀、醫師判斷之點滴處方。<strong>高濃度維他命C點滴（IVC）</strong>：適用慢性疲勞、免疫功能下降、氧化壓力高值。12.5g〜75g階段給藥。<strong>Myers雞尾酒</strong>：Mg、Ca、B群維他命、VC複合。慢性疲勞、支氣管、偏頭痛。<strong>穀胱甘肽點滴</strong>：神經系統保護、解毒、氧化壓力。<strong>α硫辛酸點滴</strong>：胰島素阻抗、慢性肝炎、抗氧化。<strong>螯合療法</strong>：限定於確認重金屬蓄積病例。</span></p>
+      </div>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num"><div class="pstep-circle">03</div><p class="pstep-priority">Third</p></div>
+      <div>
+        <p class="pstep-title"><span class="ja">栄養・サプリメント処方 ― 処方として組み込む</span><span class="zh">營養・保健品處方 ― 作為處方納入</span></p>
+        <p class="pstep-desc"><span class="ja">商品として売るのではなく、検査値に基づく医師処方として。<strong>ビタミンD3</strong>：目標40-60 ng/mL（日本人成人の多くが欠乏）。炎症性サイトカイン抑制・免疫調整・インスリン感受性改善。<strong>Lypo-C（リポソーム型VC）</strong>：SPICの吸収設計技術。経口でありながら高吸収率。<strong>マグネシウム・亜鉛</strong>：粘膜バリア・SOD補因子・ストレス対応。<strong>B12/葉酸</strong>：メチル化回路・ホモシステイン代謝。<strong>オメガ3</strong>：炎症制御・血管内皮保護。<strong>プロバイオティクス</strong>：腸管バリア修復・dysbiosis改善。</span><span class="zh">並非作為商品販售，而是基於檢查值的醫師處方。<strong>維他命D3</strong>：目標40-60 ng/mL（多數日本成人缺乏）。抑制炎症性細胞激素、免疫調節、改善胰島素敏感性。<strong>Lypo-C（脂質體型VC）</strong>：SPIC吸收設計技術。口服卻有高吸收率。<strong>鎂、鋅</strong>：黏膜屏障、SOD輔因子、壓力應對。<strong>B12/葉酸</strong>：甲基化循環、同半胱胺酸代謝。<strong>Omega-3</strong>：炎症控制、血管內皮保護。<strong>益生菌</strong>：腸道屏障修復、改善腸道菌群失調。</span></p>
+      </div>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num"><div class="pstep-circle">04</div><p class="pstep-priority">Fourth</p></div>
+      <div>
+        <p class="pstep-title"><span class="ja">食事・生活習慣の再設計 ― 腸管バリアと代謝炎症への応答</span><span class="zh">飲食・生活習慣重新設計 ― 對腸道屏障與代謝炎症的回應</span></p>
+        <p class="pstep-desc"><span class="ja">加工食品の削減・抗炎症食設計（地中海式応用）・糖質負荷軽減・腸管バリア修復食（発酵食品・食物繊維）。運動処方（週150分有酸素＋筋力）。ストレス管理（HRV測定・マインドフルネス・呼吸法）。<strong>行動変容コーチが患者に同行する。</strong></span><span class="zh">減少加工食品、抗炎症飲食設計（地中海式應用）、減輕糖類負荷、腸道屏障修復飲食（發酵食品、膳食纖維）。運動處方（每週150分鐘有氧+肌力）。壓力管理（HRV測量、正念、呼吸法）。<strong>行為改變教練陪同患者。</strong></span></p>
+      </div>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num"><div class="pstep-circle">05</div><p class="pstep-priority">Fifth</p></div>
+      <div>
+        <p class="pstep-title"><span class="ja">ホルモン最適化 ― 適応症例に限定した慎重な介入</span><span class="zh">荷爾蒙最佳化 ― 限定適應症例之謹慎介入</span></p>
+        <p class="pstep-desc"><span class="ja">「HRTは若返りではなく、抗炎症戦略として位置づける」（柳澤先生監修方針）。<strong>Bioidentical HRT</strong>：エストラジオール/プロゲステロン。更年期症状＋炎症マーカー上昇に適応。<strong>DHEA補充</strong>：DHEA-S低値＋症状ありの例に。処方ロジックを文書化し、属人化を排除。<strong>TRT（テストステロン補充）</strong>：Free-T＜8.5 pg/mL＋AMSスコア＋反復確認後に検討。<strong>サプリ・特定製剤の単独販売はしない。医師処方の文脈でのみ提供する。</strong></span><span class="zh">「HRT並非回春，而是作為抗炎症策略定位」（柳澤醫師監修方針）。<strong>生物同質性HRT</strong>：雌二醇/黃體酮。適用更年期症狀+炎症標記上升。<strong>DHEA補充</strong>：適用DHEA-S低值+有症狀之病例。文件化處方邏輯，排除屬人化。<strong>TRT（睪固酮補充）</strong>：Free-T＜8.5 pg/mL+AMS評分+反複確認後考慮。<strong>保健品及特定製品不單獨販售，僅在醫師處方脈絡下提供。</strong></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 08: 再測定・継続 -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 08</span><span class="sec-tag clin">Continuum</span></div>
+  <h2 class="sec-h"><span class="ja">再測定と継続 ― 「異常なし」で終わらない医療</span><span class="zh">再測量與持續 ― 不以「無異常」作結的醫療</span></h2>
+  <div class="treat-grid">
+    <div class="treat-card">
+      <div class="treat-header"><h4><span class="ja">90日プログラム内の評価サイクル</span><span class="zh">90日計畫內之評估週期</span></h4><p><span class="ja">y Longevity Program</span><span class="zh">y Longevity Program</span></p></div>
+      <div class="treat-body">
+        <div class="treat-item"><strong><span class="ja">Day 1：ベースライン確定</span><span class="zh">Day 1：確定基準線</span></strong><span><span class="ja">y Screen / y Screen Plus / y Executive いずれかで全評価完了。</span><span class="zh">以y Screen / y Screen Plus / y Executive擇一完成全評估。</span></span></div>
+        <div class="treat-item"><strong><span class="ja">Day 14-30：仮説検証</span><span class="zh">Day 14-30：假設驗證</span></strong><span><span class="ja">睡眠・食事・点滴介入後の初期変化を確認。院内即時マーカーで傾向把握。</span><span class="zh">確認睡眠、飲食、點滴介入後之初期變化。以院內即時標記掌握趨勢。</span></span></div>
+        <div class="treat-item"><strong><span class="ja">Day 60：中間評価</span><span class="zh">Day 60：中期評估</span></strong><span><span class="ja">主要マーカー再測定。介入の効果を可視化。継続/修正の判断。</span><span class="zh">主要標記再測量。可視化介入效果。判斷持續/修正。</span></span></div>
+        <div class="treat-item"><strong><span class="ja">Day 90：総括評価と次期設計</span><span class="zh">Day 90：總結評估與次期設計</span></strong><span><span class="ja">全マーカー再測定。ベースラインとの比較レポート。次の90日または年次プログラムへの移行。</span><span class="zh">全標記再測量。與基準線的比較報告。移轉至下一個90天或年度計畫。</span></span></div>
+      </div>
+    </div>
+    <div class="treat-card">
+      <div class="treat-header"><h4><span class="ja">y Membership — 経年比較の仕組み</span><span class="zh">y Membership — 縱向比較之機制</span></h4><p><span class="ja">「1年後のあなたと比べる。今日だけで終わらない」</span><span class="zh">「與一年後的您比較，不以今天作結」</span></p></div>
+      <div class="treat-body">
+        <div class="treat-item"><strong><span class="ja">結果閲覧・経年比較</span><span class="zh">結果查閱・縱向比較</span></strong><span><span class="ja">アプリで全検査結果を経年で比較可能。「去年より◯◯が変化している」という文脈で介入を提案。</span><span class="zh">應用程式可縱向比較所有檢查結果。以「您的◯◯相較去年有所變化」之脈絡提出介入建議。</span></span></div>
+        <div class="treat-item"><strong><span class="ja">医師チャット・優先予約</span><span class="zh">醫師諮詢・優先預約</span></strong><span><span class="ja">気になる変化をいつでも相談できる。緊急時の優先診療。</span><span class="zh">隨時諮詢令人在意的變化。緊急時的優先診療。</span></span></div>
+        <div class="treat-item"><strong><span class="ja">海外拠点連携</span><span class="zh">海外據點連結</span></strong><span><span class="ja">鎌倉・台北・シンガポール拠点での継続受診。データが国境を越えて引き継がれる。</span><span class="zh">在鎌倉、台北、新加坡據點持續就診。數據跨越國境傳承。</span></span></div>
+        <div class="treat-item"><strong><span class="ja">家族アカウント</span><span class="zh">家庭帳戶</span></strong><span><span class="ja">家族の健康を一括管理。経営者・富裕層家族の総括的健康管理。</span><span class="zh">統一管理家人健康。企業家、富裕層家族之整體健康管理。</span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- CHAPTER VI  サービスと拠点          -->
+<!-- ════════════════════════════════════ -->
+<div class="chapter">
+  <p class="chapter-num">Chapter VI</p>
+  <h2 class="chapter-title"><span class="ja">サービス階層と拠点展開</span><span class="zh">服務階層與據點展開</span></h2>
+  <p class="chapter-lead"><span class="ja">入口から継続まで。そして横浜から世界へ。</span><span class="zh">從入口到持續。再從橫濱走向世界。</span></p>
+</div>
+
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 09</span><span class="sec-tag clin">Services</span></div>
+  <h2 class="sec-h"><span class="ja">サービス階層 ― 6つの入口と継続</span><span class="zh">服務階層 ― 6項入口與持續</span></h2>
+  <div class="svc-grid">
+    <div class="svc-card entry">
+      <p class="svc-name">y Screen</p>
+      <p class="svc-tag"><span class="ja">ベースライン検査</span><span class="zh">基準檢查</span></p>
+      <p class="svc-time">60〜75 min</p>
+      <p class="svc-price">¥55,000 〜 ¥88,000</p>
+      <p class="svc-role"><span class="ja"><strong>役割</strong>：新規獲得・ベースライン化。院内即時評価で当日結果の70%を提供。医師説明で「なぜこの状態にあるのか」を伝える。</span><span class="zh"><strong>角色</strong>：新規獲取、建立基準線。院內即時評估提供當日結果70%。醫師說明傳達「為何處於此狀態」。</span></p>
+    </div>
+    <div class="svc-card entry">
+      <p class="svc-name">y Screen Plus</p>
+      <p class="svc-tag"><span class="ja">精密評価型</span><span class="zh">精密評估型</span></p>
+      <p class="svc-time">90 min</p>
+      <p class="svc-price">¥110,000 〜 ¥165,000</p>
+      <p class="svc-role"><span class="ja"><strong>役割</strong>：プログラム転換。y Screen＋インスリン抵抗性・ホルモン・栄養素・睡眠・CGMの選択式オプション。Longevity Program転換の起点。</span><span class="zh"><strong>角色</strong>：轉換至計畫。y Screen＋胰島素阻抗、荷爾蒙、營養素、睡眠、CGM選擇性選項。Longevity Program轉換的起點。</span></p>
+    </div>
+    <div class="svc-card core">
+      <p class="svc-name">y Executive</p>
+      <p class="svc-tag"><span class="ja">経営者・富裕層・海外患者</span><span class="zh">企業家・富裕層・海外患者</span></p>
+      <p class="svc-time"><span class="ja">半日〜1日</span><span class="zh">半天〜全天</span></p>
+      <p class="svc-price">¥250,000 〜 ¥500,000</p>
+      <p class="svc-role"><span class="ja"><strong>役割</strong>：高単価・紹介導線。詳細ラボ・専門医面談・栄養運動睡眠設計・必要時画像連携。一日で全体像を掴む。</span><span class="zh"><strong>角色</strong>：高單價、轉介通路。詳細檢驗、專科醫師面診、營養運動睡眠設計、必要時影像轉介。一天掌握整體圖像。</span></p>
+    </div>
+    <div class="svc-card core">
+      <p class="svc-name">y Longevity Program</p>
+      <p class="svc-tag"><span class="ja">90日/180日/365日 継続伴走</span><span class="zh">90天/180天/365天 持續陪伴</span></p>
+      <p class="svc-time">90 / 180 / 365 days</p>
+      <p class="svc-price">¥330,000 〜 ¥660,000 / 90日</p>
+      <p class="svc-role"><span class="ja"><strong>役割</strong>：粗利の中核。検査→解釈→介入→再測定のサイクル。栄養・点滴・睡眠・代謝・ホルモン・腸・認知予防を統合的に伴走。</span><span class="zh"><strong>角色</strong>：毛利核心。「檢查→解釋→介入→再測量」之循環。統合陪伴營養、點滴、睡眠、代謝、荷爾蒙、腸道、認知預防。</span></p>
+    </div>
+    <div class="svc-card support">
+      <p class="svc-name">y Membership</p>
+      <p class="svc-tag"><span class="ja">年会費制 ― LTVの本体</span><span class="zh">年費制 ― LTV之主體</span></p>
+      <p class="svc-time"><span class="ja">年間</span><span class="zh">年度</span></p>
+      <p class="svc-price">¥132,000 〜 ¥360,000 / 年</p>
+      <p class="svc-role"><span class="ja"><strong>役割</strong>：継続率の本体。結果閲覧・経年比較・医師チャット・優先予約・再検査割引・家族アカウント・海外拠点連携。</span><span class="zh"><strong>角色</strong>：留存率主體。查閱結果、縱向比較、醫師諮詢、優先預約、再檢折扣、家庭帳戶、海外據點連結。</span></p>
+    </div>
+    <div class="svc-card support">
+      <p class="svc-name">y Recovery</p>
+      <p class="svc-tag"><span class="ja">回復・体験レイヤー ― 医療と連続させるが処方とは分離</span><span class="zh">恢復・體驗層 ― 與醫療連續但與處方分離</span></p>
+      <p class="svc-time"><span class="ja">随時</span><span class="zh">隨時</span></p>
+      <p class="svc-price"><span class="ja">別途案内</span><span class="zh">另行通知</span></p>
+      <p class="svc-role"><span class="ja"><strong>役割</strong>：体験価値・法人向け導線。睡眠回復・温熱療法・呼吸リラクゼーション。法人健康経営プログラムとの接続。</span><span class="zh"><strong>角色</strong>：體驗價值、對企業之通路。睡眠恢復、溫熱療法、呼吸放鬆。與企業健康管理計畫之連結。</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 10: 拠点 -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 10</span><span class="sec-tag hist">Roadmap</span></div>
+  <h2 class="sec-h"><span class="ja">拠点展開 ― 横浜から世界へ、想いを継ぐ</span><span class="zh">據點展開 ― 從橫濱走向世界，繼承心意</span></h2>
+  <div class="roadmap">
+    <div class="rm-row hdr">
+      <div><span class="ja">拠点</span><span class="zh">據點</span></div>
+      <div><span class="ja">時期</span><span class="zh">時期</span></div>
+      <div><span class="ja">形態</span><span class="zh">形態</span></div>
+      <div><span class="ja">役割・意義</span><span class="zh">角色・意義</span></div>
+    </div>
+    <div class="rm-row flag">
+      <div><span class="rm-site"><span class="ja">横浜（旗艦）</span><span class="zh">橫濱（旗艦）</span><span class="rm-site-en">Yokohama Flagship</span></span></div>
+      <div><span class="rm-time">2026.10</span></div>
+      <div><span class="rm-type"><span class="ja">新規直営</span><span class="zh">新建直營</span></span></div>
+      <div class="rm-role"><span class="ja">スカイビル25F・約80坪。SPICオフィス隣接。診療×教育×発信の3機能。「Yokohama」のyがブランドと重なる。<strong>医療の様式を実証・確立する本丸。</strong></span><span class="zh">Sky Building 25F、約80坪。SPIC辦公室相鄰。診療×教育×發信3項功能。「Yokohama」之y與品牌重疊。<strong>實證並確立醫療樣式之核心。</strong></span></div>
+    </div>
+    <div class="rm-row">
+      <div><span class="rm-site"><span class="ja">鎌倉（原点）</span><span class="zh">鎌倉（原點）</span><span class="rm-site-en">Kamakura Origin</span></span></div>
+      <div><span class="rm-time">2026.10</span></div>
+      <div><span class="rm-type"><span class="ja">リブランディング</span><span class="zh">品牌重塑</span></span></div>
+      <div class="rm-role"><span class="ja">2004年開設のSPIC Salon Medical Clinic。柳澤先生の想いが最初に形になった場所。<strong>原点の地として横浜と同時に立ち上げる。</strong>想いを継ぐ物語の始まりがここにある。</span><span class="zh">2004年開設之SPIC Salon Medical Clinic。柳澤醫師的心意最初成形之地。<strong>作為原點之地與橫濱同步啟動。</strong>繼承心意的故事從此開始。</span></div>
+    </div>
+    <div class="rm-row">
+      <div><span class="rm-site"><span class="ja">台北（国際第一歩）</span><span class="zh">台北（國際第一步）</span><span class="rm-site-en">Taipei International</span></span></div>
+      <div><span class="rm-time">2027 H1</span></div>
+      <div><span class="rm-type"><span class="ja">Charles先生連携</span><span class="zh">Charles醫師合作</span></span></div>
+      <div class="rm-role"><span class="ja">看板の掛け替えではなく、横浜で確立した様式を移植する。<strong>想いの国際継承の第一証明。</strong>台湾からアジアへの発信起点。</span><span class="zh">並非替換招牌，而是移植橫濱確立的樣式。<strong>心意國際傳承的第一証明。</strong>從台灣向亞洲發信的起點。</span></div>
+    </div>
+    <div class="rm-row">
+      <div><span class="rm-site"><span class="ja">東京</span><span class="zh">東京</span><span class="rm-site-en">Tokyo</span></span></div>
+      <div><span class="rm-time">2027 H2</span></div>
+      <div><span class="rm-type"><span class="ja">新規直営</span><span class="zh">新建直營</span></span></div>
+      <div class="rm-role"><span class="ja">横浜KPI達成（転換率15%・継続率60%・NPS70）確認後に出店。都心旗艦として富裕層・海外患者の集客拠点。</span><span class="zh">確認橫濱KPI達成（轉換率15%、留存率60%、NPS70）後展店。作為都心旗艦，吸引富裕層及海外患者。</span></div>
+    </div>
+    <div class="rm-row">
+      <div><span class="rm-site"><span class="ja">全国・シンガポール</span><span class="zh">全國・新加坡</span><span class="rm-site-en">National + Singapore</span></span></div>
+      <div><span class="rm-time">2028〜</span></div>
+      <div><span class="rm-type"><span class="ja">直営/FC/提携</span><span class="zh">直營/加盟/合作</span></span></div>
+      <div class="rm-role"><span class="ja">大阪・名古屋・福岡への展開。シンガポールはKenko連携で医療×Recovery×法人ウェルネス導線のアジアハブ。様式の再現性が全展開の前提。</span><span class="zh">展開至大阪、名古屋、福岡。新加坡以Kenko合作為醫療×Recovery×企業健康通路之亞洲樞紐。樣式可複製性為所有展開之前提。</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- CHAPTER VII  名称と今後             -->
+<!-- ════════════════════════════════════ -->
+<div class="chapter">
+  <p class="chapter-num">Chapter VII</p>
+  <h2 class="chapter-title"><span class="ja">名称について ― 3案、医師に選んでいただく</span><span class="zh">關於名稱 ― 3項方案，請醫師選擇</span></h2>
+  <p class="chapter-lead"><span class="ja">コードネーム「yClinic」で進めながら、正式名称は次回会議の課題とする。「y」の読み方・意味は、医師が決める。なぜなら、この医療の主役は医師だからである。</span><span class="zh">以代號「yClinic」推進，正式名稱作為下次會議的課題。「y」的讀法及意涵由醫師決定，因為此醫療的主角是醫師。</span></p>
+</div>
+
+<div class="sec">
+  <div class="name-grid">
+    <div class="name-card">
+      <div class="name-header">
+        <div class="name-letter">"y"</div>
+        <div>
+          <p class="name-main"><span class="ja">案A：Clinic "y"</span><span class="zh">方案A：Clinic "y"</span></p>
+          <p class="name-read"><span class="ja">読み：クリニック ワイ（または 読み方を定めない）</span><span class="zh">讀法：Clinic "y"（或不定讀法）</span></p>
+        </div>
+      </div>
+      <div class="name-body">
+        <p class="name-philosophy"><span class="ja">Clinicという言葉が医療機関としての格調を先に確立し、その後ろに<em>"y"</em>が問いとして静かに置かれる。Clinicが先頭に来ることで、「医療である」という自明の前提を崩さない。</span><span class="zh">Clinic一詞先確立醫療機構的格調，其後<em>"y"</em>作為問題靜靜置於後方。Clinic居前，不動搖「是醫療」的不言而喻前提。</span></p>
+        <p class="name-rationale"><span class="ja">名称を初めて見た人は自然に問う——「なぜ"y"なのか」。その問い自体がすでに"y"＝Why?の精神と一致している。Yanagisawa、Your、Year-over-year、Why?、Yokohama——読む人がそれぞれの入口からこの医療の本質に辿り着く、開かれた問いかけとして機能する。商標上の「y Clinic」との差異としてクォーテーションマークを活用する。</span><span class="zh">初次看到名稱的人自然會問——「為何是"y"？」。這個問題本身已與"y"＝Why?的精神一致。Yanagisawa、Your、Year-over-year、Why?、Yokohama——讓讀者從各自的入口抵達此醫療的本質，作為開放式提問發揮功能。利用引號作為與商標「y Clinic」的區別。</span></p>
+      </div>
+    </div>
+    <div class="name-card">
+      <div class="name-header">
+        <div class="name-letter" style="font-size:44px">問診</div>
+        <div>
+          <p class="name-main"><span class="ja">案B：問診（Monshin）</span><span class="zh">方案B：問診（Monshin）</span></p>
+          <p class="name-read"><span class="ja">読み：もんしん。国際表記：MONSHIN</span><span class="zh">讀法：Monshin。國際表記：MONSHIN</span></p>
+        </div>
+      </div>
+      <div class="name-body">
+        <p class="name-philosophy"><span class="ja">「問う」と「診る」が一語に収まる。医師が患者に問い、患者が自分自身に問う。問診は医療の最初の行為であり、<em>本質への入口</em>でもある。「正しく診る、正しく考える」という医師の矜持がこの一語に宿っている。</span><span class="zh">「問」與「診」凝縮於一語。醫師問患者，患者問自己。問診是醫療的第一個行為，也是<em>通往本質的入口</em>。醫師「正確診視、正確思考」的矜持蘊含於這一語之中。</span></p>
+        <p class="name-rationale"><span class="ja">漢字二文字の格調を持ちながら、発音として国際的に覚えやすい。「Monshin Clinic」「Clinic Monshin」いずれの語順でも成立する。「問診」という言葉は医師が日常的に使う言葉であり、違和感がない。ただし既存の商標確認が必要。</span><span class="zh">具備漢字二字之格調，發音上國際上也易記。「Monshin Clinic」「Clinic Monshin」兩種語序均成立。「問診」是醫師日常使用之詞彙，不感違和。但需確認既有商標。</span></p>
+      </div>
+    </div>
+    <div class="name-card">
+      <div class="name-header">
+        <div class="name-letter" style="font-size:56px">応</div>
+        <div>
+          <p class="name-main"><span class="ja">案C：応（Kotae）</span><span class="zh">方案C：応（Kotae）</span></p>
+          <p class="name-read"><span class="ja">読み：こたえ。または「おう（Ō）」。Clinic 応。</span><span class="zh">讀法：Kotae。或「Ō」。Clinic 応。</span></p>
+        </div>
+      </div>
+      <div class="name-body">
+        <p class="name-philosophy"><span class="ja">社会が答えを持たない問いに、医師が逃げずに<em>応え続ける</em>。その一語。漢字一文字の静けさと強さ。「応える」は受動でも能動でもある——問いがあれば応える、患者がいれば応える。このプロジェクトの核心を一文字に凝縮した。</span><span class="zh">對社會尚無答案的問題，醫師不逃避地<em>持續回應</em>。就是這一語。漢字一字的靜謐與力量。「回應」既非被動也非主動——有問題就回應，有患者就回應。將此計畫的核心凝縮於一字之中。</span></p>
+        <p class="name-rationale"><span class="ja">最も格調があり、最も哲学が宿っている。しかし固有名詞として成立させるには副題との組み合わせが必要になる可能性がある。「Clinic 応」として使う場合、日本語話者には直感的だが国際的な認知には工夫が必要。読み方は「こたえ」と「おう」のどちらにするかも検討事項。</span><span class="zh">最具格調，最蘊含哲學。但作為固有名詞成立，可能需要與副標題組合。作為「Clinic 応」使用時，日語使用者直覺明瞭，但國際認知需要巧思。讀法採「Kotae」或「Ō」亦為討論事項。</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section: NG / やってはいけないこと -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 11</span><span class="sec-tag why">Principle</span></div>
+  <h2 class="sec-h"><span class="ja">やってはいけないこと ― 医療の本質を守る4つの原則</span><span class="zh">禁止事項 ― 守護醫療本質之4項原則</span></h2>
+  <div class="ng-grid">
+    <div class="ng-card">
+      <p class="ng-n">①</p>
+      <p class="ng-title"><span class="ja">全身MRIを主役にする</span><span class="zh">以全身MRI為主角</span></p>
+      <p class="ng-reason"><span class="ja">不安を売ることになる。話題性はあるが一過性。必要な場合の選択肢として二階に置く。「正しく診る」とは最新機器を使うことではない。</span><span class="zh">將成為販售焦慮。有話題性但一次性。作為必要時的選項置於二樓。「正確診視」並非使用最新設備。</span></p>
+    </div>
+    <div class="ng-card">
+      <p class="ng-n">②</p>
+      <p class="ng-title"><span class="ja">サプリ・点滴を商品として売る</span><span class="zh">以商品方式販售保健品及點滴</span></p>
+      <p class="ng-reason"><span class="ja">「売るために診る」構図になる。医療の信頼性とLypo-Cブランドの両方を毀損する。処方として組み込む。</span><span class="zh">將形成「為販售而診療」之構圖。同時損害醫療信賴度與Lypo-C品牌。作為處方納入。</span></p>
+    </div>
+    <div class="ng-card">
+      <p class="ng-n">③</p>
+      <p class="ng-title"><span class="ja">単発健診モデル</span><span class="zh">單次健檢模型</span></p>
+      <p class="ng-reason"><span class="ja">一度の健診で「異常なし」と言って終わることはしない。それはこのプロジェクトの否定である。経年比較と継続が本質。</span><span class="zh">不在一次檢查後以「無異常」作結。那是對此計畫的否定。縱向比較與持續才是本質。</span></p>
+    </div>
+    <div class="ng-card">
+      <p class="ng-n">④</p>
+      <p class="ng-title"><span class="ja">医師個人ブランド依存・テック主導</span><span class="zh">依賴醫師個人品牌・科技主導</span></p>
+      <p class="ng-reason"><span class="ja">属人化は継承を妨げる。テック主導はForward Healthの教訓。医師が中心、テックは補助、様式が継続する設計にする。</span><span class="zh">屬人化妨礙傳承。科技主導是Forward Health的教訓。醫師為中心，科技為輔，設計使樣式得以持續。</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Section: SPICの役割 -->
+<div class="sec">
+  <div class="sec-eye"><span class="sec-num">Section 12</span><span class="sec-tag hist">SPIC</span></div>
+  <h2 class="sec-h"><span class="ja">SPICの役割 ― 伴走者として</span><span class="zh">SPIC的角色 ― 作為伴走者</span></h2>
+  <div class="spic-box">
+    <div class="spic-box-inner">
+      <div>
+        <p class="spic-label"><span class="ja">SPICとは何者か</span><span class="zh">SPIC是何者</span></p>
+        <p class="spic-title"><span class="ja">SPICのSはStyleである。<br>医師の想いを<em>様式</em>として継ぐ、伴走者である。</span><span class="zh">SPIC的S是Style。<br>以<em>樣式</em>傳承醫師心意的伴走者。</span></p>
+        <p class="spic-desc"><span class="ja">主役は医師であり、医師の想いである。SPICは場所を作り、記録し、教育の仕組みを整え、国際展開の構造を設計する。表に出るのは医師の志であり、SPICはその志が継承可能な形になるための器を作る。</span><span class="zh">主角是醫師，是醫師的心意。SPIC建立場所、記錄、整備教育機制、設計國際展開架構。呈現於前台的是醫師的志向，SPIC打造使那份志向得以傳承的容器。</span></p>
+      </div>
+      <div>
+        <p class="spic-label"><span class="ja">SPICが同時に持つ5つの資産</span><span class="zh">SPIC同時擁有的5項資產</span></p>
+        <div class="spic-assets">
+          <div class="spic-asset"><p class="spic-asset-n">01</p><p class="spic-asset-text"><strong><span class="ja">臨床</span><span class="zh">臨床</span></strong><span class="ja">柳澤先生と20年・鎌倉クリニック2004年開設</span><span class="zh">與柳澤醫師20年・2004年開設鎌倉診所</span></p></div>
+          <div class="spic-asset"><p class="spic-asset-n">02</p><p class="spic-asset-text"><strong><span class="ja">教育</span><span class="zh">教育</span></strong><span class="ja">点滴療法研究会・医療者教育</span><span class="zh">點滴療法研究會、醫療人員教育</span></p></div>
+          <div class="spic-asset"><p class="spic-asset-n">03</p><p class="spic-asset-text"><strong><span class="ja">学会ネットワーク</span><span class="zh">學會網絡</span></strong><span class="ja">3,100以上の医療機関ネットワーク</span><span class="zh">3,100家以上醫療機構網絡</span></p></div>
+          <div class="spic-asset"><p class="spic-asset-n">04</p><p class="spic-asset-text"><strong><span class="ja">プロダクト</span><span class="zh">產品</span></strong><span class="ja">Lypo-C・吸収設計の独自技術</span><span class="zh">Lypo-C、吸收設計獨有技術</span></p></div>
+          <div class="spic-asset"><p class="spic-asset-n">05</p><p class="spic-asset-text"><strong><span class="ja">国際展開</span><span class="zh">國際展開</span></strong><span class="ja">台湾（Charles先生）・シンガポール</span><span class="zh">台灣（Charles醫師）、新加坡</span></p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <h2 class="closing-title">
+    <span class="ja">医師（いし）は、<em>医の志（いし）</em>を持つ者である。<br>その志を継ぐことが、このプロジェクトのすべてである。</span>
+    <span class="zh">醫師（いし），是持有<em>醫志（いし）</em>之人。<br>繼承那份志向，是此計畫的全部。</span>
+  </h2>
+  <p class="closing-body">
+    <span class="ja">柳澤先生が「野に下る」選択をしてから18年。その間、先生は患者を想い続け、応え続け、伝え続けた。その想いを次の医師に、次の国に、次の世代に手渡す様式を確立する。それが2026年10月、横浜から始まる。</span>
+    <span class="zh">自柳澤醫師做出「下野」選擇以來已18年。其間，先生持續想念患者、持續回應、持續傳達。確立將那份心意傳遞予下一位醫師、下一個國家、下一個世代的樣式。那將於2026年10月，從橫濱開始。</span>
+  </p>
+  <p class="closing-tagline">
+    <span class="ja">知る。整える。続ける。 ― yClinic</span>
+    <span class="zh">了解。調整。持續。 ― yClinic</span>
+  </p>
+  <p class="closing-meta">
+    © 2026 SPIC Corporation ｜ Confidential ｜ y_clinic_concept_2026.html ｜ v1.0 ｜ 2026.04.27<br>
+    <span style="font-size:10px"><span class="ja">コードネーム「yClinic」 — 正式名称は次回会議にて医師の判断により決定</span><span class="zh">代號「yClinic」— 正式名稱將於下次會議由醫師判斷決定</span></span>
+  </p>
+</div>
+
+</div><!-- /.page -->
+</body>
+</html>
